@@ -7,5 +7,6 @@ node_modules/
 media/
 github-setup.md
 .claude/
+CLAUDE.md
 public/*-original.mp4
 bot/stats.json
