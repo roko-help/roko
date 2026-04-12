@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Scam Quest — Roko</title>
+  <meta name="description" content="7 real crypto scam scenarios. Can you spot them? Test your skills with Roko Scam Quest.">
+  <meta property="og:title" content="Scam Quest — Roko">
+  <meta property="og:description" content="7 real crypto scam scenarios. Can you spot the scam?">
+  <meta property="og:url" content="https://roko.help/quest">
+  <meta property="og:image" content="https://roko.help/og.png?v=2">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦝</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0f14;
+      --bg-card: #111820;
+      --accent: #f0b866;
+      --accent-a15: rgba(240,184,102,.15);
+      --accent-a30: rgba(240,184,102,.3);
+      --accent-a40: rgba(240,184,102,.4);
+      --success: #34d399;
+      --danger: #f87171;
+      --yellow: #fbbf24;
+      --text: #e8ecf0;
+      --text-dim: rgba(255,255,255,.55);
+      --text-dimmer: rgba(255,255,255,.35);
+      --border: rgba(255,255,255,.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%; overflow: hidden;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== LAYOUT ===== */
+    .app {
+      height: 100%; display: flex; flex-direction: column;
+      max-width: 520px; margin: 0 auto;
+      position: relative;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 1.2rem; flex-shrink: 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,15,20,.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      z-index: 100;
+    }
+    .header-back {
+      color: var(--accent); text-decoration: none; font-size: .85rem;
+      font-weight: 600; display: flex; align-items: center; gap: .3rem;
+      transition: opacity .2s;
+    }
+    .header-back:hover { opacity: .7; }
+    .header-back svg { width: 16px; height: 16px; }
+    .header-title {
+      font-size: .9rem; font-weight: 700; letter-spacing: -.01em;
+    }
+    .lang-sw {
+      display: flex; gap: 2px; background: rgba(255,255,255,.05);
+      border-radius: 8px; padding: 2px;
+    }
+    .lang-btn {
+      background: none; border: none; color: var(--text-dimmer);
+      font-family: inherit; font-size: .75rem; font-weight: 600;
+      padding: .3rem .5rem; border-radius: 6px; cursor: pointer;
+      transition: all .2s; text-transform: uppercase;
+    }
+    .lang-btn.active {
+      background: rgba(255,255,255,.1); color: var(--text);
+    }
+    .lang-btn:hover:not(.active) { color: var(--text-dim); }
+
+    /* ===== PROGRESS DOTS ===== */
+    .progress {
+      display: flex; gap: 6px; justify-content: center;
+      padding: .8rem 1rem .4rem; flex-shrink: 0;
+    }
+    .dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.1);
+      transition: all .4s ease;
+    }
+    .dot.done { background: var(--success); border-color: var(--success); box-shadow: 0 0 10px rgba(52,211,153,.3); }
+    .dot.fail { background: var(--danger); border-color: var(--danger); box-shadow: 0 0 10px rgba(248,113,113,.3); }
+    .dot.current {
+      background: var(--accent); border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-a40);
+      transform: scale(1.15);
+    }
+    .progress-label {
+      text-align: center; font-size: .75rem; color: var(--text-dimmer);
+      padding-bottom: .5rem; font-weight: 500;
+    }
+
+    /* ===== CHAT AREA ===== */
+    .chat-area {
+      flex: 1; overflow-y: auto; padding: 1rem 1rem .5rem;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+    .chat-area::-webkit-scrollbar { width: 4px; }
+    .chat-area::-webkit-scrollbar-track { background: transparent; }
+    .chat-area::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+
+    /* ===== CHAT MESSAGES ===== */
+    .msg {
+      display: flex; gap: .55rem; align-items: flex-end;
+      margin-bottom: .5rem; max-width: 88%;
+      opacity: 0; transform: translateY(12px);
+      animation: msgIn .35s ease forwards;
+    }
+    .msg.them { justify-content: flex-start; }
+    .msg.you { flex-direction: row-reverse; margin-left: auto; }
+
+    @keyframes msgIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; flex-shrink: 0;
+      font-weight: 700; color: #fff;
+    }
+    .msg.them .msg-avatar { background: linear-gradient(135deg, #5b6eae, #8b5cf6); }
+    .msg.you .msg-avatar { background: linear-gradient(135deg, #e09422, #d4791a); }
+
+    .msg-content { display: flex; flex-direction: column; gap: 1px; }
+    .msg.you .msg-content { align-items: flex-end; }
+
+    .msg-name {
+      font-size: .7rem; font-weight: 600; color: var(--text-dimmer);
+      padding: 0 .6rem; margin-bottom: 2px;
+    }
+    .msg.them .msg-name { color: #8b9dc3; }
+    .msg.you .msg-name { color: var(--accent); opacity: .7; }
+
+    .bubble {
+      padding: .6rem .85rem; font-size: .9rem; line-height: 1.45;
+      color: rgba(255,255,255,.85); max-width: 100%;
+      word-wrap: break-word;
+    }
+    .msg.them .bubble {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 4px 16px 16px 16px;
+    }
+    .msg.you .bubble {
+      background: linear-gradient(135deg, rgba(240,184,102,.18), rgba(240,184,102,.1));
+      border: 1px solid rgba(240,184,102,.15);
+      border-radius: 16px 4px 16px 16px;
+    }
+
+    /* consecutive msgs from same side: tighter spacing, no avatar */
+    .msg.them + .msg.them { margin-top: -.15rem; }
+    .msg.you + .msg.you { margin-top: -.15rem; }
+    .msg.them + .msg.them .msg-avatar { visibility: hidden; }
+    .msg.them + .msg.them .msg-name { display: none; }
+    /* but show avatar/name when the name changes */
+    .msg.them.new-sender .msg-avatar { visibility: visible; }
+    .msg.them.new-sender .msg-name { display: block; }
+    .msg.them.new-sender { margin-top: .6rem; }
+
+    /* ===== CHOICES (bottom panel) ===== */
+    .choices-panel {
+      flex-shrink: 0; padding: .6rem 1rem 1rem;
+      background: linear-gradient(to top, var(--bg) 70%, transparent);
+      display: flex; flex-direction: column; gap: .45rem;
+    }
+    .choice-btn {
+      background: rgba(255,255,255,.04);
+      border: 1.5px solid rgba(255,255,255,.1);
+      border-radius: 14px; padding: .75rem 1rem;
+      cursor: pointer; font-family: inherit; font-size: .9rem;
+      color: rgba(255,255,255,.75); text-align: left;
+      transition: all .2s ease; -webkit-tap-highlight-color: transparent;
+    }
+    .choice-btn:hover {
+      border-color: var(--accent-a40);
+      background: var(--accent-a15); color: #fff;
+    }
+    .choice-btn:active { transform: scale(.98); }
+    .choice-btn.correct {
+      border-color: var(--success); background: rgba(52,211,153,.1);
+      color: var(--success); pointer-events: none;
+    }
+    .choice-btn.wrong {
+      border-color: var(--danger); background: rgba(248,113,113,.08);
+      color: var(--danger); pointer-events: none;
+      opacity: .7;
+    }
+    .choice-btn.dimmed { opacity: .35; pointer-events: none; }
+
+    /* ===== FEEDBACK CARD ===== */
+    .feedback {
+      margin: .8rem 0; padding: 1rem; border-radius: 14px;
+      display: flex; gap: .7rem; align-items: flex-start;
+      opacity: 0; animation: feedIn .4s ease .15s forwards;
+    }
+    @keyframes feedIn { to { opacity: 1; } }
+    .feedback.good { background: rgba(52,211,153,.08); border: 1px solid rgba(52,211,153,.18); }
+    .feedback.bad { background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.18); }
+    .feedback-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .feedback-text { font-size: .88rem; color: rgba(255,255,255,.7); line-height: 1.5; }
+
+    .next-btn {
+      background: var(--accent); color: #0a0f14; border: none;
+      border-radius: 12px; padding: .75rem 1.5rem; font-family: inherit;
+      font-size: .95rem; font-weight: 700; cursor: pointer;
+      transition: all .2s; align-self: flex-end;
+      margin-top: .3rem;
+    }
+    .next-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .next-btn:active { transform: scale(.97); }
+
+    /* ===== START SCREEN ===== */
+    .screen {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; padding: 2rem;
+      transition: opacity .45s ease, transform .45s ease;
+      z-index: 50;
+    }
+    .screen.hidden {
+      opacity: 0; transform: scale(.96);
+      pointer-events: none;
+    }
+    .screen.visible {
+      opacity: 1; transform: scale(1);
+    }
+
+    .start-raccoon {
+      animation: raccoonBounce 2s ease-in-out infinite;
+      margin-bottom: 1rem;
+    }
+    .start-raccoon video {
+      width: 120px; height: 120px; border-radius: 50%;
+      object-fit: cover; border: 3px solid rgba(255,255,255,.15);
+      box-shadow: 0 0 60px rgba(240,184,102,.15);
+    }
+    @keyframes raccoonBounce {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      25% { transform: translateY(-8px) rotate(-3deg); }
+      75% { transform: translateY(-4px) rotate(3deg); }
+    }
+    .start-title {
+      font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em;
+      background: linear-gradient(135deg, var(--accent), #e8d5b7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: .5rem;
+    }
+    .start-sub {
+      font-size: 1rem; color: var(--text-dim); text-align: center;
+      max-width: 320px; line-height: 1.55; margin-bottom: 2rem;
+    }
+    .start-btn {
+      background: var(--accent); color: #0a0f14; border: none;
+      border-radius: 16px; padding: 1rem 3rem; font-family: inherit;
+      font-size: 1.15rem; font-weight: 800; cursor: pointer;
+      letter-spacing: -.01em;
+      box-shadow: 0 4px 24px rgba(240,184,102,.25), 0 0 0 1px rgba(240,184,102,.3);
+      transition: all .25s ease;
+    }
+    .start-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(240,184,102,.35), 0 0 0 1px rgba(240,184,102,.4);
+    }
+    .start-btn:active { transform: scale(.96); }
+    .start-footer {
+      position: absolute; bottom: 1.5rem;
+      font-size: .78rem; color: var(--text-dimmer);
+    }
+    .start-footer a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+    /* ===== FINAL SCREEN ===== */
+    .final { text-align: center; }
+    .final-raccoon { margin-bottom: .5rem; }
+    .final-raccoon video {
+      width: 100px; height: 100px; border-radius: 50%;
+      object-fit: cover; border: 3px solid rgba(255,255,255,.15);
+      box-shadow: 0 0 40px rgba(240,184,102,.12);
+    }
+    .final-score {
+      font-size: 3.5rem; font-weight: 800; letter-spacing: -.03em;
+      margin-bottom: .3rem;
+    }
+    .final-score.good { color: var(--success); }
+    .final-score.ok { color: var(--yellow); }
+    .final-score.bad { color: var(--danger); }
+    .final-msg {
+      font-size: 1rem; color: var(--text-dim);
+      max-width: 340px; margin: 0 auto 1.5rem; line-height: 1.55;
+    }
+    .final-btns {
+      display: flex; flex-direction: column; gap: .5rem;
+      width: 100%; max-width: 300px; margin: 0 auto;
+    }
+    .final-btn {
+      border: none; border-radius: 14px; padding: .85rem 1.2rem;
+      font-family: inherit; font-size: .95rem; font-weight: 700;
+      cursor: pointer; transition: all .2s; text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: .4rem;
+    }
+    .final-btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+    .final-btn:active { transform: scale(.97); }
+    .final-btn.primary {
+      background: var(--accent); color: #0a0f14;
+      box-shadow: 0 4px 20px rgba(240,184,102,.2);
+    }
+    .final-btn.secondary {
+      background: rgba(255,255,255,.06); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .final-btn.ghost {
+      background: transparent; color: var(--accent);
+      font-weight: 600; font-size: .88rem;
+    }
+    .copied-toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      background: var(--success); color: #0a0f14; font-weight: 700;
+      padding: .6rem 1.5rem; border-radius: 12px; font-size: .88rem;
+      z-index: 999; opacity: 0; transition: opacity .3s;
+      pointer-events: none;
+    }
+    .copied-toast.show { opacity: 1; }
+
+    /* ===== GAME VIEW (header + progress + chat + choices) ===== */
+    .game-view {
+      display: flex; flex-direction: column; height: 100%;
+    }
+    .game-view.hidden { display: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 521px) {
+      body { background: #060a0e; }
+      .app {
+        border-left: 1px solid var(--border);
+        border-right: 1px solid var(--border);
+        background: var(--bg);
+      }
+    }
+    @media (max-width: 380px) {
+      .start-title { font-size: 1.8rem; }
+      .start-sub { font-size: .9rem; }
+      .bubble { font-size: .85rem; }
+      .choice-btn { font-size: .85rem; padding: .65rem .85rem; }
+      .dot { width: 12px; height: 12px; }
+    }
+
+    /* ===== SUBTLE BG PATTERN ===== */
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(240,184,102,.04) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .app { position: relative; z-index: 1; }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- ===== START SCREEN ===== -->
+    <div class="screen visible" id="startScreen">
+      <div class="start-raccoon"><video src="raccoon.mp4" poster="raccoon-poster.jpg" muted playsinline loop autoplay></video></div>
+      <div class="start-title">Scam Quest</div>
+      <div class="start-sub" id="startSub">7 real crypto scam scenarios. Can you spot them?</div>
+      <button class="start-btn" id="startBtn" onclick="startGame()">Start</button>
+      <div class="start-footer">by <a href="https://roko.help">Roko</a> — roko.help</div>
+    </div>
+
+    <!-- ===== FINAL SCREEN ===== -->
+    <div class="screen hidden" id="finalScreen"></div>
+
+    <!-- ===== GAME VIEW ===== -->
+    <div class="game-view hidden" id="gameView">
+      <div class="header">
+        <a class="header-back" href="https://roko.help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          roko.help
+        </a>
+        <div class="header-title" id="headerTitle">Scam Quest</div>
+        <div class="lang-sw" id="langSw"></div>
+      </div>
+      <div class="progress" id="progress"></div>
+      <div class="progress-label" id="progressLabel"></div>
+      <div class="chat-area" id="chatArea"></div>
+      <div class="choices-panel" id="choicesPanel"></div>
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div class="copied-toast" id="toast"></div>
+
+  <!-- Start screen lang switcher (separate) -->
+  <div style="position:fixed;top:.8rem;right:.8rem;z-index:200">
+    <div class="lang-sw" id="startLangSw"></div>
+  </div>
+
+<script>
+// ============================================================
+// i18n
+// ============================================================
+const UI = {
+  en: {
+    sub: '7 real crypto scam scenarios. Can you spot them?',
+    start: 'Start',
+    title: 'Scam Quest',
+    scenario: 'Scenario',
+    of: 'of',
+    next: 'Next',
+    results: 'Results',
+    great: 'Great instincts! You can spot scammers.',
+    ok: 'Not bad, but gaps remain. Re-read the safety rules.',
+    bad: 'Needs work. Scammers would trick you. Read the rules and try again!',
+    share: 'Share result',
+    again: 'Play again',
+    check: 'Check an exchanger',
+    safety: 'Safety rules',
+    copied: 'Copied!',
+    you: 'You',
+  },
+  ru: {
+    sub: '7 реальных сценариев крипто-скама. Распознаешь?',
+    start: 'Начать',
+    title: 'Квест: Скам',
+    scenario: 'Сценарий',
+    of: 'из',
+    next: 'Дальше',
+    results: 'Результаты',
+    great: 'Отличная интуиция! Ты распознаёшь мошенников.',
+    ok: 'Неплохо, но есть пробелы. Перечитай правила безопасности.',
+    bad: 'Нужно подучиться. Мошенники бы тебя обманули. Прочитай правила и попробуй снова!',
+    share: 'Поделиться',
+    again: 'Заново',
+    check: 'Проверить обменник',
+    safety: 'Правила безопасности',
+    copied: 'Скопировано!',
+    you: 'Ты',
+  },
+  es: {
+    sub: '7 escenarios reales de estafa crypto. ¿Puedes detectarlos?',
+    start: 'Empezar',
+    title: 'Scam Quest',
+    scenario: 'Escenario',
+    of: 'de',
+    next: 'Siguiente',
+    results: 'Resultados',
+    great: '¡Gran instinto! Detectas estafadores.',
+    ok: 'No está mal, pero hay brechas. Relee las reglas de seguridad.',
+    bad: 'Necesitas estudiar. Los estafadores te engañarían. Lee las reglas e inténtalo de nuevo.',
+    share: 'Compartir',
+    again: 'De nuevo',
+    check: 'Verificar exchanger',
+    safety: 'Reglas de seguridad',
+    copied: '¡Copiado!',
+    you: 'Tú',
+  }
+};
+
+// ============================================================
+// SCENARIOS
+// ============================================================
+const SCENARIOS={
+  en:[
+    {chat:[
+      {from:'them',name:'CryptoKing',text:'Hey bro! Saw your post. I can exchange your BTC to cash, best rate in town. 15% above market \u{1F4B0}'},
+      {from:'them',name:'CryptoKing',text:'Just send 0.5 BTC to my wallet and meet me at the gas station at 11pm. I\'ll have the cash ready.'},
+    ],choices:[
+      {text:'\u{1F6AB} Too many red flags. Walk away.',correct:true},
+      {text:'\u{1F4B8} Great rate! Send the BTC right away.',correct:false},
+      {text:'\u{1F914} Ask for their wallet address to check on Roko first.',correct:true},
+    ],
+    good:'Smart! Rate above market + gas station at night + send first with no escrow = classic scam pattern. Never trust strangers with unrealistic offers.',
+    bad:'This has every red flag in the book: unrealistic rate, meeting at a gas station at night, asking you to send first. You\'d lose 0.5 BTC.'},
+    {chat:[
+      {from:'them',name:'Anna (friend)',text:'Hey! Remember my colleague who exchanges crypto? He\'s been doing it for years, super reliable'},
+      {from:'them',name:'Anna (friend)',text:'His Telegram is @dmitry_exchange, tell him I sent you'},
+      {from:'you',text:'Thanks! Let me check him out'},
+      {from:'them',name:'@dmitry_exchange',text:'Hi! Anna\'s friend? Sure, I can help. Here\'s my USDT wallet: TJRab...'},
+    ],choices:[
+      {text:'\u{1F50D} Paste the wallet into Roko before doing anything.',correct:true},
+      {text:'\u{1F4B8} Anna vouched for him, send the crypto.',correct:false},
+      {text:'\u{1F4CD} Agree to meet in a public caf\u00e9 first, then check wallet on Roko.',correct:true},
+    ],
+    good:'Even with a referral \u2013 always verify. Check the wallet on Roko, meet in a public place, start with a small test amount. Trust but verify!',
+    bad:'Even friends can be wrong or get scammed themselves. Always check the wallet on Roko and do a small test amount first.'},
+    {chat:[
+      {from:'them',name:'FastSwap Bot',text:'\u{1F3E6} Welcome to FastSwap! Paste your wallet address to receive your USDT airdrop!'},
+      {from:'them',name:'FastSwap Bot',text:'\u26A1 Limited time: Connect wallet at fastswap-airdrop.xyz to claim 500 USDT FREE'},
+    ],choices:[
+      {text:'\u{1F6AB} This is obviously a scam. Ignore and block.',correct:true},
+      {text:'\u{1F50D} Check fastswap-airdrop.xyz on Roko first.',correct:true},
+      {text:'\u{1F4B0} Free money! Connect wallet and claim.',correct:false},
+    ],
+    good:'Correct! "Free USDT" airdrops are token approval scams. If you connect your wallet and approve, they drain everything. Roko would show this domain is days old.',
+    bad:'This is a token approval scam! When you "connect" and "approve", you give them permission to drain your entire wallet. There are no free airdrops from strangers.'},
+    {chat:[
+      {from:'them',name:'Exchange Office',text:'Welcome! For amounts over $5,000 we offer a premium rate. Just need a photo of your passport for verification.'},
+      {from:'you',text:'I\'d like to exchange 3,000 USDT for cash'},
+      {from:'them',name:'Exchange Office',text:'Sure! But first, please send the USDT to our wallet. We\'ll prepare the cash while we wait for confirmation. Here\'s the address...'},
+    ],choices:[
+      {text:'\u{1F9FE} Ask for a receipt and license number before sending anything.',correct:true},
+      {text:'\u{1F4B8} They seem professional, send the USDT.',correct:false},
+      {text:'\u{1F50D} Check their wallet on Roko. Ask to see cash before sending crypto.',correct:true},
+    ],
+    good:'Smart! A real licensed office will show their license, give you a receipt, and handle the exchange face-to-face. "Send first" is always a red flag.',
+    bad:'Even professional-looking offices can be scams. Always: check the license, see the cash, get a receipt, and check the wallet on Roko before sending.'},
+    {chat:[
+      {from:'them',name:'Trader_Pro',text:'Our deal is set for tomorrow. Here\'s the wallet for your 2 ETH: 0x8589...'},
+      {from:'you',text:'Let me verify that address real quick'},
+      {from:'them',name:'Trader_Pro',text:'Actually wait, use this one instead: 0x6f1c... I just changed wallets for security reasons'},
+    ],choices:[
+      {text:'\u{1F6AB} Wallet change at the last moment = big red flag. Cancel.',correct:true},
+      {text:'\u{1F50D} Check the NEW wallet on Roko before deciding.',correct:true},
+      {text:'\u{1F44C} Makes sense, security is important. Send to the new address.',correct:false},
+    ],
+    good:'Changing wallet at the last moment is a classic substitution attack. The new wallet could be compromised or sanctioned. Always re-verify \u2013 or cancel.',
+    bad:'Last-minute wallet changes are a classic scam move. The original wallet was fine \u2013 but the new one goes to the scammer. Always re-check or walk away.'},
+    {chat:[
+      {from:'them',name:'Max (buddy)',text:'Bro, I found a solid exchanger \u2013 my friends used them a couple months ago, no issues. Here\'s their TG: @TrustSwap_OTC'},
+      {from:'you',text:'Cool, let me check them out'},
+      {from:'them',name:'@TrustSwap_OTC',text:'Hi! Max\'s friend? Great. Before the deal, we need an AML check on your wallet \u2013 standard compliance procedure. Go to trustswap-aml.com, connect your wallet, takes 30 seconds \u2705'},
+      {from:'them',name:'Max (buddy)',text:'They asked me the same thing, looks legit. I\'m in a rush rn so can\'t help much, but should be fine \u2013 they\'re in cybersecurity too lol'},
+    ],choices:[
+      {text:'\u{1F6AB} "Connect wallet for AML" is a drain attack. Block immediately.',correct:true},
+      {text:'\u{1F50D} Check trustswap-aml.com on Roko before touching anything.',correct:true},
+      {text:'\u{1F44C} Max\'s friends used them + AML sounds legit. Connect wallet.',correct:false},
+    ],
+    good:'Spot on! Real AML checks NEVER require you to connect your wallet to a random site. That\'s a token approval drain. Max\'s friends were either lucky or next in line. Roko would show the domain is days old.',
+    bad:'This is a drain scam disguised as "AML compliance." You connect, approve a token transaction \u2013 and they empty your wallet. Nobody legitimate asks you to connect a wallet for AML. Even crypto-savvy friends miss this when they\'re in a rush.'},
+    {chat:[
+      {from:'them',name:'@Carlos_P2P',text:'500 USDT for cash? Let\'s meet at Starbucks in Plaza Catalunya at 3pm'},
+      {from:'you',text:'Sounds good, see you there'},
+      {from:'them',name:'@Carlos_P2P',text:'Hey, running a bit late. I\'m around the corner \u2013 can you come out? I\'m in my car, grey BMW. Too many people inside, don\'t want attention \u{1F697}'},
+    ],choices:[
+      {text:'\u{1F6AB} No cars. Tell him to come inside or I cancel.',correct:true},
+      {text:'\u{1F4CD} Ask him to come in and show cash in public first. If not, I leave.',correct:true},
+      {text:'\u{1F6B6} It\'s only 500, seems fine. Walk to the car.',correct:false},
+    ],
+    good:'Correct! Never get into a stranger\'s car for a crypto exchange. Always public place with cameras. If they won\'t come inside \u2013 that\'s a red flag. Your safety > any exchange rate.',
+    bad:'Getting into a stranger\'s car for a crypto trade is dangerous \u2013 no witnesses, no cameras, no easy exit. The $500 isn\'t worth the risk. Always insist on a public location.'},
+  ],
+  ru:[
+    {chat:[
+      {from:'them',name:'CryptoKing',text:'\u0411\u0440\u043e! \u0412\u0438\u0434\u0435\u043b \u0442\u0432\u043e\u0439 \u043f\u043e\u0441\u0442. \u041c\u043e\u0433\u0443 \u043e\u0431\u043c\u0435\u043d\u044f\u0442\u044c BTC \u043d\u0430 \u043d\u0430\u043b\u0438\u0447\u043a\u0443, \u043b\u0443\u0447\u0448\u0438\u0439 \u043a\u0443\u0440\u0441 \u0432 \u0433\u043e\u0440\u043e\u0434\u0435. \u041d\u0430 15% \u0432\u044b\u0448\u0435 \u0440\u044b\u043d\u043a\u0430 \u{1F4B0}'},
+      {from:'them',name:'CryptoKing',text:'\u041f\u0440\u043e\u0441\u0442\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u044c 0.5 BTC \u043d\u0430 \u043c\u043e\u0439 \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0438 \u043f\u0440\u0438\u0435\u0437\u0436\u0430\u0439 \u043d\u0430 \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0443 \u0432 23:00. \u0414\u0435\u043d\u044c\u0433\u0438 \u0431\u0443\u0434\u0443\u0442 \u0433\u043e\u0442\u043e\u0432\u044b.'},
+    ],choices:[
+      {text:'\u{1F6AB} \u0421\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u043a\u0440\u0430\u0441\u043d\u044b\u0445 \u0444\u043b\u0430\u0433\u043e\u0432. \u0423\u0445\u043e\u0436\u0443.',correct:true},
+      {text:'\u{1F4B8} \u041e\u0442\u043b\u0438\u0447\u043d\u044b\u0439 \u043a\u0443\u0440\u0441! \u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u044e BTC!',correct:false},
+      {text:'\u{1F914} \u041f\u043e\u043f\u0440\u043e\u0448\u0443 \u0430\u0434\u0440\u0435\u0441 \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430 \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u044e \u0432 Roko.',correct:true},
+    ],
+    good:'\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e! \u041a\u0443\u0440\u0441 \u0432\u044b\u0448\u0435 \u0440\u044b\u043d\u043a\u0430 + \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0430 \u043d\u043e\u0447\u044c\u044e + \u043e\u0442\u043f\u0440\u0430\u0432\u044c \u043f\u0435\u0440\u0432\u044b\u043c \u0431\u0435\u0437 \u044d\u0441\u043a\u0440\u043e\u0443 = \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u043a\u0430\u043c. \u041d\u0435 \u0434\u043e\u0432\u0435\u0440\u044f\u0439 \u043d\u0435\u0437\u043d\u0430\u043a\u043e\u043c\u0446\u0430\u043c \u0441 \u043d\u0435\u0440\u0435\u0430\u043b\u044c\u043d\u044b\u043c\u0438 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u044f\u043c\u0438.',
+    bad:'\u0422\u0443\u0442 \u0432\u0441\u0435 \u043a\u0440\u0430\u0441\u043d\u044b\u0435 \u0444\u043b\u0430\u0433\u0438: \u043d\u0435\u0440\u0435\u0430\u043b\u044c\u043d\u044b\u0439 \u043a\u0443\u0440\u0441, \u0432\u0441\u0442\u0440\u0435\u0447\u0430 \u043d\u0430 \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0435 \u043d\u043e\u0447\u044c\u044e, \u043f\u0440\u043e\u0441\u044f\u0442 \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043f\u0435\u0440\u0432\u044b\u043c. \u0422\u044b \u0431\u044b \u043f\u043e\u0442\u0435\u0440\u044f\u043b 0.5 BTC.'},
+    {chat:[
+      {from:'them',name:'\u0410\u043d\u044f (\u043f\u043e\u0434\u0440\u0443\u0433\u0430)',text:'\u0421\u043b\u0443\u0448\u0430\u0439! \u041f\u043e\u043c\u043d\u0438\u0448\u044c \u043c\u043e\u0435\u0433\u043e \u043a\u043e\u043b\u043b\u0435\u0433\u0443, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u043c\u0435\u043d\u044f\u0435\u0442 \u043a\u0440\u0438\u043f\u0442\u0443? \u041e\u043d \u044d\u0442\u0438\u043c \u0437\u0430\u043d\u0438\u043c\u0430\u0435\u0442\u0441\u044f \u0433\u043e\u0434\u0430\u043c\u0438, \u043e\u0447\u0435\u043d\u044c \u043d\u0430\u0434\u0451\u0436\u043d\u044b\u0439'},
+      {from:'them',name:'\u0410\u043d\u044f (\u043f\u043e\u0434\u0440\u0443\u0433\u0430)',text:'\u0415\u0433\u043e Telegram \u2013 @dmitry_exchange, \u0441\u043a\u0430\u0436\u0438 \u0447\u0442\u043e \u043e\u0442 \u043c\u0435\u043d\u044f'},
+      {from:'you',text:'\u0421\u043f\u0430\u0441\u0438\u0431\u043e! \u041f\u0440\u043e\u0432\u0435\u0440\u044e'},
+      {from:'them',name:'@dmitry_exchange',text:'\u041f\u0440\u0438\u0432\u0435\u0442! \u0414\u0440\u0443\u0433 \u0410\u043d\u0438? \u041a\u043e\u043d\u0435\u0447\u043d\u043e, \u043f\u043e\u043c\u043e\u0433\u0443. \u0412\u043e\u0442 \u043c\u043e\u0439 USDT \u043a\u043e\u0448\u0435\u043b\u0451\u043a: TJRab...'},
+    ],choices:[
+      {text:'\u{1F50D} \u0412\u0441\u0442\u0430\u0432\u043b\u044e \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0432 Roko \u043f\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043c \u0447\u0442\u043e-\u0442\u043e \u0434\u0435\u043b\u0430\u0442\u044c.',correct:true},
+      {text:'\u{1F4B8} \u0410\u043d\u044f \u0440\u0443\u0447\u0430\u0435\u0442\u0441\u044f \u2013 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u044e \u043a\u0440\u0438\u043f\u0442\u0443.',correct:false},
+      {text:'\u{1F4CD} \u0414\u043e\u0433\u043e\u0432\u043e\u0440\u044e\u0441\u044c \u043e \u0432\u0441\u0442\u0440\u0435\u0447\u0435 \u0432 \u043a\u0430\u0444\u0435, \u0441\u043d\u0430\u0447\u0430\u043b\u0430 \u043f\u0440\u043e\u0432\u0435\u0440\u044e \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0432 Roko.',correct:true},
+    ],
+    good:'\u0414\u0430\u0436\u0435 \u043f\u043e \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0430\u0446\u0438\u0438 \u2013 \u0432\u0441\u0435\u0433\u0434\u0430 \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0439. \u041f\u0440\u043e\u0432\u0435\u0440\u044c \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0432 Roko, \u0432\u0441\u0442\u0440\u0435\u0447\u0430\u0439\u0441\u044f \u0432 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u043e\u043c \u043c\u0435\u0441\u0442\u0435, \u043d\u0430\u0447\u043d\u0438 \u0441 \u043c\u0430\u043b\u0435\u043d\u044c\u043a\u043e\u0439 \u0441\u0443\u043c\u043c\u044b. \u0414\u043e\u0432\u0435\u0440\u044f\u0439, \u043d\u043e \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0439!',
+    bad:'\u0414\u0430\u0436\u0435 \u0434\u0440\u0443\u0437\u044c\u044f \u043c\u043e\u0433\u0443\u0442 \u043e\u0448\u0438\u0431\u0430\u0442\u044c\u0441\u044f \u0438\u043b\u0438 \u0441\u0430\u043c\u0438 \u0431\u044b\u0442\u044c \u043e\u0431\u043c\u0430\u043d\u0443\u0442\u044b\u043c\u0438. \u0412\u0441\u0435\u0433\u0434\u0430 \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0439 \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0432 Roko \u0438 \u043d\u0430\u0447\u0438\u043d\u0430\u0439 \u0441 \u0442\u0435\u0441\u0442\u043e\u0432\u043e\u0439 \u0441\u0443\u043c\u043c\u044b.'},
+    {chat:[
+      {from:'them',name:'FastSwap Bot',text:'\u{1F3E6} \u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c \u0432 FastSwap! \u0412\u0441\u0442\u0430\u0432\u044c \u0430\u0434\u0440\u0435\u0441 \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c USDT \u0430\u0438\u0440\u0434\u0440\u043e\u043f!'},
+      {from:'them',name:'FastSwap Bot',text:'\u26A1 \u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f: \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438 \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u043d\u0430 fastswap-airdrop.xyz \u2013 \u043f\u043e\u043b\u0443\u0447\u0438 500 USDT \u0411\u0415\u0421\u041f\u041b\u0410\u0422\u041d\u041e'},
+    ],choices:[
+      {text:'\u{1F6AB} \u042d\u0442\u043e \u043e\u0447\u0435\u0432\u0438\u0434\u043d\u044b\u0439 \u0441\u043a\u0430\u043c. \u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u044e \u0438 \u0431\u043b\u043e\u043a\u0438\u0440\u0443\u044e.',correct:true},
+      {text:'\u{1F50D} \u041f\u0440\u043e\u0432\u0435\u0440\u044e fastswap-airdrop.xyz \u0432 Roko.',correct:true},
+      {text:'\u{1F4B0} \u0425\u0430\u043b\u044f\u0432\u043d\u044b\u0435 \u0434\u0435\u043d\u044c\u0433\u0438! \u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u044e \u043a\u043e\u0448\u0435\u043b\u0451\u043a!',correct:false},
+    ],
+    good:'\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e! \u00ab\u0411\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0435 USDT\u00bb \u2013 \u044d\u0442\u043e \u0441\u043a\u0430\u043c \u0447\u0435\u0440\u0435\u0437 approve. \u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0448\u044c \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0438 \u043d\u0430\u0436\u043c\u0451\u0448\u044c approve \u2013 \u0441\u043e\u043b\u044c\u044e\u0442 \u0432\u0441\u0451. Roko \u043f\u043e\u043a\u0430\u0437\u0430\u043b \u0431\u044b, \u0447\u0442\u043e \u0434\u043e\u043c\u0435\u043d\u0443 \u043f\u0430\u0440\u0430 \u0434\u043d\u0435\u0439.',
+    bad:'\u042d\u0442\u043e \u0441\u043a\u0430\u043c \u0447\u0435\u0440\u0435\u0437 token approve! \u041a\u043e\u0433\u0434\u0430 \u0442\u044b \u00ab\u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u0435\u0448\u044c\u00bb \u0438 \u00ab\u043e\u0434\u043e\u0431\u0440\u044f\u0435\u0448\u044c\u00bb, \u0442\u044b \u0434\u0430\u0451\u0448\u044c \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u0437\u0430\u0431\u0440\u0430\u0442\u044c \u0432\u0441\u0451 \u0438\u0437 \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430. \u0411\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0445 \u0430\u0438\u0440\u0434\u0440\u043e\u043f\u043e\u0432 \u043e\u0442 \u043d\u0435\u0437\u043d\u0430\u043a\u043e\u043c\u0446\u0435\u0432 \u043d\u0435 \u0431\u044b\u0432\u0430\u0435\u0442.'},
+    {chat:[
+      {from:'them',name:'\u041e\u0431\u043c\u0435\u043d\u043d\u044b\u0439 \u043f\u0443\u043d\u043a\u0442',text:'\u0414\u043e\u0431\u0440\u043e \u043f\u043e\u0436\u0430\u043b\u043e\u0432\u0430\u0442\u044c! \u0414\u043b\u044f \u0441\u0443\u043c\u043c \u043e\u0442 $5000 \u0443 \u043d\u0430\u0441 \u043f\u0440\u0435\u043c\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u043a\u0443\u0440\u0441. \u041d\u0443\u0436\u043d\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u0444\u043e\u0442\u043e \u043f\u0430\u0441\u043f\u043e\u0440\u0442\u0430 \u0434\u043b\u044f \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438.'},
+      {from:'you',text:'\u0425\u043e\u0447\u0443 \u043e\u0431\u043c\u0435\u043d\u044f\u0442\u044c 3000 USDT \u043d\u0430 \u043d\u0430\u043b\u0438\u0447\u043d\u044b\u0435'},
+      {from:'them',name:'\u041e\u0431\u043c\u0435\u043d\u043d\u044b\u0439 \u043f\u0443\u043d\u043a\u0442',text:'\u041a\u043e\u043d\u0435\u0447\u043d\u043e! \u041d\u043e \u0441\u043d\u0430\u0447\u0430\u043b\u0430 \u043e\u0442\u043f\u0440\u0430\u0432\u044c\u0442\u0435 USDT \u043d\u0430 \u043d\u0430\u0448 \u043a\u043e\u0448\u0435\u043b\u0451\u043a. \u041c\u044b \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u0438\u043c \u043d\u0430\u043b\u0438\u0447\u043d\u044b\u0435 \u043f\u043e\u043a\u0430 \u0436\u0434\u0451\u043c \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f. \u0412\u043e\u0442 \u0430\u0434\u0440\u0435\u0441...'},
+    ],choices:[
+      {text:'\u{1F9FE} \u041f\u043e\u043f\u0440\u043e\u0448\u0443 \u0447\u0435\u043a \u0438 \u043d\u043e\u043c\u0435\u0440 \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u0438 \u043f\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043c \u0447\u0442\u043e-\u0442\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c.',correct:true},
+      {text:'\u{1F4B8} \u0412\u044b\u0433\u043b\u044f\u0434\u0438\u0442 \u043f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e, \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u044e USDT.',correct:false},
+      {text:'\u{1F50D} \u041f\u0440\u043e\u0432\u0435\u0440\u044e \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0432 Roko. \u041f\u043e\u043f\u0440\u043e\u0448\u0443 \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u043d\u0430\u043b\u0438\u0447\u043d\u044b\u0435 \u0434\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0438 \u043a\u0440\u0438\u043f\u0442\u044b.',correct:true},
+    ],
+    good:'\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e! \u041d\u0430\u0441\u0442\u043e\u044f\u0449\u0438\u0439 \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043e\u0431\u043c\u0435\u043d\u043d\u0438\u043a \u043f\u043e\u043a\u0430\u0436\u0435\u0442 \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u044e, \u0434\u0430\u0441\u0442 \u0447\u0435\u043a \u0438 \u043f\u0440\u043e\u0432\u0435\u0434\u0451\u0442 \u043e\u0431\u043c\u0435\u043d \u043b\u0438\u0447\u043d\u043e. \u00ab\u041e\u0442\u043f\u0440\u0430\u0432\u044c \u0441\u043d\u0430\u0447\u0430\u043b\u0430\u00bb \u2013 \u0432\u0441\u0435\u0433\u0434\u0430 \u043a\u0440\u0430\u0441\u043d\u044b\u0439 \u0444\u043b\u0430\u0433.',
+    bad:'\u0414\u0430\u0436\u0435 \u043f\u0440\u043e\u0444\u0435\u0441\u0441\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e \u0432\u044b\u0433\u043b\u044f\u0434\u044f\u0449\u0438\u0435 \u043e\u0431\u043c\u0435\u043d\u043d\u0438\u043a\u0438 \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u0441\u043a\u0430\u043c\u043e\u043c. \u0412\u0441\u0435\u0433\u0434\u0430: \u043f\u0440\u043e\u0432\u0435\u0440\u044c \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u044e, \u0443\u0432\u0438\u0434\u044c \u043d\u0430\u043b\u0438\u0447\u043d\u044b\u0435, \u043f\u043e\u043b\u0443\u0447\u0438 \u0447\u0435\u043a, \u043f\u0440\u043e\u0432\u0435\u0440\u044c \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0432 Roko.'},
+    {chat:[
+      {from:'them',name:'Trader_Pro',text:'\u041d\u0430\u0448\u0430 \u0441\u0434\u0435\u043b\u043a\u0430 \u043d\u0430 \u0437\u0430\u0432\u0442\u0440\u0430. \u0412\u043e\u0442 \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0434\u043b\u044f \u0442\u0432\u043e\u0438\u0445 2 ETH: 0x8589...'},
+      {from:'you',text:'\u0421\u0435\u043a\u0443\u043d\u0434\u0443, \u043f\u0440\u043e\u0432\u0435\u0440\u044e \u0430\u0434\u0440\u0435\u0441'},
+      {from:'them',name:'Trader_Pro',text:'\u0421\u0442\u043e\u0439, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439 \u043b\u0443\u0447\u0448\u0435 \u044d\u0442\u043e\u0442: 0x6f1c... \u042f \u0442\u043e\u043b\u044c\u043a\u043e \u0447\u0442\u043e \u0441\u043c\u0435\u043d\u0438\u043b \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0434\u043b\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438'},
+    ],choices:[
+      {text:'\u{1F6AB} \u0421\u043c\u0435\u043d\u0430 \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430 \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 = \u043e\u0433\u0440\u043e\u043c\u043d\u044b\u0439 \u043a\u0440\u0430\u0441\u043d\u044b\u0439 \u0444\u043b\u0430\u0433. \u041e\u0442\u043c\u0435\u043d\u044f\u044e.',correct:true},
+      {text:'\u{1F50D} \u041f\u0440\u043e\u0432\u0435\u0440\u044e \u041d\u041e\u0412\u042b\u0419 \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0432 Roko.',correct:true},
+      {text:'\u{1F44C} \u041b\u043e\u0433\u0438\u0447\u043d\u043e, \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u0432\u0430\u0436\u043d\u0430. \u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u044e \u043d\u0430 \u043d\u043e\u0432\u044b\u0439.',correct:false},
+    ],
+    good:'\u0421\u043c\u0435\u043d\u0430 \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430 \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 \u2013 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043f\u043e\u0434\u043c\u0435\u043d\u0430. \u041d\u043e\u0432\u044b\u0439 \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0441\u043a\u043e\u043c\u043f\u0440\u043e\u043c\u0435\u0442\u0438\u0440\u043e\u0432\u0430\u043d \u0438\u043b\u0438 \u043f\u043e\u0434 \u0441\u0430\u043d\u043a\u0446\u0438\u044f\u043c\u0438. \u0412\u0441\u0435\u0433\u0434\u0430 \u043f\u0435\u0440\u0435\u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0439 \u2013 \u0438\u043b\u0438 \u043e\u0442\u043c\u0435\u043d\u044f\u0439.',
+    bad:'\u0417\u0430\u043c\u0435\u043d\u0430 \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430 \u0432 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 \u2013 \u043a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0440\u044e\u043a. \u041e\u0440\u0438\u0433\u0438\u043d\u0430\u043b\u044c\u043d\u044b\u0439 \u0431\u044b\u043b \u043e\u043a \u2013 \u0430 \u043d\u043e\u0432\u044b\u0439 \u043f\u0440\u0438\u043d\u0430\u0434\u043b\u0435\u0436\u0438\u0442 \u043c\u043e\u0448\u0435\u043d\u043d\u0438\u043a\u0443. \u0412\u0441\u0435\u0433\u0434\u0430 \u043f\u0435\u0440\u0435\u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0439 \u0438\u043b\u0438 \u0443\u0445\u043e\u0434\u0438.'},
+    {chat:[
+      {from:'them',name:'\u041c\u0430\u043a\u0441 (\u0442\u043e\u0432\u0430\u0440\u0438\u0449)',text:'\u0411\u0440\u043e, \u043d\u0430\u0448\u0451\u043b \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043c\u0435\u043d\u044f\u043b\u0443 \u2013 \u043c\u043e\u0438 \u0434\u0440\u0443\u0437\u044c\u044f \u0447\u0435\u0440\u0435\u0437 \u043d\u0435\u0433\u043e \u043c\u0435\u043d\u044f\u043b\u0438 \u043f\u0430\u0440\u0443 \u043c\u0435\u0441\u044f\u0446\u0435\u0432 \u043d\u0430\u0437\u0430\u0434, \u0432\u0441\u0451 \u0447\u0451\u0442\u043a\u043e. \u0412\u043e\u0442 \u0435\u0433\u043e \u0442\u0433: @TrustSwap_OTC'},
+      {from:'you',text:'\u041e\u043a, \u0433\u043b\u044f\u043d\u0443'},
+      {from:'them',name:'@TrustSwap_OTC',text:'\u041f\u0440\u0438\u0432\u0435\u0442! \u0414\u0440\u0443\u0433 \u041c\u0430\u043a\u0441\u0430? \u041e\u0442\u043b\u0438\u0447\u043d\u043e. \u041f\u0435\u0440\u0435\u0434 \u0441\u0434\u0435\u043b\u043a\u043e\u0439 \u043d\u0443\u0436\u043d\u0430 AML-\u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0442\u0432\u043e\u0435\u0433\u043e \u043a\u043e\u0448\u0435\u043b\u044c\u043a\u0430 \u2013 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u0430\u044f \u043f\u0440\u043e\u0446\u0435\u0434\u0443\u0440\u0430. \u0417\u0430\u0439\u0434\u0438 \u043d\u0430 trustswap-aml.com, \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438 \u043a\u043e\u0448\u0435\u043b\u0451\u043a, 30 \u0441\u0435\u043a\u0443\u043d\u0434 \u2705'},
+      {from:'them',name:'\u041c\u0430\u043a\u0441 (\u0442\u043e\u0432\u0430\u0440\u0438\u0449)',text:'\u0423 \u043c\u0435\u043d\u044f \u0442\u0430\u043a \u0436\u0435 \u043f\u0440\u043e\u0441\u0438\u043b\u0438, \u0432\u044b\u0433\u043b\u044f\u0434\u0438\u0442 \u043d\u043e\u0440\u043c. \u042f \u0449\u0430\u0441 \u0431\u0435\u0433\u0443, \u043d\u0435 \u043c\u043e\u0433\u0443 \u043f\u043e\u043c\u043e\u0447\u044c \u043e\u0441\u043e\u0431\u043e, \u043d\u043e \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u043e\u043a \u2013 \u043e\u043d\u0438 \u0436\u0435 \u0442\u0438\u043f\u0430 \u0432 \u043a\u0438\u0431\u0435\u0440\u0431\u0435\u0437\u0435 \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0442 lol'},
+    ],choices:[
+      {text:'\u{1F6AB} \u00ab\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0438 \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0434\u043b\u044f AML\u00bb \u2013 \u044d\u0442\u043e \u0434\u0440\u0435\u0439\u043d-\u0430\u0442\u0430\u043a\u0430. \u0411\u043b\u043e\u043a\u0438\u0440\u0443\u044e.',correct:true},
+      {text:'\u{1F50D} \u041f\u0440\u043e\u0432\u0435\u0440\u044e trustswap-aml.com \u0432 Roko \u043f\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043c \u0442\u0440\u043e\u0433\u0430\u0442\u044c \u0447\u0442\u043e-\u043b\u0438\u0431\u043e.',correct:true},
+      {text:'\u{1F44C} \u0414\u0440\u0443\u0437\u044c\u044f \u041c\u0430\u043a\u0441\u0430 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043b\u0438\u0441\u044c + AML \u0437\u0432\u0443\u0447\u0438\u0442 \u043b\u0435\u0433\u0438\u0442\u0438\u043c\u043d\u043e. \u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u044e.',correct:false},
+    ],
+    good:'\u0412\u0435\u0440\u043d\u043e! \u041d\u0430\u0441\u0442\u043e\u044f\u0449\u0430\u044f AML-\u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u041d\u0418\u041a\u041e\u0413\u0414\u0410 \u043d\u0435 \u0442\u0440\u0435\u0431\u0443\u0435\u0442 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u0442\u044c \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u043a \u043b\u0435\u0432\u043e\u043c\u0443 \u0441\u0430\u0439\u0442\u0443. \u042d\u0442\u043e \u0434\u0440\u0435\u0439\u043d \u0447\u0435\u0440\u0435\u0437 approve. \u0414\u0440\u0443\u0437\u044c\u044f \u041c\u0430\u043a\u0441\u0430 \u0438\u043b\u0438 \u043f\u043e\u0432\u0435\u0437\u043b\u043e, \u0438\u043b\u0438 \u043e\u043d\u0438 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0435. Roko \u043f\u043e\u043a\u0430\u0437\u0430\u043b \u0431\u044b, \u0447\u0442\u043e \u0434\u043e\u043c\u0435\u043d\u0443 \u043f\u0430\u0440\u0430 \u0434\u043d\u0435\u0439.',
+    bad:'\u042d\u0442\u043e \u0434\u0440\u0435\u0439\u043d-\u0441\u043a\u0430\u043c \u043f\u043e\u0434 \u0432\u0438\u0434\u043e\u043c \u00abAML-\u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438\u00bb. \u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u0435\u0448\u044c \u043a\u043e\u0448\u0435\u043b\u0451\u043a, \u043e\u0434\u043e\u0431\u0440\u044f\u0435\u0448\u044c \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044e \u2013 \u0438 \u0442\u0435\u0431\u0435 \u0441\u043b\u0438\u0432\u0430\u044e\u0442 \u0432\u0441\u0451. \u041d\u0438\u043a\u0442\u043e \u043b\u0435\u0433\u0438\u0442\u0438\u043c\u043d\u044b\u0439 \u043d\u0435 \u043f\u0440\u043e\u0441\u0438\u0442 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u0442\u044c \u043a\u043e\u0448\u0435\u043b\u0451\u043a \u0434\u043b\u044f AML. \u0414\u0430\u0436\u0435 \u043a\u0440\u0438\u043f\u0442\u043e-\u0448\u0430\u0440\u044f\u0449\u0438\u0435 \u0440\u0435\u0431\u044f\u0442\u0430 \u0432\u0435\u0434\u0443\u0442\u0441\u044f, \u043a\u043e\u0433\u0434\u0430 \u0442\u043e\u0440\u043e\u043f\u044f\u0442\u0441\u044f.'},
+    {chat:[
+      {from:'them',name:'@Carlos_P2P',text:'500 USDT \u043d\u0430 \u043d\u0430\u043b\u0438\u0447\u043d\u044b\u0435? \u0414\u0430\u0432\u0430\u0439 \u0432 Starbucks \u043d\u0430 Plaza Catalunya \u0432 15:00'},
+      {from:'you',text:'\u041e\u0442\u043b\u0438\u0447\u043d\u043e, \u0431\u0443\u0434\u0443'},
+      {from:'them',name:'@Carlos_P2P',text:'\u0421\u043b\u0443\u0448\u0430\u0439, \u043d\u0435\u043c\u043d\u043e\u0433\u043e \u0437\u0430\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u044e\u0441\u044c. \u042f \u0437\u0430 \u0443\u0433\u043b\u043e\u043c \u2013 \u0432\u044b\u0439\u0434\u0438? \u042f \u0432 \u043c\u0430\u0448\u0438\u043d\u0435, \u0441\u0435\u0440\u044b\u0439 BMW. \u0412\u043d\u0443\u0442\u0440\u0438 \u043c\u043d\u043e\u0433\u043e \u043d\u0430\u0440\u043e\u0434\u0443, \u043d\u0435 \u0445\u043e\u0447\u0443 \u043f\u0440\u0438\u0432\u043b\u0435\u043a\u0430\u0442\u044c \u0432\u043d\u0438\u043c\u0430\u043d\u0438\u0435 \u{1F697}'},
+    ],choices:[
+      {text:'\u{1F6AB} \u041d\u0438\u043a\u0430\u043a\u0438\u0445 \u043c\u0430\u0448\u0438\u043d. \u041f\u0443\u0441\u0442\u044c \u0437\u0430\u0439\u0434\u0451\u0442 \u0432 \u043a\u0430\u0444\u0435 \u0438\u043b\u0438 \u043e\u0442\u043c\u0435\u043d\u044f\u044e.',correct:true},
+      {text:'\u{1F4CD} \u041f\u0440\u043e\u0448\u0443 \u0437\u0430\u0439\u0442\u0438 \u0438 \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u043d\u0430\u043b\u0438\u0447\u043d\u044b\u0435 \u0432 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u043e\u043c \u043c\u0435\u0441\u0442\u0435. \u041d\u0435 \u0437\u0430\u0439\u0434\u0451\u0442 \u2013 \u0443\u0445\u043e\u0436\u0443.',correct:true},
+      {text:'\u{1F6B6} \u0412\u0441\u0435\u0433\u043e 500, \u0432\u0440\u043e\u0434\u0435 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e. \u041f\u043e\u0434\u0445\u043e\u0436\u0443 \u043a \u043c\u0430\u0448\u0438\u043d\u0435.',correct:false},
+    ],
+    good:'\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e! \u041d\u0438\u043a\u043e\u0433\u0434\u0430 \u043d\u0435 \u0441\u0430\u0434\u0438\u0441\u044c \u0432 \u043c\u0430\u0448\u0438\u043d\u0443 \u043a \u043d\u0435\u0437\u043d\u0430\u043a\u043e\u043c\u0446\u0443 \u0434\u043b\u044f \u043e\u0431\u043c\u0435\u043d\u0430 \u043a\u0440\u0438\u043f\u0442\u044b. \u0412\u0441\u0435\u0433\u0434\u0430 \u0432 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u043e\u043c \u043c\u0435\u0441\u0442\u0435 \u0441 \u043a\u0430\u043c\u0435\u0440\u0430\u043c\u0438. \u041d\u0435 \u0445\u043e\u0447\u0435\u0442 \u0437\u0430\u0445\u043e\u0434\u0438\u0442\u044c \u2013 \u043a\u0440\u0430\u0441\u043d\u044b\u0439 \u0444\u043b\u0430\u0433. \u0422\u0432\u043e\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c > \u043b\u044e\u0431\u043e\u0439 \u043a\u0443\u0440\u0441.',
+    bad:'\u0421\u0435\u0441\u0442\u044c \u0432 \u043c\u0430\u0448\u0438\u043d\u0443 \u043a \u043d\u0435\u0437\u043d\u0430\u043a\u043e\u043c\u0446\u0443 \u0434\u043b\u044f \u043a\u0440\u0438\u043f\u0442\u043e-\u0441\u0434\u0435\u043b\u043a\u0438 \u2013 \u043e\u043f\u0430\u0441\u043d\u043e: \u043d\u0435\u0442 \u0441\u0432\u0438\u0434\u0435\u0442\u0435\u043b\u0435\u0439, \u043a\u0430\u043c\u0435\u0440, \u043b\u0451\u0433\u043a\u043e\u0433\u043e \u0432\u044b\u0445\u043e\u0434\u0430. $500 \u043d\u0435 \u0441\u0442\u043e\u044f\u0442 \u0440\u0438\u0441\u043a\u0430. \u0412\u0441\u0435\u0433\u0434\u0430 \u043d\u0430\u0441\u0442\u0430\u0438\u0432\u0430\u0439 \u043d\u0430 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u043e\u043c \u043c\u0435\u0441\u0442\u0435.'},
+  ],
+  es:[
+    {chat:[{from:'them',name:'CryptoKing',text:'Bro! Vi tu post. Puedo cambiar tu BTC a efectivo, mejor tasa. 15% sobre mercado \u{1F4B0}'},{from:'them',name:'CryptoKing',text:'Env\u00eda 0.5 BTC a mi wallet y nos vemos en la gasolinera a las 11pm.'}],choices:[{text:'\u{1F6AB} Muchas se\u00f1ales rojas. Me voy.',correct:true},{text:'\u{1F4B8} \u00a1Buena tasa! Env\u00edo BTC.',correct:false},{text:'\u{1F914} Pido la wallet para verificar en Roko.',correct:true}],good:'\u00a1Correcto! Tasa irreal + gasolinera de noche + enviar primero = estafa cl\u00e1sica.',bad:'Todas las se\u00f1ales rojas: tasa irreal, gasolinera de noche, enviar primero. Perder\u00edas 0.5 BTC.'},
+    {chat:[{from:'them',name:'Ana (amiga)',text:'\u00a1Oye! Mi colega cambia crypto, muy confiable. Su TG: @dmitry_exchange'},{from:'them',name:'@dmitry_exchange',text:'\u00bfAmigo de Ana? Aqu\u00ed mi wallet USDT: TJRab...'}],choices:[{text:'\u{1F50D} Verifico la wallet en Roko primero.',correct:true},{text:'\u{1F4B8} Ana lo recomienda, env\u00edo.',correct:false},{text:'\u{1F4CD} Quedamos en caf\u00e9 p\u00fablico, verifico wallet.',correct:true}],good:'Incluso con referencia \u2013 siempre verifica. Wallet en Roko + lugar p\u00fablico + monto de prueba.',bad:'Incluso amigos se equivocan. Siempre verifica en Roko y prueba con monto peque\u00f1o.'},
+    {chat:[{from:'them',name:'FastSwap Bot',text:'\u{1F3E6} \u00a1Conecta wallet en fastswap-airdrop.xyz y recibe 500 USDT GRATIS!'}],choices:[{text:'\u{1F6AB} Estafa obvia. Ignoro.',correct:true},{text:'\u{1F50D} Verifico el dominio en Roko.',correct:true},{text:'\u{1F4B0} \u00a1Dinero gratis! Conecto wallet.',correct:false}],good:'\u00a1Correcto! Airdrops gratis = estafa de approve. Roko mostrar\u00eda que el dominio tiene d\u00edas.',bad:'Estafa de token approve. Al "aprobar" das permiso para vaciar tu wallet.'},
+    {chat:[{from:'them',name:'Casa de cambio',text:'\u00a1Bienvenido! Para montos mayores a $5,000 ofrecemos tasa premium. Solo necesitamos foto de pasaporte para verificaci\u00f3n.'},{from:'you',text:'Quiero cambiar 3,000 USDT por efectivo'},{from:'them',name:'Casa de cambio',text:'\u00a1Claro! Pero primero env\u00eda los USDT a nuestra wallet. Prepararemos el efectivo mientras esperamos confirmaci\u00f3n. Aqu\u00ed la direcci\u00f3n...'}],choices:[{text:'\u{1F9FE} Pido recibo y n\u00famero de licencia antes de enviar nada.',correct:true},{text:'\u{1F4B8} Parecen profesionales, env\u00edo USDT.',correct:false},{text:'\u{1F50D} Verifico wallet en Roko. Pido ver efectivo antes de enviar crypto.',correct:true}],good:'\u00a1Correcto! Una casa de cambio leg\u00edtima muestra licencia, da recibo y hace el cambio en persona. "Env\u00eda primero" siempre es se\u00f1al roja.',bad:'Incluso oficinas de aspecto profesional pueden ser estafa. Siempre: verifica licencia, ve el efectivo, pide recibo, verifica wallet en Roko.'},
+    {chat:[{from:'them',name:'Trader_Pro',text:'Nuestra operaci\u00f3n es ma\u00f1ana. Aqu\u00ed la wallet para tus 2 ETH: 0x8589...'},{from:'you',text:'D\u00e9jame verificar esa direcci\u00f3n'},{from:'them',name:'Trader_Pro',text:'Espera, usa esta mejor: 0x6f1c... Acabo de cambiar wallet por seguridad'}],choices:[{text:'\u{1F6AB} Cambio de wallet a \u00faltimo momento = se\u00f1al roja enorme. Cancelo.',correct:true},{text:'\u{1F50D} Verifico la NUEVA wallet en Roko antes de decidir.',correct:true},{text:'\u{1F44C} Tiene sentido, la seguridad importa. Env\u00edo a la nueva.',correct:false}],good:'Cambiar wallet a \u00faltimo momento es un ataque de sustituci\u00f3n cl\u00e1sico. La nueva wallet puede estar comprometida o sancionada. Siempre re-verifica \u2013 o cancela.',bad:'Cambios de wallet de \u00faltimo minuto son un truco cl\u00e1sico. La original estaba bien \u2013 la nueva va al estafador. Siempre re-verifica o vete.'},
+    {chat:[{from:'them',name:'Max (amigo)',text:'Bro, encontr\u00e9 un exchanger s\u00f3lido \u2013 mis amigos lo usaron hace meses, todo bien. Su TG: @TrustSwap_OTC'},{from:'them',name:'@TrustSwap_OTC',text:'\u00bfAmigo de Max? Necesitamos verificaci\u00f3n AML de tu wallet. Entra a trustswap-aml.com y conecta tu wallet, 30 seg \u2705'},{from:'them',name:'Max (amigo)',text:'Me pidieron lo mismo, parece leg\u00edtimo. Estoy apurado, pero deber\u00eda estar bien \u2013 trabajan en ciberseguridad lol'}],choices:[{text:'\u{1F6AB} "Conectar wallet para AML" = drain attack. Bloqueo.',correct:true},{text:'\u{1F50D} Verifico trustswap-aml.com en Roko primero.',correct:true},{text:'\u{1F44C} Los amigos de Max lo usaron + AML suena leg\u00edtimo. Conecto.',correct:false}],good:'\u00a1Correcto! AML real NUNCA requiere conectar wallet a un sitio random. Es un drain por approve. Roko mostrar\u00eda que el dominio tiene d\u00edas.',bad:'Estafa de drain disfrazada de "AML". Conectas, apruebas \u2013 y vac\u00edan tu wallet. Nadie leg\u00edtimo pide conectar wallet para AML.'},
+    {chat:[{from:'them',name:'@Carlos_P2P',text:'\u00bf500 USDT por efectivo? Nos vemos en el Starbucks de Plaza Catalunya a las 3pm'},{from:'you',text:'Perfecto, te veo all\u00ed'},{from:'them',name:'@Carlos_P2P',text:'Oye, llegu\u00e9 un poco tarde. Estoy en la esquina \u2013 \u00bfpuedes salir? Te veo al lado en mi coche, es un BMW gris. Hay mucha gente dentro y no quiero llamar la atenci\u00f3n \u{1F697}'}],choices:[{text:'\u{1F6AB} Nada de coches. Le digo que entre al caf\u00e9 o cancelo.',correct:true},{text:'\u{1F4CD} Le pido que entre y me muestre el efectivo en p\u00fablico. Si no, me voy.',correct:true},{text:'\u{1F6B6} Son solo 500, parece seguro. Voy al coche.',correct:false}],good:'\u00a1Correcto! Nunca te metas en el coche de un desconocido. Siempre en lugar p\u00fablico con c\u00e1maras. Si no quiere entrar \u2013 es una se\u00f1al de alarma. Tu seguridad > cualquier tasa.',bad:'Entrar en el coche de un desconocido para un intercambio de cripto es peligroso \u2013 sin testigos, sin c\u00e1maras, sin salida f\u00e1cil. Los $500 no valen el riesgo. Siempre insiste en un lugar p\u00fablico.'},
+  ]
+};
+
+// ============================================================
+// STATE
+// ============================================================
+let curLang = 'en';
+let state = { step: 0, score: 0, results: [], answered: false };
+
+// ============================================================
+// INIT
+// ============================================================
+(function init() {
+  // detect language
+  const nav = (navigator.language || '').slice(0, 2).toLowerCase();
+  if (nav === 'ru') curLang = 'ru';
+  else if (nav === 'es') curLang = 'es';
+
+  // check URL param
+  const params = new URLSearchParams(location.search);
+  if (params.get('lang') && UI[params.get('lang')]) curLang = params.get('lang');
+
+  renderLangSwitchers();
+  applyLang();
+})();
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+}
+
+function tr(key) { return (UI[curLang] || UI.en)[key] || UI.en[key] || key; }
+
+function renderLangSwitchers() {
+  const langs = ['en','ru','es'];
+  const html = langs.map(l =>
+    `<button class="lang-btn ${l===curLang?'active':''}" onclick="setLang('${l}')">${l.toUpperCase()}</button>`
+  ).join('');
+  document.getElementById('langSw').innerHTML = html;
+  document.getElementById('startLangSw').innerHTML = html;
+}
+
+function setLang(l) {
+  curLang = l;
+  renderLangSwitchers();
+  applyLang();
+  // if in game, re-render current step
+  if (!document.getElementById('gameView').classList.contains('hidden')) {
+    if (state.step >= (SCENARIOS[curLang]||SCENARIOS.en).length) {
+      renderFinal();
+    } else {
+      renderStep();
+    }
+  }
+}
+
+function applyLang() {
+  document.getElementById('startSub').textContent = tr('sub');
+  document.getElementById('startBtn').textContent = tr('start');
+  document.getElementById('headerTitle').textContent = tr('title');
+  document.documentElement.lang = curLang;
+}
+
+// ============================================================
+// AVATAR COLORS
+// ============================================================
+const AVATAR_COLORS = [
+  'linear-gradient(135deg, #5b6eae, #8b5cf6)',
+  'linear-gradient(135deg, #e05a5a, #c0392b)',
+  'linear-gradient(135deg, #2ecc71, #1abc9c)',
+  'linear-gradient(135deg, #e67e22, #d35400)',
+  'linear-gradient(135deg, #3498db, #2980b9)',
+  'linear-gradient(135deg, #9b59b6, #8e44ad)',
+  'linear-gradient(135deg, #1abc9c, #16a085)',
+];
+
+function getAvatarColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+}
+
+function getInitial(name) {
+  if (name.startsWith('@')) return name[1].toUpperCase();
+  return name[0].toUpperCase();
+}
+
+// ============================================================
+// GAME FLOW
+// ============================================================
+function startGame() {
+  state = { step: 0, score: 0, results: [], answered: false };
+  document.getElementById('startScreen').classList.remove('visible');
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('finalScreen').classList.add('hidden');
+  document.getElementById('gameView').classList.remove('hidden');
+  // hide start lang sw, show game lang sw
+  document.getElementById('startLangSw').parentElement.style.display = 'none';
+  renderStep();
+}
+
+function renderStep() {
+  state.answered = false;
+  const lang = SCENARIOS[curLang] ? curLang : 'en';
+  const scenarios = SCENARIOS[lang];
+  const total = scenarios.length;
+
+  if (state.step >= total) { renderFinal(); return; }
+
+  const s = scenarios[state.step];
+
+  // Progress dots
+  const dotsHtml = scenarios.map((_, i) => {
+    if (i < state.step) return `<div class="dot ${state.results[i] ? 'done' : 'fail'}"></div>`;
+    if (i === state.step) return `<div class="dot current"></div>`;
+    return `<div class="dot"></div>`;
+  }).join('');
+  document.getElementById('progress').innerHTML = dotsHtml;
+  document.getElementById('progressLabel').textContent =
+    `${tr('scenario')} ${state.step + 1} ${tr('of')} ${total}`;
+
+  // Chat messages with staggered animation
+  const chatArea = document.getElementById('chatArea');
+  chatArea.innerHTML = '';
+
+  let prevName = null;
+  s.chat.forEach((m, i) => {
+    const isNewSender = m.from === 'them' && m.name !== prevName;
+    const div = document.createElement('div');
+    div.className = `msg ${m.from}${isNewSender ? ' new-sender' : ''}`;
+    div.style.animationDelay = `${i * 200 + 100}ms`;
+
+    if (m.from === 'them') {
+      const color = getAvatarColor(m.name);
+      div.innerHTML = `
+        <div class="msg-avatar" style="background:${color}">${getInitial(m.name)}</div>
+        <div class="msg-content">
+          ${isNewSender || i === 0 ? `<div class="msg-name">${esc(m.name)}</div>` : ''}
+          <div class="bubble">${esc(m.text)}</div>
+        </div>`;
+      prevName = m.name;
+    } else {
+      div.innerHTML = `
+        <div class="msg-avatar" style="background:url('raccoon-poster.jpg') center/cover; border:1.5px solid rgba(240,184,102,.3)"></div>
+        <div class="msg-content">
+          ${i === 0 || s.chat[i-1].from !== 'you' ? `<div class="msg-name">${tr('you')}</div>` : ''}
+          <div class="bubble">${esc(m.text)}</div>
+        </div>`;
+      prevName = null;
+    }
+    chatArea.appendChild(div);
+  });
+
+  // Scroll chat to bottom after animations
+  setTimeout(() => { chatArea.scrollTop = chatArea.scrollHeight; }, s.chat.length * 200 + 200);
+
+  // Choices
+  const choicesPanel = document.getElementById('choicesPanel');
+  const totalDelay = s.chat.length * 200 + 300;
+  choicesPanel.innerHTML = s.choices.map((c, i) =>
+    `<button class="choice-btn" onclick="answer(${i})" style="opacity:0;animation:msgIn .35s ease ${totalDelay + i * 100}ms forwards">${esc(c.text)}</button>`
+  ).join('');
+}
+
+function answer(idx) {
+  if (state.answered) return;
+  state.answered = true;
+
+  const lang = SCENARIOS[curLang] ? curLang : 'en';
+  const s = SCENARIOS[lang][state.step];
+  const correct = s.choices[idx].correct;
+
+  state.results.push(correct);
+  if (correct) state.score++;
+
+  // Highlight buttons
+  const btns = document.querySelectorAll('.choice-btn');
+  btns.forEach((btn, i) => {
+    if (i === idx) {
+      btn.classList.add(correct ? 'correct' : 'wrong');
+    } else if (s.choices[i].correct) {
+      btn.classList.add('correct');
+    } else {
+      btn.classList.add('dimmed');
+    }
+  });
+
+  // Update progress dot
+  const dots = document.querySelectorAll('.dot');
+  if (dots[state.step]) {
+    dots[state.step].classList.remove('current');
+    dots[state.step].classList.add(correct ? 'done' : 'fail');
+    if (dots[state.step + 1]) dots[state.step + 1].classList.add('current');
+  }
+
+  // Show feedback in chat area
+  const chatArea = document.getElementById('chatArea');
+  const feedDiv = document.createElement('div');
+  feedDiv.className = `feedback ${correct ? 'good' : 'bad'}`;
+  feedDiv.innerHTML = `
+    <div class="feedback-icon">${correct ? '<img src="raccoon-poster.jpg" style="width:2.5rem;height:2.5rem;border-radius:50%;object-fit:cover">' : '😰'}</div>
+    <div class="feedback-text">${correct ? s.good : s.bad}</div>
+  `;
+  chatArea.appendChild(feedDiv);
+  setTimeout(() => { chatArea.scrollTop = chatArea.scrollHeight; }, 200);
+
+  // Add "Next" button to choices panel
+  const choicesPanel = document.getElementById('choicesPanel');
+  const total = SCENARIOS[lang].length;
+  const nextLabel = state.step < total - 1 ? `${tr('next')} \u2192` : `${tr('results')} \u2192`;
+  const nextDiv = document.createElement('div');
+  nextDiv.style.cssText = 'display:flex;justify-content:flex-end;margin-top:.3rem';
+  nextDiv.innerHTML = `<button class="next-btn" onclick="nextStep()">${nextLabel}</button>`;
+  choicesPanel.appendChild(nextDiv);
+}
+
+function nextStep() {
+  state.step++;
+  renderStep();
+}
+
+function renderFinal() {
+  document.getElementById('gameView').classList.add('hidden');
+  const finalEl = document.getElementById('finalScreen');
+  finalEl.classList.remove('hidden');
+  finalEl.classList.add('visible');
+
+  const lang = SCENARIOS[curLang] ? curLang : 'en';
+  const total = SCENARIOS[lang].length;
+  const pct = Math.round(state.score / total * 100);
+  const cls = pct >= 80 ? 'good' : pct >= 50 ? 'ok' : 'bad';
+
+  const msg = pct >= 80 ? tr('great') : pct >= 50 ? tr('ok') : tr('bad');
+
+  // Result dots summary
+  const dotsHtml = state.results.map((r, i) =>
+    `<div class="dot ${r ? 'done' : 'fail'}"></div>`
+  ).join('');
+
+  finalEl.innerHTML = `
+    <div class="final">
+      <div class="final-raccoon"><video src="raccoon.mp4" poster="raccoon-poster.jpg" muted playsinline loop autoplay></video></div>
+      <div class="final-score ${cls}">${state.score}/${total}</div>
+      <div class="progress" style="margin:1rem 0">${dotsHtml}</div>
+      <div class="final-msg">${msg}</div>
+      <div class="final-btns">
+        <button class="final-btn primary" onclick="shareResult()">
+          ${tr('share')}
+        </button>
+        <button class="final-btn secondary" onclick="playAgain()">
+          ${tr('again')}
+        </button>
+        <a class="final-btn ghost" href="https://roko.help">
+          ${tr('check')} \u2192
+        </a>
+        <a class="final-btn ghost" href="https://roko.help" style="font-size:.82rem;color:var(--text-dimmer)">
+          ${tr('safety')} \u2192
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+function shareResult() {
+  const lang = SCENARIOS[curLang] ? curLang : 'en';
+  const total = SCENARIOS[lang].length;
+  const shareTexts = {
+    en: `I scored ${state.score}/${total} on Roko Scam Quest 🦝 Can you spot the scam? roko.help/quest`,
+    ru: `Я набрал ${state.score}/${total} в Roko Scam Quest 🦝 Сможешь распознать скам? roko.help/quest`,
+    es: `Obtuve ${state.score}/${total} en Roko Scam Quest 🦝 ¿Puedes detectar la estafa? roko.help/quest`,
+  };
+  const text = shareTexts[curLang] || shareTexts.en;
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => showToast(tr('copied')));
+  } else {
+    // fallback
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast(tr('copied')); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+function playAgain() {
+  document.getElementById('finalScreen').classList.remove('visible');
+  document.getElementById('finalScreen').classList.add('hidden');
+  state = { step: 0, score: 0, results: [], answered: false };
+  document.getElementById('gameView').classList.remove('hidden');
+  document.getElementById('startLangSw').parentElement.style.display = 'none';
+  renderStep();
+}
+</script>
+</body>
+</html>

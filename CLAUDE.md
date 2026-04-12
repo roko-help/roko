@@ -60,6 +60,25 @@ const llm = new LLM({ project: 'roko', task: 'score-analysis' });
 | Safety recommendations | `deepseek` | Good Russian/English, cheap |
 | Complex scoring | `haiku` | Only if simpler models insufficient |
 
+## GitHub
+- **Repo:** https://github.com/roko-help/roko
+- **Remote:** `origin` → `git@github.com:roko-help/roko.git`
+- **Branch:** `main`
+- **gh CLI:** authenticated, `GITHUB_TOKEN` in `/Users/roman/Projects/LLM/.env`
+
+### Push changes
+```bash
+cd /Users/roman/Projects/roko
+git add -A && git commit -m "description of changes" && git push
+```
+
+### After significant updates
+Also update repo description/topics if needed:
+```bash
+gh repo edit roko-help/roko --description "new description"
+gh repo edit roko-help/roko --add-topic new-topic
+```
+
 ## Firebase Deploy Safety
 ALWAYS use `--project roko-help` flag when deploying.
 
