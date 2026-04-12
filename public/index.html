@@ -407,6 +407,9 @@
   <!-- CHECK COUNTER -->
   <p class="home-counter" id="checkCounter" style="font-size:.78rem;color:rgba(255,255,255,.25);margin-top:.8rem;display:none"></p>
 
+  <!-- FEEDBACK -->
+  <p id="improveCta" style="font-size:.72rem;color:rgba(255,255,255,.2);margin-top:.6rem;line-height:1.5;text-align:center"></p>
+
   <!-- COPYRIGHT -->
   <p class="home-copy" id="homeCopy"></p>
 </main>
@@ -534,6 +537,8 @@ var T={
     ck_years:'years',ck_months:'months',ck_registered_but_down:'registered, currently offline',
     ck_phishing:'PHISHING: this domain looks like %s – likely a fake clone',
     ck_impersonation_d:'Contains brand name "%s" – verify this is the official site',
+    feedback:'Something off? <a href="mailto:welc@roko.help" style="color:var(--accent)">Tell us</a> · <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">GitHub</a>',
+    improve:'Know how to make Roko better? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · Dev? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Join on GitHub</a>',
   },
   ru:{
     title:'Этот <span class="rot-word" id="rotWord">обменник</span> <em>надёжный</em>?',
@@ -575,6 +580,8 @@ var T={
     ck_years:'лет',ck_months:'мес.',ck_registered_but_down:'зарегистрирован, сейчас недоступен',
     ck_phishing:'ФИШИНГ: домен похож на %s – скорее всего подделка',
     ck_impersonation_d:'Содержит бренд "%s" – убедитесь, что это официальный сайт',
+    feedback:'Что-то не так? <a href="mailto:welc@roko.help" style="color:var(--accent)">Напиши нам</a> · <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">GitHub</a>',
+    improve:'Знаешь, как сделать Roko лучше? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · Разработчик? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Присоединяйся на GitHub</a>',
   },
   es:{
     title:'¿Es <em>seguro</em> ese <span class="rot-word" id="rotWord">exchanger</span>?',
@@ -616,6 +623,8 @@ var T={
     ck_years:'años',ck_months:'meses',ck_registered_but_down:'registrado, actualmente fuera de línea',
     ck_phishing:'PHISHING: este dominio parece %s – probablemente es falso',
     ck_impersonation_d:'Contiene marca "%s" – verifica que sea el sitio oficial',
+    feedback:'¿Algo mal? <a href="mailto:welc@roko.help" style="color:var(--accent)">Escríbenos</a> · <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">GitHub</a>',
+    improve:'¿Sabes cómo mejorar Roko? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · ¿Dev? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Únete en GitHub</a>',
   }
 };
 
@@ -637,6 +646,9 @@ function setLang(l,save){
   // Copyright
   var cp=document.getElementById('homeCopy');
   if(cp&&t.copy)cp.innerHTML=t.copy+' © '+new Date().getFullYear();
+  // Feedback CTA
+  var ic=document.getElementById('improveCta');
+  if(ic&&t.improve)ic.innerHTML=t.improve;
 }
 // Language: saved > browser languages > default EN
 (function(){
@@ -1206,6 +1218,7 @@ function renderAbout(){
       <p class="tut-p" style="margin-bottom:.6rem;color:rgba(255,255,255,.45)">${R.p2}</p>
       <p class="tut-p" style="color:var(--accent);font-weight:500">${R.p3}</p>
       <p class="tut-p" style="margin-top:1.2rem;font-size:.82rem;color:rgba(255,255,255,.35)">${R.cta}</p>
+      <p class="tut-p" style="margin-top:.6rem;font-size:.75rem;color:rgba(255,255,255,.2)">${tr('improve')}</p>
     </div></div>`;
 }
 
@@ -1589,7 +1602,8 @@ function renderResult(target,d){
     <div class="r-guide"><div class="r-guide-title">${tr('guide_t')}</div><ul>${guide}</ul></div>
     <div class="r-actions"><button class="r-btn primary" onclick="goHome()">${tr('another')}</button><a class="r-btn" href="https://t.me/RokoHelpBot">${tr('bot')} →</a><a class="r-btn" href="https://t.me/RokoHelpBot?start=report_${encodeURIComponent(target.slice(0,40))}" style="color:#f87171">${tr('report')}</a></div>
     <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:.8rem;line-height:1.5;text-align:center;background:rgba(255,255,255,.03);border-radius:10px;padding:.6rem .8rem">${tr('web_basic')}</p>
-    <p style="font-size:.68rem;color:rgba(255,255,255,.25);margin-top:.5rem;line-height:1.4;text-align:center">${tr('disclaimer')}</p></div>`;
+    <p style="font-size:.68rem;color:rgba(255,255,255,.25);margin-top:.5rem;line-height:1.4;text-align:center">${tr('disclaimer')}</p>
+    <p style="font-size:.7rem;color:rgba(255,255,255,.2);margin-top:.6rem;text-align:center">${tr('feedback')}</p></div>`;
 }
 </script>
 <script>
