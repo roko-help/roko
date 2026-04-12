@@ -1,5 +1,5 @@
 /**
- * Roko Telegram Bot — Firebase Cloud Functions (2nd gen)
+ * Roko Telegram Bot – Firebase Cloud Functions (2nd gen)
  * Wraps existing bot/index.js via module.exports
  * Persistence: Firestore instead of JSON files
  */

@@ -46,17 +46,17 @@ node bot/index.js
 ```
 
 ### What needs help
-- **Phishing detection improvements** — better similarity algorithms, more brand coverage
-- **New blockchain checks** — Solana, Polygon, Arbitrum support
-- **Localization** — new languages, especially Arabic, Chinese, Portuguese, Turkish
-- **Mobile UX** — improvements for mobile browsers
-- **Documentation** — usage guides, API documentation
+- **Phishing detection improvements** – better similarity algorithms, more brand coverage
+- **New blockchain checks** – Solana, Polygon, Arbitrum support
+- **Localization** – new languages, especially Arabic, Chinese, Portuguese, Turkish
+- **Mobile UX** – improvements for mobile browsers
+- **Documentation** – usage guides, API documentation
 
 ### Code style
-- No build step, no framework — vanilla JS
+- No build step, no framework – vanilla JS
 - Keep `index.html` self-contained (inline CSS/JS)
 - Bot: Node.js, no external dependencies beyond Node stdlib
-- All data in `data/*.json` — never hardcode domains or addresses in code
+- All data in `data/*.json` – never hardcode domains or addresses in code
 
 ### Pull request process
 1. Fork and create a branch (`feature/my-improvement`)

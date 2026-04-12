@@ -1,4 +1,4 @@
-# Roko — Crypto Exchange Trust Index
+# Roko – Crypto Exchange Trust Index
 
 ## What
 Trust scoring service for crypto exchangers (online, offline, P2P).
@@ -18,13 +18,13 @@ npx firebase deploy --only hosting --project roko-help
 
 ## Project Structure
 ```
-public/          — Firebase Hosting (landing page)
-  index.html     — main landing page (EN/RU/ES)
-bot/             — Telegram bot
-  index.js       — bot scaffold (polling, basic commands)
-scripts/         — setup and utility scripts
-  setup-domain.js — Porkbun API: register + DNS for Firebase
-  register-domain.js — (legacy) first attempt
+public/          – Firebase Hosting (landing page)
+  index.html     – main landing page (EN/RU/ES)
+bot/             – Telegram bot
+  index.js       – bot scaffold (polling, basic commands)
+scripts/         – setup and utility scripts
+  setup-domain.js – Porkbun API: register + DNS for Firebase
+  register-domain.js – (legacy) first attempt
 ```
 
 ## Domain Setup (roko.help)
@@ -88,5 +88,5 @@ Auto-detects browser language. Translations in inline `i18n` object.
 
 ## Key Concept
 Roko is NOT an aggregator (BestChange does that).
-Roko is a Trust Index — scores exchangers as business entities
+Roko is a Trust Index – scores exchangers as business entities
 using blockchain data, not purchasable reviews.

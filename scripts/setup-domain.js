@@ -1,5 +1,5 @@
 /**
- * Setup roko.help domain — register + configure DNS for Firebase Hosting
+ * Setup roko.help domain – register + configure DNS for Firebase Hosting
  *
  * Prerequisites:
  * 1. Verify phone + email at porkbun.com/account

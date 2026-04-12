@@ -1,7 +1,7 @@
 [
   { "domain": "garantex.org", "reason": "OFAC sanctioned (April 2022), seized by law enforcement (March 2025)", "source": "OFAC SDN", "added": "2026-04-12" },
   { "domain": "garantex.io", "reason": "OFAC sanctioned, seized domain", "source": "OFAC SDN", "added": "2026-04-12" },
-  { "domain": "suex.io", "reason": "OFAC sanctioned (September 2021) — first crypto exchange sanctioned", "source": "OFAC SDN", "added": "2026-04-12" },
+  { "domain": "suex.io", "reason": "OFAC sanctioned (September 2021) – first crypto exchange sanctioned", "source": "OFAC SDN", "added": "2026-04-12" },
   { "domain": "chatex.com", "reason": "OFAC sanctioned (November 2021)", "source": "OFAC SDN", "added": "2026-04-12" },
   { "domain": "bitzlato.com", "reason": "Seized by law enforcement (January 2023), founder arrested", "source": "DOJ", "added": "2026-04-12" },
   { "domain": "tornado.cash", "reason": "OFAC sanctioned mixer (August 2022)", "source": "OFAC SDN", "added": "2026-04-12" },

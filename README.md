@@ -1,6 +1,6 @@
-# 🦝 Roko — Check before you send
+# 🦝 Roko – Check before you send
 
-Free, open-source crypto safety checker. Paste a domain, wallet address, or Telegram handle — get a risk assessment in seconds.
+Free, open-source crypto safety checker. Paste a domain, wallet address, or Telegram handle – get a risk assessment in seconds.
 
 **Web:** [roko.help](https://roko.help) · **Bot:** [@RokoHelpBot](https://t.me/RokoHelpBot) · **Alerts:** [@roko_help](https://t.me/roko_help)
 
@@ -8,7 +8,7 @@ Free, open-source crypto safety checker. Paste a domain, wallet address, or Tele
 
 ## Why we built this
 
-Roman had been using an exchanger and recommended it to Peter. But the site had turned into an AML-drain scam — it asked Peter to "verify his wallet for AML compliance." He connected his wallet and lost his funds.
+Roman had been using an exchanger and recommended it to Peter. But the site had turned into an AML-drain scam – it asked Peter to "verify his wallet for AML compliance." He connected his wallet and lost his funds.
 
 The domain was old. Everything looked legit. We're both experienced in crypto and IT. We still got scammed.
 
@@ -44,7 +44,7 @@ npx firebase deploy --only hosting --project roko-help
 
 ## Contribute
 
-**The easiest way to help — no code required:**
+**The easiest way to help – no code required:**
 
 1. **Report a scam domain** → [open an issue](../../issues/new?template=report-scam.yml)
 2. **Add a safe domain** → edit [`data/safe-domains.json`](data/safe-domains.json) and open a PR
@@ -71,12 +71,12 @@ scripts/               ← Utilities
 
 Roko does **not** use purchasable reviews. Scoring is based on:
 
-- **Domain age** — 90% of scam sites are less than a month old
-- **DNS/SSL** — is the site even real and secure?
-- **Phishing detection** — Levenshtein distance to known brand domains
-- **Sanctions lists** — OFAC SDN, known mixers, seized domains
-- **AI content analysis** — LLM scans site content for AML-drain, phishing, and token approval patterns (bot only)
-- **Blockchain data** — wallet balance, age, activity patterns
+- **Domain age** – 90% of scam sites are less than a month old
+- **DNS/SSL** – is the site even real and secure?
+- **Phishing detection** – Levenshtein distance to known brand domains
+- **Sanctions lists** – OFAC SDN, known mixers, seized domains
+- **AI content analysis** – LLM scans site content for AML-drain, phishing, and token approval patterns (bot only)
+- **Blockchain data** – wallet balance, age, activity patterns
 
 All checks use public APIs. No proprietary data. Fully reproducible.
 
@@ -90,14 +90,14 @@ Play: [roko.help/quest](https://roko.help/quest)
 
 - **Frontend:** Vanilla HTML/CSS/JS (zero dependencies, works offline)
 - **Bot:** Node.js, Telegram Bot API
-- **AI:** Gemini Flash Lite (free tier) via LLM orchestrator — zero API costs
+- **AI:** Gemini Flash Lite (free tier) via LLM orchestrator – zero API costs
 - **Data:** Public APIs (dns.google, rdap.org, mempool.space, TronGrid, Etherscan)
 - **Hosting:** Firebase Hosting / GitHub Pages
 
 ## Authors
 
-Built by [Roman Selivan](https://romanselivan.com) & [Peter Farbey](https://farbey.xyz) — for friends, and for you.
+Built by [Roman Selivan](https://romanselivan.com) & [Peter Farbey](https://farbey.xyz) – for friends, and for you.
 
 ## License
 
-MIT — do whatever you want with it.
+MIT – do whatever you want with it.

@@ -13,7 +13,7 @@
  *   node scripts/update-ofac.js
  *
  * Output:
- *   data/ofac-addresses.json — array of { address, currency, entity, program }
+ *   data/ofac-addresses.json – array of { address, currency, entity, program }
  *
  * Automated via GitHub Actions: .github/workflows/update-ofac.yml (weekly)
  */

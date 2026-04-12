@@ -1,5 +1,5 @@
 /**
- * Roko Telegram Bot v4 — Crypto Exchange Trust Index
+ * Roko Telegram Bot v4 – Crypto Exchange Trust Index
  * Checks: DNS, WHOIS/RDAP, SSL, sanctions DB, site content scan,
  *         brand mismatch, Telegram OSINT, blockchain address analysis,
  *         AML/sanctions screening, wallet approval scanning, monitoring
@@ -26,7 +26,7 @@ if (!TOKEN) {
 }
 if (!TOKEN) {
   if (require.main === module) { console.error('No ROKO_TELEGRAM_TOKEN'); process.exit(1); }
-  else console.warn('⚠️ No ROKO_TELEGRAM_TOKEN — bot commands will fail until token is set');
+  else console.warn('⚠️ No ROKO_TELEGRAM_TOKEN – bot commands will fail until token is set');
 }
 
 const API = `https://api.telegram.org/bot${TOKEN}`;
@@ -48,20 +48,20 @@ function setLang(chatId, lang) { userLangs[String(chatId)] = lang; saveLangs(); 
 
 const I = {
   start: {
-    en: `🦝 <b>Roko</b> — I check exchangers in seconds\n\nSend me anything:\n• Website → <code>bestchange.com</code>\n• Telegram → <code>@crypto_dealer</code>\n• Wallet → BTC, ETH or TRON address\n\nI'll check the domain, sanctions, blockchain, approvals — and tell you if it's safe.\n\nTry: <code>garantex.org</code>`,
-    ru: `🦝 <b>Roko</b> — проверяю обменники за секунды\n\nСкинь мне что угодно:\n• Сайт → <code>bestchange.com</code>\n• Телеграм → <code>@crypto_dealer</code>\n• Кошелёк → BTC, ETH или TRON адрес\n\nЯ проверю домен, санкции, блокчейн, approvals — и скажу, стоит ли доверять.\n\nПопробуй: <code>garantex.org</code>`,
-    es: `🦝 <b>Roko</b> — verifico exchangers en segundos\n\nEnvíame lo que sea:\n• Sitio → <code>bestchange.com</code>\n• Telegram → <code>@crypto_dealer</code>\n• Wallet → dirección BTC, ETH o TRON\n\nVerificaré dominio, sanciones, blockchain, approvals — y te diré si es seguro.\n\nPrueba: <code>garantex.org</code>`,
+    en: `🦝 <b>Roko</b> – I check exchangers in seconds\n\nSend me anything:\n• Website → <code>bestchange.com</code>\n• Telegram → <code>@crypto_dealer</code>\n• Wallet → BTC, ETH or TRON address\n\nI'll check the domain, sanctions, blockchain, approvals – and tell you if it's safe.\n\nTry: <code>garantex.org</code>`,
+    ru: `🦝 <b>Roko</b> – проверяю обменники за секунды\n\nСкинь мне что угодно:\n• Сайт → <code>bestchange.com</code>\n• Телеграм → <code>@crypto_dealer</code>\n• Кошелёк → BTC, ETH или TRON адрес\n\nЯ проверю домен, санкции, блокчейн, approvals – и скажу, стоит ли доверять.\n\nПопробуй: <code>garantex.org</code>`,
+    es: `🦝 <b>Roko</b> – verifico exchangers en segundos\n\nEnvíame lo que sea:\n• Sitio → <code>bestchange.com</code>\n• Telegram → <code>@crypto_dealer</code>\n• Wallet → dirección BTC, ETH o TRON\n\nVerificaré dominio, sanciones, blockchain, approvals – y te diré si es seguro.\n\nPrueba: <code>garantex.org</code>`,
   },
   help: {
-    en: `🦝 <b>Roko</b> — just send a link, @handle, or wallet address.\n\n<b>What I check:</b>\n🌐 Website — domain, age, SSL, content\n💬 Telegram — profile, suspicious patterns\n⛓ Wallet — balance, history, USDT\n🛡️ Sanctions — OFAC, mixers, scam databases\n🔓 Approvals — who can spend your tokens\n\n<b>More:</b>\n/watch <code>address</code> — 24/7 monitoring\n/watchlist — your list\n/approvals <code>0x... or T...</code> — scan approvals\n/lang — change language\n\nHelp: @roko_help · roko.help`,
-    ru: `🦝 <b>Roko</b> — просто скинь ссылку, @хендл или адрес кошелька.\n\n<b>Что проверяю:</b>\n🌐 Сайт — домен, возраст, SSL, контент\n💬 Телеграм — профиль, подозрительные паттерны\n⛓ Кошелёк — баланс, история, USDT\n🛡️ Санкции — OFAC, миксеры, скам-базы\n🔓 Approvals — кто может тратить твои токены\n\n<b>Ещё:</b>\n/watch <code>адрес</code> — мониторинг 24/7\n/watchlist — твой список\n/approvals <code>0x... или T...</code> — скан approvals\n/lang — сменить язык\n\nПомощь: @roko_help · roko.help`,
-    es: `🦝 <b>Roko</b> — envía un link, @usuario o dirección de wallet.\n\n<b>Qué verifico:</b>\n🌐 Sitio — dominio, antigüedad, SSL, contenido\n💬 Telegram — perfil, patrones sospechosos\n⛓ Wallet — balance, historial, USDT\n🛡️ Sanciones — OFAC, mixers, bases de scam\n🔓 Approvals — quién puede gastar tus tokens\n\n<b>Más:</b>\n/watch <code>dirección</code> — monitoreo 24/7\n/watchlist — tu lista\n/approvals <code>0x... o T...</code> — escanear approvals\n/lang — cambiar idioma\n\nAyuda: @roko_help · roko.help`,
+    en: `🦝 <b>Roko</b> – just send a link, @handle, or wallet address.\n\n<b>What I check:</b>\n🌐 Website – domain, age, SSL, content\n💬 Telegram – profile, suspicious patterns\n⛓ Wallet – balance, history, USDT\n🛡️ Sanctions – OFAC, mixers, scam databases\n🔓 Approvals – who can spend your tokens\n\n<b>More:</b>\n/watch <code>address</code> – 24/7 monitoring\n/watchlist – your list\n/approvals <code>0x... or T...</code> – scan approvals\n/lang – change language\n\nHelp: @roko_help · roko.help`,
+    ru: `🦝 <b>Roko</b> – просто скинь ссылку, @хендл или адрес кошелька.\n\n<b>Что проверяю:</b>\n🌐 Сайт – домен, возраст, SSL, контент\n💬 Телеграм – профиль, подозрительные паттерны\n⛓ Кошелёк – баланс, история, USDT\n🛡️ Санкции – OFAC, миксеры, скам-базы\n🔓 Approvals – кто может тратить твои токены\n\n<b>Ещё:</b>\n/watch <code>адрес</code> – мониторинг 24/7\n/watchlist – твой список\n/approvals <code>0x... или T...</code> – скан approvals\n/lang – сменить язык\n\nПомощь: @roko_help · roko.help`,
+    es: `🦝 <b>Roko</b> – envía un link, @usuario o dirección de wallet.\n\n<b>Qué verifico:</b>\n🌐 Sitio – dominio, antigüedad, SSL, contenido\n💬 Telegram – perfil, patrones sospechosos\n⛓ Wallet – balance, historial, USDT\n🛡️ Sanciones – OFAC, mixers, bases de scam\n🔓 Approvals – quién puede gastar tus tokens\n\n<b>Más:</b>\n/watch <code>dirección</code> – monitoreo 24/7\n/watchlist – tu lista\n/approvals <code>0x... o T...</code> – escanear approvals\n/lang – cambiar idioma\n\nAyuda: @roko_help · roko.help`,
   },
   checking_addr: { en: '🔍 Checking %s address...', ru: '🔍 Проверяю %s адрес...', es: '🔍 Verificando dirección %s...' },
   checking_domain: { en: '🔍 Checking <b>%s</b>...', ru: '🔍 Проверяю <b>%s</b>...', es: '🔍 Verificando <b>%s</b>...' },
   checking_handle: { en: '🔍 Checking <b>@%s</b>...', ru: '🔍 Проверяю <b>@%s</b>...', es: '🔍 Verificando <b>@%s</b>...' },
   trust: { en: 'Trust', ru: 'Доверие', es: 'Confianza' },
-  watch_cmd: { en: '📡 /watch <code>%s</code> — monitor', ru: '📡 /watch <code>%s</code> — следить', es: '📡 /watch <code>%s</code> — monitorear' },
+  watch_cmd: { en: '📡 /watch <code>%s</code> – monitor', ru: '📡 /watch <code>%s</code> – следить', es: '📡 /watch <code>%s</code> – monitorear' },
   score_hi: { en: 'Low risk', ru: 'Низкий риск', es: 'Riesgo bajo' },
   score_mid: { en: 'Medium risk', ru: 'Средний риск', es: 'Riesgo medio' },
   score_lo: { en: 'High risk', ru: 'Высокий риск', es: 'Riesgo alto' },
@@ -71,18 +71,18 @@ const I = {
   addr_fail: { en: `🦝 Can't determine address type.`, ru: `🦝 Не удалось определить тип адреса.`, es: `🦝 No puedo determinar el tipo de dirección.` },
   error: { en: 'Error: %s. Try again.', ru: 'Ошибка: %s. Попробуй ещё раз.', es: 'Error: %s. Inténtalo de nuevo.' },
   watch_use: { en: 'Use: /watch <code>address or domain</code>', ru: 'Используй: /watch <code>адрес или домен</code>', es: 'Usa: /watch <code>dirección o dominio</code>' },
-  watch_unrecognized: { en: `🦝 Can't recognize — send a wallet address or domain.`, ru: `🦝 Не могу распознать — отправь адрес кошелька или домен.`, es: `🦝 No reconozco — envía una dirección o dominio.` },
+  watch_unrecognized: { en: `🦝 Can't recognize – send a wallet address or domain.`, ru: `🦝 Не могу распознать – отправь адрес кошелька или домен.`, es: `🦝 No reconozco – envía una dirección o dominio.` },
   watch_added: { en: `📡 <b>Watching:</b> <code>%s</code>\nChecking every 30 min. I'll alert you if anything changes.\nRemove: /unwatch <code>%s</code>`, ru: `📡 <b>Слежу:</b> <code>%s</code>\nПроверяю каждые 30 мин. Напишу, если что-то изменится.\nУбрать: /unwatch <code>%s</code>`, es: `📡 <b>Vigilando:</b> <code>%s</code>\nVerificando cada 30 min. Te avisaré si algo cambia.\nQuitar: /unwatch <code>%s</code>` },
   watch_exists: { en: 'Already in your list.', ru: 'Уже в списке.', es: 'Ya está en tu lista.' },
-  watch_limit: { en: 'Limit is 10. Remove something first: /unwatch', ru: 'Лимит — 10. Сначала удали что-нибудь: /unwatch', es: 'Límite: 10. Primero quita algo: /unwatch' },
+  watch_limit: { en: 'Limit is 10. Remove something first: /unwatch', ru: 'Лимит – 10. Сначала удали что-нибудь: /unwatch', es: 'Límite: 10. Primero quita algo: /unwatch' },
   unwatch_ok: { en: '✅ Removed %s', ru: '✅ Убрал %s', es: '✅ Quitado %s' },
   unwatch_fail: { en: 'Not in your list.', ru: 'Этого нет в твоём списке.', es: 'No está en tu lista.' },
   watchlist_empty: { en: '📡 Empty list. Add: /watch <code>address or domain</code>', ru: '📡 Список пуст. Добавь: /watch <code>адрес или домен</code>', es: '📡 Lista vacía. Agrega: /watch <code>dirección o dominio</code>' },
   watchlist_title: { en: '📡 <b>Monitoring</b> (%s/10)', ru: '📡 <b>Мониторинг</b> (%s/10)', es: '📡 <b>Monitoreo</b> (%s/10)' },
   watchlist_remove: { en: 'Remove: /unwatch <code>...</code>', ru: 'Удалить: /unwatch <code>...</code>', es: 'Quitar: /unwatch <code>...</code>' },
-  approvals_only: { en: '🦝 Approvals — ETH and TRON only.\nSend: /approvals <code>0x... or T...</code>', ru: '🦝 Approvals — только ETH и TRON.\nОтправь: /approvals <code>0x... или T...</code>', es: '🦝 Approvals — solo ETH y TRON.\nEnvía: /approvals <code>0x... o T...</code>' },
+  approvals_only: { en: '🦝 Approvals – ETH and TRON only.\nSend: /approvals <code>0x... or T...</code>', ru: '🦝 Approvals – только ETH и TRON.\nОтправь: /approvals <code>0x... или T...</code>', es: '🦝 Approvals – solo ETH y TRON.\nEnvía: /approvals <code>0x... o T...</code>' },
   approvals_scanning: { en: '🔍 Scanning approvals...', ru: '🔍 Сканирую approvals...', es: '🔍 Escaneando approvals...' },
-  fallback: { en: `🦝 Send me:\n• Website — <code>exchanger.com</code>\n• Telegram — <code>@dealer</code>\n• Wallet — BTC / ETH / TRON\n\n/help — all commands`, ru: `🦝 Скинь мне:\n• Сайт — <code>exchanger.com</code>\n• Телеграм — <code>@dealer</code>\n• Кошелёк — BTC / ETH / TRON\n\n/help — все команды`, es: `🦝 Envíame:\n• Sitio — <code>exchanger.com</code>\n• Telegram — <code>@dealer</code>\n• Wallet — BTC / ETH / TRON\n\n/help — todos los comandos` },
+  fallback: { en: `🦝 Send me:\n• Website – <code>exchanger.com</code>\n• Telegram – <code>@dealer</code>\n• Wallet – BTC / ETH / TRON\n\n/help – all commands`, ru: `🦝 Скинь мне:\n• Сайт – <code>exchanger.com</code>\n• Телеграм – <code>@dealer</code>\n• Кошелёк – BTC / ETH / TRON\n\n/help – все команды`, es: `🦝 Envíame:\n• Sitio – <code>exchanger.com</code>\n• Telegram – <code>@dealer</code>\n• Wallet – BTC / ETH / TRON\n\n/help – todos los comandos` },
   lang_set: { en: '🌐 Language set to English', ru: '🌐 Язык: Русский', es: '🌐 Idioma: Español' },
   lang_choose: { en: 'Choose language:', ru: 'Выбери язык:', es: 'Elige idioma:' },
   guide_offline_bad: { en: '⛔ Better not meet this person', ru: '⛔ Лучше не встречайся с этим человеком', es: '⛔ Mejor no te reúnas con esta persona' },
@@ -92,14 +92,14 @@ const I = {
     es: ['📍 Solo lugares públicos con cámaras', '💵 Empieza con poco', '📱 Comparte tu ubicación con alguien'],
   },
   guide_wallet: { en: '🔓 Revoke unknown approvals → revoke.cash', ru: '🔓 Отзови незнакомые approvals → revoke.cash', es: '🔓 Revoca approvals desconocidos → revoke.cash' },
-  guide_wallet_bad: { en: '⛔ This address has AML issues — don\'t send', ru: '⛔ У этого адреса проблемы с AML — не отправляй', es: '⛔ Esta dirección tiene problemas AML — no envíes' },
+  guide_wallet_bad: { en: '⛔ This address has AML issues – don\'t send', ru: '⛔ У этого адреса проблемы с AML – не отправляй', es: '⛔ Esta dirección tiene problemas AML – no envíes' },
   guide_hi: { en: '✅ Looks OK. Split amounts >$1K into 2 transfers', ru: '✅ Выглядит ок. Суммы >$1K лучше разбить на 2 перевода', es: '✅ Parece OK. Divide montos >$1K en 2 envíos' },
-  guide_mid: { en: ['⚠️ Send minimum first — wait for payout', '📸 Screenshot the conversation before sending'], ru: ['⚠️ Сначала отправь минимум — дождись выплаты', '📸 Сохрани скрины переписки до перевода'], es: ['⚠️ Envía el mínimo primero — espera el pago', '📸 Captura la conversación antes de enviar'] },
+  guide_mid: { en: ['⚠️ Send minimum first – wait for payout', '📸 Screenshot the conversation before sending'], ru: ['⚠️ Сначала отправь минимум – дождись выплаты', '📸 Сохрани скрины переписки до перевода'], es: ['⚠️ Envía el mínimo primero – espera el pago', '📸 Captura la conversación antes de enviar'] },
   guide_lo: { en: ['⛔ Roko does not recommend this exchanger', '📢 Have proof of scam? → @roko_help'], ru: ['⛔ Roko не рекомендует этот обменник', '📢 Есть доказательства скама? → @roko_help'], es: ['⛔ Roko no recomienda este exchanger', '📢 ¿Tienes pruebas de estafa? → @roko_help'] },
-  monitor_dns_down: { en: '🚨 <b>%s</b> — site is down!\nPossibly shut down or seized. Don\'t send money.', ru: '🚨 <b>%s</b> — сайт не отвечает!\nВозможно, закрыт или изъят. Не отправляй деньги.', es: '🚨 <b>%s</b> — ¡sitio caído!\nPosiblemente cerrado o incautado. No envíes dinero.' },
-  monitor_dns_up: { en: '🟢 <b>%s</b> — site is back online.', ru: '🟢 <b>%s</b> — сайт снова онлайн.', es: '🟢 <b>%s</b> — el sitio volvió.' },
+  monitor_dns_down: { en: '🚨 <b>%s</b> – site is down!\nPossibly shut down or seized. Don\'t send money.', ru: '🚨 <b>%s</b> – сайт не отвечает!\nВозможно, закрыт или изъят. Не отправляй деньги.', es: '🚨 <b>%s</b> – ¡sitio caído!\nPosiblemente cerrado o incautado. No envíes dinero.' },
+  monitor_dns_up: { en: '🟢 <b>%s</b> – site is back online.', ru: '🟢 <b>%s</b> – сайт снова онлайн.', es: '🟢 <b>%s</b> – el sitio volvió.' },
   monitor_sanctioned: { en: '🚨 <b>Sanctioned!</b> Address <code>%s</code> is now on a sanctions list.\nDo not send funds.', ru: '🚨 <b>Санкции!</b> Адрес <code>%s</code> попал в санкционный список.\nНе отправляй на него средства.', es: '🚨 <b>¡Sancionado!</b> Dirección <code>%s</code> está en lista de sanciones.\nNo envíes fondos.' },
-  roko_hi: { en: '🦝 Looks clean. I dug through everything — no red flags.', ru: '🦝 Чисто. Я всё перерыл — ничего подозрительного.', es: '🦝 Limpio. Busqué por todos lados — sin banderas rojas.' },
+  roko_hi: { en: '🦝 Looks clean. I dug through everything – no red flags.', ru: '🦝 Чисто. Я всё перерыл – ничего подозрительного.', es: '🦝 Limpio. Busqué por todos lados – sin banderas rojas.' },
   roko_mid: { en: '🦝 Hmm, something smells off. Be careful with this one.', ru: '🦝 Хм, что-то пахнет не так. С этим аккуратнее.', es: '🦝 Hmm, algo huele raro. Ten cuidado con este.' },
   roko_lo: { en: '🦝 Nope. This stinks. I wouldn\'t touch it.', ru: '🦝 Не-а. Воняет. Я бы не связывался.', es: '🦝 No. Esto apesta. Yo no lo tocaría.' },
   roko_sanc: { en: '🦝 BLOCKED. This is on government blacklists. Run.', ru: '🦝 ЗАБЛОКИРОВАНО. В чёрных списках. Беги.', es: '🦝 BLOQUEADO. Está en listas negras del gobierno. Huye.' },
@@ -235,7 +235,7 @@ async function postDigest() {
     .slice(0, 5)
     .map(([t, n]) => {
       const short = t.length > 30 ? t.slice(0, 12) + '...' + t.slice(-6) : t;
-      return `  <code>${esc(short)}</code> — ${n}x`;
+      return `  <code>${esc(short)}</code> – ${n}x`;
     }).join('\n');
 
   await postToChannel(
@@ -294,7 +294,7 @@ for (const d of warnDomainsData) KNOWN_WARN[d.domain] = d.reason;
 
 const PHISHING_TARGETS = (phishingTargetsData?.targets || []).map(d => d.replace(/\.[^.]+$/, '').toLowerCase());
 
-// OFAC sanctioned crypto addresses — loaded from auto-updated JSON
+// OFAC sanctioned crypto addresses – loaded from auto-updated JSON
 const SANCTIONED_ADDRESSES = new Set([
   // From auto-updated OFAC SDN list
   ...(ofacData?.addresses || []).map(a => a.toLowerCase()),
@@ -421,7 +421,7 @@ function detectAddressType(addr) {
 }
 
 // ============================================================
-// BITCOIN CHECK — mempool.space API (free, no key)
+// BITCOIN CHECK – mempool.space API (free, no key)
 // ============================================================
 
 async function checkBTC(address) {
@@ -429,7 +429,7 @@ async function checkBTC(address) {
   let score = 40;
 
   if (SANCTIONED_ADDRESSES.has(address.toLowerCase()) || SANCTIONED_ADDRESSES.has(address)) {
-    results.push(`🔴 <b>OFAC SANCTIONED ADDRESS</b> — do NOT transact`);
+    results.push(`🔴 <b>OFAC SANCTIONED ADDRESS</b> – do NOT transact`);
     return { score: 0, results, chain: 'BTC' };
   }
 
@@ -447,7 +447,7 @@ async function checkBTC(address) {
 
     // TX count analysis
     if (txCount > 1000) {
-      results.push(`🟢 High activity address (${txCount} txs) — likely operational`);
+      results.push(`🟢 High activity address (${txCount} txs) – likely operational`);
       score += 15;
     } else if (txCount > 50) {
       results.push(`🟢 Moderate activity (${txCount} txs)`);
@@ -455,13 +455,13 @@ async function checkBTC(address) {
     } else if (txCount > 5) {
       score += 5;
     } else if (txCount < 3) {
-      results.push(`🟡 Very low activity (${txCount} txs) — new or one-time address`);
+      results.push(`🟡 Very low activity (${txCount} txs) – new or one-time address`);
       score -= 5;
     }
 
     // Sweep pattern
     if (txCount <= 2 && balance === 0 && totalReceived > 0) {
-      results.push(`🟡 Funds received and immediately moved out — sweep pattern`);
+      results.push(`🟡 Funds received and immediately moved out – sweep pattern`);
       score -= 5;
     }
 
@@ -478,7 +478,7 @@ async function checkBTC(address) {
 }
 
 // ============================================================
-// ETHEREUM CHECK — LlamaRPC (free public RPC, no key)
+// ETHEREUM CHECK – LlamaRPC (free public RPC, no key)
 // ============================================================
 
 function ethRpcCallOnce(method, params) {
@@ -520,12 +520,12 @@ async function checkETH(address) {
   const addrLower = address.toLowerCase();
 
   if (SANCTIONED_ADDRESSES.has(addrLower)) {
-    results.push(`🔴 <b>OFAC SANCTIONED ADDRESS</b> — do NOT transact`);
+    results.push(`🔴 <b>OFAC SANCTIONED ADDRESS</b> – do NOT transact`);
     return { score: 0, results, chain: 'ETH' };
   }
 
   if (KNOWN_MIXER_ADDRESSES.has(addrLower)) {
-    results.push(`🔴 <b>Known mixer/tumbler contract</b> — high AML risk`);
+    results.push(`🔴 <b>Known mixer/tumbler contract</b> – high AML risk`);
     score -= 30;
   }
 
@@ -577,7 +577,7 @@ async function checkETH(address) {
 }
 
 // ============================================================
-// TRON CHECK — TronGrid API (free, no key for basic queries)
+// TRON CHECK – TronGrid API (free, no key for basic queries)
 // ============================================================
 
 async function checkTRON(address) {
@@ -585,7 +585,7 @@ async function checkTRON(address) {
   let score = 40;
 
   if (SANCTIONED_ADDRESSES.has(address)) {
-    results.push(`🔴 <b>OFAC SANCTIONED ADDRESS</b> — do NOT transact`);
+    results.push(`🔴 <b>OFAC SANCTIONED ADDRESS</b> – do NOT transact`);
     return { score: 0, results, chain: 'TRON' };
   }
 
@@ -593,7 +593,7 @@ async function checkTRON(address) {
     const data = await fetchJSON(`https://api.trongrid.io/v1/accounts/${address}`);
 
     if (!data?.data || data.data.length === 0) {
-      results.push(`⚪ Address not found on TRON — may be unused`);
+      results.push(`⚪ Address not found on TRON – may be unused`);
       return { score: 20, results, chain: 'TRON' };
     }
 
@@ -620,12 +620,12 @@ async function checkTRON(address) {
       const age = (Date.now() - created.getTime()) / (365.25 * 24 * 3600000);
       if (age >= 1) { results.push(`🟢 Account age: ${age.toFixed(1)} years`); score += 15; }
       else if (age >= 0.08) { results.push(`🟡 Account age: ${Math.round(age * 12)} months`); score += 5; }
-      else { results.push(`🔴 Account age: ${Math.round(age * 365)} days — very new`); score -= 10; }
+      else { results.push(`🔴 Account age: ${Math.round(age * 365)} days – very new`); score -= 10; }
     }
 
     // Frozen resources = invested in network
     if (info.frozenV2 && info.frozenV2.some(f => f.amount > 0)) {
-      results.push(`🟢 Has staked TRX — invested in network`);
+      results.push(`🟢 Has staked TRX – invested in network`);
       score += 5;
     }
 
@@ -641,7 +641,7 @@ async function checkTRON(address) {
 }
 
 // ============================================================
-// AML CHECK — OFAC SDN list + known mixer/scam databases
+// AML CHECK – OFAC SDN list + known mixer/scam databases
 // ============================================================
 
 async function checkAML(address, chain) {
@@ -650,14 +650,14 @@ async function checkAML(address, chain) {
 
   // Check local sanctions DB
   if (SANCTIONED_ADDRESSES.has(addrLower) || SANCTIONED_ADDRESSES.has(address)) {
-    results.push(`🔴 <b>AML: OFAC SANCTIONED</b> — this address is on the SDN list`);
+    results.push(`🔴 <b>AML: OFAC SANCTIONED</b> – this address is on the SDN list`);
     results.push(`⛔ Transacting with this address may violate US/EU sanctions laws`);
     return { sanctioned: true, results, riskLevel: 'critical' };
   }
 
   // Check mixer addresses
   if (KNOWN_MIXER_ADDRESSES.has(addrLower)) {
-    results.push(`🔴 <b>AML: Known mixer/tumbler</b> — high money laundering risk`);
+    results.push(`🔴 <b>AML: Known mixer/tumbler</b> – high money laundering risk`);
     return { sanctioned: false, results, riskLevel: 'high' };
   }
 
@@ -715,21 +715,21 @@ async function checkETHApprovals(address) {
         for (const a of unlimited.slice(0, 3)) {
           const short = a.spender.slice(0, 10) + '...' + a.spender.slice(-6);
           const isBad = SANCTIONED_ADDRESSES.has(a.spender.toLowerCase());
-          results.push(`  ${isBad ? '🔴' : '🟡'} ${esc(short)}${isBad ? ' — SANCTIONED!' : ''}`);
+          results.push(`  ${isBad ? '🔴' : '🟡'} ${esc(short)}${isBad ? ' – SANCTIONED!' : ''}`);
         }
         results.push(`\n💡 <b>Revoke:</b> revoke.cash`);
       }
 
       const limited = activeApprovals.filter(a => !a.unlimited);
       if (limited.length > 0) {
-        results.push(`ℹ️ ${limited.length} limited approval(s) — normal for DEX usage`);
+        results.push(`ℹ️ ${limited.length} limited approval(s) – normal for DEX usage`);
       }
 
       if (unlimited.length === 0 && limited.length === 0) {
-        results.push(`🟢 Recent approvals are all zeroed — clean`);
+        results.push(`🟢 Recent approvals are all zeroed – clean`);
       }
     } else {
-      results.push(`🟢 No recent USDT approvals (last 30 days) — clean`);
+      results.push(`🟢 No recent USDT approvals (last 30 days) – clean`);
     }
 
   } catch (e) {
@@ -751,7 +751,7 @@ async function checkTRONApprovals(address) {
       `https://api.trongrid.io/v1/contracts/${USDT_TRC20}/events?event_name=Approval&block_timestamp_min=${Date.now() - 90 * 86400000}&limit=50`
     );
 
-    // TronGrid events API returns all approvals — filter by owner
+    // TronGrid events API returns all approvals – filter by owner
     // This is less efficient but works without auth
     // Alternative: check allowance directly via contract call
     // For now, show a helpful message
@@ -836,7 +836,7 @@ async function checkDomain(domain) {
     score -= 10;
   }
 
-  // Phishing detection — check similarity to known brands
+  // Phishing detection – check similarity to known brands
   if (!KNOWN_GOOD[dl] && !KNOWN_SCAM[dl]) {
     const phishing = checkPhishing(domain);
     if (phishing.length > 0) {
@@ -848,7 +848,7 @@ async function checkDomain(domain) {
         results.push(`🔴 <b>PHISHING ALERT:</b> this domain looks like ${esc(brandDomain)} (${p.distance} character${p.distance > 1 ? 's' : ''} different)`);
         score -= 25;
       } else {
-        results.push(`🟡 <b>Impersonation risk:</b> domain contains brand name "${esc(p.target)}" — verify this is the official site`);
+        results.push(`🟡 <b>Impersonation risk:</b> domain contains brand name "${esc(p.target)}" – verify this is the official site`);
         score -= 15;
       }
     }
@@ -863,9 +863,9 @@ async function checkDomain(domain) {
     if (dns.resolves) {
       results.push(`🟢 DNS resolves → ${esc(dns.ip)}`);
       score += 3;
-      if (dns.cloudflare) results.push(`ℹ️ Behind Cloudflare — real server IP hidden`);
+      if (dns.cloudflare) results.push(`ℹ️ Behind Cloudflare – real server IP hidden`);
     } else {
-      results.push(`🔴 DNS does not resolve — site may be down or seized`);
+      results.push(`🔴 DNS does not resolve – site may be down or seized`);
       score -= 25;
     }
   } else {
@@ -874,18 +874,18 @@ async function checkDomain(domain) {
 
   if (rdapResult.status === 'fulfilled' && rdapResult.value) {
     const age = rdapResult.value;
-    if (age.years >= 3) { results.push(`🟢 Domain age: ${esc(age.text)} — well established`); score += 15; }
+    if (age.years >= 3) { results.push(`🟢 Domain age: ${esc(age.text)} – well established`); score += 15; }
     else if (age.years >= 1) { results.push(`🟢 Domain age: ${esc(age.text)}`); score += 8; }
-    else if (age.years >= 0.25) { results.push(`🟡 Domain age: ${esc(age.text)} — relatively new`); score -= 5; }
-    else { results.push(`🔴 Domain age: ${esc(age.text)} — very new, higher risk`); score -= 15; }
+    else if (age.years >= 0.25) { results.push(`🟡 Domain age: ${esc(age.text)} – relatively new`); score -= 5; }
+    else { results.push(`🔴 Domain age: ${esc(age.text)} – very new, higher risk`); score -= 15; }
     if (age.registrar) results.push(`ℹ️ Registrar: ${esc(age.registrar)}`);
   } else {
     const whois = await checkWHOIS(domain);
     if (whois) {
       if (whois.years >= 3) { results.push(`🟢 Domain age: ${esc(whois.text)} (WHOIS)`); score += 15; }
       else if (whois.years >= 1) { results.push(`🟢 Domain age: ${esc(whois.text)} (WHOIS)`); score += 8; }
-      else if (whois.years >= 0.25) { results.push(`🟡 Domain age: ${esc(whois.text)} (WHOIS) — relatively new`); score -= 5; }
-      else { results.push(`🔴 Domain age: ${esc(whois.text)} (WHOIS) — very new`); score -= 15; }
+      else if (whois.years >= 0.25) { results.push(`🟡 Domain age: ${esc(whois.text)} (WHOIS) – relatively new`); score -= 5; }
+      else { results.push(`🔴 Domain age: ${esc(whois.text)} (WHOIS) – very new`); score -= 15; }
       if (whois.registrar) results.push(`ℹ️ Registrar: ${esc(whois.registrar)}`);
     } else {
       results.push(`⚪ Domain age: could not determine`);
@@ -907,26 +907,26 @@ async function checkDomain(domain) {
     siteHtml = siteResult.value.html || '';
   }
 
-  // AI content analysis (non-blocking — graceful degradation)
+  // AI content analysis (non-blocking – graceful degradation)
   if (siteHtml && siteHtml.length > 100) {
     try {
       const aiResult = await scanSiteAI(domain, siteHtml);
       if (aiResult && aiResult.confidence >= 0.6) {
         const cat = aiResult.category;
         if (cat === 'aml_drain') {
-          results.push(`🔴 <b>AI: AML-drain detected</b> — site asks to connect wallet for fake "AML verification"`);
+          results.push(`🔴 <b>AI: AML-drain detected</b> – site asks to connect wallet for fake "AML verification"`);
           if (aiResult.summary) results.push(`ℹ️ ${esc(aiResult.summary)}`);
           score -= 30;
         } else if (cat === 'token_drain') {
-          results.push(`🔴 <b>AI: Token drain risk</b> — site may request dangerous token approvals`);
+          results.push(`🔴 <b>AI: Token drain risk</b> – site may request dangerous token approvals`);
           if (aiResult.summary) results.push(`ℹ️ ${esc(aiResult.summary)}`);
           score -= 25;
         } else if (cat === 'phishing') {
-          results.push(`🔴 <b>AI: Phishing detected</b> — site impersonates a known brand`);
+          results.push(`🔴 <b>AI: Phishing detected</b> – site impersonates a known brand`);
           if (aiResult.summary) results.push(`ℹ️ ${esc(aiResult.summary)}`);
           score -= 25;
         } else if (cat === 'scam_exchange') {
-          results.push(`🟡 <b>AI: Suspicious exchange</b> — unrealistic claims detected`);
+          results.push(`🟡 <b>AI: Suspicious exchange</b> – unrealistic claims detected`);
           if (aiResult.summary) results.push(`ℹ️ ${esc(aiResult.summary)}`);
           score -= 15;
         } else if (cat === 'legitimate' && aiResult.confidence >= 0.8) {
@@ -935,7 +935,7 @@ async function checkDomain(domain) {
         }
       }
     } catch {
-      // AI unavailable — continue with deterministic checks only
+      // AI unavailable – continue with deterministic checks only
     }
   }
 
@@ -1036,7 +1036,7 @@ async function scanSite(domain) {
       findings.push({ text: `🟡 Built with a website builder/template`, scoreAdj: -3 });
     }
     if (html.match(/\b(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}\b/) || html.match(/\b0x[a-fA-F0-9]{40}\b/) || html.match(/\bT[a-zA-Z0-9]{33}\b/)) {
-      findings.push({ text: `🟡 Crypto address found on homepage — verify before sending`, scoreAdj: -3 });
+      findings.push({ text: `🟡 Crypto address found on homepage – verify before sending`, scoreAdj: -3 });
     }
     if (siteTitle) findings.push({ text: `ℹ️ Site title: "${esc(siteTitle.slice(0, 80))}"`, scoreAdj: 0 });
   } catch (err) {
@@ -1061,7 +1061,7 @@ async function initLLM() {
     return llmInstance;
   } catch (e) {
     llmAvailable = false;
-    console.log('⚠️ LLM orchestrator unavailable — AI analysis disabled');
+    console.log('⚠️ LLM orchestrator unavailable – AI analysis disabled');
     return null;
   }
 }
@@ -1107,7 +1107,7 @@ async function scanSiteAI(domain, html) {
 
   try {
     const result = await llm.chat({
-      model: 'gemini-2.5-flash-lite', // Free tier — no API costs
+      model: 'gemini-2.5-flash-lite', // Free tier – no API costs
       task: 'site-classify',
       messages: [{ role: 'user', content: SITE_ANALYSIS_PROMPT + text }],
       max_tokens: 300,
@@ -1133,7 +1133,7 @@ async function generateRiskSummary(target, checks, score, lang) {
 
   try {
     const result = await llm.chat({
-      model: 'gemini-2.5-flash-lite', // Free tier — no API costs
+      model: 'gemini-2.5-flash-lite', // Free tier – no API costs
       task: 'risk-summary',
       messages: [{ role: 'user', content:
         `Security check results for "${target}":\n${context}\n` +
@@ -1174,7 +1174,7 @@ async function checkTelegramHandle(handle) {
 
       const combined = (name + ' ' + desc).toLowerCase();
       if (combined.match(/guaranteed|100%|profit|безопасн/)) { results.push(`🟡 Suspicious language`); score -= 5; }
-      if (combined.match(/manager|support|admin|operator/)) { results.push(`🟡 Generic "manager/support" naming — could be impersonation`); score -= 5; }
+      if (combined.match(/manager|support|admin|operator/)) { results.push(`🟡 Generic "manager/support" naming – could be impersonation`); score -= 5; }
     } else if (html.includes('page_not_found')) {
       results.push(`🔴 Account @${esc(handle)} does not exist or was deleted`);
       score -= 20;
@@ -1186,11 +1186,11 @@ async function checkTelegramHandle(handle) {
     results.push(`⚪ Could not fetch Telegram profile`);
   }
 
-  if (handle.match(/^\d+$/)) { results.push(`🔴 Username is just numbers — suspicious`); score -= 10; }
-  if (handle.match(/manager|support|admin|operator|helper/i)) { results.push(`🟡 "manager/support" in name — common scam trick`); score -= 5; }
-  if (handle.length > 20) { results.push(`🟡 Very long username — unusual`); score -= 3; }
+  if (handle.match(/^\d+$/)) { results.push(`🔴 Username is just numbers – suspicious`); score -= 10; }
+  if (handle.match(/manager|support|admin|operator|helper/i)) { results.push(`🟡 "manager/support" in name – common scam trick`); score -= 5; }
+  if (handle.length > 20) { results.push(`🟡 Very long username – unusual`); score -= 3; }
   const brandMatch = handle.match(/(binance|coinbase|bybit|kraken|bestchange|trust|wallet)/i);
-  if (brandMatch) { results.push(`🔴 Contains "${esc(brandMatch[1])}" — pretending to be a known exchange?`); score -= 10; }
+  if (brandMatch) { results.push(`🔴 Contains "${esc(brandMatch[1])}" – pretending to be a known exchange?`); score -= 10; }
 
   score = Math.max(0, Math.min(100, score));
   let emoji, label;
@@ -1202,7 +1202,7 @@ async function checkTelegramHandle(handle) {
 }
 
 // ============================================================
-// SAFETY TIPS — short, actionable
+// SAFETY TIPS – short, actionable
 // ============================================================
 
 function getGuide(score, context = 'online', chatId) {
@@ -1247,7 +1247,7 @@ function getWatchlist(chatId) {
   return watchlist[chatId] || [];
 }
 
-// Monitoring loop — checks watchlist items periodically
+// Monitoring loop – checks watchlist items periodically
 async function monitorLoop() {
   for (const [chatId, items] of Object.entries(watchlist)) {
     for (const item of items) {
@@ -1287,7 +1287,7 @@ setInterval(monitorLoop, 30 * 60 * 1000);
 
 // ============================================================
 // ============================================================
-// RATE LIMITER — per-user, in-memory
+// RATE LIMITER – per-user, in-memory
 // ============================================================
 const RATE_LIMIT = { maxChecks: 5, windowMs: 60000, maxDaily: 50 }; // 5 checks/min, 50/day
 const rateBuckets = new Map(); // chatId → { checks: [{ts}], dailyCount, dayKey }
@@ -1309,7 +1309,7 @@ function rateCheck(chatId) {
 setInterval(() => { const day = new Date().toISOString().slice(0, 10); for (const [k, v] of rateBuckets) { if (v.dayKey !== day) rateBuckets.delete(k); } }, 3600000);
 
 const RATE_MSG = {
-  minute: { en: '⏳ Too many requests — wait a minute.', ru: '⏳ Слишком много запросов — подожди минуту.', es: '⏳ Demasiadas solicitudes — espera un minuto.' },
+  minute: { en: '⏳ Too many requests – wait a minute.', ru: '⏳ Слишком много запросов – подожди минуту.', es: '⏳ Demasiadas solicitudes – espera un minuto.' },
   daily: { en: '⏳ Daily limit reached (50 checks). Try again tomorrow.', ru: '⏳ Дневной лимит (50 проверок). Попробуй завтра.', es: '⏳ Límite diario alcanzado (50 verificaciones). Intenta mañana.' },
 };
 
@@ -1615,7 +1615,7 @@ async function main() {
   console.log(`   Features: approval scanning, watchlist monitoring`);
   console.log(`   Channel: @roko_help (scam alerts, digest)`);
 
-  // Weekly digest — every Monday at 10:00 UTC
+  // Weekly digest – every Monday at 10:00 UTC
   function scheduleDigest() {
     const now = new Date();
     const next = new Date(now);
@@ -1638,7 +1638,7 @@ if (require.main === module) {
   // Exported for Cloud Function wrapper (functions/index.js)
   module.exports = {
     handleMessage, handleCallback, monitorLoop, postDigest,
-    // Persistence overrides — Cloud Function calls these to inject Firestore
+    // Persistence overrides – Cloud Function calls these to inject Firestore
     _overridePersistence(overrides) {
       if (overrides.userLangs) userLangs = overrides.userLangs;
       if (overrides.watchlist) watchlist = overrides.watchlist;

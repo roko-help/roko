@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roko — Wallet Guardian</title>
+  <title>Roko – Wallet Guardian</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -363,7 +363,7 @@ async function checkDomainClient(domain) {
       results.push({ icon: '🟢', text: `DNS resolves → ${dns.Answer[dns.Answer.length-1].data}`, cls: 'pass' });
       score += 3;
     } else {
-      results.push({ icon: '🔴', text: 'DNS does not resolve — site may be down', cls: 'fail' });
+      results.push({ icon: '🔴', text: 'DNS does not resolve – site may be down', cls: 'fail' });
       score -= 25;
     }
   } catch { results.push({ icon: '⚪', text: 'DNS check unavailable', cls: 'info' }); }
@@ -375,10 +375,10 @@ async function checkDomainClient(domain) {
     if (regEvent) {
       const years = (Date.now() - new Date(regEvent.eventDate).getTime()) / (365.25*24*3600000);
       const text = years >= 1 ? `${years.toFixed(1)} years` : `${Math.round(years*12)} months`;
-      if (years >= 3) { results.push({ icon: '🟢', text: `Domain age: ${text} — established`, cls: 'pass' }); score += 15; }
+      if (years >= 3) { results.push({ icon: '🟢', text: `Domain age: ${text} – established`, cls: 'pass' }); score += 15; }
       else if (years >= 1) { results.push({ icon: '🟢', text: `Domain age: ${text}`, cls: 'pass' }); score += 8; }
-      else if (years >= 0.25) { results.push({ icon: '🟡', text: `Domain age: ${text} — new`, cls: 'warn' }); score -= 5; }
-      else { results.push({ icon: '🔴', text: `Domain age: ${text} — very new`, cls: 'fail' }); score -= 15; }
+      else if (years >= 0.25) { results.push({ icon: '🟡', text: `Domain age: ${text} – new`, cls: 'warn' }); score -= 5; }
+      else { results.push({ icon: '🔴', text: `Domain age: ${text} – very new`, cls: 'fail' }); score -= 15; }
     }
   } catch {}
 
@@ -414,7 +414,7 @@ async function checkAddressClient(address) {
         if ((info.transaction_count || 0) > 100) score += 10;
         else if ((info.transaction_count || 0) < 5) score -= 5;
       } else {
-        results.push({ icon: '⚪', text: 'Address not found — may be unused', cls: 'info' });
+        results.push({ icon: '⚪', text: 'Address not found – may be unused', cls: 'info' });
         score = 20;
       }
     } catch (e) { results.push({ icon: '⚪', text: 'BTC check unavailable', cls: 'info' }); }
@@ -469,19 +469,19 @@ function checkHandleClient(handle) {
   let score = 35;
 
   if (/manager|support|admin|operator|helper/i.test(handle)) {
-    results.push({ icon: '🟡', text: '"manager/support" pattern — common in scams', cls: 'warn' });
+    results.push({ icon: '🟡', text: '"manager/support" pattern – common in scams', cls: 'warn' });
     score -= 5;
   }
   if (/binance|coinbase|bybit|kraken|bestchange|trust|wallet/i.test(handle)) {
-    results.push({ icon: '🔴', text: 'Contains major brand name — possible impersonation', cls: 'fail' });
+    results.push({ icon: '🔴', text: 'Contains major brand name – possible impersonation', cls: 'fail' });
     score -= 10;
   }
   if (handle.length > 20) {
-    results.push({ icon: '🟡', text: 'Very long handle — unusual', cls: 'warn' });
+    results.push({ icon: '🟡', text: 'Very long handle – unusual', cls: 'warn' });
     score -= 3;
   }
   if (/^\d+$/.test(handle)) {
-    results.push({ icon: '🔴', text: 'Handle is just numbers — suspicious', cls: 'fail' });
+    results.push({ icon: '🔴', text: 'Handle is just numbers – suspicious', cls: 'fail' });
     score -= 10;
   }
 
@@ -591,7 +591,7 @@ async function runApprovalScan() {
         <div class="check-line info"><span class="icon">🤖</span> Use @RokoHelpBot /approvals for bot-assisted scan.</div>
       </div>`;
     } else {
-      // ETH — show info about using revoke.cash (browser can't call eth_getLogs due to CORS)
+      // ETH – show info about using revoke.cash (browser can't call eth_getLogs due to CORS)
       container.innerHTML = `<div class="result-card">
         <div class="check-line info"><span class="icon">ℹ️</span> ETH approval scanning requires RPC access.</div>
         <div class="check-line info"><span class="icon">💡</span> Use the bot (@RokoHelpBot) for full ETH approval scan.</div>

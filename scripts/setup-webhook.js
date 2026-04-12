@@ -64,7 +64,7 @@ function call(method, body = {}) {
   console.log('setWebhook:', r.ok ? '✅ Done' : r);
   console.log('Webhook URL:', WEBHOOK_URL);
   console.log('');
-  console.log('⚠️  Save this secret token — set it in Firebase config:');
+  console.log('⚠️  Save this secret token – set it in Firebase config:');
   console.log(`   firebase functions:config:set telegram.webhook_secret="${secret}" --project roko-help`);
 
   // Also set the bot token in firebase config
