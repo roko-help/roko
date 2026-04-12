@@ -412,7 +412,7 @@
 // ============================================================
 const UI = {
   en: {
-    sub: '7 real crypto scam scenarios. Can you spot them?',
+    sub: '7 scenarios based on real scam patterns. People lost real money to these. Can you spot them?',
     start: 'Start',
     title: 'Scam Quest',
     scenario: 'Scenario',
@@ -424,13 +424,15 @@ const UI = {
     bad: 'Needs work. Scammers would trick you. Read the rules and try again!',
     share: 'Share result',
     again: 'Play again',
-    check: 'Check an exchanger',
+    check: 'Check a link or wallet',
     safety: 'Safety rules',
+    submit: 'Got scammed? Share your story',
+    like_q: 'Was this useful?',
     copied: 'Copied!',
     you: 'You',
   },
   ru: {
-    sub: '7 реальных сценариев крипто-скама. Распознаешь?',
+    sub: '7 сценариев на основе реальных схем мошенничества. Люди потеряли реальные деньги. Распознаешь?',
     start: 'Начать',
     title: 'Квест: Скам',
     scenario: 'Сценарий',
@@ -442,13 +444,15 @@ const UI = {
     bad: 'Нужно подучиться. Мошенники бы тебя обманули. Прочитай правила и попробуй снова!',
     share: 'Поделиться',
     again: 'Заново',
-    check: 'Проверить обменник',
+    check: 'Проверить ссылку или кошелёк',
     safety: 'Правила безопасности',
+    submit: 'Попался на скам? Расскажи историю',
+    like_q: 'Было полезно?',
     copied: 'Скопировано!',
     you: 'Ты',
   },
   es: {
-    sub: '7 escenarios reales de estafa crypto. ¿Puedes detectarlos?',
+    sub: '7 escenarios basados en patrones reales de estafa. Personas perdieron dinero real. ¿Puedes detectarlos?',
     start: 'Empezar',
     title: 'Scam Quest',
     scenario: 'Escenario',
@@ -460,8 +464,10 @@ const UI = {
     bad: 'Necesitas estudiar. Los estafadores te engañarían. Lee las reglas e inténtalo de nuevo.',
     share: 'Compartir',
     again: 'De nuevo',
-    check: 'Verificar exchanger',
+    check: 'Verificar enlace o wallet',
     safety: 'Reglas de seguridad',
+    submit: '¿Te estafaron? Cuenta tu historia',
+    like_q: '¿Te fue útil?',
     copied: '¡Copiado!',
     you: 'Tú',
   }
@@ -875,12 +881,18 @@ function renderFinal() {
     `<div class="dot ${r ? 'done' : 'fail'}"></div>`
   ).join('');
 
+  const liked = localStorage.getItem('roko_quest_liked') === '1';
   finalEl.innerHTML = `
     <div class="final">
       <div class="final-raccoon"><video src="raccoon.mp4" poster="raccoon-poster.jpg" muted playsinline loop autoplay></video></div>
       <div class="final-score ${cls}">${state.score}/${total}</div>
       <div class="progress" style="margin:1rem 0">${dotsHtml}</div>
       <div class="final-msg">${msg}</div>
+      <div style="font-size:.82rem;color:var(--text-dimmer);margin-bottom:.8rem">${tr('like_q')}</div>
+      <div style="display:flex;gap:.6rem;justify-content:center;margin-bottom:1.2rem">
+        <button id="questLikeBtn" onclick="questLike()" style="background:none;border:2px solid ${liked?'var(--danger)':'rgba(255,255,255,.15)'};border-radius:50%;width:44px;height:44px;font-size:1.3rem;cursor:pointer;transition:all .3s">${liked?'❤️':'🤍'}</button>
+        <a href="https://t.me/roko_help" target="_blank" style="display:flex;align-items:center;justify-content:center;background:none;border:2px solid rgba(255,255,255,.15);border-radius:50%;width:44px;height:44px;font-size:1.2rem;text-decoration:none;transition:all .3s">📢</a>
+      </div>
       <div class="final-btns">
         <button class="final-btn primary" onclick="shareResult()">
           ${tr('share')}
@@ -891,12 +903,18 @@ function renderFinal() {
         <a class="final-btn ghost" href="https://roko.help">
           ${tr('check')} \u2192
         </a>
-        <a class="final-btn ghost" href="https://roko.help" style="font-size:.82rem;color:var(--text-dimmer)">
-          ${tr('safety')} \u2192
+        <a class="final-btn ghost" href="https://github.com/roko-help/roko/issues/new?template=report-scam.yml" target="_blank" style="font-size:.82rem;color:var(--text-dimmer)">
+          ${tr('submit')} \u2192
         </a>
       </div>
     </div>
   `;
+}
+
+function questLike() {
+  localStorage.setItem('roko_quest_liked', '1');
+  const btn = document.getElementById('questLikeBtn');
+  if (btn) { btn.textContent = '❤️'; btn.style.borderColor = 'var(--danger)'; btn.style.transform = 'scale(1.2)'; setTimeout(() => btn.style.transform = 'scale(1)', 300); }
 }
 
 function shareResult() {

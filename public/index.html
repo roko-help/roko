@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roko – Crypto Exchange Trust Index | Check before you send</title>
-  <meta name="description" content="Free crypto exchange safety checker. Paste any link, wallet, or @handle – get a risk score in seconds. Scam database, OFAC sanctions, phishing detection, AI site analysis. Open source.">
+  <title>Roko – Check before you send</title>
+  <meta name="description" content="Got a sketchy crypto link? Paste it here – Roko tells you if it's safe or a scam. Checks sites, wallets, Telegram profiles. Free. 3 seconds.">
   <meta name="keywords" content="crypto exchange checker, exchanger safety, crypto scam check, OFAC sanctions check, wallet verification, blockchain trust score, P2P safety, OTC exchange review, crypto fraud prevention">
   <meta name="author" content="Roko">
   <meta name="robots" content="index, follow">
@@ -13,8 +13,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://roko.help/">
-  <meta property="og:title" content="Roko – Is that exchanger safe?">
-  <meta property="og:description" content="Paste any link or wallet – know if it's safe in seconds. Scam database, sanctions, phishing detection, AI analysis. Free & open source.">
+  <meta property="og:title" content="Roko – Check before you send">
+  <meta property="og:description" content="Got a sketchy crypto link? Paste it – Roko tells you if it's safe. Free. 3 seconds.">
   <meta property="og:image" content="https://roko.help/og.png?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -380,13 +380,13 @@
         <span data-i18n="cta_bot_d">Full check – site content AI scan, Telegram profiles, token permissions</span>
       </span>
     </a>
-    <button class="cta-card cta-quest" onclick="openModal('quest')">
+    <a class="cta-card cta-quest" href="quest.html" style="text-decoration:none">
       <span class="cta-icon">🎮</span>
       <span class="cta-text">
         <strong data-i18n="bl_quest">Scam quest</strong>
         <span data-i18n="cta_quest_d">Can you spot a scam? 7 real scenarios – test yourself</span>
       </span>
-    </button>
+    </a>
   </div>
 
   <!-- SECONDARY LINKS -->
@@ -403,6 +403,9 @@
     <a class="like-link" href="https://github.com/roko-help/roko" target="_blank" rel="noopener"><img src="https://img.shields.io/github/stars/roko-help/roko?style=flat&logo=github&label=Stars&color=333&labelColor=1a1a1a&logoColor=fff" alt="GitHub stars" style="height:20px;vertical-align:middle" onerror="this.outerHTML='★ GitHub'"></a>
     <a class="like-link" href="https://t.me/roko_help" target="_blank" rel="noopener">📢 Telegram</a>
   </div>
+
+  <!-- CHECK COUNTER -->
+  <p class="home-counter" id="checkCounter" style="font-size:.78rem;color:rgba(255,255,255,.25);margin-top:.8rem;display:none"></p>
 
   <!-- COPYRIGHT -->
   <p class="home-copy" id="homeCopy"></p>
@@ -493,19 +496,19 @@ var curLang='en';
 var T={
   en:{
     title:'Is that <span class="rot-word" id="rotWord">exchanger</span> <em>safe</em>?',
-    sub:'Paste a link or wallet address. Roko checks scam databases, sanctions lists, and site content – and tells you if it\'s safe. Free. In seconds.',
+    sub:'Got a sketchy link? Paste it here. Roko will tell you if it\'s safe or a scam. Free. 3 seconds.',
     p2p_cta:'Meeting a dealer in person?',
     ph:'website, @telegram_name, or wallet...',btn:'Check',try_label:'try:',
     bl_onb:'Got paid in crypto?',bl_tut:'Crypto 101',bl_guide:'Safety rules',bl_quest:'Scam quest',bl_feat:'How it works',bl_reg:'Rules & laws',bl_about:'About',bl_safety:'Safety tips',bl_learn:'Learn',
-    cta_bot_d:'Full check – site content AI scan, Telegram profiles, token permissions',
+    cta_bot_d:'Deeper check – scans what\'s actually on the site, checks Telegram profiles',
     cta_quest_d:'Can you spot a scam? 7 real scenarios – test yourself',
     copy:'Free, open-source service by <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Peter</a> & <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Roman</a> – for friends, and for you.',
     back:'← Back',another:'Check another',bot:'Full check in bot',
     ft_t:'What Roko digs up',
-    f1t:'Fake sites',f1d:'Domain age, WHOIS, SSL, brand mismatches',
-    f2t:'Sanctioned wallets',f2d:'OFAC, Tornado Cash, seized addresses',
-    f3t:'Token drain',f3d:'Dangerous permissions that let sites drain your wallet',
-    f4t:'Fresh wallets',f4d:'Balance, age, transaction patterns',
+    f1t:'Fake sites',f1d:'How old is the site? Is it copying a known brand?',
+    f2t:'Blacklisted wallets',f2d:'International sanctions, seized by police, known scammers',
+    f3t:'Wallet drain',f3d:'Sites that trick you into giving them access to your money',
+    f4t:'Suspicious wallets',f4d:'Empty wallet? Just created? No history? Red flag.',
     f5t:'Cash scams',f5d:'Shady dealers, fake exchanges, step-by-step safety',
     f6t:'24/7 monitoring',f6d:'Watchlist with instant alerts if anything changes',
     guide_t:'Safety rules',
@@ -519,7 +522,7 @@ var T={
     quest_t:'Scam Quest',
     disclaimer:'Roko provides information to help you make decisions but does not guarantee the safety of any transaction. Web check is basic – use @RokoHelpBot for a full scan.',
     report:'🚨 Report scam',
-    web_basic:'Want deeper analysis? @RokoHelpBot scans site content with AI and checks Telegram profiles.',
+    web_basic:'Want a deeper look? @RokoHelpBot reads the actual site and checks Telegram profiles too.',
     handle_g1:'Meet publicly – café, shopping mall',handle_g2:'Test with a small amount first',
     ck_low_act:'Very low activity',ck_txs:'transactions',ck_out_txs:'outgoing transactions',ck_transactions:'transactions',
     ck_days_old:'days old',ck_new_acct:'Account very new',ck_not_found:'Address not found – may be unused',
@@ -534,19 +537,19 @@ var T={
   },
   ru:{
     title:'Этот <span class="rot-word" id="rotWord">обменник</span> <em>надёжный</em>?',
-    sub:'Вставь ссылку или адрес кошелька – Roko проверит по базам скамеров, санкционным спискам и содержимому сайта. Бесплатно. За секунды.',
+    sub:'Скинули подозрительную ссылку? Вставь сюда. Roko скажет – безопасно или скам. Бесплатно. 3 секунды.',
     p2p_cta:'Встречаешься с менялой лично?',
     ph:'сайт, @telegram_name или кошелёк...',btn:'Проверить',try_label:'попробуй:',
     bl_onb:'Получил крипту?',bl_tut:'Крипта 101',bl_guide:'Правила безопасности',bl_quest:'Квест',bl_feat:'Как работает',bl_reg:'Правила и законы',bl_about:'О проекте',bl_safety:'Безопасность',bl_learn:'Обучение',
-    cta_bot_d:'Полная проверка – AI-скан содержимого сайта, Telegram-профили, разрешения токенов',
+    cta_bot_d:'Глубже – сканирует содержимое сайта, проверяет Telegram-профили',
     cta_quest_d:'Распознаешь скам? 7 реальных сценариев – проверь себя',
     copy:'Бесплатный open-source сервис от <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Питера</a> и <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Романа</a> – для друзей и для тебя.',
     back:'← Назад',another:'Проверить ещё',bot:'Полная проверка в боте',
     ft_t:'Что находит Roko',
-    f1t:'Фейковые сайты',f1d:'Возраст домена, WHOIS, SSL, бренд',
-    f2t:'Санкционные кошельки',f2d:'OFAC, Tornado Cash, арестованные адреса',
-    f3t:'Слив через разрешения',f3d:'Опасные разрешения, которые позволяют сайту опустошить кошелёк',
-    f4t:'Свежие кошельки',f4d:'Баланс, возраст, паттерны транзакций',
+    f1t:'Фейковые сайты',f1d:'Сколько сайту лет? Не копирует ли он известный бренд?',
+    f2t:'Чёрные списки',f2d:'Международные санкции, арестованные полицией, известные мошенники',
+    f3t:'Слив кошелька',f3d:'Сайты, которые обманом получают доступ к твоим деньгам',
+    f4t:'Подозрительные кошельки',f4d:'Пустой? Только создан? Нет истории? Красный флаг.',
     f5t:'Скам при обмене на кэш',f5d:'Мутные менялы, фейковые обменники, пошаговая безопасность',
     f6t:'Мониторинг 24/7',f6d:'Следим и предупреждаем, если что-то изменится',
     guide_t:'Правила безопасности',
@@ -560,7 +563,7 @@ var T={
     quest_t:'Квест: тебя пытаются обмануть',
     disclaimer:'Roko предоставляет информацию для принятия решений, но не гарантирует безопасность сделки. Веб-проверка базовая – для полной используйте @RokoHelpBot.',
     report:'🚨 Сообщить о скаме',
-    web_basic:'Хочешь глубже? @RokoHelpBot сканирует содержимое сайта через AI и проверяет Telegram-профили.',
+    web_basic:'Хочешь глубже? @RokoHelpBot читает содержимое сайта и проверяет Telegram-профили.',
     handle_g1:'Встречайся в людном месте – кафе, ТЦ',handle_g2:'Сначала проверь на маленькой сумме',
     ck_low_act:'Очень низкая активность',ck_txs:'транзакций',ck_out_txs:'исходящих транзакций',ck_transactions:'транзакций',
     ck_days_old:'дней',ck_new_acct:'Аккаунт очень новый',ck_not_found:'Адрес не найден – возможно не использовался',
@@ -575,19 +578,19 @@ var T={
   },
   es:{
     title:'¿Es <em>seguro</em> ese <span class="rot-word" id="rotWord">exchanger</span>?',
-    sub:'Pega un enlace o dirección de wallet. Roko verifica bases de estafas, listas de sanciones y contenido del sitio. Gratis. En segundos.',
+    sub:'¿Te enviaron un enlace sospechoso? Pégalo aquí. Roko te dice si es seguro o una estafa. Gratis. 3 segundos.',
     p2p_cta:'¿Vas a reunirte con un dealer?',
     ph:'sitio web, @telegram_name o wallet...',btn:'Verificar',try_label:'prueba:',
     bl_onb:'¿Te pagaron en crypto?',bl_tut:'Cripto 101',bl_guide:'Reglas de seguridad',bl_quest:'Quest',bl_feat:'Cómo funciona',bl_reg:'Reglas y leyes',bl_about:'Sobre nosotros',bl_safety:'Seguridad',bl_learn:'Aprende',
-    cta_bot_d:'Verificación completa – escaneo AI del sitio, perfiles Telegram, permisos de tokens',
+    cta_bot_d:'Más profundo – escanea el contenido real del sitio, verifica perfiles de Telegram',
     cta_quest_d:'¿Puedes detectar una estafa? 7 escenarios reales – ponte a prueba',
     copy:'Servicio gratuito y open-source de <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Peter</a> y <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Roman</a> – para amigos, y para ti.',
     back:'← Atrás',another:'Verificar otro',bot:'Verificación completa en bot',
     ft_t:'Qué encuentra Roko',
-    f1t:'Sitios falsos',f1d:'Antigüedad, WHOIS, SSL, marca',
-    f2t:'Wallets sancionadas',f2d:'OFAC, Tornado Cash, direcciones incautadas',
-    f3t:'Robo por permisos',f3d:'Permisos peligrosos que permiten vaciar tu wallet',
-    f4t:'Wallets nuevas',f4d:'Balance, antigüedad, patrones',
+    f1t:'Sitios falsos',f1d:'¿Cuántos años tiene? ¿Está copiando una marca conocida?',
+    f2t:'Listas negras',f2d:'Sanciones internacionales, incautados por la policía, estafadores conocidos',
+    f3t:'Robo de wallet',f3d:'Sitios que te engañan para acceder a tu dinero',
+    f4t:'Wallets sospechosas',f4d:'¿Vacía? ¿Recién creada? ¿Sin historial? Bandera roja.',
     f5t:'Estafas con efectivo',f5d:'Dealers turbios, exchanges falsos, guía paso a paso',
     f6t:'Monitoreo 24/7',f6d:'Alertas instantáneas si algo cambia',
     guide_t:'Reglas de seguridad',
@@ -601,7 +604,7 @@ var T={
     quest_t:'Quest: intentan estafarte',
     disclaimer:'Roko proporciona información para tomar decisiones, pero no garantiza la seguridad de ninguna transacción. Verificación web es básica – usa @RokoHelpBot para escaneo completo.',
     report:'🚨 Reportar estafa',
-    web_basic:'¿Quieres más profundidad? @RokoHelpBot escanea el contenido del sitio con AI y verifica perfiles de Telegram.',
+    web_basic:'¿Quieres ir más a fondo? @RokoHelpBot lee el contenido del sitio y verifica perfiles de Telegram.',
     handle_g1:'Reúnete en un lugar público – café, centro comercial',handle_g2:'Prueba primero con un monto pequeño',
     ck_low_act:'Actividad muy baja',ck_txs:'transacciones',ck_out_txs:'transacciones salientes',ck_transactions:'transacciones',
     ck_days_old:'días',ck_new_acct:'Cuenta muy nueva',ck_not_found:'Dirección no encontrada – puede no haberse usado',
@@ -1476,7 +1479,7 @@ async function runCheck(){
   const btn=document.getElementById('checkBtn');btn.disabled=true;btn.innerHTML='<span class="spinner"></span>';
   showScreen('resultScreen');
   document.getElementById('resultCard').innerHTML=`<div class="result-body"><div style="text-align:center;padding:3rem"><span class="spinner"></span><p style="margin-top:1rem;color:rgba(255,255,255,.5)">${tr('checking')}</p></div></div>`;
-  try{let t=input.trim();if(!detectAddr(t))t=t.replace(/^https?:\/\//,'').replace(/\/.*$/,'').toLowerCase();const data=detectAddr(input.trim())?await checkChain(input.trim()):await checkDomain(t);history.pushState({screen:'result',q:input},'','?q='+encodeURIComponent(input));renderResult(t,data)}catch(e){document.getElementById('resultCard').innerHTML=`<div class="result-body"><button class="back-btn" onclick="goHome()">${tr('back')}</button><div style="color:#f87171;padding:1rem;text-align:center">Error: ${esc(e.message)}</div></div>`}
+  try{let t=input.trim();if(!detectAddr(t))t=t.replace(/^https?:\/\//,'').replace(/\/.*$/,'').toLowerCase();const data=detectAddr(input.trim())?await checkChain(input.trim()):await checkDomain(t);history.pushState({screen:'result',q:input},'','?q='+encodeURIComponent(input));renderResult(t,data);try{const n=parseInt(localStorage.getItem('roko_checks')||'0')+1;localStorage.setItem('roko_checks',n);updateCheckCounter()}catch{}}catch(e){document.getElementById('resultCard').innerHTML=`<div class="result-body"><button class="back-btn" onclick="goHome()">${tr('back')}</button><div style="color:#f87171;padding:1rem;text-align:center">Error: ${esc(e.message)}</div></div>`}
   btn.disabled=false;btn.textContent=tr('btn');
 }
 document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')runCheck()});
@@ -1605,6 +1608,20 @@ function toggleLike(){
   try{localStorage.setItem('roko_liked','1')}catch{}
   renderLike();
 }
+
+// Check counter
+function updateCheckCounter(){
+  try{
+    const n=parseInt(localStorage.getItem('roko_checks')||'0');
+    const el=document.getElementById('checkCounter');
+    if(n>0&&el){
+      const label={en:'checks done',ru:'проверок сделано',es:'verificaciones hechas'}[curLang]||'checks done';
+      el.textContent=n+' '+label;
+      el.style.display='block';
+    }
+  }catch{}
+}
+updateCheckCounter();
 </script>
 </body>
 </html>
