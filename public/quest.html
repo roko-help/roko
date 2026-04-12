@@ -429,6 +429,7 @@ const UI = {
     safety: 'Safety rules',
     submit: 'Got scammed? Share your story',
     like_q: 'Was this useful?',
+    exchange_cta: 'Not sure where to exchange safely? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>',
     copied: 'Copied!',
     you: 'You',
   },
@@ -449,6 +450,7 @@ const UI = {
     safety: 'Правила безопасности',
     submit: 'Попался на скам? Расскажи историю',
     like_q: 'Было полезно?',
+    exchange_cta: 'Не знаешь, где безопасно обменять? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>',
     copied: 'Скопировано!',
     you: 'Ты',
   },
@@ -469,6 +471,7 @@ const UI = {
     safety: 'Reglas de seguridad',
     submit: '¿Te estafaron? Cuenta tu historia',
     like_q: '¿Te fue útil?',
+    exchange_cta: '¿No sabes dónde cambiar de forma segura? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>',
     copied: '¡Copiado!',
     you: 'Tú',
   }
@@ -921,6 +924,7 @@ function renderFinal() {
           ${tr('submit')} \u2192
         </a>
       </div>
+      <p style="margin-top:1.2rem;font-size:.78rem;color:var(--text-dimmer);text-align:center">${tr('exchange_cta')}</p>
     </div>
   `;
 }

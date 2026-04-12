@@ -1182,16 +1182,19 @@ function renderAbout(){
     p1:'Роман посоветовал Питеру обменник по сохранённой ссылке – думал, что знакомый уже пользовался им. Обменник выглядел нормально: сначала AML-проверка, потом обмен – всё логично. Но «AML-проверка» оказалась фишинговым сайтом. Питер подключил кошелёк – и потерял деньги.',
     p2:'Мы оба в крипте и IT не первый год. Питер летел на крипто-конференцию и торопился. Одна ссылка, одна минута, одно «подключи кошелёк для проверки» – и всё.',
     p3:'Мы сделали Roko, чтобы это можно было проверить за 3 секунды. Бесплатно. С открытым кодом. Для друзей – и для тебя.',
+    cta:'Не знаешь, где и как безопасно обменять в твоём городе? Пиши на <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>, подскажем что знаем.',
   }:curLang==='es'?{
     t:'Sobre Roko',
     p1:'Roman le recomendó a Peter un exchanger por un enlace guardado – pensó que un amigo ya lo había usado. Se veía legítimo: primero verificación AML, luego el cambio. Pero la "verificación AML" era phishing. Peter conectó su wallet y perdió su dinero.',
     p2:'Los dos llevamos años en crypto e IT. Peter tenía prisa – volaba a una conferencia al día siguiente. Un enlace, un minuto, un "conecta tu wallet para verificar" – y eso fue todo.',
     p3:'Creamos Roko para que puedas verificar en 3 segundos. Gratis. Código abierto. Para amigos – y para ti.',
+    cta:'¿No sabes dónde ni cómo cambiar crypto de forma segura en tu ciudad? Escríbenos a <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>, te orientamos con lo que sabemos.',
   }:{
     t:'About Roko',
     p1:'Roman recommended an exchanger to Peter from a saved link – he thought a friend had used it before. It looked legit: AML check first, then the exchange – made sense. But the "AML check" was a phishing site. Peter connected his wallet and lost his funds.',
     p2:'We\'re both experienced in crypto and IT. Peter was in a rush – flying to a crypto conference the next day. One link, one minute, one "connect your wallet to verify" – and it was over.',
     p3:'We built Roko so you can check in 3 seconds. Free. Open source. For friends – and for you.',
+    cta:'Not sure where or how to exchange crypto safely in your city? Drop us a line at <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>, we\'ll share what we know.',
   };
   el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${R.t}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
     <div style="display:flex;gap:1rem;justify-content:center;margin:1.5rem 0 1rem">
@@ -1202,6 +1205,7 @@ function renderAbout(){
       <p class="tut-p" style="margin-bottom:.6rem">${R.p1}</p>
       <p class="tut-p" style="margin-bottom:.6rem;color:rgba(255,255,255,.45)">${R.p2}</p>
       <p class="tut-p" style="color:var(--accent);font-weight:500">${R.p3}</p>
+      <p class="tut-p" style="margin-top:1.2rem;font-size:.82rem;color:rgba(255,255,255,.35)">${R.cta}</p>
     </div></div>`;
 }
 

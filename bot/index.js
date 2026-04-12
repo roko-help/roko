@@ -99,6 +99,7 @@ const I = {
   monitor_dns_down: { en: '🚨 <b>%s</b> – site is down!\nPossibly shut down or seized. Don\'t send money.', ru: '🚨 <b>%s</b> – сайт не отвечает!\nВозможно, закрыт или изъят. Не отправляй деньги.', es: '🚨 <b>%s</b> – ¡sitio caído!\nPosiblemente cerrado o incautado. No envíes dinero.' },
   monitor_dns_up: { en: '🟢 <b>%s</b> – site is back online.', ru: '🟢 <b>%s</b> – сайт снова онлайн.', es: '🟢 <b>%s</b> – el sitio volvió.' },
   monitor_sanctioned: { en: '🚨 <b>Sanctioned!</b> Address <code>%s</code> is now on a sanctions list.\nDo not send funds.', ru: '🚨 <b>Санкции!</b> Адрес <code>%s</code> попал в санкционный список.\nНе отправляй на него средства.', es: '🚨 <b>¡Sancionado!</b> Dirección <code>%s</code> está en lista de sanciones.\nNo envíes fondos.' },
+  exchange_cta: { en: '\n💬 Not sure where to exchange safely? welc@roko.help', ru: '\n💬 Не знаешь, где безопасно обменять? welc@roko.help', es: '\n💬 ¿No sabes dónde cambiar de forma segura? welc@roko.help' },
   roko_hi: { en: '🦝 Looks clean. I dug through everything – no red flags.', ru: '🦝 Чисто. Я всё перерыл – ничего подозрительного.', es: '🦝 Limpio. Busqué por todos lados – sin banderas rojas.' },
   roko_mid: { en: '🦝 Hmm, something smells off. Be careful with this one.', ru: '🦝 Хм, что-то пахнет не так. С этим аккуратнее.', es: '🦝 Hmm, algo huele raro. Ten cuidado con este.' },
   roko_lo: { en: '🦝 Nope. This stinks. I wouldn\'t touch it.', ru: '🦝 Не-а. Воняет. Я бы не связывался.', es: '🦝 No. Esto apesta. Yo no lo tocaría.' },
@@ -1217,8 +1218,8 @@ function getGuide(score, context = 'online', chatId) {
     return tips;
   }
   if (score >= 70) return [t('guide_hi', chatId)];
-  if (score >= 40) return t('guide_mid', chatId);
-  return t('guide_lo', chatId);
+  if (score >= 40) { const tips = t('guide_mid', chatId); tips.push(t('exchange_cta', chatId)); return tips; }
+  const tips = t('guide_lo', chatId); tips.push(t('exchange_cta', chatId)); return tips;
 }
 
 // ============================================================
