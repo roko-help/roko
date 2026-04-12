@@ -1,0 +1,8 @@
+[
+  { "domain": "localbitcoins.com", "reason": "Shut down February 2023", "added": "2026-04-12" },
+  { "domain": "paxful.com", "reason": "Suspended operations 2023, partial restart 2024 — use with caution", "added": "2026-04-12" },
+  { "domain": "ftx.com", "reason": "Collapsed November 2022, bankruptcy proceedings", "added": "2026-04-12" },
+  { "domain": "celsius.network", "reason": "Collapsed June 2022, bankruptcy", "added": "2026-04-12" },
+  { "domain": "voyager.com", "reason": "Collapsed July 2022, bankruptcy", "added": "2026-04-12" },
+  { "domain": "blockfi.com", "reason": "Collapsed November 2022, bankruptcy", "added": "2026-04-12" }
+]

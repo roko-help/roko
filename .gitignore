@@ -1,0 +1,11 @@
+node_modules/
+.firebase/
+*.log
+.env
+.env.*
+.DS_Store
+media/
+github-setup.md
+.claude/
+public/*-original.mp4
+bot/stats.json

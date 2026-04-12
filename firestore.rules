@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Like counter: anyone can read, anyone can increment
+    match /stats/likes {
+      allow read: if true;
+      allow update: if request.resource.data.count == resource.data.count + 1;
+    }
+  }
+}

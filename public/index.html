@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roko – Crypto Exchange Trust Index | Check before you send</title>
+  <meta name="description" content="Free crypto exchange safety checker. Paste any link, wallet, or @handle — get a risk score in seconds. Scam database, OFAC sanctions, phishing detection, AI site analysis. Open source.">
+  <meta name="keywords" content="crypto exchange checker, exchanger safety, crypto scam check, OFAC sanctions check, wallet verification, blockchain trust score, P2P safety, OTC exchange review, crypto fraud prevention">
+  <meta name="author" content="Roko">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://roko.help/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://roko.help/">
+  <meta property="og:title" content="Roko – Is that exchanger safe?">
+  <meta property="og:description" content="Paste any link or wallet — know if it's safe in seconds. Scam database, sanctions, phishing detection, AI analysis. Free & open source.">
+  <meta property="og:image" content="https://roko.help/og.png?v=2">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Roko">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Roko – Crypto Exchange Trust Index">
+  <meta name="twitter:description" content="Check any exchanger before you send money. Free blockchain scan, sanctions check, domain audit.">
+  <meta name="twitter:image" content="https://roko.help/og.png?v=2">
+
+  <!-- Structured Data for search engines and LLMs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Roko",
+    "alternateName": "Roko Crypto Exchange Trust Index",
+    "url": "https://roko.help",
+    "description": "Free crypto exchange safety checker. Verify any exchanger, wallet address, or Telegram dealer before sending money. Uses blockchain analysis, OFAC sanctions screening, domain age verification, SSL checks, and token approval scanning to generate a trust score from 0 to 100.",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": [
+      "Domain age and WHOIS verification",
+      "OFAC sanctions and blacklist screening",
+      "Blockchain wallet analysis (BTC, ETH, TRON)",
+      "Token approval scanning (ERC-20, TRC-20)",
+      "Telegram profile analysis",
+      "Trust score 0-100 with safety recommendations",
+      "24/7 watchlist monitoring with alerts",
+      "KYC/AML regulatory education"
+    ],
+    "screenshot": "https://roko.help/og.png",
+    "author": { "@type": "Organization", "name": "Roko", "url": "https://roko.help" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://roko.help/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "sameAs": [
+      "https://t.me/RokoHelpBot",
+      "https://t.me/roko_help"
+    ]
+  }
+  </script>
+
+  <!-- LLM-readable summary (hidden from visual rendering) -->
+  <meta name="ai:description" content="Roko is a free web tool and Telegram bot that checks if a crypto exchanger is safe. Users paste a domain, @username, or wallet address, and Roko returns a trust score (0-100) based on blockchain data, sanctions lists, domain age, and more. Available at roko.help and @RokoHelpBot on Telegram. Supports English, Russian, and Spanish.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦝</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2" type="font/woff2" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="video" href="raccoon.mp4" type="video/mp4">
+  <style>
+    :root{--accent:#f0b866;--accent-a15:rgba(240,184,102,.15);--accent-a30:rgba(240,184,102,.3);--accent-a40:rgba(240,184,102,.4);--accent-glow:rgba(240,184,102,.2)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;padding:.6rem 1.2rem;border-radius:0 0 12px 12px;z-index:9999;font-weight:600;text-decoration:none;transition:top .2s}
+    .skip-link:focus{top:0}
+    html,body{height:100%;overflow:hidden;font-family:'Inter',system-ui,sans-serif;background:#0a0f14;color:#e8ecf0;-webkit-font-smoothing:antialiased}
+
+    /* ===== LOADING SKELETON ===== */
+    .roko-loader{position:fixed;inset:0;z-index:9000;background:#0a0f14;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .4s ease,visibility .4s ease}
+    .roko-loader.done{opacity:0;visibility:hidden;pointer-events:none}
+    .roko-loader-ring{width:48px;height:48px;border:3px solid rgba(240,184,102,.15);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite}
+    .roko-loader-text{margin-top:1rem;font-size:.85rem;color:rgba(255,255,255,.3);letter-spacing:.04em}
+    html:not(.fonts-ready) .screen,html:not(.fonts-ready) .lang{visibility:hidden}
+
+    /* ===== VIDEO BG ===== */
+    .vid-wrap{position:fixed;inset:0;z-index:0;overflow:hidden}
+    .vid-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .vid-wrap .v1{opacity:1;transition:opacity 1.5s ease}
+    .vid-wrap .v2{opacity:0;transition:opacity 1.5s ease}
+    .vid-wrap.cross .v1{opacity:0}
+    .vid-wrap.cross .v2{opacity:1}
+    .vid-overlay{position:fixed;inset:0;z-index:1;background:rgba(0,0,0,.55);backdrop-filter:blur(2px)}
+
+    /* ===== SCREENS ===== */
+    .screen{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:safe center;padding:1.5rem 2rem 1.5rem;transition:opacity .5s,transform .5s;overflow-y:auto}
+    .screen.hidden{opacity:0;pointer-events:none;transform:scale(.96)}
+
+    /* ===== LANG ===== */
+    .lang{position:fixed;top:1.2rem;right:1.5rem;z-index:100;display:flex;gap:.3rem}
+    .lang button{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.5);font-size:.85rem;padding:.3rem .6rem;border-radius:8px;cursor:pointer;font-family:inherit;transition:all .2s;backdrop-filter:blur(8px)}
+    .lang button.on{color:#fff;background:var(--accent-a40)}
+
+    /* ===== HOME ===== */
+    .raccoon-vid{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.15);margin-bottom:.6rem;box-shadow:0 0 60px var(--accent-glow)}
+    .home-title{font-size:clamp(2rem,7vw,3.5rem);font-weight:700;text-align:center;line-height:1.1;margin-bottom:.6rem;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+    .home-title em{font-style:normal;color:var(--accent)}
+    .rot-word{display:inline-block;transition:opacity .5s ease,width .5s ease;vertical-align:bottom;overflow:hidden;white-space:nowrap}
+    .rot-word.fade-out{opacity:0}
+    .home-sub{font-size:clamp(.9rem,2.8vw,1.2rem);color:rgba(255,255,255,.6);text-align:center;max-width:480px;margin-bottom:1.5rem;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+    .search{display:flex;align-items:center;width:100%;max-width:560px;background:rgba(0,0,0,.45);border:2px solid rgba(255,255,255,.15);border-radius:20px;padding:.5rem;backdrop-filter:blur(16px);transition:border-color .3s,box-shadow .3s}
+    .search:focus-within{border-color:var(--accent);box-shadow:0 0 40px var(--accent-glow)}
+    .search input{flex:1;background:none;border:none;color:#fff;font-size:clamp(16px,3.5vw,1.2rem);padding:.8rem 1.2rem;outline:none;font-family:inherit}
+    .search input::placeholder{color:rgba(255,255,255,.35)}
+    .sbtn{background:var(--accent);color:#fff;border:none;padding:.8rem 2rem;border-radius:14px;font-weight:700;cursor:pointer;font-family:inherit;font-size:clamp(1rem,3vw,1.1rem);transition:all .2s;white-space:nowrap}
+    .sbtn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+    .sbtn:disabled{opacity:.5;cursor:wait}
+    .examples{display:flex;flex-wrap:wrap;gap:.15rem .5rem;margin-top:.6rem;justify-content:center;align-items:center}
+    .examples-label{font-size:.72rem;color:rgba(255,255,255,.2)}
+    .examples button{background:none;border:none;color:rgba(255,255,255,.25);font-size:.72rem;padding:.2rem 0;cursor:pointer;font-family:inherit;transition:color .2s}
+    .examples button:hover{color:rgba(255,255,255,.6)}
+
+    /* ===== HOME BOTTOM SECTION ===== */
+    .home-ctas{display:flex;gap:.6rem;margin-top:2rem;width:100%;max-width:560px}
+    .cta-card{display:flex;align-items:center;gap:.8rem;flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:.8rem 1rem;text-decoration:none;color:#e8ecf0;cursor:pointer;font-family:inherit;transition:all .2s;text-align:left;backdrop-filter:blur(8px)}
+    .cta-card:hover{background:var(--accent-a15);border-color:var(--accent-a30)}
+    .cta-icon{font-size:1.6rem;flex-shrink:0}
+    .cta-text{display:flex;flex-direction:column;gap:.15rem}
+    .cta-text strong{font-size:.95rem;color:var(--accent)}
+    .cta-text span{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.35}
+    .cta-quest{border-color:rgba(52,211,153,.2)}
+    .cta-quest:hover{border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.08)}
+    .cta-quest .cta-text strong{color:#34d399}
+    .home-links{display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center;margin-top:1.2rem;max-width:560px}
+    .home-links button{background:none;border:none;color:rgba(255,255,255,.35);font-size:.78rem;cursor:pointer;font-family:inherit;padding:.3rem .5rem;transition:color .2s}
+    .home-links button:hover{color:rgba(255,255,255,.7)}
+    .home-copy{font-size:.68rem;color:rgba(255,255,255,.2);text-align:center;margin-top:1rem;line-height:1.5;max-width:560px;padding-bottom:1rem}
+    .home-likes{display:flex;gap:.8rem;align-items:center;justify-content:center;margin-top:1.2rem}
+    .like-btn{display:flex;align-items:center;gap:.3rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:.3rem .7rem;color:rgba(255,255,255,.4);font-size:.78rem;cursor:pointer;font-family:inherit;transition:all .2s}
+    .like-btn:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.6)}
+    .like-btn.liked{border-color:rgba(248,113,113,.3);color:#f87171}
+    .like-btn.liked:hover{border-color:rgba(248,113,113,.4)}
+    .like-btn .like-heart{font-size:.85rem;transition:transform .2s}
+    .like-btn.liked .like-heart{transform:scale(1.15)}
+    .like-link{display:flex;align-items:center;gap:.3rem;color:rgba(255,255,255,.35);font-size:.75rem;text-decoration:none;transition:color .2s}
+    .like-link:hover{color:rgba(255,255,255,.6)}
+
+    /* ===== RESULT ===== */
+    .result-card{width:100%;max-width:560px;background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.12);border-radius:24px;backdrop-filter:blur(20px);overflow:hidden}
+    .result-body{overflow-y:auto;max-height:75vh;padding:2rem;padding-right:1.2rem;-webkit-overflow-scrolling:touch}
+    .result-body::-webkit-scrollbar{width:6px}
+    .result-body::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:3px;margin:12px 0}
+    .result-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:3px}
+    .result-body::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.3)}
+    .r-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+    .r-target{font-weight:700;font-size:clamp(1.1rem,3.5vw,1.4rem);overflow-wrap:break-word;word-break:normal}
+    .r-score{font-size:clamp(2rem,6vw,2.8rem);font-weight:700;line-height:1}
+    .r-score.green{color:#34d399}.r-score.yellow{color:#fbbf24}.r-score.red{color:#f87171}.r-score.gray{color:#7a8599}
+    .r-label{font-size:.85rem;font-weight:600;margin-top:.2rem;text-align:right}
+    .r-checks{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+    .r-check{display:flex;align-items:center;gap:.7rem;font-size:clamp(.9rem,2.5vw,1.05rem);padding:.6rem .8rem;background:rgba(255,255,255,.04);border-radius:14px}
+    .r-check .ico{flex-shrink:0;font-size:1.1rem;width:1.6rem;text-align:center}
+    .r-check.ok{color:#34d399}.r-check.warn{color:#fbbf24}.r-check.bad{color:#f87171}.r-check.info{color:rgba(255,255,255,.5)}
+    .r-guide{background:var(--accent-a15);border:1px solid var(--accent-a15);border-radius:16px;padding:1.2rem 1.4rem;margin-bottom:1.5rem}
+    .r-guide-title{font-size:.8rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+    .r-guide li{font-size:clamp(.85rem,2.5vw,1rem);color:rgba(255,255,255,.6);padding:.25rem 0;list-style:none}
+    .r-guide li::before{content:'→ ';color:var(--accent)}
+    .r-actions{display:flex;gap:.6rem;flex-wrap:wrap}
+    .r-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:clamp(.85rem,2.5vw,.95rem);padding:.6rem 1.2rem;border-radius:12px;cursor:pointer;font-family:inherit;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+    .r-btn:hover{background:var(--accent-a15);border-color:var(--accent-a30)}
+    .r-btn.primary{background:var(--accent);border-color:var(--accent)}
+    .back-btn{background:none;border:none;color:rgba(255,255,255,.5);font-size:1rem;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:.4rem;margin-bottom:1rem;padding:0;transition:color .2s}
+    .back-btn:hover{color:#fff}
+    .raccoon-result{width:80px;height:80px;border-radius:50%;object-fit:cover;object-position:center 20%;border:2px solid rgba(255,255,255,.12)}
+    .spinner{display:inline-block;width:22px;height:22px;border:2.5px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:sp .6s linear infinite}
+    @keyframes sp{to{transform:rotate(360deg)}}
+
+    /* ===== MODAL ===== */
+    .modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s}
+    .modal-overlay.show{opacity:1;pointer-events:auto}
+    .modal{background:rgba(15,19,25,.95);border:1.5px solid rgba(255,255,255,.1);border-radius:24px;width:100%;max-width:640px;backdrop-filter:blur(20px);transform:scale(.95);transition:transform .3s;overflow:hidden}
+    .modal-overlay.show .modal{transform:scale(1)}
+    .modal-body{overflow-y:auto;max-height:82vh;padding:2rem;padding-right:1.2rem;-webkit-overflow-scrolling:touch}
+    .modal-body::-webkit-scrollbar{width:6px}
+    .modal-body::-webkit-scrollbar-track{background:rgba(255,255,255,.04);border-radius:3px;margin:12px 0}
+    .modal-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:3px}
+    .modal-body::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.28)}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+    .modal-head h2{font-size:1.4rem;font-weight:700;margin:0}
+    .close-modal{background:none;border:none;color:rgba(255,255,255,.4);font-size:1.6rem;cursor:pointer;padding:0;line-height:1;transition:color .2s}
+    .close-modal:hover{color:#fff}
+
+    /* ===== GUIDE ===== */
+    .guide-rule{padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer}
+    .guide-rule:last-child{border-bottom:none}
+    .gr-head{display:flex;align-items:center;gap:.7rem}
+    .gr-head .gi{font-size:1.4rem;flex-shrink:0}
+    .gr-head .gt{font-weight:600;font-size:1.05rem;flex:1}
+    .gr-head .chevron{color:rgba(255,255,255,.25);font-size:.8rem;transition:transform .2s}
+    .guide-rule.open .chevron{transform:rotate(180deg)}
+    .gr-body{display:none;padding:.8rem 0 .2rem 2.2rem}
+    .guide-rule.open .gr-body{display:block}
+    .gr-step{display:flex;gap:.5rem;align-items:flex-start;padding:.35rem 0;font-size:.92rem;color:rgba(255,255,255,.6);line-height:1.5}
+    .gr-step .si{flex-shrink:0;width:1.4rem;font-size:.95rem;text-align:center}
+
+    /* ===== TUTORIAL ===== */
+    .tut-section{margin-bottom:1.5rem}
+    .tut-section h3{font-size:1.1rem;font-weight:600;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem}
+    .tut-flow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin:.8rem 0;font-size:1rem}
+    .tut-flow .arrow{color:rgba(255,255,255,.3)}
+    .tut-flow .node{background:var(--accent-a15);border:1px solid var(--accent-glow);border-radius:10px;padding:.4rem .8rem;font-size:.9rem}
+    .tut-flow .node.danger{background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.2);color:#f87171}
+    .tut-p{font-size:.92rem;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:.6rem}
+    .tut-warn{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:12px;padding:.8rem 1rem;margin:.6rem 0;font-size:.9rem;color:rgba(255,255,255,.6)}
+    .tut-warn strong{color:#f87171}
+    .tut-ok{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15);border-radius:12px;padding:.8rem 1rem;margin:.6rem 0;font-size:.9rem;color:rgba(255,255,255,.6)}
+    .tut-ok strong{color:#34d399}
+
+    /* ===== QUEST GAME ===== */
+    .quest-wrap{text-align:center}
+    .quest-chat{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:16px;margin:1rem 0;text-align:left;overflow:hidden}
+    .quest-chat-body{overflow-y:auto;max-height:280px;padding:1.2rem;padding-right:.8rem;-webkit-overflow-scrolling:touch}
+    .quest-chat-body::-webkit-scrollbar{width:5px}
+    .quest-chat-body::-webkit-scrollbar-track{background:rgba(255,255,255,.03);border-radius:3px;margin:8px 0}
+    .quest-chat-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:3px}
+    .quest-chat-body::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.25)}
+    .q-msg{margin-bottom:.6rem;display:flex;gap:.5rem;align-items:flex-start}
+    .q-msg .avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+    .q-msg.them .avatar{background:rgba(248,113,113,.15)}
+    .q-msg.you .avatar{background:var(--accent-a15)}
+    .q-msg .bubble{background:rgba(255,255,255,.06);border-radius:12px;padding:.5rem .8rem;font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.4;max-width:85%}
+    .q-msg.them .bubble{border:1px solid rgba(255,255,255,.06)}
+    .q-msg.you{flex-direction:row-reverse}
+    .q-msg.you .bubble{background:var(--accent-a15);border:1px solid var(--accent-a15)}
+    .q-choices{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0}
+    .q-choice{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:14px;padding:.8rem 1rem;cursor:pointer;font-family:inherit;font-size:.95rem;color:rgba(255,255,255,.7);text-align:left;transition:all .2s}
+    .q-choice:hover{border-color:var(--accent-a40);background:var(--accent-a15);color:#fff}
+    .q-roko{background:var(--accent-a15);border:1px solid var(--accent-a15);border-radius:14px;padding:1rem;margin:1rem 0;display:flex;gap:.8rem;align-items:flex-start}
+    .q-roko.good{background:rgba(52,211,153,.06);border-color:rgba(52,211,153,.15)}
+    .q-roko.bad{background:rgba(248,113,113,.06);border-color:rgba(248,113,113,.15)}
+    .q-roko .roko-face{font-size:1.5rem;flex-shrink:0}
+    .q-roko .roko-text{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.5}
+    .q-roko .roko-text strong{color:#fff}
+    .q-progress{display:flex;gap:.3rem;margin:1rem 0;justify-content:center}
+    .q-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1)}
+    .q-dot.done{background:#34d399}
+    .q-dot.fail{background:#f87171}
+    .q-dot.current{background:var(--accent);box-shadow:0 0 8px var(--accent-a40)}
+    .q-score-final{font-size:2rem;font-weight:700;margin:.5rem 0}
+    .q-score-final.good{color:#34d399}.q-score-final.ok{color:#fbbf24}.q-score-final.bad{color:#f87171}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem}
+    .info-item{background:rgba(255,255,255,.05);border-radius:14px;padding:1.2rem;border:1px solid rgba(255,255,255,.08)}
+    .info-item .ii{font-size:1.6rem;margin-bottom:.4rem}
+    .info-item h3{font-size:1rem;font-weight:600;margin-bottom:.3rem}
+    .info-item p{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.5}
+    dfn{font-style:normal;border-bottom:1px dashed rgba(255,255,255,.25);cursor:help;color:rgba(255,255,255,.8);position:relative}
+    dfn .dfn-tt{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(15,19,25,.97);border:1px solid var(--accent-a30);color:rgba(255,255,255,.85);font-size:.82rem;font-weight:400;padding:.5rem .8rem;border-radius:10px;width:max-content;max-width:280px;z-index:300;text-align:center;backdrop-filter:blur(12px);pointer-events:none;line-height:1.45;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+    dfn .dfn-tt::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(15,19,25,.97)}
+    @media(hover:hover){dfn:hover .dfn-tt{display:block}}
+
+    /* ===== VISUAL CARDS ===== */
+    .v-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.2rem;margin:.6rem 0}
+    .v-card-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
+    .v-card-head .v-icon{font-size:1.8rem}
+    .v-card-head h4{font-size:1rem;font-weight:600;margin:0}
+    .v-card p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.6;margin:0}
+    .v-card strong{color:rgba(255,255,255,.85)}
+
+    .v-scheme{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1rem 1.2rem;margin:.8rem 0;text-align:center}
+    .v-scheme-title{font-size:.75rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.6rem}
+    .v-steps{display:flex;flex-direction:row;gap:0;align-items:center;justify-content:center}
+    .v-step{display:flex;flex-direction:column;align-items:center;gap:.35rem;padding:.3rem .5rem;flex:1}
+    .v-step .v-num{width:26px;height:26px;border-radius:50%;background:var(--accent-a30);color:var(--accent);font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .v-step .v-txt{font-size:.82rem;color:rgba(255,255,255,.65);text-align:center}
+    .v-step .v-txt strong{color:#fff}
+    .v-arrow{color:rgba(255,255,255,.15);font-size:.85rem;line-height:1;padding:0 .1rem;flex-shrink:0}
+    @media(max-width:400px){.v-steps{flex-direction:column}.v-arrow{transform:rotate(90deg)}}
+    .v-vs{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.6rem 0}
+    .v-vs-bad,.v-vs-good{border-radius:14px;padding:1rem}
+    .v-vs-bad{background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.12)}
+    .v-vs-bad h4{color:#f87171;font-size:.9rem;margin:0 0 .4rem}
+    .v-vs-good{background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12)}
+    .v-vs-good h4{color:#34d399;font-size:.9rem;margin:0 0 .4rem}
+    .v-vs-bad li,.v-vs-good li{font-size:.85rem;color:rgba(255,255,255,.55);padding:.15rem 0;list-style:none}
+    .v-vs-bad li::before{content:'✗ ';color:#f87171}
+    .v-vs-good li::before{content:'✓ ';color:#34d399}
+    @media(max-width:500px){.v-vs{grid-template-columns:1fr}}
+    .search.glow-green{border-color:#34d399;box-shadow:0 0 30px rgba(52,211,153,.25)}
+    .search.glow-yellow{border-color:#fbbf24;box-shadow:0 0 30px rgba(251,191,36,.25)}
+    .search.glow-red{border-color:#f87171;box-shadow:0 0 30px rgba(248,113,113,.25)}
+    .search.glow-gray{border-color:rgba(255,255,255,.25);box-shadow:0 0 20px rgba(255,255,255,.08)}
+
+    @keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+    @media(max-width:500px){
+      .lang{flex-direction:column;top:.8rem;right:.8rem;gap:.25rem}
+      .lang button{font-size:.75rem;padding:.25rem .5rem}
+      .search{flex-direction:column;gap:.4rem;padding:.6rem}
+      .sbtn{width:100%;padding:.9rem}
+      .raccoon-vid{width:100px;height:100px}
+      .result-body,.modal-body{padding:1.2rem}
+      .tut-flow{font-size:.85rem}
+      .info-grid{grid-template-columns:1fr}
+      .modal-head h2{font-size:1.1rem}
+      .r-head{flex-direction:column;gap:.8rem;text-align:center}
+      .r-head>div:first-child{justify-content:center}
+      .r-target{word-break:normal;overflow-wrap:break-word;font-size:1rem}
+      .r-label{text-align:center}
+      .raccoon-result{width:60px;height:60px}
+      .r-actions{justify-content:center}
+    }
+    @media(min-width:501px) and (max-width:768px){
+      .modal{max-width:580px}
+      .modal-body{padding:1.8rem}
+      .info-grid{grid-template-columns:1fr 1fr}
+      .raccoon-vid{width:160px;height:160px}
+    }
+    @media(max-width:500px){
+      .home-ctas{flex-direction:column;gap:.5rem;margin-top:1.5rem}
+    }
+    @media(min-width:769px){
+      .modal{max-width:700px}
+      .info-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .vid-wrap video{display:none}
+      .vid-wrap{background:url('bg-poster.jpg') center/cover}
+      .raccoon-vid{background:url('raccoon-poster.jpg') center/cover}
+      *{animation:none!important;transition:none!important}
+    }
+    @supports(padding-bottom:env(safe-area-inset-bottom)){
+      .home-copy{padding-bottom:calc(1rem + env(safe-area-inset-bottom))}
+    }
+  </style>
+</head>
+<body>
+<div class="roko-loader" id="rokoLoader"><div class="roko-loader-ring"></div><div class="roko-loader-text">ROKO</div></div>
+<a href="#q" class="skip-link">Skip to search</a>
+
+<!-- BG VIDEO -->
+<div class="vid-wrap" id="vidWrap" aria-hidden="true">
+  <video class="v1" id="bgV1" poster="bg-poster.jpg" muted playsinline></video>
+  <video class="v2" id="bgV2" poster="bg-poster.jpg" muted playsinline></video>
+</div>
+<div class="vid-overlay" aria-hidden="true"></div>
+
+<!-- LANG -->
+<nav class="lang" aria-label="Language">
+  <button class="on" onclick="setLang('en',true)" aria-pressed="true">EN</button>
+  <button onclick="setLang('ru',true)" aria-pressed="false">RU</button>
+  <button onclick="setLang('es',true)" aria-pressed="false">ES</button>
+</nav>
+
+<!-- HOME -->
+<main class="screen" id="homeScreen">
+  <video class="raccoon-vid" src="raccoon.mp4" poster="raccoon-poster.jpg" muted playsinline loop autoplay aria-hidden="true"></video>
+  <h1 class="home-title" data-i18n="title">Is that <span class="rot-word" id="rotWord">exchanger</span> <em>safe</em>?</h1>
+  <p class="home-sub" data-i18n="sub">Paste a link or wallet address. Roko checks scam databases, sanctions lists, and site content — and tells you if it's safe. Free. In seconds.</p>
+  <div class="search" role="search">
+    <input type="text" id="q" data-i18n-ph="ph" placeholder="website, @telegram_name, or wallet..." autofocus aria-label="Address to check">
+    <button class="sbtn" id="checkBtn" onclick="runCheck()" data-i18n="btn">Check</button>
+  </div>
+  <div class="examples">
+    <span class="examples-label" data-i18n="try_label">try:</span>
+    <button onclick="tryEx('bestchange.com')">bestchange.com</button>
+    <button onclick="tryEx('garantex.org')">garantex.org</button>
+    <button onclick="tryEx('0x742d35Cc6634C0532925a3b844Bc9e7595f2bD68')">0x742d...</button>
+    <button onclick="tryEx('TJRabPrwbZy45sbavfcjinPJC18kjpRTv8')">TJRab...</button>
+  </div>
+
+  <!-- PRIMARY CTAs -->
+  <div class="home-ctas">
+    <a href="https://t.me/RokoHelpBot" class="cta-card">
+      <span class="cta-icon">🤖</span>
+      <span class="cta-text">
+        <strong>@RokoHelpBot</strong>
+        <span data-i18n="cta_bot_d">Full check — site content AI scan, Telegram profiles, token permissions</span>
+      </span>
+    </a>
+    <button class="cta-card cta-quest" onclick="openModal('quest')">
+      <span class="cta-icon">🎮</span>
+      <span class="cta-text">
+        <strong data-i18n="bl_quest">Scam quest</strong>
+        <span data-i18n="cta_quest_d">Can you spot a scam? 7 real scenarios – test yourself</span>
+      </span>
+    </button>
+  </div>
+
+  <!-- SECONDARY LINKS -->
+  <div class="home-links">
+    <button onclick="openModal('guide')" data-i18n="bl_safety">Safety tips</button>
+    <button onclick="openModal('tutorial')" data-i18n="bl_learn">Learn</button>
+    <button onclick="openModal('features')" data-i18n="bl_feat">How it works</button>
+    <button onclick="openModal('about')" data-i18n="bl_about">About</button>
+  </div>
+
+  <!-- LIKE / SOCIAL -->
+  <div class="home-likes">
+    <button class="like-btn" id="likeBtn" onclick="toggleLike()"><span class="like-heart">♡</span></button>
+    <a class="like-link" href="https://github.com/roko-help/roko" target="_blank" rel="noopener"><img src="https://img.shields.io/github/stars/roko-help/roko?style=social" alt="GitHub stars" style="height:20px;vertical-align:middle" onerror="this.outerHTML='★ GitHub'"></a>
+    <a class="like-link" href="https://t.me/roko_help" target="_blank" rel="noopener">📢 Telegram</a>
+  </div>
+
+  <!-- COPYRIGHT -->
+  <p class="home-copy" id="homeCopy"></p>
+</main>
+
+<!-- RESULT -->
+<section class="screen hidden" id="resultScreen">
+  <div class="result-card" id="resultCard"></div>
+</section>
+
+<!-- ===== MODALS ===== -->
+
+<!-- TUTORIAL -->
+<div class="modal-overlay" id="tutorialModal" role="dialog" aria-modal="true" aria-label="Crypto 101" onclick="if(event.target===this)closeModals()">
+  <div class="modal" id="tutorialContent"></div>
+</div>
+
+<!-- SAFETY RULES -->
+<div class="modal-overlay" id="guideModal" role="dialog" aria-modal="true" aria-label="Safety rules" onclick="if(event.target===this)closeModals()">
+  <div class="modal" id="guideContent"></div>
+</div>
+
+<!-- QUEST -->
+<div class="modal-overlay" id="questModal" role="dialog" aria-modal="true" aria-label="Scam quest" onclick="if(event.target===this)closeModals()">
+  <div class="modal" id="questContent"></div>
+</div>
+
+<!-- FEATURES -->
+<div class="modal-overlay" id="featuresModal" role="dialog" aria-modal="true" aria-label="How it works" onclick="if(event.target===this)closeModals()">
+  <div class="modal" id="featContent"></div>
+</div>
+
+<!-- REGULATIONS -->
+<div class="modal-overlay" id="regulationsModal" role="dialog" aria-modal="true" aria-label="Rules and laws" onclick="if(event.target===this)closeModals()">
+  <div class="modal" id="regContent"></div>
+</div>
+
+<!-- CHECKLIST (P2P offline exchange) -->
+<div class="modal-overlay" id="checklistModal" role="dialog" aria-modal="true" aria-label="P2P exchange checklist" onclick="if(event.target===this)closeModals()">
+  <div class="modal" id="checklistContent"></div>
+</div>
+
+<!-- ONBOARDING (first crypto payment) -->
+<div class="modal-overlay" id="onboardingModal" role="dialog" aria-modal="true" aria-label="First crypto payment" onclick="if(event.target===this)closeModals()">
+  <div class="modal" id="onboardingContent"></div>
+</div>
+
+<div class="modal-overlay" id="aboutModal" role="dialog" aria-modal="true" aria-label="About Roko" onclick="if(event.target===this)closeModals()">
+  <div class="modal" id="aboutContent"></div>
+</div>
+
+<script>
+// ============================================================
+// FONT LOADING – skeleton until ready
+// ============================================================
+(function(){
+  function reveal(){
+    document.documentElement.classList.add('fonts-ready');
+    var ld=document.getElementById('rokoLoader');if(ld)ld.classList.add('done');
+    setTimeout(function(){if(ld&&ld.parentNode)ld.parentNode.removeChild(ld)},500);
+  }
+  if(document.fonts&&document.fonts.ready){
+    document.fonts.ready.then(reveal);
+  } else {
+    // Fallback for old browsers
+    setTimeout(reveal,800);
+  }
+  // Safety net – never block longer than 2s
+  setTimeout(reveal,2000);
+})();
+
+// ============================================================
+// BG VIDEO CROSSFADE
+// ============================================================
+(function(){
+  const wrap=document.getElementById('vidWrap'),v1=document.getElementById('bgV1'),v2=document.getElementById('bgV2');
+  function loadBgVid(){v1.src='bg.mp4';v2.src='bg.mp4';v1.play().catch(()=>{});}
+  if('requestIdleCallback' in window)requestIdleCallback(loadBgVid);else setTimeout(loadBgVid,800);
+  let active=1;
+  function onTU(){const v=active===1?v1:v2,nx=active===1?v2:v1;if(v.duration&&v.currentTime>=v.duration-1.8){nx.currentTime=0;nx.play().catch(()=>{});if(active===1)wrap.classList.add('cross');else wrap.classList.remove('cross');active=active===1?2:1}}
+  v1.addEventListener('timeupdate',onTU);v2.addEventListener('timeupdate',onTU);
+})();
+
+// ============================================================
+// i18n
+// ============================================================
+var curLang='en';
+var T={
+  en:{
+    title:'Is that <span class="rot-word" id="rotWord">exchanger</span> <em>safe</em>?',
+    sub:'Paste a link or wallet address. Roko checks scam databases, sanctions lists, and site content — and tells you if it\'s safe. Free. In seconds.',
+    p2p_cta:'Meeting a dealer in person?',
+    ph:'website, @telegram_name, or wallet...',btn:'Check',try_label:'try:',
+    bl_onb:'Got paid in crypto?',bl_tut:'Crypto 101',bl_guide:'Safety rules',bl_quest:'Scam quest',bl_feat:'How it works',bl_reg:'Rules & laws',bl_about:'About',bl_safety:'Safety tips',bl_learn:'Learn',
+    cta_bot_d:'Full check — site content AI scan, Telegram profiles, token permissions',
+    cta_quest_d:'Can you spot a scam? 7 real scenarios – test yourself',
+    copy:'Free, open-source service by <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Peter</a> & <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Roman</a> – for friends, and for you.',
+    back:'← Back',another:'Check another',bot:'Full check in bot',
+    ft_t:'What Roko digs up',
+    f1t:'Fake sites',f1d:'Domain age, WHOIS, SSL, brand mismatches',
+    f2t:'Sanctioned wallets',f2d:'OFAC, Tornado Cash, seized addresses',
+    f3t:'Token drain',f3d:'Dangerous permissions that let sites drain your wallet',
+    f4t:'Fresh wallets',f4d:'Balance, age, transaction patterns',
+    f5t:'Cash scams',f5d:'Shady dealers, fake exchanges, step-by-step safety',
+    f6t:'24/7 monitoring',f6d:'Watchlist with instant alerts if anything changes',
+    guide_t:'Safety rules',
+    sc_hi:'Looks safe',sc_mid:'Be careful',sc_lo:'Dangerous',sc_sanc:'Blocked',
+    g_hi:'Split amounts over $1K into 2 transfers. Save the transaction hash.',
+    g_mid:'Test with minimum amount first. Screenshot everything.',
+    g_lo:'Roko recommends against this exchanger. Report: @RokoHelp',
+    g_sanc:'SANCTIONED. Do NOT send funds.',
+    checking:'Roko is digging...',
+    tut_t:'Crypto 101',
+    quest_t:'Scam Quest',
+    disclaimer:'Roko provides information to help you make decisions but does not guarantee the safety of any transaction. Web check is basic – use @RokoHelpBot for a full scan.',
+    report:'🚨 Report scam',
+    web_basic:'Want deeper analysis? @RokoHelpBot scans site content with AI and checks Telegram profiles.',
+    handle_g1:'Meet publicly – café, shopping mall',handle_g2:'Test with a small amount first',
+    ck_low_act:'Very low activity',ck_txs:'transactions',ck_out_txs:'outgoing transactions',ck_transactions:'transactions',
+    ck_days_old:'days old',ck_new_acct:'Account very new',ck_not_found:'Address not found – may be unused',
+    ck_unavail:'Unavailable',ck_not_sanc:'Not in sanctions lists',
+    ck_scam_pattern:'"manager/support" in name – common scam trick',ck_impersonation:'Pretending to be a known exchange?',
+    ck_check_bot:'Check in bot',ck_sanctioned:'SANCTIONED / SCAM',
+    ck_dns_ok:'Domain is active',ck_dns_down:'Domain not found',ck_domain:'Domain',ck_new:'new',ck_very_new:'very new',
+    ck_https_ok:'Secure connection (full check → bot)',ck_https_fail:'Not secure or unreachable',
+    ck_years:'years',ck_months:'months',ck_registered_but_down:'registered, currently offline',
+    ck_phishing:'PHISHING: this domain looks like %s — likely a fake clone',
+    ck_impersonation_d:'Contains brand name "%s" — verify this is the official site',
+  },
+  ru:{
+    title:'Этот <span class="rot-word" id="rotWord">обменник</span> <em>надёжный</em>?',
+    sub:'Вставь ссылку или адрес кошелька — Roko проверит по базам скамеров, санкционным спискам и содержимому сайта. Бесплатно. За секунды.',
+    p2p_cta:'Встречаешься с менялой лично?',
+    ph:'сайт, @telegram_name или кошелёк...',btn:'Проверить',try_label:'попробуй:',
+    bl_onb:'Получил крипту?',bl_tut:'Крипта 101',bl_guide:'Правила безопасности',bl_quest:'Квест',bl_feat:'Как работает',bl_reg:'Правила и законы',bl_about:'О проекте',bl_safety:'Безопасность',bl_learn:'Обучение',
+    cta_bot_d:'Полная проверка — AI-скан содержимого сайта, Telegram-профили, разрешения токенов',
+    cta_quest_d:'Распознаешь скам? 7 реальных сценариев – проверь себя',
+    copy:'Бесплатный open-source сервис от <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Питера</a> и <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Романа</a> – для друзей и для тебя.',
+    back:'← Назад',another:'Проверить ещё',bot:'Полная проверка в боте',
+    ft_t:'Что находит Roko',
+    f1t:'Фейковые сайты',f1d:'Возраст домена, WHOIS, SSL, бренд',
+    f2t:'Санкционные кошельки',f2d:'OFAC, Tornado Cash, арестованные адреса',
+    f3t:'Слив через разрешения',f3d:'Опасные разрешения, которые позволяют сайту опустошить кошелёк',
+    f4t:'Свежие кошельки',f4d:'Баланс, возраст, паттерны транзакций',
+    f5t:'Скам при обмене на кэш',f5d:'Мутные менялы, фейковые обменники, пошаговая безопасность',
+    f6t:'Мониторинг 24/7',f6d:'Следим и предупреждаем, если что-то изменится',
+    guide_t:'Правила безопасности',
+    sc_hi:'Безопасно',sc_mid:'Осторожно',sc_lo:'Опасно',sc_sanc:'Заблокирован',
+    g_hi:'Суммы >$1K лучше разбить на 2 перевода. Сохрани хеш.',
+    g_mid:'Сначала отправь минимум. Сохрани скрины переписки.',
+    g_lo:'Roko не рекомендует. Есть доказательства? → @RokoHelp',
+    g_sanc:'ПОД САНКЦИЯМИ. Не отправляй.',
+    checking:'Roko роется...',
+    tut_t:'Крипта 101',
+    quest_t:'Квест: тебя пытаются обмануть',
+    disclaimer:'Roko предоставляет информацию для принятия решений, но не гарантирует безопасность сделки. Веб-проверка базовая – для полной используйте @RokoHelpBot.',
+    report:'🚨 Сообщить о скаме',
+    web_basic:'Хочешь глубже? @RokoHelpBot сканирует содержимое сайта через AI и проверяет Telegram-профили.',
+    handle_g1:'Встречайся в людном месте – кафе, ТЦ',handle_g2:'Сначала проверь на маленькой сумме',
+    ck_low_act:'Очень низкая активность',ck_txs:'транзакций',ck_out_txs:'исходящих транзакций',ck_transactions:'транзакций',
+    ck_days_old:'дней',ck_new_acct:'Аккаунт очень новый',ck_not_found:'Адрес не найден – возможно не использовался',
+    ck_unavail:'Недоступно',ck_not_sanc:'Нет в чёрных списках',
+    ck_scam_pattern:'"manager/support" в имени – типичный скам',ck_impersonation:'Выдаёт себя за известную биржу?',
+    ck_check_bot:'Проверь в боте',ck_sanctioned:'ПОД САНКЦИЯМИ / СКАМ',
+    ck_dns_ok:'Домен активен',ck_dns_down:'Домен не найден',ck_domain:'Домен',ck_new:'новый',ck_very_new:'очень новый',
+    ck_https_ok:'Безопасное соединение (полная проверка → бот)',ck_https_fail:'Незащищённый или недоступный',
+    ck_years:'лет',ck_months:'мес.',ck_registered_but_down:'зарегистрирован, сейчас недоступен',
+    ck_phishing:'ФИШИНГ: домен похож на %s — скорее всего подделка',
+    ck_impersonation_d:'Содержит бренд "%s" — убедитесь, что это официальный сайт',
+  },
+  es:{
+    title:'¿Es <em>seguro</em> ese <span class="rot-word" id="rotWord">exchanger</span>?',
+    sub:'Pega un enlace o dirección de wallet. Roko verifica bases de estafas, listas de sanciones y contenido del sitio. Gratis. En segundos.',
+    p2p_cta:'¿Vas a reunirte con un dealer?',
+    ph:'sitio web, @telegram_name o wallet...',btn:'Verificar',try_label:'prueba:',
+    bl_onb:'¿Te pagaron en crypto?',bl_tut:'Cripto 101',bl_guide:'Reglas de seguridad',bl_quest:'Quest',bl_feat:'Cómo funciona',bl_reg:'Reglas y leyes',bl_about:'Sobre nosotros',bl_safety:'Seguridad',bl_learn:'Aprende',
+    cta_bot_d:'Verificación completa — escaneo AI del sitio, perfiles Telegram, permisos de tokens',
+    cta_quest_d:'¿Puedes detectar una estafa? 7 escenarios reales – ponte a prueba',
+    copy:'Servicio gratuito y open-source de <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Peter</a> y <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Roman</a> – para amigos, y para ti.',
+    back:'← Atrás',another:'Verificar otro',bot:'Verificación completa en bot',
+    ft_t:'Qué encuentra Roko',
+    f1t:'Sitios falsos',f1d:'Antigüedad, WHOIS, SSL, marca',
+    f2t:'Wallets sancionadas',f2d:'OFAC, Tornado Cash, direcciones incautadas',
+    f3t:'Robo por permisos',f3d:'Permisos peligrosos que permiten vaciar tu wallet',
+    f4t:'Wallets nuevas',f4d:'Balance, antigüedad, patrones',
+    f5t:'Estafas con efectivo',f5d:'Dealers turbios, exchanges falsos, guía paso a paso',
+    f6t:'Monitoreo 24/7',f6d:'Alertas instantáneas si algo cambia',
+    guide_t:'Reglas de seguridad',
+    sc_hi:'Seguro',sc_mid:'Con cuidado',sc_lo:'Peligroso',sc_sanc:'Bloqueado',
+    g_hi:'Divide montos >$1K en 2 envíos. Guarda el hash.',
+    g_mid:'Primero envía el mínimo. Guarda capturas de todo.',
+    g_lo:'Roko no recomienda. ¿Tienes pruebas? → @RokoHelp',
+    g_sanc:'SANCIONADO. NO envíes fondos.',
+    checking:'Roko está escarbando...',
+    tut_t:'Cripto 101',
+    quest_t:'Quest: intentan estafarte',
+    disclaimer:'Roko proporciona información para tomar decisiones, pero no garantiza la seguridad de ninguna transacción. Verificación web es básica – usa @RokoHelpBot para escaneo completo.',
+    report:'🚨 Reportar estafa',
+    web_basic:'¿Quieres más profundidad? @RokoHelpBot escanea el contenido del sitio con AI y verifica perfiles de Telegram.',
+    handle_g1:'Reúnete en un lugar público – café, centro comercial',handle_g2:'Prueba primero con un monto pequeño',
+    ck_low_act:'Actividad muy baja',ck_txs:'transacciones',ck_out_txs:'transacciones salientes',ck_transactions:'transacciones',
+    ck_days_old:'días',ck_new_acct:'Cuenta muy nueva',ck_not_found:'Dirección no encontrada – puede no haberse usado',
+    ck_unavail:'No disponible',ck_not_sanc:'No en listas de sanciones',
+    ck_scam_pattern:'"manager/support" en el nombre – estafa común',ck_impersonation:'¿Se hace pasar por un exchange conocido?',
+    ck_check_bot:'Verifica en el bot',ck_sanctioned:'SANCIONADO / ESTAFA',
+    ck_dns_ok:'Dominio activo',ck_dns_down:'Dominio no encontrado',ck_domain:'Dominio',ck_new:'nuevo',ck_very_new:'muy nuevo',
+    ck_https_ok:'Conexión segura (verificación completa → bot)',ck_https_fail:'No seguro o inaccesible',
+    ck_years:'años',ck_months:'meses',ck_registered_but_down:'registrado, actualmente fuera de línea',
+    ck_phishing:'PHISHING: este dominio parece %s — probablemente es falso',
+    ck_impersonation_d:'Contiene marca "%s" — verifica que sea el sitio oficial',
+  }
+};
+
+function tr(k){return(T[curLang]||T.en)[k]||(T.en[k]||'')}
+function setLang(l,save){
+  curLang=l;rotIdx=0;
+  if(save)try{localStorage.setItem('roko_lang',l)}catch{}
+  document.querySelectorAll('.lang button').forEach(b=>{
+    const on=b.textContent.trim()===l.toUpperCase();
+    b.classList.toggle('on',on);
+    b.setAttribute('aria-pressed',on?'true':'false');
+  });
+  document.documentElement.lang=l;
+  const t=T[l]||{};
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(t[k])el.innerHTML=t[k]});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh;if(t[k])el.placeholder=t[k]});
+  // Re-lock rot-word width after title rebuild
+  setTimeout(function(){var rw=document.getElementById('rotWord');if(rw){rw.style.width='auto';rw.offsetHeight;rw.style.width=rw.offsetWidth+'px'}},10);
+  // Copyright
+  var cp=document.getElementById('homeCopy');
+  if(cp&&t.copy)cp.innerHTML=t.copy+' © '+new Date().getFullYear();
+}
+// Language: saved > browser languages > default EN
+(function(){
+  const saved=function(){try{return localStorage.getItem('roko_lang')}catch{return null}}();
+  if(saved&&T[saved]){setLang(saved);return}
+  const langs=navigator.languages||[navigator.language||'en'];
+  for(const l of langs){const c=l.slice(0,2);if(T[c]){setLang(c);return}}
+})();
+
+// ============================================================
+// ROTATING HERO WORD
+// ============================================================
+const ROT_WORDS={en:['exchanger','contact','wallet','dealer','service'],ru:['обменник','контакт','кошелёк','продавец','сервис'],es:['exchanger','contacto','wallet','dealer','servicio']};
+var rotIdx=0;
+// Init: lock width so transitions work from the start
+setTimeout(function(){var el=document.getElementById('rotWord');if(el)el.style.width=el.offsetWidth+'px'},50);
+setInterval(function(){
+  var el=document.getElementById('rotWord');
+  if(!el||document.hidden)return;
+  var words=ROT_WORDS[curLang]||ROT_WORDS.en;
+  // 1. Lock current width, fade out
+  el.style.width=el.offsetWidth+'px';
+  el.classList.add('fade-out');
+  setTimeout(function(){
+    // 2. Invisible – swap text, measure new width
+    var oldW=el.offsetWidth;
+    el.style.transition='none';
+    el.style.width='auto';
+    el.textContent=words[(rotIdx=(rotIdx+1)%words.length)];
+    var newW=el.offsetWidth;
+    // 3. Reset to old width instantly
+    el.style.width=oldW+'px';
+    el.offsetHeight; // force reflow
+    // 4. Re-enable transition, animate to new width + fade in
+    el.style.transition='';
+    el.style.width=newW+'px';
+    el.classList.remove('fade-out');
+  },500);
+},4000);
+
+// ============================================================
+// MODALS
+// ============================================================
+let _prevFocus=null;
+function closeModals(){
+  document.querySelectorAll('.modal-overlay').forEach(m=>m.classList.remove('show'));
+  if(_prevFocus){try{_prevFocus.focus()}catch{}_prevFocus=null}
+}
+function openModal(name){
+  closeModals();
+  _prevFocus=document.activeElement;
+  if(name==='guide')renderGuide();
+  if(name==='tutorial')renderTutorial();
+  if(name==='quest')startQuest();
+  if(name==='features')renderFeatures();
+  if(name==='regulations')renderRegulations();
+  if(name==='checklist')renderChecklist();
+  if(name==='onboarding')renderOnboarding();
+  if(name==='about')renderAbout();
+  const overlay=document.getElementById(name+'Modal');
+  overlay.classList.add('show');
+  // Focus first close button inside modal
+  requestAnimationFrame(()=>{const btn=overlay.querySelector('.close-modal,button');if(btn)btn.focus()});
+}
+// Focus trap inside modals
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModals();return}
+  if(e.key!=='Tab')return;
+  const active=document.querySelector('.modal-overlay.show .modal');
+  if(!active)return;
+  const focusable=active.querySelectorAll('button,a[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+  if(!focusable.length)return;
+  const first=focusable[0],last=focusable[focusable.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+});
+// dfn tooltips: convert title → inline span (instant hover on desktop, tap on mobile)
+function initDfnTooltips(root){
+  (root||document).querySelectorAll('dfn[title]').forEach(dfn=>{
+    if(dfn.querySelector('.dfn-tt'))return;
+    const tt=document.createElement('span');tt.className='dfn-tt';tt.textContent=dfn.getAttribute('title');
+    dfn.removeAttribute('title');dfn.insertBefore(tt,dfn.firstChild);
+  });
+}
+initDfnTooltips();
+// Mobile: tap to show bottom toast
+document.addEventListener('click',e=>{
+  const dfn=e.target.closest('dfn');if(!dfn)return;
+  const tt=dfn.querySelector('.dfn-tt');if(!tt)return;
+  if(!matchMedia('(hover:hover)').matches){
+    e.preventDefault();
+    const old=document.querySelector('.dfn-tip');if(old)old.remove();
+    const tip=document.createElement('div');tip.className='dfn-tip';
+    tip.textContent=tt.textContent;
+    tip.style.cssText='position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:rgba(15,19,25,.97);border:1px solid var(--accent-a30);color:rgba(255,255,255,.85);font-size:.82rem;padding:.6rem 1rem;border-radius:12px;max-width:90vw;z-index:9999;text-align:center;backdrop-filter:blur(12px);animation:fadeIn .2s';
+    document.body.appendChild(tip);
+    setTimeout(()=>tip.remove(),4000);
+  }
+});
+// Auto-init tooltips when any modal content changes
+new MutationObserver(()=>initDfnTooltips()).observe(document.body,{childList:true,subtree:true});
+
+// ============================================================
+// SAFETY RULES (guide)
+// ============================================================
+function renderGuide(){
+  const el=document.getElementById('guideContent');
+  const R=curLang==='ru'?{
+    t:'Правила безопасности',
+    sub:'Следуй этим правилам – и любой обмен будет безопасным. Не надо разбираться в крипте – просто запомни эти шаги.',
+    rules:[
+      {icon:'🔍',title:'Всегда проверяй кошелёк',steps:[
+        ['🦝','Прежде чем отправить деньги – вставь адрес кошелька в Roko'],
+        ['📊','Roko покажет: возраст кошелька, сколько операций, баланс, есть ли <dfn title="Чёрные списки адресов, которые ведут правительства. Если кошелёк в списке – твой перевод могут заморозить.">санкции</dfn>'],
+        ['🚩','Плохие знаки: кошелёк создан вчера, 0 операций, в чёрных списках'],
+        ['✅','Хорошие знаки: кошелёк старше года, сотни операций, стабильный баланс'],
+      ]},
+      {icon:'💵',title:'Первая сделка = тестовая',steps:[
+        ['🧪','Первый раз с новым человеком – отправь минимум ($20–50)'],
+        ['⏳','Дождись полной выплаты. Не отправляй больше, пока не получишь первую часть'],
+        ['📈','Всё ок? Увеличивай постепенно. Каждый раз заново проверяй кошелёк'],
+      ]},
+      {icon:'📍',title:'Встречайся только в людных местах',steps:[
+        ['☕','Кафе, фудкорт, коворкинг – там, где камеры и люди'],
+        ['🚫','Никогда не в машине, «офисе» менялы или подъезде'],
+        ['👥','Бери друга. Скинь кому-нибудь свою геолокацию'],
+      ]},
+      {icon:'🕵️',title:'Проверяй менялу как человека',steps:[
+        ['👤','Контакт – только от того, кому лично доверяешь'],
+        ['📱','Проверь профиль в Telegram: когда создан, есть ли фото, в каких группах'],
+        ['🚩','Плохие знаки: новый аккаунт, нет фото, «manager» или «support» в имени'],
+        ['🚩','Давит на скорость, просит отправить первым без <dfn title="Посредник-гарант: он держит деньги, пока обе стороны не подтвердят сделку. Если что-то не так – деньги вернутся.">эскроу</dfn> – уходи'],
+      ]},
+      {icon:'📸',title:'Фиксируй всё',steps:[
+        ['📋','Сохрани <dfn title="Уникальный номер перевода – вроде чека из банка. По нему можно найти любую операцию.">хеш транзакции</dfn> – это твоё доказательство'],
+        ['💬','Скриншоть переписку ДО отправки'],
+        ['🧾','В офисе – проси чек. Нет чека = уходи'],
+      ]},
+      {icon:'⛔',title:'Стоп-сигналы: сразу уходи',steps:[
+        ['🔴','«Переведи сначала, потом разберёмся» – классика мошенников'],
+        ['🔴','«Давай без посредника / без <dfn title="Посредник-гарант: держит деньги, пока обе стороны не подтвердят.">эскроу</dfn>» – хотят украсть'],
+        ['🔴','Просят фото паспорта – <dfn title="Выманивание данных через поддельные сайты или просьбы.">фишинг</dfn>'],
+        ['🔴','Гарантируют 100% безопасность – так не бывает'],
+        ['🔴','Меняют адрес кошелька в последний момент – подмена'],
+      ]},
+    ]
+  }:curLang==='es'?{
+    t:'Reglas de seguridad',
+    sub:'Sigue estas reglas y cualquier intercambio será seguro. No necesitas ser experto – solo sigue los pasos.',
+    rules:[
+      {icon:'🔍',title:'Siempre verifica la wallet',steps:[
+        ['🦝','Antes de enviar dinero – pega la dirección en Roko'],
+        ['📊','Roko muestra: antigüedad, operaciones, balance, <dfn title="Listas negras de direcciones de gobiernos. Si la wallet está en la lista, tu transferencia puede ser congelada.">sanciones</dfn>'],
+        ['🚩','Malas señales: wallet creada ayer, 0 operaciones, en listas negras'],
+        ['✅','Buenas señales: wallet de más de un año, cientos de operaciones'],
+      ]},
+      {icon:'💵',title:'Primera operación = prueba',steps:[
+        ['🧪','Primera vez – envía el mínimo ($20–50)'],
+        ['⏳','Espera el pago completo antes de enviar más'],
+        ['📈','¿Fue bien? Aumenta gradualmente. Verifica cada vez'],
+      ]},
+      {icon:'📍',title:'Solo lugares públicos',steps:[
+        ['☕','Café, centro comercial, coworking – con cámaras y gente'],
+        ['🚫','Nunca en auto, "oficina" del dealer o lugar aislado'],
+        ['👥','Lleva un amigo. Comparte tu ubicación'],
+      ]},
+      {icon:'🕵️',title:'Verifica a la persona',steps:[
+        ['👤','Solo contactos de alguien de confianza'],
+        ['📱','Revisa perfil de Telegram: antigüedad, foto, grupos'],
+        ['🚩','Malas señales: cuenta nueva, sin foto, "manager" en el nombre'],
+        ['🚩','Te presiona, pide enviar primero sin <dfn title="Intermediario garante: retiene el dinero hasta que ambas partes confirmen.">escrow</dfn> – vete'],
+      ]},
+      {icon:'📸',title:'Documenta todo',steps:[
+        ['📋','Guarda el <dfn title="Número único de la operación – como un recibo bancario.">hash</dfn> – es tu prueba'],
+        ['💬','Captura la conversación ANTES de enviar'],
+        ['🧾','En oficina – pide recibo. ¿No hay? Vete'],
+      ]},
+      {icon:'⛔',title:'Señales de STOP',steps:[
+        ['🔴','"Transfiere primero" – estafa clásica'],
+        ['🔴','"Sin intermediario / sin <dfn title="Intermediario garante.">escrow</dfn>" – quieren robar'],
+        ['🔴','Piden foto de ID – <dfn title="Engaño para robar datos personales.">phishing</dfn>'],
+        ['🔴','Garantizan 100% seguridad – no existe'],
+        ['🔴','Cambian wallet en el último momento – sustitución'],
+      ]},
+    ]
+  }:{
+    t:'Safety rules',
+    sub:'Follow these rules and any exchange will be safe. You don\'t need to be a crypto expert – just follow the steps.',
+    rules:[
+      {icon:'🔍',title:'Always check the wallet',steps:[
+        ['🦝','Before sending money – paste the wallet address into Roko'],
+        ['📊','Roko shows: wallet age, number of transactions, balance, <dfn title="Government blacklists of addresses. If a wallet is on the list, your transfer can be frozen.">sanctions</dfn> status'],
+        ['🚩','Bad signs: wallet created yesterday, 0 transactions, on blacklists'],
+        ['✅','Good signs: wallet older than a year, hundreds of transactions, stable balance'],
+      ]},
+      {icon:'💵',title:'First deal = test deal',steps:[
+        ['🧪','First time with a new person – send the minimum ($20–50)'],
+        ['⏳','Wait for full payment. Don\'t send more until you receive the first part'],
+        ['📈','Went well? Increase gradually. Re-check the wallet each time'],
+      ]},
+      {icon:'📍',title:'Meet only in public places',steps:[
+        ['☕','Café, mall food court, coworking – where there are cameras and people'],
+        ['🚫','Never in a car, the dealer\'s "office", or an isolated spot'],
+        ['👥','Bring a friend. Share your live location with someone'],
+      ]},
+      {icon:'🕵️',title:'Check the person',steps:[
+        ['👤','Only use contacts from someone you personally trust'],
+        ['📱','Check their Telegram: when created, has a photo, what groups they\'re in'],
+        ['🚩','Bad signs: new account, no photo, "manager" or "support" in the name'],
+        ['🚩','Pressures you, asks to send first without <dfn title="A trusted middleman that holds the money until both sides confirm the deal.">escrow</dfn> – walk away'],
+      ]},
+      {icon:'📸',title:'Document everything',steps:[
+        ['📋','Save the <dfn title="A unique ID for your transaction – like a bank receipt. You can look up any transfer with it.">transaction hash</dfn> – it\'s your proof'],
+        ['💬','Screenshot the conversation BEFORE sending'],
+        ['🧾','At an exchange office – ask for a receipt. No receipt = leave'],
+      ]},
+      {icon:'⛔',title:'STOP signals: leave immediately',steps:[
+        ['🔴','"Send first, we\'ll sort it out later" – classic scam'],
+        ['🔴','"Let\'s skip the middleman / no <dfn title="A trusted middleman that holds money until both sides confirm.">escrow</dfn>" – they want to steal'],
+        ['🔴','Asks for passport photo – <dfn title="Tricking you into giving up personal data through fake requests.">phishing</dfn>'],
+        ['🔴','Guarantees 100% safety or profit – impossible'],
+        ['🔴','Changes wallet address at the last moment – substitution'],
+      ]},
+    ]
+  };
+
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${R.t}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <p class="tut-p" style="margin-bottom:1.2rem">${R.sub}</p>
+    ${R.rules.map((r,i)=>`<div class="guide-rule${i===0?' open':''}" onclick="toggleRule(this)">
+      <div class="gr-head"><span class="gi">${r.icon}</span><span class="gt">${r.title}</span><span class="chevron">▼</span></div>
+      <div class="gr-body">${r.steps.map(([ic,tx])=>`<div class="gr-step"><span class="si">${ic}</span><span>${tx}</span></div>`).join('')}</div>
+    </div>`).join('')}</div>`;
+}
+function toggleRule(el){
+  const wasOpen=el.classList.contains('open');
+  el.parentElement.querySelectorAll('.guide-rule').forEach(r=>r.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+
+// ============================================================
+// TUTORIAL
+// ============================================================
+function renderTutorial(){
+  const el=document.getElementById('tutorialContent');
+  const R=curLang==='ru'?{
+    t:'Крипта 101',
+    s1t:'Что такое криптовалюта?',
+    s1p:'Цифровые деньги, которые живут в <dfn title="Общедоступная база данных всех переводов. Представь огромную таблицу, которую видят все, но никто не может подделать.">блокчейне</dfn> – открытой базе данных. Никто не может их заблокировать (но и отменить перевод нельзя).',
+    s2t:'Как работает обмен крипты на наличные?',
+    flow:['У тебя крипта','Находишь менялу','Отправляешь на <dfn title="Адрес в блокчейне – как номер счёта в банке, только для крипты.">кошелёк</dfn>','Получаешь наличные'],
+    s3t:'Где могут обмануть?',
+    dangers:[
+      ['🎭','Фейковый сайт','Думаешь, отправляешь на обменник – а это клон. Деньги уходят мошеннику. <strong>Roko проверяет домен, возраст, <dfn title="Замочек в адресной строке. Подделать легко, но свежий SSL + молодой домен = подозрительно.">SSL</dfn>.</strong>'],
+      ['👻','Подставной кошелёк','Меняла даёт свежий кошелёк. Получает деньги – и исчезает. <strong>Roko проверяет возраст кошелька.</strong>'],
+      ['⚡','Вредоносное <dfn title="Когда ты нажимаешь «Одобрить» на сайте – даёшь ему право забирать деньги из кошелька. Мошенники просят безлимитный доступ.">разрешение (approve)</dfn>','Подключаешь кошелёк к сайту и нажимаешь «Одобрить». Сайт забирает все деньги. <strong>Roko проверяет разрешения.</strong>'],
+      ['🚨','Кошелёк в чёрном списке','Отправляешь деньги – а кошелёк в <dfn title="OFAC – орган Минфина США. Ведёт чёрный список кошельков. Если отправишь туда – твой кошелёк тоже могут заморозить.">списке OFAC</dfn>. Теперь ТВОЙ кошелёк тоже помечен. <strong>Roko проверяет чёрные списки.</strong>'],
+      ['💸','Меняла-мошенник','Взял деньги – и пропал. Или подменил купюры. <strong>Roko учит правилам безопасного обмена.</strong>'],
+    ],
+    vs_t:'Надёжный обменник vs скам',
+    vs_good:['Домен старше 2 лет','Есть KYC-верификация','Кошелёк с историей','Не давит и не торопит','Работает через эскроу'],
+    vs_bad:['Домен создан вчера','«Без KYC, без лимитов»','Свежий пустой кошелёк','«Переведи прямо сейчас!»','Отказывается от посредника'],
+    tip:'Roko – енот, который роется в цифровом мусоре блокчейна. Находит следы мошенников – свежие кошельки, чёрные списки, фейковые домены. Просто скинь ему ссылку или адрес.',
+  }:curLang==='es'?{
+    t:'Cripto 101',
+    s1t:'¿Qué es la criptomoneda?',
+    s1p:'Dinero digital en la <dfn title="Base de datos pública de todas las transferencias. Una tabla gigante que todos ven pero nadie puede falsificar.">blockchain</dfn>. Nadie puede bloquearlo (pero tampoco revertir una transferencia).',
+    s2t:'¿Cómo funciona crypto → efectivo?',
+    flow:['Tienes crypto','Encuentras un dealer','Envías a su <dfn title="Dirección en blockchain – como un número de cuenta bancaria.">wallet</dfn>','Recibes efectivo'],
+    s3t:'¿Dónde pueden engañarte?',
+    dangers:[
+      ['🎭','Sitio falso','Crees que envías a un exchange – pero es un clon. <strong>Roko verifica dominio, antigüedad, <dfn title="Candado en la barra de dirección. Fácil de falsificar si el dominio es nuevo.">SSL</dfn>.</strong>'],
+      ['👻','Wallet falsa','Dealer da wallet nueva. Recibe crypto – desaparece. <strong>Roko verifica edad.</strong>'],
+      ['⚡','<dfn title="Cuando haces clic en «Aprobar» – das permiso para tomar tu dinero. Estafadores piden acceso ilimitado.">Approve</dfn> malicioso','Conectas wallet y apruebas. El sitio toma todo. <strong>Roko escanea permisos.</strong>'],
+      ['🚨','Dirección en lista negra','Envías dinero a wallet en <dfn title="OFAC – oficina del Tesoro de EE.UU. Lista negra de wallets vinculadas a crimen.">lista OFAC</dfn>. Tu wallet también queda marcada. <strong>Roko verifica listas.</strong>'],
+      ['💸','Dealer estafador','Toma crypto y desaparece. O cambia los billetes. <strong>Roko enseña seguridad.</strong>'],
+    ],
+    vs_t:'Exchanger legítimo vs estafa',
+    vs_good:['Dominio de más de 2 años','Tiene verificación KYC','Wallet con historial','No te presiona','Usa escrow'],
+    vs_bad:['Dominio creado ayer','«Sin KYC, sin límites»','Wallet nueva y vacía','«¡Transfiere ya!»','Rechaza intermediario'],
+    tip:'Roko es un mapache que escarba en la basura digital de la blockchain. Encuentra rastros de estafadores. Envíale un link o dirección.',
+  }:{
+    t:'Crypto 101',
+    s1t:'What is cryptocurrency?',
+    s1p:'Digital money that lives on the <dfn title="A public database of all transactions. A giant spreadsheet everyone can see but nobody can fake.">blockchain</dfn>. Nobody can block it (but you also can\'t reverse a transfer).',
+    s2t:'How does crypto → cash work?',
+    flow:['You have crypto','Find a dealer','Send to their <dfn title="A blockchain address – like a bank account number, but for crypto.">wallet</dfn>','Get cash'],
+    s3t:'Where can you get scammed?',
+    dangers:[
+      ['🎭','Fake site','You think you\'re sending to an exchange – but it\'s a clone. <strong>Roko checks domain, age, <dfn title="The lock icon in your browser. Easy to fake, but fresh SSL + young domain = suspicious.">SSL</dfn>.</strong>'],
+      ['👻','Fake wallet','Dealer gives a fresh wallet. Gets your money – vanishes. <strong>Roko checks wallet age.</strong>'],
+      ['⚡','Malicious <dfn title="When you click \'Approve\' on a site – you give it permission to take money from your wallet. Scammers ask for unlimited access.">approve</dfn>','You connect your wallet and hit "Approve". The site drains everything. <strong>Roko scans permissions.</strong>'],
+      ['🚨','Blacklisted address','You send money – and the wallet is on an <dfn title="OFAC is the U.S. Treasury office that blacklists wallets linked to crime. Send money there and YOUR wallet gets flagged too.">OFAC</dfn> blacklist. Now YOUR wallet is flagged. <strong>Roko checks blacklists.</strong>'],
+      ['💸','Scam dealer','Takes your money and disappears. Or swaps the bills. <strong>Roko teaches safe exchange rules.</strong>'],
+    ],
+    vs_t:'Legit exchanger vs scam',
+    vs_good:['Domain older than 2 years','Has KYC verification','Wallet with transaction history','Doesn\'t pressure or rush you','Works through escrow'],
+    vs_bad:['Domain created yesterday','«No KYC, no limits»','Fresh empty wallet','«Transfer right now!»','Refuses middleman/escrow'],
+    tip:'Roko is a raccoon that digs through blockchain\'s digital trash. He finds the traces scammers leave behind – fresh wallets, blacklisted addresses, fake domains. Just send him a link or address.',
+  };
+
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${R.t}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <div class="tut-section"><h3>💰 ${R.s1t}</h3><p class="tut-p">${R.s1p}</p></div>
+    <div class="tut-section"><h3>🔄 ${R.s2t}</h3>
+      <div class="tut-flow">${R.flow.map((f,i)=>`${i?'<span class="arrow">→</span>':''}<span class="node">${f}</span>`).join('')}</div>
+    </div>
+    <div class="tut-section"><h3>⚠️ ${R.s3t}</h3>
+      ${R.dangers.map(([ic,title,desc])=>`<div class="tut-warn"><strong>${ic} ${title}</strong><br>${desc}</div>`).join('')}
+    </div>
+    <div class="tut-section"><h3>🆚 ${R.vs_t}</h3>
+      <div class="v-vs">
+        <div class="v-vs-good"><h4>✅</h4><ul>${R.vs_good.map(g=>`<li>${g}</li>`).join('')}</ul></div>
+        <div class="v-vs-bad"><h4>❌</h4><ul>${R.vs_bad.map(b=>`<li>${b}</li>`).join('')}</ul></div>
+      </div>
+    </div>
+    <div class="tut-ok"><strong>🦝 Roko</strong><br>${R.tip}</div></div>`;
+}
+
+// ============================================================
+// FEATURES
+// ============================================================
+function renderFeatures(){
+  const el=document.getElementById('featContent');
+  const title=curLang==='ru'?'Что находит Roko':curLang==='es'?'Qué encuentra Roko':'What Roko digs up';
+  const items=curLang==='ru'?[
+    ['🎭','Фейковые сайты','Возраст домена, WHOIS, <dfn title="Замочек в браузере – сертификат сайта.">SSL</dfn>, совпадение бренда'],
+    ['🚨','Кошельки в чёрных списках','<dfn title="Орган Минфина США, который ведёт чёрный список криптоадресов.">OFAC</dfn>, Tornado Cash, арестованные адреса'],
+    ['⚡','Слив через <dfn title="Разрешение сайту забирать деньги из кошелька. Мошенники просят безлимитный доступ.">approve</dfn>','Опасные разрешения на ETH и TRON'],
+    ['👻','Свежие кошельки','Баланс, возраст, история операций'],
+    ['💸','Мошенники при обмене','Подозрительные менялы, фейковые обменники, правила безопасности'],
+    ['📡','Мониторинг 24/7','Следим и предупреждаем, если что-то изменится'],
+  ]:curLang==='es'?[
+    ['🎭','Sitios falsos','Antigüedad, WHOIS, <dfn title="Candado del sitio – certificado digital.">SSL</dfn>, marca'],
+    ['🚨','Wallets en listas negras','<dfn title="Oficina del Tesoro de EE.UU. que mantiene lista negra de cripto-direcciones.">OFAC</dfn>, Tornado Cash, direcciones incautadas'],
+    ['⚡','Drain por <dfn title="Permiso que das a un sitio para tomar tu dinero.">approvals</dfn>','Permisos peligrosos en ETH y TRON'],
+    ['👻','Wallets nuevas','Balance, antigüedad, historial'],
+    ['💸','Estafas con efectivo','Dealers sospechosos, exchanges falsos, guía de seguridad'],
+    ['📡','Monitoreo 24/7','Alertas instantáneas si algo cambia'],
+  ]:[
+    ['🎭','Fake sites','Domain age, WHOIS, <dfn title="The lock icon in your browser – site certificate.">SSL</dfn>, brand mismatches'],
+    ['🚨','Blacklisted wallets','<dfn title="U.S. Treasury office that blacklists crypto addresses linked to crime.">OFAC</dfn>, Tornado Cash, seized addresses'],
+    ['⚡','Token drain','Dangerous <dfn title="Permission you give a website to take money from your wallet.">approvals</dfn> on ETH and TRON'],
+    ['👻','Fresh wallets','Balance, age, transaction history'],
+    ['💸','Exchange scams','Suspicious dealers, fake exchanges, safety rules'],
+    ['📡','24/7 monitoring','Watchlist with instant alerts if anything changes'],
+  ];
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${title}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <div class="info-grid">${items.map(([ic,t,d])=>`<div class="info-item"><div class="ii">${ic}</div><h3>${t}</h3><p>${d}</p></div>`).join('')}</div></div>`;
+}
+
+// ============================================================
+// REGULATIONS
+// ============================================================
+function renderRegulations(){
+  const el=document.getElementById('regContent');
+  const R=curLang==='ru'?{
+    t:'Правила и законы',
+    intro:'Крипта – не Дикий Запад. Во многих странах есть чёткие правила. Вот что нужно знать:',
+    kyc_t:'🪪 KYC – «Знай своего клиента»',
+    kyc_d:'Когда биржа просит паспорт или селфи – это <dfn title="Know Your Customer – обязательная проверка личности клиента финансовой организацией.">KYC</dfn>. Это требование закона, а не прихоть. Без KYC нельзя вывести крупные суммы на большинстве бирж.',
+    kyc_how:'Как это работает: загружаешь документ → биржа проверяет → открывает полный доступ. Данные хранятся зашифрованно. <strong>Если обменник НЕ просит KYC при крупных суммах – это повод насторожиться.</strong>',
+    aml_t:'🔍 AML – борьба с отмыванием',
+    aml_d:'<dfn title="Anti-Money Laundering – правила, которые мешают преступникам отмывать деньги через крипту.">AML</dfn> – это правила, чтобы ворованные и грязные деньги нельзя было «отмыть» через крипту. Биржи обязаны отслеживать подозрительные переводы. Проверить кошелёк на «чистоту» можно через биржу, а также через специализированные сервисы – например, <a href="https://t.me/AMLBot" style="color:var(--accent)">@AMLBot</a>.',
+    aml_warn:'<strong>Важно:</strong> если обменник говорит «подключи кошелёк для AML-проверки на нашем сайте» – это СКАМ. Настоящая AML-проверка делается биржей или специализированным сервисом (например, <a href="https://t.me/AMLBot" style="color:var(--accent)">AML Bot</a>), а НЕ через подключение кошелька к неизвестному сайту.',
+    jur_t:'🌍 Правила по странам',
+    jur:[
+      ['🇺🇸 США','SEC и FinCEN. Биржи должны иметь лицензию MSB. Строгий KYC. Санкционные адреса (<dfn title="Office of Foreign Assets Control – чёрный список Минфина США.">OFAC</dfn>) заблокированы.'],
+      ['🇪🇸 Испания','IRPF 19-28% на крипто-прибыль. Modelo 721 – обязательная декларация крипто-активов за рубежом. Наличный расчёт >1000€ между резидентами запрещён. Банки могут запросить происхождение крипто-средств.'],
+      ['🇵🇹 Португалия','28% налог на крипто, проданную до 1 года. 0% если держишь >1 года. Банки (Millennium BCP, CGD) часто запрашивают proof of origin при крипто-депозитах. NHR-режим для экспатов может влиять.'],
+      ['🇩🇪 Германия','0% налог если держишь >1 года (Spekulationsfrist). До 1 года – стандартная ставка до 45%. Порог: прибыль <600€/год не облагается. Одна из самых выгодных стран для долгосрочных HODLеров.'],
+      ['🇬🇪 Грузия','Крипта не регулируется напрямую. Для физлиц нет специального налога на крипто. Активный P2P-рынок в Тбилиси. Нет регулятора крипто-рынка.'],
+      ['🇷🇺 Россия','Крипта – «цифровая валюта», не платёжное средство. Налог 13-15% на прибыль. Майнинг легален с 2024. P2P-обменники не регулируются – <strong>поэтому Roko особенно важен</strong>.'],
+      ['🇦🇪 ОАЭ / Дубай','VARA – регулятор. 0% подоходный налог для физлиц. Дубай – криптохаб с правилами и лицензиями. Фризоны имеют отдельные правила.'],
+      ['🇪🇺 ЕС (MiCA)','Регламент MiCA (2024). Все криптосервисы регистрируются. KYC обязателен. Переводы >1000€ проверяются. CARF (2026): биржи будут автоматически отчитываться в налоговые.'],
+      ['🇹🇷 Турция','Запрет на оплату криптой. Биржи под надзором. KYC обязателен.'],
+    ],
+    travel_t:'📨 Travel Rule & CARF',
+    travel_d:'<strong>Travel Rule:</strong> при переводах >$1000 биржи передают данные отправителя и получателя.<br><strong>CARF (2026):</strong> биржи в 50+ странах будут автоматически сообщать балансы и операции в налоговые органы. Это как банковский CRS, но для крипты. Окно для добровольного декларирования закрывается.',
+    p2p_t:'⚠️ P2P и закон',
+    p2p_d:'В большинстве стран разовые P2P-обмены легальны. Но регулярная торговля крипто за фиат может считаться нелицензированной финансовой деятельностью (MSB в США, платёжные услуги в ЕС). Пороги разные. В ЕС по MiCA любые крипто-обменные услуги без регистрации запрещены.',
+    bank_t:'🏦 Банки и крипто',
+    bank_d:'Многие европейские банки запрашивают proof of origin (выписки с биржи, хеши транзакций, налоговые декларации) при депозитах от крипто-продаж. Некоторые банки отказывают крипто-клиентам. Храни полную историю операций.',
+    tip_t:'💡 Что это значит для тебя',
+    tips:['Легальная биржа всегда просит KYC – это нормально','Если обменник говорит «без KYC, без лимитов» – это риск','Грязные монеты могут заморозить даже в твоём кошельке','Сохраняй cost basis (цена покупки), даты, хеши – пригодятся для налоговой','С 2026 года биржи отчитываются в налоговые автоматически (CARF)','Roko проверяет санкционные списки автоматически'],
+  }:curLang==='es'?{
+    t:'Reglas y leyes',
+    intro:'Cripto no es el Salvaje Oeste. Muchos países tienen reglas claras. Esto es lo que necesitas saber:',
+    kyc_t:'🪪 KYC – «Conoce a tu cliente»',
+    kyc_d:'Cuando un exchange pide tu pasaporte o selfie – eso es <dfn title="Know Your Customer – verificación obligatoria de identidad.">KYC</dfn>. Es un requisito legal. Sin KYC no puedes retirar grandes cantidades en la mayoría de exchanges.',
+    kyc_how:'Cómo funciona: subes un documento → el exchange verifica → acceso completo. <strong>Si un exchanger NO pide KYC para montos grandes – es sospechoso.</strong>',
+    aml_t:'🔍 AML – contra el lavado',
+    aml_d:'<dfn title="Anti-Money Laundering – reglas que impiden lavar dinero sucio a través de cripto.">AML</dfn> son reglas para que el dinero robado no se pueda «lavar» a través de cripto. Los exchanges deben rastrear transferencias sospechosas. También puedes verificar una wallet con servicios especializados como <a href="https://t.me/AMLBot" style="color:var(--accent)">@AMLBot</a>.',
+    aml_warn:'<strong>Importante:</strong> si un exchanger dice «conecta tu wallet para verificación AML en nuestro sitio» – es ESTAFA. La verificación AML real la hace un exchange o un servicio especializado (como <a href="https://t.me/AMLBot" style="color:var(--accent)">AML Bot</a>), NO conectando tu wallet a un sitio desconocido.',
+    jur_t:'🌍 Reglas por país',
+    jur:[
+      ['🇺🇸 EE.UU.','SEC y FinCEN. Exchanges necesitan licencia MSB. KYC estricto. Cripto tributa como propiedad: ganancias a corto plazo a tasa de renta, largo plazo 0-20%. Direcciones OFAC bloqueadas.'],
+      ['🇪🇸 España','IRPF 19-28% sobre ganancias cripto. Modelo 721 obligatorio para cripto en el extranjero. Pagos en efectivo >1.000€ entre residentes prohibidos. Los bancos pueden pedir prueba de origen de fondos cripto.'],
+      ['🇵🇹 Portugal','28% sobre cripto vendida en menos de 1 año. 0% si mantienes >1 año. Los bancos (Millennium BCP, CGD) suelen pedir proof of origin en depósitos de cripto. El régimen NHR para expats puede influir.'],
+      ['🇩🇪 Alemania','0% impuesto si mantienes >1 año (Spekulationsfrist). Menos de 1 año: tasa estándar hasta 45%. Exención: ganancias <600€/año. Uno de los mejores países para holders a largo plazo.'],
+      ['🇬🇪 Georgia','Cripto no está regulada específicamente. Sin impuesto especial para personas físicas. Mercado P2P activo en Tiflis. Sin regulador cripto específico.'],
+      ['🇦🇪 EAU / Dubái','VARA es el regulador. 0% impuesto sobre la renta personal. Dubái es un hub cripto con requisitos de licencia. Las zonas francas tienen reglas separadas.'],
+      ['🇪🇺 UE (MiCA)','Regulación MiCA (2024). Todos los servicios cripto deben registrarse. KYC obligatorio. Transferencias >1.000€ verificadas. CARF (2026): exchanges reportarán automáticamente a las autoridades fiscales.'],
+      ['🇬🇧 Reino Unido','FCA regula. CGT 10-20% sobre ganancias cripto (£3.000 de exención anual). Publicidad cripto restringida. KYC obligatorio.'],
+      ['🇹🇷 Turquía','Prohibido pagar con cripto. Exchanges bajo supervisión. KYC obligatorio.'],
+    ],
+    travel_t:'📨 Travel Rule & CARF',
+    travel_d:'<strong>Travel Rule:</strong> para transferencias >$1.000, los exchanges comparten datos del remitente y destinatario.<br><strong>CARF (2026):</strong> exchanges en más de 50 países reportarán automáticamente tus balances y operaciones a las autoridades fiscales. Similar al CRS bancario, pero para cripto. La ventana para declaración voluntaria se está cerrando.',
+    p2p_t:'⚠️ P2P y la ley',
+    p2p_d:'Los intercambios P2P ocasionales para uso personal son legales en la mayoría de países. Pero operar regularmente con cripto por fiat puede considerarse actividad financiera sin licencia (MSB en EE.UU., servicios de pago en la UE). Los umbrales varían. Bajo MiCA en la UE, ofrecer servicios de intercambio cripto sin registro es ilegal independientemente del volumen.',
+    bank_t:'🏦 Bancos y cripto',
+    bank_d:'Muchos bancos europeos solicitan prueba de origen (extractos de exchange, hashes de transacciones, declaraciones fiscales) al depositar dinero de ventas cripto. Algunos bancos rechazan clientes relacionados con cripto. Guarda un historial completo de operaciones.',
+    tip_t:'💡 Qué significa para ti',
+    tips:['Un exchange legal siempre pide KYC – es normal','Si dicen «sin KYC, sin límites» – es riesgo','Monedas sucias pueden ser congeladas en tu wallet','Guarda cost basis (precio de compra), fechas y hashes – los necesitarás para impuestos','Desde 2026, exchanges reportan automáticamente a las autoridades fiscales (CARF)','Roko verifica listas de sanciones automáticamente'],
+  }:{
+    t:'Rules & laws',
+    intro:'Crypto is not the Wild West. Many countries have clear rules. Here\'s what you need to know:',
+    kyc_t:'🪪 KYC – Know Your Customer',
+    kyc_d:'When an exchange asks for your passport or selfie – that\'s <dfn title="Know Your Customer – mandatory identity verification by financial services.">KYC</dfn>. It\'s a legal requirement, not a whim. Without KYC you can\'t withdraw large amounts on most exchanges.',
+    kyc_how:'How it works: upload a document → exchange verifies → full access. Data is encrypted. <strong>If an exchanger does NOT ask for KYC on large amounts – that\'s a red flag.</strong>',
+    aml_t:'🔍 AML – Anti-Money Laundering',
+    aml_d:'<dfn title="Anti-Money Laundering – rules that prevent criminals from laundering dirty money through crypto.">AML</dfn> rules exist so stolen and dirty money can\'t be «laundered» through crypto. Exchanges must track suspicious transfers. You can also check a wallet\'s AML status through specialized services like <a href="https://t.me/AMLBot" style="color:var(--accent)">@AMLBot</a>.',
+    aml_warn:'<strong>Important:</strong> if an exchanger says «connect your wallet for AML check on our site» – that\'s a SCAM. Real AML checks are done by exchanges or specialized services (like <a href="https://t.me/AMLBot" style="color:var(--accent)">AML Bot</a>), NOT by connecting your wallet to a random site.',
+    jur_t:'🌍 Rules by country',
+    jur:[
+      ['🇺🇸 USA','SEC & FinCEN. Exchanges need MSB license. Crypto taxed as property: short-term gains at income rate, long-term at 0-20%. OFAC sanctioned addresses blocked.'],
+      ['🇪🇸 Spain','IRPF 19-28% on crypto gains. Modelo 721 mandatory for foreign crypto assets. Cash transactions >€1,000 between residents banned. Banks may request proof of origin.'],
+      ['🇵🇹 Portugal','28% CGT on crypto sold within 1 year. 0% if held >1 year. Banks often hostile to crypto deposits – keep proof of origin ready.'],
+      ['🇩🇪 Germany','0% tax if held >1 year (Spekulationsfrist). Under 1 year: standard rate up to 45%. Exemption: gains <€600/year. One of the best countries for long-term holders.'],
+      ['🇬🇪 Georgia','Crypto not specifically regulated. No special tax for individuals. Active P2P market in Tbilisi. No crypto-specific regulator.'],
+      ['🇦🇪 UAE / Dubai','VARA regulator. 0% personal income tax. Dubai is a crypto hub with licensing requirements. Free zones have separate rules.'],
+      ['🇪🇺 EU (MiCA)','MiCA regulation (2024). All crypto services must register. KYC mandatory. Transfers >€1000 screened. CARF (2026): exchanges will auto-report to tax authorities.'],
+      ['🇬🇧 UK','FCA regulated. CGT 10-20% on crypto gains (£3,000 annual allowance). Crypto ads restricted. KYC mandatory.'],
+    ],
+    travel_t:'📨 Travel Rule & CARF',
+    travel_d:'<strong>Travel Rule:</strong> for transfers >$1000, exchanges share sender/recipient data.<br><strong>CARF (2026):</strong> exchanges in 50+ countries will automatically report your balances and transactions to tax authorities. Similar to how banks report under CRS. The window for voluntary disclosure is closing.',
+    p2p_t:'⚠️ P2P & the law',
+    p2p_d:'Occasional P2P trades for personal use are legal in most countries. But regular P2P trading for profit may classify you as an unlicensed money services business (MSB in the US, payment services in the EU). Thresholds vary. Under EU MiCA, providing crypto exchange services without registration is illegal regardless of volume.',
+    bank_t:'🏦 Banks & crypto',
+    bank_d:'Many European banks request proof of origin (exchange statements, transaction hashes, tax declarations) when you deposit money from crypto sales. Some banks refuse crypto-related customers entirely. Keep complete transaction records.',
+    tip_t:'💡 What this means for you',
+    tips:['A legit exchange always asks for KYC – that\'s normal','If they say «no KYC, no limits» – that\'s a risk','Dirty coins can be frozen even in your own wallet','Record cost basis (purchase price), dates, and hashes for tax reporting','From 2026, exchanges auto-report to tax authorities (CARF)','Roko checks sanctions lists automatically'],
+  };
+  const kycSteps=curLang==='ru'?['📄 Загружаешь документ','🔍 Биржа проверяет','✅ Полный доступ']:curLang==='es'?['📄 Subes documento','🔍 Exchange verifica','✅ Acceso completo']:['📄 Upload document','🔍 Exchange verifies','✅ Full access'];
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${R.t}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <p class="tut-p" style="margin-bottom:1.2rem">${R.intro}</p>
+    <div class="tut-section"><h3>${R.kyc_t}</h3><p class="tut-p">${R.kyc_d}</p>
+      <div class="v-scheme"><div class="v-scheme-title">KYC</div><div class="v-steps">${kycSteps.map((s,i)=>`${i?'<div class="v-arrow">↓</div>':''}<div class="v-step"><div class="v-num">${i+1}</div><div class="v-txt">${s}</div></div>`).join('')}</div></div>
+      <div class="tut-ok"><strong>🦝 Roko:</strong> ${R.kyc_how}</div>
+    </div>
+    <div class="tut-section"><h3>${R.aml_t}</h3><p class="tut-p">${R.aml_d}</p><div class="tut-warn"><strong>⚠️</strong> ${R.aml_warn}</div></div>
+    <div class="tut-section"><h3>${R.travel_t}</h3><p class="tut-p">${R.travel_d}</p></div>
+    ${R.p2p_t?`<div class="tut-section"><h3>${R.p2p_t}</h3><p class="tut-p">${R.p2p_d}</p></div>`:''}
+    ${R.bank_t?`<div class="tut-section"><h3>${R.bank_t}</h3><p class="tut-p">${R.bank_d}</p></div>`:''}
+    <div class="tut-section"><h3>${R.jur_t}</h3><div class="info-grid">${R.jur.map(([flag,desc])=>`<div class="info-item"><h3>${flag}</h3><p>${desc}</p></div>`).join('')}</div></div>
+    <div class="tut-section"><h3>${R.tip_t}</h3><ul class="r-guide" style="border:none;padding:0;background:none">${R.tips.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.8rem;text-align:center">⚠️ ${curLang==='ru'?'Информация может быть устаревшей. Консультируйтесь с местным налоговым адвокатом.':curLang==='es'?'La información puede estar desactualizada. Consulta con un asesor fiscal local.':'Information may be outdated. Always consult a local tax advisor.'}</p></div></div>`;
+}
+
+// ============================================================
+// P2P OFFLINE EXCHANGE CHECKLIST
+// ============================================================
+function renderChecklist(){
+  const el=document.getElementById('checklistContent');
+  const R=curLang==='ru'?{
+    t:'Чеклист: обмен на наличные',
+    sub:'Распечатай или скриншоть. Следуй по шагам – и любой обмен при встрече будет безопаснее.',
+    before:'📋 За день до встречи',bSteps:['Проверь кошелёк менялы в Roko (вставь адрес выше)','Проверь его Telegram-профиль в боте @RokoHelpBot','Скриншоть всю переписку','Договорись о встрече в кафе, ТЦ или коворкинге с камерами','Скинь другу: куда идёшь, когда, с кем. Включи геолокацию','Первая сделка – минимум ($20-50). Не всю сумму сразу!'],
+    during:'📍 На месте',dSteps:['Пересчитай наличные при нём. Проверь купюры (УФ-лампа в телефоне)','Отправь крипту только когда видишь наличные','Подожди подтверждение в блокчейне (TRON: 1-3 мин, BTC: 10-30 мин)','Не уходи, пока транзакция не подтверждена','Сохрани хеш транзакции – это твой чек'],
+    after:'✅ После',aSteps:['Проверь кошелёк менялы снова – не попал ли в чёрные списки?','Если всё ок – можно увеличить сумму в следующий раз','Если скам: скриншоты + хеш + адрес → @roko_help'],
+    stop:'🚫 Стоп-сигналы',stopList:['«Давай встретимся в машине / у меня дома»','«Отправь крипту заранее, я подготовлю наличные»','«Давай без посредника, я надёжный»','Меняет кошелёк в последний момент','Торопит и давит: «сейчас или никогда»'],
+  }:curLang==='es'?{
+    t:'Checklist: intercambio en persona',
+    sub:'Imprime o captura. Sigue los pasos y cualquier intercambio será más seguro.',
+    before:'📋 Un día antes',bSteps:['Verifica la wallet en Roko (pega la dirección arriba)','Verifica su perfil de Telegram en @RokoHelpBot','Captura toda la conversación','Acuerda reunirte en café, centro comercial o coworking con cámaras','Comparte con un amigo: dónde vas, cuándo, con quién. Activa ubicación','Primera operación – mínimo ($20-50). ¡No todo de una vez!'],
+    during:'📍 En el lugar',dSteps:['Cuenta el efectivo frente a él. Verifica billetes','Envía crypto solo cuando veas el efectivo','Espera confirmación en blockchain (TRON: 1-3 min, BTC: 10-30 min)','No te vayas hasta que la transacción esté confirmada','Guarda el hash – es tu recibo'],
+    after:'✅ Después',aSteps:['Verifica la wallet de nuevo – ¿está en listas negras?','Si todo bien – puedes aumentar el monto la próxima vez','Si es estafa: capturas + hash + dirección → @roko_help'],
+    stop:'🚫 Señales de STOP',stopList:['"Nos vemos en mi auto / en mi casa"','"Envía crypto antes, preparo el efectivo"','"Sin intermediario, soy confiable"','Cambia wallet en el último momento','Te presiona: "ahora o nunca"'],
+  }:{
+    t:'Checklist: in-person exchange',
+    sub:'Print or screenshot this. Follow the steps – and any in-person exchange will be safer.',
+    before:'📋 Day before',bSteps:['Check the dealer\'s wallet on Roko (paste address above)','Check their Telegram profile via @RokoHelpBot','Screenshot all conversation','Agree to meet in a café, mall, or coworking with cameras','Tell a friend: where, when, who. Share live location','First deal – minimum ($20-50). Not the full amount!'],
+    during:'📍 At the meeting',dSteps:['Count the cash in front of them. Check bills (UV light app)','Send crypto only when you see the cash','Wait for blockchain confirmation (TRON: 1-3 min, BTC: 10-30 min)','Don\'t leave until the transaction is confirmed','Save the transaction hash – it\'s your receipt'],
+    after:'✅ After',aSteps:['Check the dealer\'s wallet again – is it blacklisted now?','If all good – you can increase the amount next time','If scam: screenshots + hash + address → @roko_help'],
+    stop:'🚫 STOP signals',stopList:['"Let\'s meet in my car / at my place"','"Send crypto first, I\'ll prepare the cash"','"No middleman needed, trust me"','Changes wallet at the last moment','Pressures you: "now or never"'],
+  };
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${R.t}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <p class="tut-p" style="margin-bottom:1.2rem">${R.sub}</p>
+    <div class="v-card"><div class="v-card-head"><h4>${R.before}</h4></div>${R.bSteps.map((s,i)=>`<div class="gr-step"><span class="si" style="color:var(--accent)">${i+1}</span><span style="font-size:.9rem;color:rgba(255,255,255,.65)">${s}</span></div>`).join('')}</div>
+    <div class="v-card"><div class="v-card-head"><h4>${R.during}</h4></div>${R.dSteps.map((s,i)=>`<div class="gr-step"><span class="si" style="color:var(--accent)">${i+1}</span><span style="font-size:.9rem;color:rgba(255,255,255,.65)">${s}</span></div>`).join('')}</div>
+    <div class="v-card"><div class="v-card-head"><h4>${R.after}</h4></div>${R.aSteps.map((s,i)=>`<div class="gr-step"><span class="si" style="color:#34d399">${i+1}</span><span style="font-size:.9rem;color:rgba(255,255,255,.65)">${s}</span></div>`).join('')}</div>
+    <div class="v-card" style="border-color:rgba(248,113,113,.2)"><div class="v-card-head"><h4 style="color:#f87171">${R.stop}</h4></div>${R.stopList.map(s=>`<div class="gr-step"><span class="si">🔴</span><span style="font-size:.9rem;color:rgba(255,255,255,.55)">${s}</span></div>`).join('')}</div></div>`;
+}
+
+// ============================================================
+// ONBOARDING: "I just got paid in crypto"
+// ============================================================
+function renderOnboarding(){
+  const el=document.getElementById('onboardingContent');
+  const R=curLang==='ru'?{
+    t:'Мне заплатили в крипте – что делать?',
+    s1:'💰 Что ты получил?',s1p:'<strong>USDT</strong> (Tether) – это стейблкоин, цифровой доллар. 1 USDT ≈ $1 всегда. Он не прыгает в цене как биткоин. Если тебе заплатили в USDT – это как получить доллары, только цифровые.',
+    s2:'⛓ Что такое сеть (TRON, Ethereum)?',s2p:'Один и тот же USDT существует на разных «дорогах»: <strong>TRON (TRC-20)</strong> – быстрая и дешёвая, <strong>Ethereum (ERC-20)</strong> – медленнее и дороже. <div class="tut-warn" style="margin-top:.5rem"><strong>⚠️ ВАЖНО:</strong> Отправлять USDT можно только в ту же сеть. TRC-20 → TRC-20, ERC-20 → ERC-20. Перепутаешь – потеряешь деньги навсегда.</div>',
+    s3:'📱 Где хранить?',s3p:'Установи кошелёк-приложение на телефон:<br>• <strong>Trust Wallet</strong> (удобный, поддерживает всё)<br>• <strong>TronLink</strong> (специально для TRON)<br><br>При создании кошелька тебе дадут <strong>12 слов (seed-фразу)</strong>. Это ключ от сейфа.',
+    seed:'🔐 SEED-ФРАЗУ НИКОМУ. НИКОГДА.',seedp:'Ни «службе поддержки», ни «верификатору», ни другу. Кто знает 12 слов – владеет деньгами. Запиши на бумаге. Не в заметках телефона, не в облаке.',
+    s4:'⛽ Комиссия сети (gas)',s4p:'Чтобы отправить USDT на TRON, нужно немного TRX на комиссию (5-15 TRX ≈ $1-3). Без TRX перевод не пройдёт. Попроси отправителя скинуть немного TRX, или купи на бирже.',
+    s5:'💱 Как обменять на местную валюту?',s5p:'<strong>Безопаснее всего:</strong> Биржа с KYC (Binance, Bybit) → вывод на банк.<br><strong>Быстрее:</strong> P2P-платформа с эскроу (Binance P2P).<br><strong>Рискованнее:</strong> Личный обмен с менялой → используй чеклист Roko.',
+    s6:'📊 Как проверить баланс?',s6p:'Не нужно подключать кошелёк. Просто вставь свой адрес в Roko выше – увидишь баланс, USDT, возраст кошелька.',
+  }:curLang==='es'?{
+    t:'Me pagaron en crypto – ¿qué hago?',
+    s1:'💰 ¿Qué recibiste?',s1p:'<strong>USDT</strong> (Tether) es una stablecoin, un dólar digital. 1 USDT ≈ $1 siempre. No fluctúa como Bitcoin.',
+    s2:'⛓ ¿Qué es una red (TRON, Ethereum)?',s2p:'El mismo USDT existe en diferentes «caminos»: <strong>TRON (TRC-20)</strong> – rápida y barata, <strong>Ethereum (ERC-20)</strong> – más lenta y cara. <div class="tut-warn" style="margin-top:.5rem"><strong>⚠️ IMPORTANTE:</strong> Solo puedes enviar USDT a la misma red. TRC-20 → TRC-20. Si te equivocas, pierdes el dinero.</div>',
+    s3:'📱 ¿Dónde guardarlo?',s3p:'Instala una wallet en tu teléfono:<br>• <strong>Trust Wallet</strong> (fácil, soporta todo)<br>• <strong>TronLink</strong> (para TRON)<br><br>Al crear la wallet te darán <strong>12 palabras (seed phrase)</strong>. Es la llave de tu caja fuerte.',
+    seed:'🔐 NUNCA COMPARTAS TU SEED PHRASE.',seedp:'Ni a "soporte técnico", ni a un "verificador", ni a un amigo. Quien tiene las 12 palabras, tiene el dinero. Escríbelas en papel. No en el teléfono, no en la nube.',
+    s4:'⛽ Comisión de red (gas)',s4p:'Para enviar USDT en TRON necesitas un poco de TRX para la comisión (5-15 TRX ≈ $1-3). Sin TRX no se puede enviar.',
+    s5:'💱 ¿Cómo cambiar a moneda local?',s5p:'<strong>Más seguro:</strong> Exchange con KYC (Binance, Bybit) → retiro a banco.<br><strong>Más rápido:</strong> P2P con escrow (Binance P2P).<br><strong>Más riesgoso:</strong> Intercambio en persona → usa el checklist de Roko.',
+    s6:'📊 ¿Cómo ver mi balance?',s6p:'No necesitas conectar wallet. Pega tu dirección en Roko arriba – verás balance, USDT, antigüedad.',
+  }:{
+    t:'I just got paid in crypto – now what?',
+    s1:'💰 What did you receive?',s1p:'<strong>USDT</strong> (Tether) is a stablecoin – a digital dollar. 1 USDT ≈ $1 always. It doesn\'t jump in price like Bitcoin. If you were paid in USDT, think of it as receiving digital dollars.',
+    s2:'⛓ What is a network (TRON, Ethereum)?',s2p:'The same USDT exists on different "roads": <strong>TRON (TRC-20)</strong> – fast and cheap, <strong>Ethereum (ERC-20)</strong> – slower and pricier. <div class="tut-warn" style="margin-top:.5rem"><strong>⚠️ CRITICAL:</strong> You can only send USDT to the same network. TRC-20 → TRC-20, ERC-20 → ERC-20. Mix them up and the money is gone forever.</div>',
+    s3:'📱 Where to store it?',s3p:'Install a wallet app on your phone:<br>• <strong>Trust Wallet</strong> (easy, supports everything)<br>• <strong>TronLink</strong> (specifically for TRON)<br><br>When you create the wallet, you\'ll get <strong>12 words (seed phrase)</strong>. This is the key to your safe.',
+    seed:'🔐 NEVER SHARE YOUR SEED PHRASE.',seedp:'Not with "support", not with a "verifier", not with a friend. Whoever has the 12 words owns the money. Write them on paper. Not in phone notes, not in the cloud.',
+    s4:'⛽ Network fee (gas)',s4p:'To send USDT on TRON, you need a small amount of TRX for the fee (5-15 TRX ≈ $1-3). Without TRX, the transfer won\'t go through. Ask the sender to include some TRX, or buy it on an exchange.',
+    s5:'💱 How to convert to local currency?',s5p:'<strong>Safest:</strong> Exchange with KYC (Binance, Bybit) → withdraw to bank.<br><strong>Fastest:</strong> P2P platform with escrow (Binance P2P).<br><strong>Riskiest:</strong> In-person exchange → use Roko\'s checklist.',
+    s6:'📊 How to check your balance?',s6p:'No need to connect your wallet. Just paste your address into Roko above – you\'ll see balance, USDT, account age.',
+  };
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${R.t}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <div class="tut-section"><h3>${R.s1}</h3><p class="tut-p">${R.s1p}</p></div>
+    <div class="tut-section"><h3>${R.s2}</h3><p class="tut-p">${R.s2p}</p></div>
+    <div class="tut-section"><h3>${R.s3}</h3><p class="tut-p">${R.s3p}</p>
+      <div class="tut-warn" style="background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.25)"><strong>${R.seed}</strong><br>${R.seedp}</div></div>
+    <div class="tut-section"><h3>${R.s4}</h3><p class="tut-p">${R.s4p}</p></div>
+    <div class="tut-section"><h3>${R.s5}</h3><p class="tut-p">${R.s5p}</p></div>
+    <div class="tut-section"><h3>${R.s6}</h3><p class="tut-p">${R.s6p}</p></div></div>`;
+}
+
+// ============================================================
+// ABOUT
+// ============================================================
+function renderAbout(){
+  const el=document.getElementById('aboutContent');
+  const R=curLang==='ru'?{
+    t:'О проекте',
+    p1:'Роман посоветовал Питеру обменник по сохранённой ссылке — думал, что знакомый уже пользовался им. Обменник выглядел нормально: сначала AML-проверка, потом обмен — всё логично. Но «AML-проверка» оказалась фишинговым сайтом. Питер подключил кошелёк — и потерял деньги.',
+    p2:'Мы оба в крипте и IT не первый год. Питер летел на крипто-конференцию и торопился. Одна ссылка, одна минута, одно «подключи кошелёк для проверки» — и всё.',
+    p3:'Мы сделали Roko, чтобы это можно было проверить за 3 секунды. Бесплатно. С открытым кодом. Для друзей — и для тебя.',
+  }:curLang==='es'?{
+    t:'Sobre Roko',
+    p1:'Roman le recomendó a Peter un exchanger por un enlace guardado — pensó que un amigo ya lo había usado. Se veía legítimo: primero verificación AML, luego el cambio. Pero la "verificación AML" era phishing. Peter conectó su wallet y perdió su dinero.',
+    p2:'Los dos llevamos años en crypto e IT. Peter tenía prisa — volaba a una conferencia al día siguiente. Un enlace, un minuto, un "conecta tu wallet para verificar" — y eso fue todo.',
+    p3:'Creamos Roko para que puedas verificar en 3 segundos. Gratis. Código abierto. Para amigos — y para ti.',
+  }:{
+    t:'About Roko',
+    p1:'Roman recommended an exchanger to Peter from a saved link — he thought a friend had used it before. It looked legit: AML check first, then the exchange — made sense. But the "AML check" was a phishing site. Peter connected his wallet and lost his funds.',
+    p2:'We\'re both experienced in crypto and IT. Peter was in a rush — flying to a crypto conference the next day. One link, one minute, one "connect your wallet to verify" — and it was over.',
+    p3:'We built Roko so you can check in 3 seconds. Free. Open source. For friends — and for you.',
+  };
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${R.t}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <div style="display:flex;gap:1rem;justify-content:center;margin:1.5rem 0 1rem">
+      <a href="https://romanselivan.com/" style="text-align:center;text-decoration:none;color:var(--accent)"><img src="rs.jpg" alt="Roman" style="width:72px;height:72px;border-radius:50%;object-fit:cover;filter:grayscale(1);border:2px solid rgba(255,255,255,.12)"><div style="font-size:.8rem;margin-top:.4rem;font-weight:600">Roman</div></a>
+      <a href="https://farbey.xyz/" style="text-align:center;text-decoration:none;color:var(--accent)"><img src="peter.jpeg" alt="Peter" style="width:72px;height:72px;border-radius:50%;object-fit:cover;filter:grayscale(1);border:2px solid rgba(255,255,255,.12)"><div style="font-size:.8rem;margin-top:.4rem;font-weight:600">Peter</div></a>
+    </div>
+    <div style="max-width:400px;margin:0 auto;text-align:center">
+      <p class="tut-p" style="margin-bottom:.6rem">${R.p1}</p>
+      <p class="tut-p" style="margin-bottom:.6rem;color:rgba(255,255,255,.45)">${R.p2}</p>
+      <p class="tut-p" style="color:var(--accent);font-weight:500">${R.p3}</p>
+    </div></div>`;
+}
+
+// ============================================================
+// QUEST GAME
+// ============================================================
+const SCENARIOS={
+  en:[
+    {chat:[
+      {from:'them',name:'CryptoKing',text:'Hey bro! Saw your post. I can exchange your BTC to cash, best rate in town. 15% above market 💰'},
+      {from:'them',name:'CryptoKing',text:'Just send 0.5 BTC to my wallet and meet me at the gas station at 11pm. I\'ll have the cash ready.'},
+    ],choices:[
+      {text:'🚫 Too many red flags. Walk away.',correct:true},
+      {text:'💸 Great rate! Send the BTC right away.',correct:false},
+      {text:'🤔 Ask for their wallet address to check on Roko first.',correct:true},
+    ],
+    good:'Smart! Rate above market + gas station at night + send first with no escrow = classic scam pattern. Never trust strangers with unrealistic offers.',
+    bad:'This has every red flag in the book: unrealistic rate, meeting at a gas station at night, asking you to send first. You\'d lose 0.5 BTC.'},
+    {chat:[
+      {from:'them',name:'Anna (friend)',text:'Hey! Remember my colleague who exchanges crypto? He\'s been doing it for years, super reliable'},
+      {from:'them',name:'Anna (friend)',text:'His Telegram is @dmitry_exchange, tell him I sent you'},
+      {from:'you',text:'Thanks! Let me check him out'},
+      {from:'them',name:'@dmitry_exchange',text:'Hi! Anna\'s friend? Sure, I can help. Here\'s my USDT wallet: TJRab...'},
+    ],choices:[
+      {text:'🔍 Paste the wallet into Roko before doing anything.',correct:true},
+      {text:'💸 Anna vouched for him, send the crypto.',correct:false},
+      {text:'📍 Agree to meet in a public café first, then check wallet on Roko.',correct:true},
+    ],
+    good:'Even with a referral – always verify. Check the wallet on Roko, meet in a public place, start with a small test amount. Trust but verify!',
+    bad:'Even friends can be wrong or get scammed themselves. Always check the wallet on Roko and do a small test amount first.'},
+    {chat:[
+      {from:'them',name:'FastSwap Bot',text:'🏦 Welcome to FastSwap! Paste your wallet address to receive your USDT airdrop!'},
+      {from:'them',name:'FastSwap Bot',text:'⚡ Limited time: Connect wallet at fastswap-airdrop.xyz to claim 500 USDT FREE'},
+    ],choices:[
+      {text:'🚫 This is obviously a scam. Ignore and block.',correct:true},
+      {text:'🔍 Check fastswap-airdrop.xyz on Roko first.',correct:true},
+      {text:'💰 Free money! Connect wallet and claim.',correct:false},
+    ],
+    good:'Correct! "Free USDT" airdrops are token approval scams. If you connect your wallet and approve, they drain everything. Roko would show this domain is days old.',
+    bad:'This is a token approval scam! When you "connect" and "approve", you give them permission to drain your entire wallet. There are no free airdrops from strangers.'},
+    {chat:[
+      {from:'them',name:'Exchange Office',text:'Welcome! For amounts over $5,000 we offer a premium rate. Just need a photo of your passport for verification.'},
+      {from:'you',text:'I\'d like to exchange 3,000 USDT for cash'},
+      {from:'them',name:'Exchange Office',text:'Sure! But first, please send the USDT to our wallet. We\'ll prepare the cash while we wait for confirmation. Here\'s the address...'},
+    ],choices:[
+      {text:'🧾 Ask for a receipt and license number before sending anything.',correct:true},
+      {text:'💸 They seem professional, send the USDT.',correct:false},
+      {text:'🔍 Check their wallet on Roko. Ask to see cash before sending crypto.',correct:true},
+    ],
+    good:'Smart! A real licensed office will show their license, give you a receipt, and handle the exchange face-to-face. "Send first" is always a red flag.',
+    bad:'Even professional-looking offices can be scams. Always: check the license, see the cash, get a receipt, and check the wallet on Roko before sending.'},
+    {chat:[
+      {from:'them',name:'Trader_Pro',text:'Our deal is set for tomorrow. Here\'s the wallet for your 2 ETH: 0x8589...'},
+      {from:'you',text:'Let me verify that address real quick'},
+      {from:'them',name:'Trader_Pro',text:'Actually wait, use this one instead: 0x6f1c... I just changed wallets for security reasons'},
+    ],choices:[
+      {text:'🚫 Wallet change at the last moment = big red flag. Cancel.',correct:true},
+      {text:'🔍 Check the NEW wallet on Roko before deciding.',correct:true},
+      {text:'👌 Makes sense, security is important. Send to the new address.',correct:false},
+    ],
+    good:'Changing wallet at the last moment is a classic substitution attack. The new wallet could be compromised or sanctioned. Always re-verify – or cancel.',
+    bad:'Last-minute wallet changes are a classic scam move. The original wallet was fine – but the new one goes to the scammer. Always re-check or walk away.'},
+    {chat:[
+      {from:'them',name:'Max (buddy)',text:'Bro, I found a solid exchanger – my friends used them a couple months ago, no issues. Here\'s their TG: @TrustSwap_OTC'},
+      {from:'you',text:'Cool, let me check them out'},
+      {from:'them',name:'@TrustSwap_OTC',text:'Hi! Max\'s friend? Great. Before the deal, we need an AML check on your wallet – standard compliance procedure. Go to trustswap-aml.com, connect your wallet, takes 30 seconds ✅'},
+      {from:'them',name:'Max (buddy)',text:'They asked me the same thing, looks legit. I\'m in a rush rn so can\'t help much, but should be fine – they\'re in cybersecurity too lol'},
+    ],choices:[
+      {text:'🚫 "Connect wallet for AML" is a drain attack. Block immediately.',correct:true},
+      {text:'🔍 Check trustswap-aml.com on Roko before touching anything.',correct:true},
+      {text:'👌 Max\'s friends used them + AML sounds legit. Connect wallet.',correct:false},
+    ],
+    good:'Spot on! Real AML checks NEVER require you to connect your wallet to a random site. That\'s a token approval drain. Max\'s friends were either lucky or next in line. Roko would show the domain is days old.',
+    bad:'This is a drain scam disguised as "AML compliance." You connect, approve a token transaction – and they empty your wallet. Nobody legitimate asks you to connect a wallet for AML. Even crypto-savvy friends miss this when they\'re in a rush.'},
+    {chat:[
+      {from:'them',name:'@Carlos_P2P',text:'500 USDT for cash? Let\'s meet at Starbucks in Plaza Catalunya at 3pm'},
+      {from:'you',text:'Sounds good, see you there'},
+      {from:'them',name:'@Carlos_P2P',text:'Hey, running a bit late. I\'m around the corner – can you come out? I\'m in my car, grey BMW. Too many people inside, don\'t want attention 🚗'},
+    ],choices:[
+      {text:'🚫 No cars. Tell him to come inside or I cancel.',correct:true},
+      {text:'📍 Ask him to come in and show cash in public first. If not, I leave.',correct:true},
+      {text:'🚶 It\'s only 500, seems fine. Walk to the car.',correct:false},
+    ],
+    good:'Correct! Never get into a stranger\'s car for a crypto exchange. Always public place with cameras. If they won\'t come inside – that\'s a red flag. Your safety > any exchange rate.',
+    bad:'Getting into a stranger\'s car for a crypto trade is dangerous – no witnesses, no cameras, no easy exit. The $500 isn\'t worth the risk. Always insist on a public location.'},
+  ],
+  ru:[
+    {chat:[
+      {from:'them',name:'CryptoKing',text:'Бро! Видел твой пост. Могу обменять BTC на наличку, лучший курс в городе. На 15% выше рынка 💰'},
+      {from:'them',name:'CryptoKing',text:'Просто отправь 0.5 BTC на мой кошелёк и приезжай на заправку в 23:00. Деньги будут готовы.'},
+    ],choices:[
+      {text:'🚫 Слишком много красных флагов. Ухожу.',correct:true},
+      {text:'💸 Отличный курс! Отправляю BTC!',correct:false},
+      {text:'🤔 Попрошу адрес кошелька и проверю в Roko.',correct:true},
+    ],
+    good:'Правильно! Курс выше рынка + заправка ночью + отправь первым без эскроу = классический скам. Не доверяй незнакомцам с нереальными предложениями.',
+    bad:'Тут все красные флаги: нереальный курс, встреча на заправке ночью, просят отправить первым. Ты бы потерял 0.5 BTC.'},
+    {chat:[
+      {from:'them',name:'Аня (подруга)',text:'Слушай! Помнишь моего коллегу, который меняет крипту? Он этим занимается годами, очень надёжный'},
+      {from:'them',name:'Аня (подруга)',text:'Его Telegram – @dmitry_exchange, скажи что от меня'},
+      {from:'you',text:'Спасибо! Проверю'},
+      {from:'them',name:'@dmitry_exchange',text:'Привет! Друг Ани? Конечно, помогу. Вот мой USDT кошелёк: TJRab...'},
+    ],choices:[
+      {text:'🔍 Вставлю кошелёк в Roko прежде чем что-то делать.',correct:true},
+      {text:'💸 Аня ручается – отправляю крипту.',correct:false},
+      {text:'📍 Договорюсь о встрече в кафе, сначала проверю кошелёк в Roko.',correct:true},
+    ],
+    good:'Даже по рекомендации – всегда проверяй. Проверь кошелёк в Roko, встречайся в публичном месте, начни с маленькой суммы. Доверяй, но проверяй!',
+    bad:'Даже друзья могут ошибаться или сами быть обманутыми. Всегда проверяй кошелёк в Roko и начинай с тестовой суммы.'},
+    {chat:[
+      {from:'them',name:'FastSwap Bot',text:'🏦 Добро пожаловать в FastSwap! Вставь адрес кошелька, чтобы получить USDT аирдроп!'},
+      {from:'them',name:'FastSwap Bot',text:'⚡ Ограниченное время: подключи кошелёк на fastswap-airdrop.xyz – получи 500 USDT БЕСПЛАТНО'},
+    ],choices:[
+      {text:'🚫 Это очевидный скам. Игнорирую и блокирую.',correct:true},
+      {text:'🔍 Проверю fastswap-airdrop.xyz в Roko.',correct:true},
+      {text:'💰 Халявные деньги! Подключаю кошелёк!',correct:false},
+    ],
+    good:'Правильно! «Бесплатные USDT» – это скам через approve. Подключишь кошелёк и нажмёшь approve – сольют всё. Roko показал бы, что домену пара дней.',
+    bad:'Это скам через token approve! Когда ты «подключаешь» и «одобряешь», ты даёшь разрешение забрать всё из кошелька. Бесплатных аирдропов от незнакомцев не бывает.'},
+    {chat:[
+      {from:'them',name:'Обменный пункт',text:'Добро пожаловать! Для сумм от $5000 у нас премиальный курс. Нужно только фото паспорта для верификации.'},
+      {from:'you',text:'Хочу обменять 3000 USDT на наличные'},
+      {from:'them',name:'Обменный пункт',text:'Конечно! Но сначала отправьте USDT на наш кошелёк. Мы подготовим наличные пока ждём подтверждения. Вот адрес...'},
+    ],choices:[
+      {text:'🧾 Попрошу чек и номер лицензии прежде чем что-то отправлять.',correct:true},
+      {text:'💸 Выглядит профессионально, отправляю USDT.',correct:false},
+      {text:'🔍 Проверю кошелёк в Roko. Попрошу показать наличные до отправки крипты.',correct:true},
+    ],
+    good:'Правильно! Настоящий лицензированный обменник покажет лицензию, даст чек и проведёт обмен лично. «Отправь сначала» – всегда красный флаг.',
+    bad:'Даже профессионально выглядящие обменники могут быть скамом. Всегда: проверь лицензию, увидь наличные, получи чек, проверь кошелёк в Roko.'},
+    {chat:[
+      {from:'them',name:'Trader_Pro',text:'Наша сделка на завтра. Вот кошелёк для твоих 2 ETH: 0x8589...'},
+      {from:'you',text:'Секунду, проверю адрес'},
+      {from:'them',name:'Trader_Pro',text:'Стой, используй лучше этот: 0x6f1c... Я только что сменил кошелёк для безопасности'},
+    ],choices:[
+      {text:'🚫 Смена кошелька в последний момент = огромный красный флаг. Отменяю.',correct:true},
+      {text:'🔍 Проверю НОВЫЙ кошелёк в Roko.',correct:true},
+      {text:'👌 Логично, безопасность важна. Отправляю на новый.',correct:false},
+    ],
+    good:'Смена кошелька в последний момент – классическая подмена. Новый кошелёк может быть скомпрометирован или под санкциями. Всегда перепроверяй – или отменяй.',
+    bad:'Замена кошелька в последний момент – классический трюк. Оригинальный был ок – а новый принадлежит мошеннику. Всегда перепроверяй или уходи.'},
+    {chat:[
+      {from:'them',name:'Макс (товарищ)',text:'Бро, нашёл нормального менялу – мои друзья через него меняли пару месяцев назад, всё чётко. Вот его тг: @TrustSwap_OTC'},
+      {from:'you',text:'Ок, гляну'},
+      {from:'them',name:'@TrustSwap_OTC',text:'Привет! Друг Макса? Отлично. Перед сделкой нужна AML-проверка твоего кошелька – стандартная процедура. Зайди на trustswap-aml.com, подключи кошелёк, 30 секунд ✅'},
+      {from:'them',name:'Макс (товарищ)',text:'У меня так же просили, выглядит норм. Я щас бегу, не могу помочь особо, но должно быть ок – они же типа в кибербезе работают лол'},
+    ],choices:[
+      {text:'🚫 «Подключи кошелёк для AML» – это дрейн-атака. Блокирую.',correct:true},
+      {text:'🔍 Проверю trustswap-aml.com в Roko прежде чем трогать что-либо.',correct:true},
+      {text:'👌 Друзья Макса пользовались + AML звучит легитимно. Подключаю.',correct:false},
+    ],
+    good:'Верно! Настоящая AML-проверка НИКОГДА не требует подключать кошелёк к левому сайту. Это дрейн через approve. Друзья Макса или повезло, или они следующие. Roko показал бы, что домену пара дней.',
+    bad:'Это дрейн-скам под видом «AML-проверки». Подключаешь кошелёк, одобряешь транзакцию – и тебе сливают всё. Никто легитимный не просит подключать кошелёк для AML. Даже крипто-шарящие ребята ведутся, когда торопятся.'},
+    {chat:[
+      {from:'them',name:'@Carlos_P2P',text:'500 USDT на наличные? Давай в Starbucks на Plaza Catalunya в 15:00'},
+      {from:'you',text:'Отлично, буду'},
+      {from:'them',name:'@Carlos_P2P',text:'Слушай, немного задерживаюсь. Я за углом – выйди? Я в машине, серый BMW. Внутри много народу, не хочу привлекать внимание 🚗'},
+    ],choices:[
+      {text:'🚫 Никаких машин. Пусть зайдёт в кафе или отменяю.',correct:true},
+      {text:'📍 Прошу зайти и показать наличные в публичном месте. Не зайдёт – ухожу.',correct:true},
+      {text:'🚶 Всего 500, вроде безопасно. Подхожу к машине.',correct:false},
+    ],
+    good:'Правильно! Никогда не садись в машину к незнакомцу для обмена крипты. Всегда в публичном месте с камерами. Не хочет заходить – красный флаг. Твоя безопасность > любой курс.',
+    bad:'Сесть в машину к незнакомцу для крипто-сделки – опасно: нет свидетелей, камер, лёгкого выхода. $500 не стоят риска. Всегда настаивай на публичном месте.'},
+  ],
+  es:[
+    {chat:[{from:'them',name:'CryptoKing',text:'Bro! Vi tu post. Puedo cambiar tu BTC a efectivo, mejor tasa. 15% sobre mercado 💰'},{from:'them',name:'CryptoKing',text:'Envía 0.5 BTC a mi wallet y nos vemos en la gasolinera a las 11pm.'}],choices:[{text:'🚫 Muchas señales rojas. Me voy.',correct:true},{text:'💸 ¡Buena tasa! Envío BTC.',correct:false},{text:'🤔 Pido la wallet para verificar en Roko.',correct:true}],good:'¡Correcto! Tasa irreal + gasolinera de noche + enviar primero = estafa clásica.',bad:'Todas las señales rojas: tasa irreal, gasolinera de noche, enviar primero. Perderías 0.5 BTC.'},
+    {chat:[{from:'them',name:'Ana (amiga)',text:'¡Oye! Mi colega cambia crypto, muy confiable. Su TG: @dmitry_exchange'},{from:'them',name:'@dmitry_exchange',text:'¿Amigo de Ana? Aquí mi wallet USDT: TJRab...'}],choices:[{text:'🔍 Verifico la wallet en Roko primero.',correct:true},{text:'💸 Ana lo recomienda, envío.',correct:false},{text:'📍 Quedamos en café público, verifico wallet.',correct:true}],good:'Incluso con referencia – siempre verifica. Wallet en Roko + lugar público + monto de prueba.',bad:'Incluso amigos se equivocan. Siempre verifica en Roko y prueba con monto pequeño.'},
+    {chat:[{from:'them',name:'FastSwap Bot',text:'🏦 ¡Conecta wallet en fastswap-airdrop.xyz y recibe 500 USDT GRATIS!'}],choices:[{text:'🚫 Estafa obvia. Ignoro.',correct:true},{text:'🔍 Verifico el dominio en Roko.',correct:true},{text:'💰 ¡Dinero gratis! Conecto wallet.',correct:false}],good:'¡Correcto! Airdrops gratis = estafa de approve. Roko mostraría que el dominio tiene días.',bad:'Estafa de token approve. Al "aprobar" das permiso para vaciar tu wallet.'},
+    {chat:[{from:'them',name:'Casa de cambio',text:'¡Bienvenido! Para montos mayores a $5,000 ofrecemos tasa premium. Solo necesitamos foto de pasaporte para verificación.'},{from:'you',text:'Quiero cambiar 3,000 USDT por efectivo'},{from:'them',name:'Casa de cambio',text:'¡Claro! Pero primero envía los USDT a nuestra wallet. Prepararemos el efectivo mientras esperamos confirmación. Aquí la dirección...'}],choices:[{text:'🧾 Pido recibo y número de licencia antes de enviar nada.',correct:true},{text:'💸 Parecen profesionales, envío USDT.',correct:false},{text:'🔍 Verifico wallet en Roko. Pido ver efectivo antes de enviar crypto.',correct:true}],good:'¡Correcto! Una casa de cambio legítima muestra licencia, da recibo y hace el cambio en persona. "Envía primero" siempre es señal roja.',bad:'Incluso oficinas de aspecto profesional pueden ser estafa. Siempre: verifica licencia, ve el efectivo, pide recibo, verifica wallet en Roko.'},
+    {chat:[{from:'them',name:'Trader_Pro',text:'Nuestra operación es mañana. Aquí la wallet para tus 2 ETH: 0x8589...'},{from:'you',text:'Déjame verificar esa dirección'},{from:'them',name:'Trader_Pro',text:'Espera, usa esta mejor: 0x6f1c... Acabo de cambiar wallet por seguridad'}],choices:[{text:'🚫 Cambio de wallet a último momento = señal roja enorme. Cancelo.',correct:true},{text:'🔍 Verifico la NUEVA wallet en Roko antes de decidir.',correct:true},{text:'👌 Tiene sentido, la seguridad importa. Envío a la nueva.',correct:false}],good:'Cambiar wallet a último momento es un ataque de sustitución clásico. La nueva wallet puede estar comprometida o sancionada. Siempre re-verifica – o cancela.',bad:'Cambios de wallet de último minuto son un truco clásico. La original estaba bien – la nueva va al estafador. Siempre re-verifica o vete.'},
+    {chat:[{from:'them',name:'Max (amigo)',text:'Bro, encontré un exchanger sólido – mis amigos lo usaron hace meses, todo bien. Su TG: @TrustSwap_OTC'},{from:'them',name:'@TrustSwap_OTC',text:'¿Amigo de Max? Necesitamos verificación AML de tu wallet. Entra a trustswap-aml.com y conecta tu wallet, 30 seg ✅'},{from:'them',name:'Max (amigo)',text:'Me pidieron lo mismo, parece legítimo. Estoy apurado, pero debería estar bien – trabajan en ciberseguridad lol'}],choices:[{text:'🚫 "Conectar wallet para AML" = drain attack. Bloqueo.',correct:true},{text:'🔍 Verifico trustswap-aml.com en Roko primero.',correct:true},{text:'👌 Los amigos de Max lo usaron + AML suena legítimo. Conecto.',correct:false}],good:'¡Correcto! AML real NUNCA requiere conectar wallet a un sitio random. Es un drain por approve. Roko mostraría que el dominio tiene días.',bad:'Estafa de drain disfrazada de "AML". Conectas, apruebas – y vacían tu wallet. Nadie legítimo pide conectar wallet para AML.'},
+    {chat:[{from:'them',name:'@Carlos_P2P',text:'¿500 USDT por efectivo? Nos vemos en el Starbucks de Plaza Catalunya a las 3pm'},{from:'you',text:'Perfecto, te veo allí'},{from:'them',name:'@Carlos_P2P',text:'Oye, llegué un poco tarde. Estoy en la esquina – ¿puedes salir? Te veo al lado en mi coche, es un BMW gris. Hay mucha gente dentro y no quiero llamar la atención 🚗'}],choices:[{text:'🚫 Nada de coches. Le digo que entre al café o cancelo.',correct:true},{text:'📍 Le pido que entre y me muestre el efectivo en público. Si no, me voy.',correct:true},{text:'🚶 Son solo 500, parece seguro. Voy al coche.',correct:false}],good:'¡Correcto! Nunca te metas en el coche de un desconocido. Siempre en lugar público con cámaras. Si no quiere entrar – es una señal de alarma. Tu seguridad > cualquier tasa.',bad:'Entrar en el coche de un desconocido para un intercambio de cripto es peligroso – sin testigos, sin cámaras, sin salida fácil. Los $500 no valen el riesgo. Siempre insiste en un lugar público.'},
+  ]
+};
+
+let questState={step:0,score:0,results:[]};
+function startQuest(){
+  questState={step:0,score:0,results:[]};
+  renderQuestStep();
+}
+function renderQuestStep(){
+  const el=document.getElementById('questContent');
+  const lang=SCENARIOS[curLang]?curLang:'en';
+  const scenarios=SCENARIOS[lang];
+  if(questState.step>=scenarios.length){renderQuestFinal();return}
+  const s=scenarios[questState.step];
+  const dots=scenarios.map((_,i)=>{
+    if(i<questState.step)return`<div class="q-dot ${questState.results[i]?'done':'fail'}"></div>`;
+    if(i===questState.step)return`<div class="q-dot current"></div>`;
+    return`<div class="q-dot"></div>`;
+  }).join('');
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${tr('quest_t')}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <div class="q-progress">${dots}</div>
+    <div class="quest-chat"><div class="quest-chat-body">${s.chat.map(m=>`<div class="q-msg ${m.from}"><div class="avatar">${m.from==='them'?'👤':'🦝'}</div><div class="bubble">${m.name?`<div style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:.2rem">${esc(m.name)}</div>`:''}${esc(m.text)}</div></div>`).join('')}</div></div>
+    <div class="q-choices">${s.choices.map((c,i)=>`<button class="q-choice" onclick="questAnswer(${i})">${esc(c.text)}</button>`).join('')}</div></div>`;
+}
+function questAnswer(idx){
+  const lang=SCENARIOS[curLang]?curLang:'en';
+  const s=SCENARIOS[lang][questState.step];
+  const correct=s.choices[idx].correct;
+  questState.results.push(correct);
+  if(correct)questState.score++;
+  const el=document.getElementById('questContent');
+  const dots=SCENARIOS[lang].map((_,i)=>{
+    if(i<questState.results.length)return`<div class="q-dot ${questState.results[i]?'done':'fail'}"></div>`;
+    if(i===questState.results.length)return`<div class="q-dot current"></div>`;
+    return`<div class="q-dot"></div>`;
+  }).join('');
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${tr('quest_t')}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <div class="q-progress">${dots}</div>
+    <div class="q-roko ${correct?'good':'bad'}">
+      <div class="roko-face">${correct?'🦝':'😰'}</div>
+      <div class="roko-text">${correct?s.good:s.bad}</div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-top:.5rem"><button class="q-choice" onclick="questState.step++;renderQuestStep()" style="text-align:center;min-width:140px">${questState.step<SCENARIOS[lang].length-1?(curLang==='ru'?'Дальше →':curLang==='es'?'Siguiente →':'Next →'):(curLang==='ru'?'Результаты →':curLang==='es'?'Resultados →':'Results →')}</button></div></div>`;
+}
+function renderQuestFinal(){
+  const el=document.getElementById('questContent');
+  const lang=SCENARIOS[curLang]?curLang:'en';
+  const total=SCENARIOS[lang].length;
+  const pct=Math.round(questState.score/total*100);
+  const cls=pct>=80?'good':pct>=50?'ok':'bad';
+  const msg=curLang==='ru'
+    ?(pct>=80?'Отличная интуиция! Ты распознаёшь мошенников.':pct>=50?'Неплохо, но есть пробелы. Перечитай правила безопасности.':'Нужно подучиться. Мошенники бы тебя обманули. Прочитай правила и попробуй снова!')
+    :curLang==='es'
+    ?(pct>=80?'¡Gran instinto! Detectas estafadores.':pct>=50?'No está mal, pero hay brechas. Relee las reglas de seguridad.':'Necesitas estudiar. Los estafadores te engañarían. Lee las reglas e inténtalo de nuevo.')
+    :(pct>=80?'Great instincts! You can spot scammers.':pct>=50?'Not bad, but gaps remain. Re-read the safety rules.':'Needs work. Scammers would trick you. Read the rules and try again!');
+  el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${tr('quest_t')}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
+    <div class="quest-wrap">
+      <div style="font-size:4rem;margin:1rem 0">🦝</div>
+      <div class="q-score-final ${cls}">${questState.score}/${total}</div>
+      <p class="tut-p" style="text-align:center;margin:1rem 0">${msg}</p>
+      <div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-top:1rem">
+        <button class="q-choice" onclick="startQuest()" style="text-align:center;flex:1;max-width:200px">${curLang==='ru'?'Заново':curLang==='es'?'De nuevo':'Play again'}</button>
+        <button class="q-choice" onclick="closeModals();openModal('guide')" style="text-align:center;flex:1;max-width:200px">${curLang==='ru'?'Правила безопасности':curLang==='es'?'Reglas de seguridad':'Safety rules'}</button>
+      </div>
+    </div></div>`;
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+function goHome(){showScreen('homeScreen');const s=document.querySelector('.search');s.classList.remove('glow-green','glow-yellow','glow-red','glow-gray');history.pushState({screen:'home'},'',location.pathname);document.getElementById('q').focus()}
+
+// Bottom nav scroll hint
+
+// ============================================================
+// CHECK ENGINE
+// ============================================================
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').replace(/"/g,'&quot;')}
+function detectAddr(a){a=a.trim();if(/^(bc1)[a-zA-HJ-NP-Z0-9]{25,62}$/.test(a))return'btc';if(/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$/.test(a))return'btc';if(/^0x[a-fA-F0-9]{40}$/.test(a))return'eth';if(/^T[a-zA-Z0-9]{33}$/.test(a))return'tron';return null}
+function tryEx(v){document.getElementById('q').value=v;runCheck()}
+
+const SANC=new Set(['0x8589427373d6d84e98730d7795d8f6f8731fda16','0x722122df12d4e14e13ac3b6895a86e84145b6967','0xd90e2f925da726b50c4ed8d0fb90ad053324f31b','0x6f1ca141a28907f78ebaa64fb83a9088b02a8352']);
+const SCAM_D=new Set(['garantex.org','garantex.io','suex.io','chatex.com','bitzlato.com','tornado.cash','bestmixer.io','helix.light','cashout.cc','cryptonator.com','blender.io','sinbad.io','chipmixter.com','hydra.market']);
+const GOOD_D={'bestchange.com':{note:'Major rate aggregator since 2007',boost:15},'binance.com':{note:'Largest exchange, regulated',boost:10},'bybit.com':{note:'Major exchange, Dubai-regulated',boost:8},'kraken.com':{note:'US-regulated since 2011',boost:12},'coinbase.com':{note:'US public company, NASDAQ',boost:15},'okx.com':{note:'Major exchange',boost:5},'kucoin.com':{note:'Major exchange',boost:3},'htx.com':{note:'Formerly Huobi',boost:3},'gate.io':{note:'Major exchange since 2013',boost:5},'bitget.com':{note:'Major exchange, licensed',boost:5},'crypto.com':{note:'Singapore-licensed exchange',boost:8},'gemini.com':{note:'US-regulated (Winklevoss)',boost:10},'bitstamp.com':{note:'EU-regulated since 2011',boost:10},'whitebit.com':{note:'European exchange, licensed',boost:5},'exmo.com':{note:'European exchange, licensed',boost:5},'blockchain.com':{note:'Wallet & exchange since 2011',boost:8},'etherscan.io':{note:'Ethereum block explorer',boost:12},'tronscan.org':{note:'TRON block explorer',boost:10},'mempool.space':{note:'Bitcoin block explorer (open source)',boost:12},'revoke.cash':{note:'Token approval checker (open source)',boost:10}};
+const WARN_D={'localbitcoins.com':'Shut down February 2023','paxful.com':'Suspended 2023, partial restart 2024','ftx.com':'Collapsed November 2022','celsius.network':'Collapsed June 2022','blockfi.com':'Collapsed November 2022'};
+
+// --- Phishing detection ---
+const PHISH_TARGETS=['binance','bybit','coinbase','kraken','bestchange','okx','kucoin','gate','mexc','bitget','crypto','gemini','bitstamp','blockchain','trustwallet','metamask','trezor','ledger','exodus','etherscan','tronscan','bitcoin','ethereum','tether','uniswap','pancakeswap','opensea','coinmarketcap','coingecko','whitebit','exmo','bitfinex','htx','huobi'];
+function lev(a,b){if(!a.length)return b.length;if(!b.length)return a.length;const m=[];for(let i=0;i<=b.length;i++)m[i]=[i];for(let j=0;j<=a.length;j++)m[0][j]=j;for(let i=1;i<=b.length;i++)for(let j=1;j<=a.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(b[i-1]===a[j-1]?0:1));return m[b.length][a.length]}
+function checkPhish(domain){const dl=domain.replace(/\.[^.]+$/,'').toLowerCase();for(const t of PHISH_TARGETS){if(dl===t)return null;const d=lev(dl,t);if(d>0&&d<=2)return{target:t,type:'typo',dist:d};if(dl.length>t.length&&dl.includes(t))return{target:t,type:'sub'}}return null}
+
+// --- Dynamic prices from CoinGecko (fallback to estimates) ---
+let PRICES={bitcoin:85000,ethereum:3500,tron:0.25};
+(async function loadPrices(){try{const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tron&vs_currencies=usd');if(r.ok){const d=await r.json();if(d.bitcoin?.usd)PRICES.bitcoin=d.bitcoin.usd;if(d.ethereum?.usd)PRICES.ethereum=d.ethereum.usd;if(d.tron?.usd)PRICES.tron=d.tron.usd}}catch{}})();
+
+async function runCheck(){
+  const input=document.getElementById('q').value.trim();if(!input)return;
+  const btn=document.getElementById('checkBtn');btn.disabled=true;btn.innerHTML='<span class="spinner"></span>';
+  showScreen('resultScreen');
+  document.getElementById('resultCard').innerHTML=`<div class="result-body"><div style="text-align:center;padding:3rem"><span class="spinner"></span><p style="margin-top:1rem;color:rgba(255,255,255,.5)">${tr('checking')}</p></div></div>`;
+  try{let t=input.trim();if(!detectAddr(t))t=t.replace(/^https?:\/\//,'').replace(/\/.*$/,'').toLowerCase();const data=detectAddr(input.trim())?await checkChain(input.trim()):await checkDomain(t);history.pushState({screen:'result',q:input},'','?q='+encodeURIComponent(input));renderResult(t,data)}catch(e){document.getElementById('resultCard').innerHTML=`<div class="result-body"><button class="back-btn" onclick="goHome()">${tr('back')}</button><div style="color:#f87171;padding:1rem;text-align:center">Error: ${esc(e.message)}</div></div>`}
+  btn.disabled=false;btn.textContent=tr('btn');
+}
+document.getElementById('q').addEventListener('keydown',e=>{if(e.key==='Enter')runCheck()});
+
+// --- Deep linking: ?q= auto-check + browser back button ---
+window.addEventListener('popstate',e=>{if(!e.state||e.state.screen==='home')goHome();});
+(function(){const p=new URLSearchParams(location.search);const q=p.get('q');if(q){document.getElementById('q').value=q;setTimeout(runCheck,300)}})();
+
+async function checkChain(addr){
+  const ch=detectAddr(addr),res=[],cl={btc:'Bitcoin',eth:'Ethereum',tron:'TRON'}[ch];let sc=40;
+  if(SANC.has(addr.toLowerCase()))return{score:0,label:tr('sc_sanc'),color:'red',checks:[{t:'fail',i:'🔴',x:tr('g_sanc')}],guide:[tr('g_sanc')]};
+  res.push({t:'info',i:'⛓',x:`${cl}`});
+  try{
+    if(ch==='btc'){const r=await(await fetch(`https://mempool.space/api/address/${addr}`)).json(),s=r.chain_stats||{},b=((s.funded_txo_sum||0)-(s.spent_txo_sum||0))/1e8,txc=s.tx_count||0;res.push({t:'info',i:'💰',x:`${b.toFixed(8)} BTC (~$${(b*PRICES.bitcoin).toFixed(0)})`},{t:'info',i:'📊',x:`${txc} ${tr('ck_txs')}`});if(txc>100)sc+=15;else if(txc>10)sc+=5;else if(txc<5){res.push({t:'warn',i:'⚠️',x:tr('ck_low_act')});sc-=5}}
+    else if(ch==='eth'){const r=await(await fetch(`https://eth.llamarpc.com`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify([{jsonrpc:'2.0',method:'eth_getBalance',params:[addr,'latest'],id:1},{jsonrpc:'2.0',method:'eth_getTransactionCount',params:[addr,'latest'],id:2}])})).json();const bal=parseInt(r[0]?.result||'0',16)/1e18,txc=parseInt(r[1]?.result||'0',16);res.push({t:'info',i:'💰',x:`${bal.toFixed(4)} ETH (~$${(bal*PRICES.ethereum).toFixed(0)})`},{t:'info',i:'📊',x:`${txc} ${tr('ck_out_txs')}`});if(txc>100)sc+=15;else if(txc>10)sc+=5;else if(txc<5){res.push({t:'warn',i:'⚠️',x:tr('ck_low_act')});sc-=5}}
+    else if(ch==='tron'){
+      // Parallel: account info + tx list
+      const [accR,txR]=await Promise.allSettled([
+        fetch(`https://api.trongrid.io/v1/accounts/${addr}`).then(r=>r.json()),
+        fetch(`https://api.trongrid.io/v1/accounts/${addr}/transactions?limit=1`).then(r=>r.json())
+      ]);
+      const acc=accR.status==='fulfilled'&&accR.value?.data?.[0]?accR.value.data[0]:null;
+      if(acc){
+        const b=(acc.balance||0)/1e6;res.push({t:'info',i:'💰',x:`${b.toFixed(2)} TRX (~$${(b*PRICES.tron).toFixed(2)})`});
+        const u=(acc.trc20||[]).find(t=>t['TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t']);
+        if(u){const v=parseInt(u['TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t'])/1e6;res.push({t:'info',i:'💵',x:`USDT: ${v.toLocaleString()}`});if(v>50000)sc+=10;else if(v>1000)sc+=5}
+        // TX count from meta
+        if(txR.status==='fulfilled'&&txR.value?.meta?.page_size!==undefined){
+          const total=txR.value.meta.at||'?';
+          if(typeof total==='number'){res.push({t:'info',i:'📊',x:`~${total} ${tr('ck_transactions')}`});if(total>500)sc+=10;else if(total>50)sc+=5;else if(total<5){res.push({t:'warn',i:'⚠️',x:tr('ck_low_act')});sc-=5}}
+        }
+        if(acc.create_time){const d=(Date.now()-acc.create_time)/864e5;res.push({t:'info',i:'📆',x:`${Math.floor(d)} ${tr('ck_days_old')}`});if(d>365)sc+=10;else if(d<30){res.push({t:'warn',i:'⚠️',x:tr('ck_new_acct')});sc-=5}}
+      } else {res.push({t:'warn',i:'⚠️',x:tr('ck_not_found')});sc=20}
+    }
+  }catch{res.push({t:'info',i:'⚪',x:tr('ck_unavail')})}
+  res.push({t:'ok',i:'🛡️',x:tr('ck_not_sanc')});sc=Math.max(0,Math.min(100,sc));
+  return{score:sc,label:sc>=70?tr('sc_hi'):sc>=40?tr('sc_mid'):tr('sc_lo'),color:sc>=70?'green':sc>=40?'yellow':'red',checks:res,guide:[sc>=70?tr('g_hi'):sc>=40?tr('g_mid'):tr('g_lo')]};
+}
+
+async function checkDomain(t){
+  const res=[],isH=!t.includes('.');
+  if(isH){const h=t.replace(/^@/,'');if(/manager|support|admin/i.test(h))res.push({t:'warn',i:'⚠️',x:tr('ck_scam_pattern')});if(/binance|coinbase|bybit/i.test(h))res.push({t:'fail',i:'❌',x:tr('ck_impersonation')});res.push({t:'info',i:'💡',x:tr('web_basic')});return{score:null,label:tr('ck_check_bot'),color:'gray',checks:res,guide:[tr('handle_g1'),tr('handle_g2')]}}
+  let sc=50,dnsDown=false;if(SCAM_D.has(t)){res.push({t:'fail',i:'❌',x:tr('ck_sanctioned')});sc-=40}if(WARN_D[t]){res.push({t:'warn',i:'⚠️',x:WARN_D[t]});sc-=10}if(GOOD_D[t]){res.push({t:'ok',i:'✅',x:GOOD_D[t].note});sc+=GOOD_D[t].boost}
+  // Phishing detection
+  if(!GOOD_D[t]&&!SCAM_D[t]){const ph=checkPhish(t);if(ph){if(ph.type==='typo'){res.push({t:'fail',i:'🔴',x:tr('ck_phishing').replace('%s',ph.target+'.com')});sc-=25}else{res.push({t:'warn',i:'⚠️',x:tr('ck_impersonation_d').replace('%s',ph.target)});sc-=15}}}
+  // Parallel API calls
+  const ctrl=typeof AbortSignal.timeout==='function'?AbortSignal:null;
+  const [dnsR,rdapR,sslR]=await Promise.allSettled([
+    fetch(`https://dns.google/resolve?name=${encodeURIComponent(t)}&type=A`).then(r=>r.json()),
+    fetch(`https://rdap.org/domain/${encodeURIComponent(t)}`,ctrl?{signal:AbortSignal.timeout(10000)}:{}).then(r=>r.ok?r.json():null),
+    fetch(`https://${t}`,{mode:'no-cors',...(ctrl?{signal:AbortSignal.timeout(5000)}:{})}).then(()=>true).catch(()=>false)
+  ]);
+  // DNS
+  if(dnsR.status==='fulfilled'&&dnsR.value){const r=dnsR.value;if(r.Answer?.length)res.push({t:'ok',i:'✅',x:tr('ck_dns_ok')}),sc+=3;else{res.push({t:'fail',i:'❌',x:tr('ck_dns_down')});sc-=25;dnsDown=true}}
+  // RDAP age — context-aware: if DNS is down, note "registered but offline"
+  if(rdapR.status==='fulfilled'&&rdapR.value){const d=rdapR.value,ev=(d.events||[]).find(e=>e.eventAction==='registration');if(ev){const y=(Date.now()-new Date(ev.eventDate).getTime())/(365.25*24*36e5),txt=y>=1?`${y.toFixed(1)} ${tr('ck_years')}`:`${Math.round(y*12)} ${tr('ck_months')}`;if(dnsDown){res.push({t:'info',i:'📆',x:`${tr('ck_domain')}: ${txt} (${tr('ck_registered_but_down')})`})}else if(y>=3)res.push({t:'ok',i:'✅',x:`${tr('ck_domain')}: ${txt}`}),sc+=15;else if(y>=1)res.push({t:'ok',i:'✅',x:`${tr('ck_domain')}: ${txt}`}),sc+=8;else if(y>=.25)res.push({t:'warn',i:'⚠️',x:`${tr('ck_domain')}: ${txt} – ${tr('ck_new')}`}),sc-=5;else res.push({t:'fail',i:'❌',x:`${tr('ck_domain')}: ${txt} – ${tr('ck_very_new')}`}),sc-=15}}
+  // SSL/HTTPS reachability
+  if(sslR.status==='fulfilled'&&sslR.value)res.push({t:'info',i:'🔒',x:tr('ck_https_ok')});else{res.push({t:'warn',i:'⚠️',x:tr('ck_https_fail')});sc-=8}
+  sc=Math.max(0,Math.min(100,sc));return{score:sc,label:sc>=70?tr('sc_hi'):sc>=40?tr('sc_mid'):tr('sc_lo'),color:sc>=70?'green':sc>=40?'yellow':'red',checks:res,guide:[sc>=70?tr('g_hi'):sc>=40?tr('g_mid'):tr('g_lo')]};
+}
+
+function renderResult(target,d){
+  const card=document.getElementById('resultCard');
+  const short=target.length>30?target.slice(0,12)+'...'+target.slice(-6):target;
+  // Glow input border
+  const s=document.querySelector('.search');
+  s.classList.remove('glow-green','glow-yellow','glow-red','glow-gray');
+  s.classList.add('glow-'+(d.color||'gray'));
+  // Past-check memory
+  let memoryHtml='';
+  try{
+    const hk='roko_checks',hist=JSON.parse(localStorage.getItem(hk)||'{}'),key=target.toLowerCase();
+    if(hist[key]){const prev=hist[key],ago=Math.round((Date.now()-prev.ts)/864e5),
+      msg=curLang==='ru'?`Я уже проверял это ${ago<1?'сегодня':ago+' дн. назад'}. Тогда было: ${prev.score!==null?prev.score+'/100':'?'} (${prev.label}).`
+        :curLang==='es'?`Ya verifiqué esto hace ${ago<1?'hoy':ago+' días'}. Resultado anterior: ${prev.score!==null?prev.score+'/100':'?'} (${prev.label}).`
+        :`I've checked this ${ago<1?'today':ago+' day'+(ago>1?'s':'')+' ago'}. Last time: ${prev.score!==null?prev.score+'/100':'?'} (${prev.label}).`;
+      memoryHtml=`<div class="q-roko" style="margin-bottom:1rem"><div class="roko-face">🦝</div><div class="roko-text">${msg}</div></div>`}
+    hist[key]={ts:Date.now(),score:d.score,label:d.label,color:d.color};
+    localStorage.setItem(hk,JSON.stringify(hist));
+  }catch{}
+  const scoreIcon=d.color==='green'?'🛡️':d.color==='yellow'?'⚠️':d.color==='red'?'🚫':'❓';
+  const scoreClr=d.color==='green'?'#34d399':d.color==='yellow'?'#fbbf24':d.color==='red'?'#f87171':'#7a8599';
+  const scoreBg=d.color==='green'?'rgba(52,211,153,.08)':d.color==='yellow'?'rgba(251,191,36,.08)':d.color==='red'?'rgba(248,113,113,.08)':'rgba(255,255,255,.04)';
+  const scoreBorder=d.color==='green'?'rgba(52,211,153,.2)':d.color==='yellow'?'rgba(251,191,36,.2)':d.color==='red'?'rgba(248,113,113,.2)':'rgba(255,255,255,.1)';
+
+  // Verdict block — the most prominent element
+  const verdictHtml=d.score!==null?`<div style="text-align:center;padding:1.2rem;background:${scoreBg};border:1.5px solid ${scoreBorder};border-radius:18px;margin-bottom:1.2rem">
+    <div style="font-size:2.5rem;line-height:1">${scoreIcon}</div>
+    <div style="color:${scoreClr};font-size:1.3rem;font-weight:700;margin-top:.4rem">${d.label}</div>
+    <div style="color:rgba(255,255,255,.35);font-size:.85rem;margin-top:.2rem">${esc(short)}</div>
+  </div>`:`<div style="text-align:center;padding:1rem;margin-bottom:1rem"><div style="font-size:2rem">❓</div><div class="r-label" style="color:#7a8599">${d.label||''}</div><div style="color:rgba(255,255,255,.35);font-size:.85rem">${esc(short)}</div></div>`;
+
+  // Checks
+  const checks=d.checks.map(c=>`<div class="r-check ${c.t==='ok'?'ok':c.t==='warn'?'warn':c.t==='fail'?'bad':'info'}"><span class="ico">${c.i}</span><span>${c.x}</span></div>`).join('');
+
+  // Guide — action items
+  const guide=d.guide.map(g=>`<li>${esc(g)}</li>`).join('');
+
+  card.innerHTML=`<div class="result-body"><button class="back-btn" onclick="goHome()">${tr('back')}</button>
+    ${verdictHtml}
+    ${memoryHtml}
+    <div class="r-checks">${checks}</div>
+    <div class="r-guide"><div class="r-guide-title">${tr('guide_t')}</div><ul>${guide}</ul></div>
+    <div class="r-actions"><button class="r-btn primary" onclick="goHome()">${tr('another')}</button><a class="r-btn" href="https://t.me/RokoHelpBot">${tr('bot')} →</a><a class="r-btn" href="https://t.me/RokoHelpBot?start=report_${encodeURIComponent(target.slice(0,40))}" style="color:#f87171">${tr('report')}</a></div>
+    <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:.8rem;line-height:1.5;text-align:center;background:rgba(255,255,255,.03);border-radius:10px;padding:.6rem .8rem">${tr('web_basic')}</p>
+    <p style="font-size:.68rem;color:rgba(255,255,255,.25);margin-top:.5rem;line-height:1.4;text-align:center">${tr('disclaimer')}</p></div>`;
+}
+</script>
+<script>
+// No Firebase dependency — likes use localStorage only
+var liked=false;
+try{liked=localStorage.getItem('roko_liked')==='1'}catch{}
+
+function renderLike(){
+  var btn=document.getElementById('likeBtn');
+  if(!btn)return;
+  btn.classList.toggle('liked',liked);
+  btn.querySelector('.like-heart').textContent=liked?'♥':'♡';
+}
+
+renderLike();
+
+function toggleLike(){
+  if(liked)return;
+  liked=true;
+  try{localStorage.setItem('roko_liked','1')}catch{}
+  renderLike();
+}
+</script>
+</body>
+</html>

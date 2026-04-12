@@ -1,0 +1,35 @@
+name: Update OFAC sanctions list
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Every Monday at 06:00 UTC
+  workflow_dispatch:       # Manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update OFAC addresses
+        run: node scripts/update-ofac.js
+
+      - name: Check for changes
+        id: diff
+        run: |
+          git diff --quiet data/ofac-addresses.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ofac-addresses.json
+          git commit -m "Update OFAC sanctions list ($(date +%Y-%m-%d))"
+          git push

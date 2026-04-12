@@ -1,0 +1,39 @@
+name: 🚨 Report a scam
+description: Report a scam domain, wallet, or Telegram handle
+title: "[SCAM] "
+labels: ["scam-report"]
+body:
+  - type: input
+    id: target
+    attributes:
+      label: Domain, wallet address, or @handle
+      placeholder: "e.g. fake-exchange.com or @scam_dealer"
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type
+      options:
+        - Fake exchange / phishing site
+        - AML-drain (asks to connect wallet for "verification")
+        - Token approval scam
+        - Fake dealer / Telegram scam
+        - Sanctioned / seized service
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Screenshots, links, transaction hashes, or any proof
+      placeholder: "Describe what happened or paste evidence..."
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Anything else that might help
+      placeholder: "When did you encounter this? How did you find it?"

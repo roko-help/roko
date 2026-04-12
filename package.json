@@ -1,0 +1,21 @@
+{
+  "name": "roko",
+  "version": "0.1.0",
+  "description": "Free, open-source crypto safety checker. Check before you send.",
+  "scripts": {
+    "dev": "npx serve -l 3457 public/",
+    "deploy": "npx firebase deploy --only hosting --project roko-help",
+    "bot": "node bot/index.js"
+  },
+  "keywords": [
+    "crypto",
+    "exchange",
+    "trust",
+    "blockchain"
+  ],
+  "author": "Roko",
+  "license": "MIT",
+  "devDependencies": {
+    "firebase-tools": "^15.12.0"
+  }
+}

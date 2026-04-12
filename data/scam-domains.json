@@ -1,0 +1,17 @@
+[
+  { "domain": "garantex.org", "reason": "OFAC sanctioned (April 2022), seized by law enforcement (March 2025)", "source": "OFAC SDN", "added": "2026-04-12" },
+  { "domain": "garantex.io", "reason": "OFAC sanctioned, seized domain", "source": "OFAC SDN", "added": "2026-04-12" },
+  { "domain": "suex.io", "reason": "OFAC sanctioned (September 2021) — first crypto exchange sanctioned", "source": "OFAC SDN", "added": "2026-04-12" },
+  { "domain": "chatex.com", "reason": "OFAC sanctioned (November 2021)", "source": "OFAC SDN", "added": "2026-04-12" },
+  { "domain": "bitzlato.com", "reason": "Seized by law enforcement (January 2023), founder arrested", "source": "DOJ", "added": "2026-04-12" },
+  { "domain": "tornado.cash", "reason": "OFAC sanctioned mixer (August 2022)", "source": "OFAC SDN", "added": "2026-04-12" },
+  { "domain": "bestmixer.io", "reason": "Seized by Europol (May 2019)", "source": "Europol", "added": "2026-04-12" },
+  { "domain": "helix.light", "reason": "Crypto mixer, operator sentenced", "source": "DOJ", "added": "2026-04-12" },
+  { "domain": "cashout.cc", "reason": "Known laundering service", "source": "community", "added": "2026-04-12" },
+  { "domain": "24xbtc.com", "reason": "Fake exchange, reports of stolen funds", "source": "community", "added": "2026-04-12" },
+  { "domain": "cryptonator.com", "reason": "Indicted for laundering $235M (2024)", "source": "DOJ", "added": "2026-04-12" },
+  { "domain": "blender.io", "reason": "OFAC sanctioned mixer (May 2022)", "source": "OFAC SDN", "added": "2026-04-12" },
+  { "domain": "sinbad.io", "reason": "OFAC sanctioned mixer (November 2023), seized", "source": "OFAC SDN", "added": "2026-04-12" },
+  { "domain": "chipmixter.com", "reason": "Seized by law enforcement (March 2023)", "source": "Europol", "added": "2026-04-12" },
+  { "domain": "hydra.market", "reason": "Seized darknet market (April 2022)", "source": "DOJ/BKA", "added": "2026-04-12" }
+]

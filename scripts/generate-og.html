@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+  Open this in a browser and screenshot at 1200x630 → save as public/og.png
+  Or use: npx pageres generate-og.html 1200x630 --filename=og
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px;
+    height: 630px;
+    background: #0a0f14;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+  /* Subtle gradient overlay */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 35% 50%, rgba(240,184,102,.08) 0%, transparent 70%);
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+  }
+  .raccoon {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(240,184,102,.3);
+    box-shadow: 0 0 80px rgba(240,184,102,.15);
+    flex-shrink: 0;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .title {
+    font-size: 72px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -2px;
+  }
+  .title em {
+    font-style: normal;
+    color: #f0b866;
+  }
+  .sub {
+    font-size: 28px;
+    color: rgba(255,255,255,.4);
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+  <div class="content">
+    <img class="raccoon" src="../public/raccoon-poster.jpg" alt="">
+    <div class="text">
+      <div class="title">Check before<br>you <em>send</em>.</div>
+      <div class="sub">roko.help</div>
+    </div>
+  </div>
+</body>
+</html>

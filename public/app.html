@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roko — Wallet Guardian</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080b10;
+      --surface: #0f1319;
+      --surface2: #161b24;
+      --border: rgba(255,255,255,0.08);
+      --text: #eaedf3;
+      --muted: #7a8599;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --red: #f87171;
+      --accent: #f0b866;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 0 5rem;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      padding: 1rem 1.2rem 0.8rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .header h1 { font-size: 1.2rem; font-weight: 700; }
+    .header h1 span { color: var(--accent); }
+    .header p { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* Tabs */
+    .tabs {
+      display: flex; padding: 0.5rem 1rem;
+      gap: 0.3rem; background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+    .tab {
+      padding: 0.4rem 0.8rem; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 500; cursor: pointer;
+      color: var(--muted); background: none; border: none;
+      font-family: inherit; white-space: nowrap; transition: all 0.2s;
+    }
+    .tab.active { background: var(--accent); color: #fff; }
+    .tab:hover:not(.active) { color: var(--text); }
+
+    /* Panels */
+    .panel { display: none; padding: 1rem; }
+    .panel.active { display: block; }
+
+    /* Search */
+    .search-wrap {
+      display: flex; gap: 0.4rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 0.3rem; margin-bottom: 1rem;
+    }
+    .search-wrap:focus-within { border-color: var(--accent); }
+    .search-wrap input {
+      flex: 1; background: none; border: none; color: var(--text);
+      font-size: 0.9rem; padding: 0.5rem 0.6rem; outline: none;
+      font-family: inherit;
+    }
+    .search-wrap input::placeholder { color: var(--muted); }
+    .btn {
+      background: var(--accent); color: #fff; border: none;
+      padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600;
+      cursor: pointer; font-family: inherit; font-size: 0.85rem;
+      transition: filter 0.2s;
+    }
+    .btn:hover { filter: brightness(1.15); }
+    .btn:disabled { opacity: 0.5; cursor: wait; }
+    .btn-sm { padding: 0.3rem 0.7rem; font-size: 0.78rem; border-radius: 6px; }
+    .btn-outline {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-danger { background: rgba(248,113,113,0.15); color: var(--red); }
+
+    /* Results */
+    .result-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1rem; margin-top: 0.8rem;
+      animation: slideUp 0.3s ease-out;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } }
+    .score-bar {
+      display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.8rem;
+    }
+    .score-num {
+      font-size: 1.6rem; font-weight: 700; min-width: 2.2rem; text-align: center;
+    }
+    .score-num.green { color: var(--green); }
+    .score-num.yellow { color: var(--yellow); }
+    .score-num.red { color: var(--red); }
+    .score-label { font-size: 0.85rem; color: var(--muted); }
+    .score-chain {
+      margin-left: auto; font-size: 0.75rem; font-weight: 600;
+      background: rgba(240,184,102,0.12); color: var(--accent);
+      padding: 0.15rem 0.5rem; border-radius: 4px;
+    }
+    .check-line {
+      display: flex; align-items: flex-start; gap: 0.4rem;
+      padding: 0.15rem 0; font-size: 0.82rem; color: var(--muted);
+    }
+    .check-line .icon { flex-shrink: 0; }
+    .section-divider {
+      font-size: 0.72rem; font-weight: 600; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin: 0.7rem 0 0.3rem; padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .guide-tip {
+      font-size: 0.8rem; color: var(--muted); padding: 0.1rem 0;
+    }
+    .guide-tip::before { content: '→ '; color: var(--accent); }
+
+    /* Approval cards */
+    .approval-card {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.8rem; margin-bottom: 0.5rem;
+    }
+    .approval-card.danger { border-color: rgba(248,113,113,0.3); }
+    .approval-head {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;
+    }
+    .approval-token { font-weight: 600; font-size: 0.85rem; }
+    .approval-amount { font-size: 0.78rem; }
+    .approval-amount.unlimited { color: var(--red); font-weight: 600; }
+    .approval-amount.limited { color: var(--green); }
+    .approval-spender {
+      font-size: 0.75rem; color: var(--muted); font-family: monospace;
+    }
+
+    /* Watchlist */
+    .watch-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.7rem 0.8rem; margin-bottom: 0.4rem;
+    }
+    .watch-icon { font-size: 1.1rem; }
+    .watch-info { flex: 1; }
+    .watch-value {
+      font-size: 0.82rem; font-weight: 500;
+      overflow: hidden; text-overflow: ellipsis; max-width: 200px;
+      white-space: nowrap;
+    }
+    .watch-meta { font-size: 0.72rem; color: var(--muted); }
+    .watch-status { font-size: 0.75rem; padding: 0.1rem 0.4rem; border-radius: 4px; }
+    .watch-status.ok { background: rgba(52,211,153,0.12); color: var(--green); }
+    .watch-status.alert { background: rgba(248,113,113,0.12); color: var(--red); }
+
+    /* Empty states */
+    .empty {
+      text-align: center; padding: 3rem 1rem; color: var(--muted);
+    }
+    .empty-icon { font-size: 2.5rem; margin-bottom: 0.6rem; }
+    .empty p { font-size: 0.85rem; max-width: 280px; margin: 0 auto; }
+
+    /* Loading */
+    .spinner {
+      display: inline-block; width: 18px; height: 18px;
+      border: 2px solid var(--border); border-top-color: var(--accent);
+      border-radius: 50%; animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-msg {
+      text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem;
+    }
+
+    /* Quick actions */
+    .quick-actions {
+      display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1rem;
+    }
+    .quick-btn {
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--muted); padding: 0.35rem 0.7rem; border-radius: 8px;
+      font-size: 0.78rem; cursor: pointer; font-family: inherit;
+      transition: all 0.2s;
+    }
+    .quick-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Responsive */
+    @media(max-width:400px){
+      .header h1 { font-size: 1rem; }
+      .tabs { gap: 0.15rem; }
+      .tab { font-size: 0.72rem; padding: 0.3rem 0.6rem; }
+      .search-btn { padding: 0.5rem 0.8rem; font-size: 0.8rem; }
+      .result-section { padding: 0.8rem; }
+    }
+    @media(prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+    }
+    @supports(padding-bottom:env(safe-area-inset-bottom)){
+      body{padding-bottom:calc(5rem + env(safe-area-inset-bottom))}
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <h1>🦝 Roko <span>v4</span></h1>
+  <p>Crypto Exchange Trust Index</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Main sections">
+  <button class="tab active" data-tab="check" role="tab" aria-selected="true" aria-controls="panel-check">🔍 Check</button>
+  <button class="tab" data-tab="approvals" role="tab" aria-selected="false" aria-controls="panel-approvals">🔓 Approvals</button>
+  <button class="tab" data-tab="watchlist" role="tab" aria-selected="false" aria-controls="panel-watchlist">📡 Watchlist</button>
+</nav>
+
+<!-- CHECK TAB -->
+<div id="panel-check" class="panel active" role="tabpanel" aria-labelledby="tab-check">
+  <div class="search-wrap" role="search">
+    <input id="check-input" type="text" placeholder="Domain, @handle, or wallet address..." aria-label="Address to check">
+    <button class="btn" id="check-btn">Check</button>
+  </div>
+
+  <div class="quick-actions">
+    <button class="quick-btn" data-q="bestchange.com">bestchange.com</button>
+    <button class="quick-btn" data-q="garantex.org">garantex.org</button>
+    <button class="quick-btn" data-q="@manager_24exchange">@manager_24exchange</button>
+  </div>
+
+  <div id="check-result"></div>
+</div>
+
+<!-- APPROVALS TAB -->
+<div id="panel-approvals" class="panel" role="tabpanel" aria-labelledby="tab-approvals">
+  <div class="search-wrap" role="search">
+    <input id="approval-input" type="text" placeholder="ETH (0x...) or TRON (T...) address" aria-label="Wallet address for approval scan">
+    <button class="btn" id="approval-btn">Scan</button>
+  </div>
+
+  <p style="font-size:0.8rem; color:var(--muted); margin-bottom:1rem;">
+    Check which contracts have permission to spend your tokens. Unlimited approvals can drain your wallet.
+  </p>
+
+  <div id="approval-result"></div>
+</div>
+
+<!-- WATCHLIST TAB -->
+<div id="panel-watchlist" class="panel" role="tabpanel" aria-labelledby="tab-watchlist">
+  <div class="search-wrap" role="search">
+    <input id="watch-input" type="text" placeholder="Add domain or address to watch..." aria-label="Address to add to watchlist">
+    <button class="btn" id="watch-btn">+ Watch</button>
+  </div>
+
+  <div id="watchlist-items">
+    <div class="empty">
+      <div class="empty-icon">📡</div>
+      <p>Your watchlist is empty. Add domains or wallet addresses to monitor them for changes.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// --- Telegram WebApp ---
+const tg = window.Telegram?.WebApp;
+if (tg) {
+  tg.ready();
+  tg.expand();
+  // Apply Telegram theme if available
+  if (tg.themeParams?.bg_color) {
+    document.documentElement.style.setProperty('--bg', tg.themeParams.bg_color);
+  }
+}
+
+// --- Tabs ---
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected','true');
+    document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// --- Quick actions ---
+document.querySelectorAll('.quick-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById('check-input').value = btn.dataset.q;
+    runCheck();
+  });
+});
+
+// --- HTTP helpers ---
+async function fetchJSON(url, timeout = 10000) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeout);
+  try {
+    const r = await fetch(url, { signal: ctrl.signal });
+    clearTimeout(timer);
+    return await r.json();
+  } catch (e) {
+    clearTimeout(timer);
+    throw e;
+  }
+}
+
+// --- Address detection ---
+function detectAddressType(addr) {
+  addr = addr.trim();
+  if (/^(bc1)[a-zA-HJ-NP-Z0-9]{25,62}$/.test(addr)) return 'btc';
+  if (/^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$/.test(addr)) return 'btc';
+  if (/^0x[a-fA-F0-9]{40}$/.test(addr)) return 'eth';
+  if (/^T[a-zA-Z0-9]{33}$/.test(addr)) return 'tron';
+  return null;
+}
+
+// --- Sanctions DB ---
+const SANCTIONED = new Set([
+  'garantex.org','garantex.io','suex.io','chatex.com','bitzlato.com','tornado.cash','bestmixer.io'
+]);
+const KNOWN_GOOD = {
+  'bestchange.com': { note: 'Major rate aggregator since 2007', boost: 15 },
+  'binance.com': { note: 'Largest exchange, regulated', boost: 10 },
+  'bybit.com': { note: 'Major exchange, Dubai-regulated', boost: 8 },
+  'kraken.com': { note: 'US-regulated since 2011', boost: 12 },
+  'coinbase.com': { note: 'US public company, NASDAQ', boost: 15 },
+};
+
+const SANCTIONED_ADDRS = new Set([
+  '0x8589427373d6d84e98730d7795d8f6f8731fda16',
+  '0x722122df12d4e14e13ac3b6895a86e84145b6967',
+  '0xd90e2f925da726b50c4ed8d0fb90ad053324f31b',
+  '0xd4b88df4d29f5cedd6857912842cff3b20c8cfa3',
+  '0x6f1ca141a28907f78ebaa64fb83a9088b02a8352',
+]);
+
+// --- Domain check (client-side) ---
+async function checkDomainClient(domain) {
+  const results = [];
+  let score = 50;
+
+  // Known DB
+  if (SANCTIONED.has(domain)) {
+    results.push({ icon: '🔴', text: `SANCTIONED/SCAM domain`, cls: 'fail' });
+    score -= 40;
+  }
+  if (KNOWN_GOOD[domain]) {
+    results.push({ icon: '🟢', text: KNOWN_GOOD[domain].note, cls: 'pass' });
+    score += KNOWN_GOOD[domain].boost;
+  }
+
+  // DNS
+  try {
+    const dns = await fetchJSON(`https://dns.google/resolve?name=${domain}&type=A`);
+    if (dns.Answer?.length > 0) {
+      results.push({ icon: '🟢', text: `DNS resolves → ${dns.Answer[dns.Answer.length-1].data}`, cls: 'pass' });
+      score += 3;
+    } else {
+      results.push({ icon: '🔴', text: 'DNS does not resolve — site may be down', cls: 'fail' });
+      score -= 25;
+    }
+  } catch { results.push({ icon: '⚪', text: 'DNS check unavailable', cls: 'info' }); }
+
+  // RDAP
+  try {
+    const rdap = await fetchJSON(`https://rdap.org/domain/${domain}`, 12000);
+    const regEvent = (rdap.events || []).find(e => e.eventAction === 'registration');
+    if (regEvent) {
+      const years = (Date.now() - new Date(regEvent.eventDate).getTime()) / (365.25*24*3600000);
+      const text = years >= 1 ? `${years.toFixed(1)} years` : `${Math.round(years*12)} months`;
+      if (years >= 3) { results.push({ icon: '🟢', text: `Domain age: ${text} — established`, cls: 'pass' }); score += 15; }
+      else if (years >= 1) { results.push({ icon: '🟢', text: `Domain age: ${text}`, cls: 'pass' }); score += 8; }
+      else if (years >= 0.25) { results.push({ icon: '🟡', text: `Domain age: ${text} — new`, cls: 'warn' }); score -= 5; }
+      else { results.push({ icon: '🔴', text: `Domain age: ${text} — very new`, cls: 'fail' }); score -= 15; }
+    }
+  } catch {}
+
+  score = Math.max(0, Math.min(100, score));
+  return { score, results };
+}
+
+// --- Blockchain check (client-side) ---
+async function checkAddressClient(address) {
+  const chain = detectAddressType(address);
+  const results = [];
+  let score = 40;
+
+  // Sanctions
+  if (SANCTIONED_ADDRS.has(address.toLowerCase())) {
+    results.push({ icon: '🔴', text: 'OFAC SANCTIONED ADDRESS', cls: 'fail' });
+    return { score: 0, results, chain };
+  }
+
+  if (chain === 'btc') {
+    try {
+      const data = await fetchJSON(`https://blockchair.com/bitcoin/dashboards/address/${address}`);
+      const info = data?.data?.[address]?.address;
+      if (info) {
+        const bal = info.balance / 1e8;
+        results.push({ icon: '💰', text: `Balance: ${bal.toFixed(8)} BTC (~$${(bal*65000).toFixed(0)})`, cls: 'info' });
+        results.push({ icon: '📊', text: `Transactions: ${info.transaction_count || 0}`, cls: 'info' });
+        if (info.first_seen_receiving) {
+          const age = (Date.now() - new Date(info.first_seen_receiving).getTime()) / (365.25*24*3600000);
+          if (age >= 1) { results.push({ icon: '🟢', text: `First seen: ${age.toFixed(1)} years ago`, cls: 'pass' }); score += 15; }
+          else { results.push({ icon: '🟡', text: `First seen: ${Math.round(age*12)} months ago`, cls: 'warn' }); }
+        }
+        if ((info.transaction_count || 0) > 100) score += 10;
+        else if ((info.transaction_count || 0) < 5) score -= 5;
+      } else {
+        results.push({ icon: '⚪', text: 'Address not found — may be unused', cls: 'info' });
+        score = 20;
+      }
+    } catch (e) { results.push({ icon: '⚪', text: 'BTC check unavailable', cls: 'info' }); }
+  }
+
+  if (chain === 'eth') {
+    try {
+      const data = await fetchJSON(`https://blockchair.com/ethereum/dashboards/address/${address}`);
+      const info = data?.data?.[address.toLowerCase()]?.address;
+      if (info) {
+        const bal = info.balance / 1e18;
+        results.push({ icon: '💰', text: `Balance: ${bal.toFixed(4)} ETH (~$${(bal*3500).toFixed(0)})`, cls: 'info' });
+        results.push({ icon: '📊', text: `Transactions: ${info.transaction_count || 0}`, cls: 'info' });
+        if (info.type === 'contract') results.push({ icon: '📋', text: 'This is a smart contract', cls: 'info' });
+        if ((info.transaction_count || 0) > 100) score += 10;
+      }
+    } catch { results.push({ icon: '⚪', text: 'ETH check unavailable', cls: 'info' }); }
+  }
+
+  if (chain === 'tron') {
+    try {
+      const data = await fetchJSON(`https://api.trongrid.io/v1/accounts/${address}`);
+      if (data?.data?.[0]) {
+        const acc = data.data[0];
+        const bal = (acc.balance || 0) / 1e6;
+        results.push({ icon: '💰', text: `Balance: ${bal.toFixed(2)} TRX (~$${(bal*0.12).toFixed(2)})`, cls: 'info' });
+        const trc20 = acc.trc20 || [];
+        const usdtEntry = trc20.find(t => t['TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t']);
+        if (usdtEntry) {
+          const usdtBal = parseInt(usdtEntry['TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t']) / 1e6;
+          results.push({ icon: '💵', text: `USDT (TRC-20): ${usdtBal.toLocaleString()}`, cls: 'info' });
+          if (usdtBal > 50000) score += 10;
+        }
+        const created = acc.create_time;
+        if (created) {
+          const age = Date.now() - created;
+          if (age > 365*24*3600*1000) score += 10;
+          results.push({ icon: '📊', text: `Account age: ${Math.floor(age/86400000)} days`, cls: 'info' });
+        }
+      }
+    } catch { results.push({ icon: '⚪', text: 'TRON check unavailable', cls: 'info' }); }
+  }
+
+  score = Math.max(0, Math.min(100, score));
+  return { score, results, chain };
+}
+
+// --- TG handle check ---
+// Can't fetch t.me from browser (CORS), so we show a limited check
+function checkHandleClient(handle) {
+  const results = [];
+  let score = 35;
+
+  if (/manager|support|admin|operator|helper/i.test(handle)) {
+    results.push({ icon: '🟡', text: '"manager/support" pattern — common in scams', cls: 'warn' });
+    score -= 5;
+  }
+  if (/binance|coinbase|bybit|kraken|bestchange|trust|wallet/i.test(handle)) {
+    results.push({ icon: '🔴', text: 'Contains major brand name — possible impersonation', cls: 'fail' });
+    score -= 10;
+  }
+  if (handle.length > 20) {
+    results.push({ icon: '🟡', text: 'Very long handle — unusual', cls: 'warn' });
+    score -= 3;
+  }
+  if (/^\d+$/.test(handle)) {
+    results.push({ icon: '🔴', text: 'Handle is just numbers — suspicious', cls: 'fail' });
+    score -= 10;
+  }
+
+  results.push({ icon: 'ℹ️', text: 'For full TG profile scan, use the bot: @RokoHelpBot', cls: 'info' });
+  score = Math.max(0, Math.min(100, score));
+  return { score, results };
+}
+
+// --- Render results ---
+function renderResults(container, { score, results, chain, guide }) {
+  const scoreClass = score >= 70 ? 'green' : score >= 40 ? 'yellow' : 'red';
+  const label = score >= 70 ? 'Low risk' : score >= 40 ? 'Medium risk' : 'High risk';
+
+  let html = `<div class="result-card">
+    <div class="score-bar">
+      <div class="score-num ${scoreClass}">${score}</div>
+      <div>
+        <div style="font-weight:600;font-size:0.9rem">${label}</div>
+        <div class="score-label">Trust Score</div>
+      </div>
+      ${chain ? `<div class="score-chain">${chain.toUpperCase()}</div>` : ''}
+    </div>`;
+
+  for (const r of results) {
+    html += `<div class="check-line ${r.cls}"><span class="icon">${r.icon}</span> ${escHtml(r.text)}</div>`;
+  }
+
+  if (guide?.length) {
+    html += `<div class="section-divider">🧠 Safety Guide</div>`;
+    for (const tip of guide) {
+      html += `<div class="guide-tip">${escHtml(tip)}</div>`;
+    }
+  }
+
+  html += `</div>`;
+  container.innerHTML = html;
+}
+
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/'/g,'&#39;').replace(/"/g,'&quot;'); }
+
+function getGuide(score) {
+  if (score >= 70) return ['Split large amounts into 2 transfers', 'Save transaction hash', 'Set a timer for payout'];
+  if (score >= 40) return ['Test with minimum amount first', 'Screenshot all communication', 'Never share ID to speed up a delayed tx'];
+  return ['Roko recommends against this exchanger', 'If you must: absolute minimum only', 'Report at @RokoHelp'];
+}
+
+// --- Check handler ---
+async function runCheck() {
+  const input = document.getElementById('check-input').value.trim();
+  if (!input) return;
+  const container = document.getElementById('check-result');
+  const btn = document.getElementById('check-btn');
+
+  btn.disabled = true;
+  container.innerHTML = '<div class="loading-msg"><div class="spinner"></div><br>Checking...</div>';
+
+  try {
+    // Detect type
+    const addrType = detectAddressType(input);
+    const handleMatch = input.match(/^@?([a-zA-Z0-9_]{3,})$/);
+    const domainMatch = input.replace(/^https?:\/\//, '').match(/^([a-zA-Z0-9][-a-zA-Z0-9]*\.[a-zA-Z]{2,})/);
+
+    if (addrType) {
+      const data = await checkAddressClient(input);
+      renderResults(container, { ...data, guide: getGuide(data.score) });
+    } else if (domainMatch) {
+      const data = await checkDomainClient(domainMatch[1].toLowerCase());
+      renderResults(container, { ...data, guide: getGuide(data.score) });
+    } else if (handleMatch && !input.includes('.')) {
+      const data = checkHandleClient(handleMatch[1]);
+      renderResults(container, { ...data, guide: getGuide(data.score) });
+    } else {
+      container.innerHTML = '<div class="result-card"><div class="check-line warn"><span class="icon">🦝</span> Could not recognize input. Try a domain, @handle, or wallet address.</div></div>';
+    }
+  } catch (e) {
+    container.innerHTML = `<div class="result-card"><div class="check-line fail"><span class="icon">❌</span> Check failed: ${escHtml(e.message)}</div></div>`;
+  }
+
+  btn.disabled = false;
+}
+
+document.getElementById('check-btn').addEventListener('click', runCheck);
+document.getElementById('check-input').addEventListener('keydown', e => { if (e.key === 'Enter') runCheck(); });
+
+// --- Approval scanner ---
+async function runApprovalScan() {
+  const input = document.getElementById('approval-input').value.trim();
+  const container = document.getElementById('approval-result');
+  const btn = document.getElementById('approval-btn');
+  if (!input) return;
+
+  const addrType = detectAddressType(input);
+  if (addrType !== 'eth' && addrType !== 'tron') {
+    container.innerHTML = '<div class="result-card"><div class="check-line warn"><span class="icon">🦝</span> Only ETH (0x...) and TRON (T...) addresses supported.</div></div>';
+    return;
+  }
+
+  btn.disabled = true;
+  container.innerHTML = '<div class="loading-msg"><div class="spinner"></div><br>Scanning approvals...</div>';
+
+  try {
+    if (addrType === 'tron') {
+      container.innerHTML = `<div class="result-card">
+        <div class="check-line info"><span class="icon">ℹ️</span> TRON approval data requires TronScan authentication.</div>
+        <div class="check-line info"><span class="icon">🔗</span> Check approvals: <a href="https://tronscan.org/#/address/${input}" target="_blank" style="color:var(--accent)">TronScan</a></div>
+        <div class="check-line info"><span class="icon">💡</span> Revoke via TronLink wallet or TronScan UI.</div>
+        <div class="check-line info"><span class="icon">🤖</span> Use @RokoHelpBot /approvals for bot-assisted scan.</div>
+      </div>`;
+    } else {
+      // ETH — show info about using revoke.cash (browser can't call eth_getLogs due to CORS)
+      container.innerHTML = `<div class="result-card">
+        <div class="check-line info"><span class="icon">ℹ️</span> ETH approval scanning requires RPC access.</div>
+        <div class="check-line info"><span class="icon">💡</span> Use the bot (@RokoHelpBot) for full ETH approval scan.</div>
+        <div class="check-line info"><span class="icon">🔗</span> Or check directly: revoke.cash</div>
+        <div style="margin-top:0.6rem">
+          <a href="https://revoke.cash/address/${escHtml(input)}" target="_blank" class="btn btn-sm" style="display:inline-block;text-decoration:none">Open on Revoke.cash →</a>
+        </div>
+      </div>`;
+    }
+  } catch (e) {
+    container.innerHTML = `<div class="result-card"><div class="check-line fail"><span class="icon">❌</span> Scan failed: ${escHtml(e.message)}</div></div>`;
+  }
+
+  btn.disabled = false;
+}
+
+document.getElementById('approval-btn').addEventListener('click', runApprovalScan);
+document.getElementById('approval-input').addEventListener('keydown', e => { if (e.key === 'Enter') runApprovalScan(); });
+
+// --- Watchlist (local storage) ---
+function getWatchlist() {
+  try { return JSON.parse(localStorage.getItem('roko_watchlist') || '[]'); } catch { return []; }
+}
+function saveWatchlistLocal(items) {
+  localStorage.setItem('roko_watchlist', JSON.stringify(items));
+}
+
+function renderWatchlist() {
+  const items = getWatchlist();
+  const container = document.getElementById('watchlist-items');
+
+  if (items.length === 0) {
+    container.innerHTML = '<div class="empty"><div class="empty-icon">📡</div><p>Your watchlist is empty. Add domains or addresses to monitor.</p></div>';
+    return;
+  }
+
+  let html = '';
+  for (const item of items) {
+    const icon = item.type === 'domain' ? '🌐' : item.type === 'btc' ? '₿' : item.type === 'eth' ? 'Ξ' : '◎';
+    html += `<div class="watch-item">
+      <span class="watch-icon">${icon}</span>
+      <div class="watch-info">
+        <div class="watch-value">${escHtml(item.value)}</div>
+        <div class="watch-meta">${item.type.toUpperCase()} · Added ${new Date(item.addedAt).toLocaleDateString()}</div>
+      </div>
+      <button class="btn btn-sm btn-danger" onclick="removeWatch('${escHtml(item.value)}')">✕</button>
+    </div>`;
+  }
+  container.innerHTML = html;
+}
+
+function addWatch() {
+  const input = document.getElementById('watch-input').value.trim();
+  if (!input) return;
+
+  const items = getWatchlist();
+  if (items.length >= 10) { alert('Watchlist limit: 10 items'); return; }
+  if (items.some(w => w.value === input)) { alert('Already on watchlist'); return; }
+
+  const addrType = detectAddressType(input);
+  const isDomain = /^[a-zA-Z0-9][-a-zA-Z0-9]*\.[a-zA-Z]{2,}$/.test(input);
+
+  if (!addrType && !isDomain) { alert('Not a valid address or domain'); return; }
+
+  items.push({ type: addrType || 'domain', value: input, addedAt: new Date().toISOString() });
+  saveWatchlistLocal(items);
+  document.getElementById('watch-input').value = '';
+  renderWatchlist();
+
+  // Also send to bot for server-side monitoring
+  if (tg) {
+    tg.sendData(JSON.stringify({ action: 'watch', value: input }));
+  }
+}
+
+window.removeWatch = function(value) {
+  const items = getWatchlist().filter(w => w.value !== value);
+  saveWatchlistLocal(items);
+  renderWatchlist();
+};
+
+document.getElementById('watch-btn').addEventListener('click', addWatch);
+document.getElementById('watch-input').addEventListener('keydown', e => { if (e.key === 'Enter') addWatch(); });
+
+// Init watchlist
+renderWatchlist();
+</script>
+</body>
+</html>
