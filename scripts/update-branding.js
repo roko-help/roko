@@ -7,7 +7,6 @@ const https = require('https');
 const { readFileSync } = require('fs');
 const { resolve } = require('path');
 
-// --- Token ---
 const ENV_PATH = resolve(__dirname, '../../LLM/.env');
 let TOKEN = process.env.ROKO_TELEGRAM_TOKEN;
 if (!TOKEN) {
@@ -38,47 +37,29 @@ async function run() {
   console.log('Updating bot branding...\n');
   let r;
 
-  // ===== BOT DESCRIPTION (before /start) =====
+  // ===== BOT DESCRIPTION (before /start – for a normal person) =====
   const descRu = [
-    'Скинули подозрительную ссылку? Вставь сюда.',
+    'Хочешь обменять крипту, но не уверен в обменнике?',
     '',
-    'Roko проверит домен, кошелёк или Telegram-аккаунт за 3 секунды – и скажет, безопасно или скам.',
+    'Отправь ссылку на сайт, Telegram-аккаунт или адрес кошелька – Roko проверит по базам мошенников, чёрным спискам и санкциям.',
     '',
-    '🌐 Сайт – домен, возраст, SSL, контент',
-    '⛓ Кошелёк – баланс, история, USDT',
-    '🛡️ Санкции – OFAC, миксеры, скам-базы',
-    '🔓 Approvals – кто может тратить твои токены',
-    '📡 Мониторинг 24/7',
-    '',
-    'Бесплатно. Открытый код.',
+    'Ответ за 3 секунды. Бесплатно.',
   ].join('\n');
 
   const descEn = [
-    'Got a sketchy link? Paste it here.',
+    'Want to exchange crypto but not sure about the exchanger?',
     '',
-    'Roko checks domains, wallets, and Telegram accounts in 3 seconds – and tells you if it\'s safe or a scam.',
+    'Send a website link, Telegram account, or wallet address – Roko checks scam databases, blacklists, and sanctions.',
     '',
-    '🌐 Website – domain, age, SSL, content',
-    '⛓ Wallet – balance, history, USDT',
-    '🛡️ Sanctions – OFAC, mixers, scam databases',
-    '🔓 Approvals – who can spend your tokens',
-    '📡 24/7 monitoring',
-    '',
-    'Free. Open source.',
+    'Answer in 3 seconds. Free.',
   ].join('\n');
 
   const descEs = [
-    '¿Te enviaron un enlace sospechoso? Pégalo aquí.',
+    '¿Quieres cambiar crypto pero no confías en el exchanger?',
     '',
-    'Roko verifica dominios, wallets y cuentas de Telegram en 3 segundos – y te dice si es seguro o estafa.',
+    'Envía un enlace, cuenta de Telegram o dirección de wallet – Roko verifica bases de estafadores, listas negras y sanciones.',
     '',
-    '🌐 Sitio – dominio, antigüedad, SSL, contenido',
-    '⛓ Wallet – balance, historial, USDT',
-    '🛡️ Sanciones – OFAC, mixers, bases de scam',
-    '🔓 Approvals – quién puede gastar tus tokens',
-    '📡 Monitoreo 24/7',
-    '',
-    'Gratis. Código abierto.',
+    'Respuesta en 3 segundos. Gratis.',
   ].join('\n');
 
   r = await tg('setMyDescription', { description: descRu, language_code: 'ru' });
@@ -90,14 +71,14 @@ async function run() {
   r = await tg('setMyDescription', { description: descEn });
   console.log('description default:', r.ok ? '✅' : '❌');
 
-  // ===== SHORT DESCRIPTION (profile card) =====
-  r = await tg('setMyShortDescription', { short_description: 'Проверь перед отправкой – roko.help', language_code: 'ru' });
+  // ===== SHORT DESCRIPTION =====
+  r = await tg('setMyShortDescription', { short_description: 'Проверь обменник перед отправкой крипты – roko.help', language_code: 'ru' });
   console.log('short ru:', r.ok ? '✅' : '❌');
-  r = await tg('setMyShortDescription', { short_description: 'Check before you send – roko.help', language_code: 'en' });
+  r = await tg('setMyShortDescription', { short_description: 'Check the exchanger before you send crypto – roko.help', language_code: 'en' });
   console.log('short en:', r.ok ? '✅' : '❌');
-  r = await tg('setMyShortDescription', { short_description: 'Verifica antes de enviar – roko.help', language_code: 'es' });
+  r = await tg('setMyShortDescription', { short_description: 'Verifica el exchanger antes de enviar crypto – roko.help', language_code: 'es' });
   console.log('short es:', r.ok ? '✅' : '❌');
-  r = await tg('setMyShortDescription', { short_description: 'Check before you send – roko.help' });
+  r = await tg('setMyShortDescription', { short_description: 'Check the exchanger before you send crypto – roko.help' });
   console.log('short default:', r.ok ? '✅' : '❌');
 
   // ===== NAME =====
@@ -115,7 +96,7 @@ async function run() {
     { command: 'watch', description: 'Следить за адресом или доменом 24/7' },
     { command: 'watchlist', description: 'Список мониторинга' },
     { command: 'unwatch', description: 'Перестать следить' },
-    { command: 'approvals', description: 'Скан approvals (ETH/TRON)' },
+    { command: 'approvals', description: 'Проверить доступ к токенам (ETH/TRON)' },
     { command: 'lang', description: 'Сменить язык' },
   ];
   const cmdsEn = [
@@ -124,7 +105,7 @@ async function run() {
     { command: 'watch', description: 'Monitor address or domain 24/7' },
     { command: 'watchlist', description: 'Monitoring list' },
     { command: 'unwatch', description: 'Stop monitoring' },
-    { command: 'approvals', description: 'Scan token approvals (ETH/TRON)' },
+    { command: 'approvals', description: 'Check token access (ETH/TRON)' },
     { command: 'lang', description: 'Change language' },
   ];
   const cmdsEs = [
@@ -133,7 +114,7 @@ async function run() {
     { command: 'watch', description: 'Monitorear dirección o dominio 24/7' },
     { command: 'watchlist', description: 'Lista de monitoreo' },
     { command: 'unwatch', description: 'Dejar de monitorear' },
-    { command: 'approvals', description: 'Escanear approvals (ETH/TRON)' },
+    { command: 'approvals', description: 'Verificar acceso a tokens (ETH/TRON)' },
     { command: 'lang', description: 'Cambiar idioma' },
   ];
   r = await tg('setMyCommands', { commands: cmdsRu, language_code: 'ru' });
@@ -147,31 +128,23 @@ async function run() {
 
   // ===== CHANNEL DESCRIPTION =====
   const chDesc = [
-    'Скам-алерты · новые схемы · обновления Roko',
-    'Scam alerts · new schemes · Roko updates',
-    'Alertas de estafa · nuevos esquemas · actualizaciones',
+    'Как не потерять деньги при обмене крипты.',
+    'Разбираем реальные схемы мошенничества, предупреждаем о новых.',
     '',
     '@RokoHelpBot · roko.help · welc@roko.help',
   ].join('\n');
   r = await tg('setChatDescription', { chat_id: '@roko_help', description: chDesc });
   console.log('channel description:', r.ok ? '✅' : '❌');
 
-  // ===== PINNED MESSAGE – links once at bottom =====
+  // ===== PINNED MESSAGE =====
   const pin = [
-    '🦝 <b>Roko</b> – проверь перед отправкой',
+    '🦝 <b>Roko</b> – проверь обменник перед отправкой крипты',
     '',
-    'Скинули подозрительную ссылку? Вставь в бот.',
-    'Домен, санкции, блокчейн, approvals – 3 секунды.',
+    'Не уверен в сайте или продавце? Отправь ссылку в бот – Roko проверит по базам мошенников и скажет, можно доверять или нет. Бесплатно.',
     '',
-    '🇬🇧 <b>Roko</b> – check before you send',
+    '🇬🇧 Not sure about a crypto exchanger? Send the link to the bot – Roko checks scam databases and tells you if it\'s safe. Free.',
     '',
-    'Got a sketchy link? Paste it in the bot.',
-    'Domain, sanctions, blockchain, approvals – 3 seconds.',
-    '',
-    '🇪🇸 <b>Roko</b> – verifica antes de enviar',
-    '',
-    '¿Enlace sospechoso? Pégalo en el bot.',
-    'Dominio, sanciones, blockchain, approvals – 3 segundos.',
+    '🇪🇸 ¿No confías en un exchanger? Envía el enlace al bot – Roko verifica y te dice si es seguro. Gratis.',
     '',
     '🤖 @RokoHelpBot',
     '🌐 roko.help',
@@ -180,7 +153,7 @@ async function run() {
 
   r = await tg('sendMessage', { chat_id: '@roko_help', text: pin, parse_mode: 'HTML', disable_web_page_preview: true });
   if (r.ok) {
-    console.log('pinned msg sent:', '✅', 'id:', r.result.message_id);
+    console.log('pinned msg:', '✅', 'id:', r.result.message_id);
     const p = await tg('pinChatMessage', { chat_id: '@roko_help', message_id: r.result.message_id, disable_notification: true });
     console.log('pinned:', p.ok ? '✅' : '❌');
   } else {
