@@ -1053,7 +1053,8 @@ async function initLLM() {
   if (llmAvailable === false) return null;
   if (llmInstance) return llmInstance;
   try {
-    const { init } = require('/Users/roman/Projects/LLM/lib/index.cjs');
+    const llmPath = process.env.LLM_PATH || resolve(__dirname, '../../LLM/lib/index.cjs');
+    const { init } = require(llmPath);
     const { LLM } = await init();
     llmInstance = new LLM({ project: 'roko' });
     llmAvailable = true;

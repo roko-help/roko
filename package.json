@@ -13,7 +13,7 @@
     "trust",
     "blockchain"
   ],
-  "author": "Roko",
+  "author": "Roko <welc@roko.help>",
   "license": "MIT",
   "devDependencies": {
     "firebase-tools": "^15.12.0"
