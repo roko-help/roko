@@ -17,7 +17,7 @@ async function checkAML(address, chain) {
   }
 
   results.push(`🟢 AML: Not found in OFAC sanctions or known mixer databases`);
-  results.push(`💡 For a deep AML check (transaction history, risk score) → @AMLBot`);
+  results.push(`💡 For a deep AML check (transaction history, risk score) → @cryptoaml_bot`);
   return { sanctioned: false, results, riskLevel: 'low' };
 }
 
