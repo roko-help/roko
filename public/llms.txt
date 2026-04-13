@@ -1,0 +1,43 @@
+# Roko
+
+> Free crypto safety checker. Paste a domain, wallet address (BTC, TRON, ETH), or Telegram handle – get a trust score 0–100 in seconds.
+
+## What it checks
+
+**Domains and links**
+- Domain age (WHOIS), SSL certificate, DNS records
+- Phishing and scam databases
+- Site content analysis (AI-assisted)
+
+**Wallet addresses (BTC, TRON, ETH)**
+- OFAC sanctions screening (384 addresses, updated weekly from the US Treasury SDN list)
+- Depth-1 AML: scans last 25–50 transactions for sanctioned counterparties
+- Balance, transaction count, wallet age
+- Token approvals (ERC-20, TRC-20) – identifies dangerous unlimited approvals
+
+**Telegram handles**
+- Account registration date
+- Known scam reports
+
+## Output
+
+Trust score 0–100 with a per-check breakdown showing exactly what passed and what failed.
+
+## Availability
+
+- Web: https://roko.help
+- Telegram bot: @RokoHelpBot (also supports watchlist monitoring with alerts)
+
+## Details
+
+- Free, no registration required
+- Languages: English, Russian, Spanish
+- ETH depth-1 AML: in progress (requires Etherscan API key – open for contributors)
+- Scam Quest: interactive scam awareness game at https://roko.help/quest.html
+
+## Typical use cases
+
+- Verifying a crypto exchanger or OTC dealer before sending money
+- Checking a P2P counterparty's wallet before trading
+- Checking if a Telegram handle is a known scammer
+- Validating a payment address received by email or chat

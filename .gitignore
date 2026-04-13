@@ -10,3 +10,5 @@ github-setup.md
 CLAUDE.md
 public/*-original.mp4
 bot/stats.json
+bot/langs.json
+bot/watchlist.json
