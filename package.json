@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "npx serve -l 3457 public/",
     "deploy": "npx firebase deploy --only hosting --project roko-help",
-    "bot": "node bot/index.js"
+    "bot": "node bot/index.js",
+    "test": "node test/scoring.test.js"
   },
   "keywords": [
     "crypto",
