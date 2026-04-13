@@ -3,6 +3,9 @@
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
+    "rewrites": [
+      { "source": "/api/likes", "function": { "functionId": "likes", "region": "europe-west1" } }
+    ],
     "headers": [
       {
         "source": "**/*.@(js|css|woff2)",
@@ -19,7 +22,8 @@
     "source": "functions",
     "runtime": "nodejs20",
     "predeploy": [
-      "mkdir -p \"$RESOURCE_DIR/bot\" && cp \"$PROJECT_DIR/bot/index.js\" \"$RESOURCE_DIR/bot/index.js\""
+      "mkdir -p \"$RESOURCE_DIR/bot/lib/checks\" && cp \"$PROJECT_DIR/bot/index.js\" \"$RESOURCE_DIR/bot/index.js\" && cp \"$PROJECT_DIR/bot/lib/\"*.js \"$RESOURCE_DIR/bot/lib/\" && cp \"$PROJECT_DIR/bot/lib/checks/\"*.js \"$RESOURCE_DIR/bot/lib/checks/\" && cp -r \"$PROJECT_DIR/data\" \"$RESOURCE_DIR/data\"",
+      "node -e \"const d=require('$PROJECT_DIR/data/ofac-addresses.json');const B='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';function b(s){let n=0n;for(const c of s){const i=BigInt(B.indexOf(c));if(i<0n)return null;n=n*58n+i}let h=n.toString(16);if(h.length%2)h='0'+h;return h}const a=d.addresses.map(x=>x.toLowerCase());const t=[];for(const x of d.addresses){if(/^T[a-zA-Z0-9]{33}$/.test(x)){const h=b(x);if(h)t.push(h.slice(0,42).toLowerCase())}}require('fs').writeFileSync('$PROJECT_DIR/public/ofac.json',JSON.stringify({addresses:a,tronHex:t}))\""
     ]
   }
 }

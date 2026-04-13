@@ -77,3 +77,13 @@ exports.digest = onSchedule({ schedule: '0 10 * * 1', timeZone: 'UTC', region: '
   await loadData();
   await bot.postDigest();
 });
+
+// ─── Like counter ────────────────────────────────────────
+exports.likes = onRequest({ region: 'europe-west1', cors: true }, async (req, res) => {
+  const doc = rokoCol.doc('likes');
+  if (req.method === 'POST') {
+    await doc.set({ count: admin.firestore.FieldValue.increment(1) }, { merge: true });
+  }
+  const snap = await doc.get();
+  res.json({ count: snap.exists ? (snap.data().count || 0) : 0 });
+});

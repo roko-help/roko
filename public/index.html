@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roko – Check before you send</title>
-  <meta name="description" content="Got a sketchy crypto link? Paste it here – Roko tells you if it's safe or a scam. Checks sites, wallets, Telegram profiles. Free. 3 seconds.">
-  <meta name="keywords" content="crypto exchange checker, exchanger safety, crypto scam check, OFAC sanctions check, wallet verification, blockchain trust score, P2P safety, OTC exchange review, crypto fraud prevention">
+  <title>Roko – Free crypto safety checker</title>
+  <meta name="description" content="Paste a domain, wallet address (BTC, TRON, ETH), or Telegram handle – Roko scores it 0–100 in seconds. OFAC sanctions, AML counterparty scan, scam databases, domain age. Free, no registration.">
+  <meta name="keywords" content="crypto safety checker, crypto scam check, OFAC wallet check, AML check free, BTC wallet checker, TRON wallet checker, ETH wallet checker, exchanger safety, Telegram scam check, wallet sanctions check, AML counterparty scan, blockchain trust score, P2P safety, crypto fraud prevention, depth-1 AML">
   <meta name="author" content="Roko">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://roko.help/">
@@ -13,8 +13,8 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://roko.help/">
-  <meta property="og:title" content="Roko – Check before you send">
-  <meta property="og:description" content="Got a sketchy crypto link? Paste it – Roko tells you if it's safe. Free. 3 seconds.">
+  <meta property="og:title" content="Roko – Free crypto safety checker">
+  <meta property="og:description" content="Paste a domain, wallet (BTC, TRON, ETH), or @handle – get a trust score in seconds. OFAC sanctions, AML counterparty scan, scam databases. Free.">
   <meta property="og:image" content="https://roko.help/og.png?v=2">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,31 +23,30 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Roko – Crypto Exchange Trust Index">
-  <meta name="twitter:description" content="Check any exchanger before you send money. Free blockchain scan, sanctions check, domain audit.">
+  <meta name="twitter:title" content="Roko – Free crypto safety checker">
+  <meta name="twitter:description" content="Paste a domain, wallet (BTC, TRON, ETH), or @handle – get a trust score in seconds. OFAC sanctions, AML counterparty scan, scam databases. Free.">
   <meta name="twitter:image" content="https://roko.help/og.png?v=2">
 
-  <!-- Structured Data for search engines and LLMs -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Roko",
-    "alternateName": "Roko Crypto Exchange Trust Index",
     "url": "https://roko.help",
-    "description": "Free crypto exchange safety checker. Verify any exchanger, wallet address, or Telegram dealer before sending money. Uses blockchain analysis, OFAC sanctions screening, domain age verification, SSL checks, and token approval scanning to generate a trust score from 0 to 100.",
+    "description": "Free crypto safety checker. Paste a domain, wallet address (BTC, TRON, ETH), or Telegram handle – Roko returns a trust score 0–100 in seconds. Checks OFAC sanctions, depth-1 AML counterparty scan, scam databases, domain age, SSL, and token approvals.",
     "applicationCategory": "SecurityApplication",
-    "operatingSystem": "Web",
+    "operatingSystem": "Web, Telegram",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "featureList": [
-      "Domain age and WHOIS verification",
-      "OFAC sanctions and blacklist screening",
-      "Blockchain wallet analysis (BTC, ETH, TRON)",
+      "Domain age, WHOIS, SSL, phishing database check",
+      "OFAC sanctions screening (384 addresses, weekly updated)",
+      "Depth-1 AML: counterparty scan of last 25–50 transactions (BTC, TRON)",
+      "Blockchain wallet analysis: balance, activity, age (BTC, ETH, TRON)",
       "Token approval scanning (ERC-20, TRC-20)",
-      "Telegram profile analysis",
-      "Trust score 0-100 with safety recommendations",
-      "24/7 watchlist monitoring with alerts",
-      "KYC/AML regulatory education"
+      "Telegram handle analysis",
+      "Trust score 0–100 with per-check breakdown",
+      "24/7 watchlist monitoring with alerts via @RokoHelpBot"
     ],
     "screenshot": "https://roko.help/og.png",
     "author": { "@type": "Organization", "name": "Roko", "url": "https://roko.help" },
@@ -59,12 +58,13 @@
     "sameAs": [
       "https://t.me/RokoHelpBot",
       "https://t.me/roko_help"
-    ]
+    ],
+    "inLanguage": ["en", "ru", "es"]
   }
   </script>
 
-  <!-- LLM-readable summary (hidden from visual rendering) -->
-  <meta name="ai:description" content="Roko is a free web tool and Telegram bot that checks if a crypto exchanger is safe. Users paste a domain, @username, or wallet address, and Roko returns a trust score (0-100) based on blockchain data, sanctions lists, domain age, and more. Available at roko.help and @RokoHelpBot on Telegram. Supports English, Russian, and Spanish.">
+  <!-- LLM-readable summary -->
+  <meta name="ai:description" content="Roko (roko.help) is a free crypto safety checker. Paste a domain, wallet address (BTC, TRON, ETH), or Telegram handle – get a trust score 0-100 in seconds. Checks: OFAC sanctions list, depth-1 AML counterparty scan (last 25-50 txs), scam databases, domain age/SSL, token approvals, Telegram profile age. Available as web app and Telegram bot @RokoHelpBot. No registration. English, Russian, Spanish.">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦝</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,10 +142,11 @@
     .home-likes{display:flex;gap:.8rem;align-items:center;justify-content:center;margin-top:1.2rem}
     .like-btn{display:flex;align-items:center;gap:.3rem;background:none;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:.3rem .7rem;color:rgba(255,255,255,.4);font-size:.78rem;cursor:pointer;font-family:inherit;transition:all .2s}
     .like-btn:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.6)}
-    .like-btn.liked{border-color:rgba(248,113,113,.3);color:#f87171}
-    .like-btn.liked:hover{border-color:rgba(248,113,113,.4)}
+    .like-btn.liked{border-color:rgba(248,113,113,.3);color:#f87171;cursor:default}
     .like-btn .like-heart{font-size:.85rem;transition:transform .2s}
     .like-btn.liked .like-heart{transform:scale(1.15)}
+    @keyframes like-pulse{0%{transform:scale(1.15)}50%{transform:scale(1.45)}100%{transform:scale(1.15)}}
+    .like-btn.pulse .like-heart{animation:like-pulse .3s ease}
     .like-link{display:flex;align-items:center;gap:.3rem;color:rgba(255,255,255,.35);font-size:.75rem;text-decoration:none;transition:color .2s}
     .like-link:hover{color:rgba(255,255,255,.6)}
 
@@ -397,10 +398,10 @@
     <button onclick="openModal('about')" data-i18n="bl_about">About</button>
   </div>
 
-  <!-- LIKE / SOCIAL -->
+  <!-- SOCIAL -->
   <div class="home-likes">
-    <button class="like-btn" id="likeBtn" onclick="toggleLike()"><span class="like-heart">♡</span></button>
-    <a class="like-link" href="https://github.com/roko-help/roko" target="_blank" rel="noopener"><img src="https://img.shields.io/github/stars/roko-help/roko?style=flat&logo=github&label=Stars&color=333&labelColor=1a1a1a&logoColor=fff" alt="GitHub stars" style="height:20px;vertical-align:middle" onerror="this.outerHTML='★ GitHub'"></a>
+    <button class="like-btn" id="likeBtn" onclick="toggleLike()"><span class="like-heart">♡</span><span id="likeCount" style="font-size:.75rem"></span></button>
+    <a class="like-link like-btn" id="ghStarsBtn" href="https://github.com/roko-help/roko" target="_blank" rel="noopener" style="text-decoration:none;display:flex;align-items:center;gap:.3rem"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span id="ghStarsCount" style="font-size:.75rem">Stars</span></a>
     <a class="like-link" href="https://t.me/roko_help" target="_blank" rel="noopener">📢 Telegram</a>
   </div>
 
@@ -499,13 +500,13 @@ var curLang='en';
 var T={
   en:{
     title:'Is that <span class="rot-word" id="rotWord">exchanger</span> <em>safe</em>?',
-    sub:'Got a sketchy link? Paste it here. Roko will tell you if it\'s safe or a scam. Free. 3 seconds.',
+    sub:'Paste a link, wallet address, or @telegram_name – checks scam databases, blacklists, and blockchain history. Free.',
     p2p_cta:'Meeting a dealer in person?',
     ph:'website, @telegram_name, or wallet...',btn:'Check',try_label:'try:',
     bl_onb:'Got paid in crypto?',bl_tut:'Crypto 101',bl_guide:'Safety rules',bl_quest:'Scam quest',bl_feat:'How it works',bl_reg:'Rules & laws',bl_about:'About',bl_safety:'Safety tips',bl_learn:'Learn',
-    cta_bot_d:'Deeper check – scans what\'s actually on the site, checks Telegram profiles',
+    cta_bot_d:'Full check – scans site content and Telegram profiles',
     cta_quest_d:'Can you spot a scam? 7 real scenarios – test yourself',
-    copy:'Free, open-source service by <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Peter</a> & <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Roman</a> – for friends, and for you.',
+    copy:'Free, open-source project by <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Peter</a> & <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Roman</a> – for friends, and for you.',
     back:'← Back',another:'Check another',bot:'Full check in bot',
     ft_t:'What Roko digs up',
     f1t:'Fake sites',f1d:'How old is the site? Is it copying a known brand?',
@@ -515,21 +516,29 @@ var T={
     f5t:'Cash scams',f5d:'Shady dealers, fake exchanges, step-by-step safety',
     f6t:'24/7 monitoring',f6d:'Watchlist with instant alerts if anything changes',
     guide_t:'Safety rules',
-    sc_hi:'Looks safe',sc_mid:'Be careful',sc_lo:'Dangerous',sc_sanc:'Blocked',
+    sc_hi:'Looks safe',sc_mid:'Some concerns',sc_lo:'Dangerous',sc_sanc:'Blocked',
+    vd_hi:'You can proceed – stay cautious with large amounts',
+    vd_mid:'Test with a small amount first',
+    vd_lo:'Better not risk it. Find another option',
+    vd_sanc:'Do not send. This address is blacklisted',
     g_hi:'Split amounts over $1K into 2 transfers. Save the transaction hash.',
     g_mid:'Test with minimum amount first. Screenshot everything.',
     g_lo:'Roko recommends against this exchanger. Report: @RokoHelp',
     g_sanc:'SANCTIONED. Do NOT send funds.',
+    g_hi_online:'Split amounts over $1K into 2 transfers. Save the transaction hash',
+    g_mid_online:'Send minimum first. Save the transaction hash and screenshots',
+    g_lo_online:'Better not send. Have proof? → @roko_help',
     checking:'Roko is digging...',
     tut_t:'Crypto 101',
     quest_t:'Scam Quest',
-    disclaimer:'Roko provides information to help you make decisions but does not guarantee the safety of any transaction. Web check is basic – use @RokoHelpBot for a full scan.',
+    disclaimer:'Roko helps assess risks but does not guarantee the safety of any transaction.',
     report:'🚨 Report scam',
-    web_basic:'Want a deeper look? @RokoHelpBot reads the actual site and checks Telegram profiles too.',
+    web_basic:'Want a deeper check? @RokoHelpBot also scans site content and Telegram profiles.',
     handle_g1:'Meet publicly – café, shopping mall',handle_g2:'Test with a small amount first',
     ck_low_act:'Very low activity',ck_txs:'transactions',ck_out_txs:'outgoing transactions',ck_transactions:'transactions',
-    ck_days_old:'days old',ck_new_acct:'Account very new',ck_not_found:'Address not found – may be unused',
-    ck_unavail:'Unavailable',ck_not_sanc:'Not in sanctions lists',
+    ck_days_old:'days since wallet created',ck_new_acct:'Account very new',ck_not_found:'Address not found – may be unused',
+    ck_unavail:'Unavailable',ck_not_sanc:'Not in sanctions lists (OFAC, Tornado Cash)',
+    ck_aml_flagged:'AML: %d counterparties found in sanctions lists',ck_aml_clean:'AML: %d counterparties checked – none sanctioned',ck_aml_scan:'AML scan: last %d transactions',
     ck_scam_pattern:'"manager/support" in name – common scam trick',ck_impersonation:'Pretending to be a known exchange?',
     ck_check_bot:'Check in bot',ck_sanctioned:'SANCTIONED / SCAM',
     ck_dns_ok:'Domain is active',ck_dns_down:'Domain not found',ck_domain:'Domain',ck_new:'new',ck_very_new:'very new',
@@ -538,17 +547,17 @@ var T={
     ck_phishing:'PHISHING: this domain looks like %s – likely a fake clone',
     ck_impersonation_d:'Contains brand name "%s" – verify this is the official site',
     feedback:'Something off? <a href="mailto:welc@roko.help" style="color:var(--accent)">Tell us</a> · <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">GitHub</a>',
-    improve:'Know how to make Roko better? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · Dev? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Join on GitHub</a>',
+    improve:'Got ideas? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · Dev? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Join on GitHub</a>',
   },
   ru:{
     title:'Этот <span class="rot-word" id="rotWord">обменник</span> <em>надёжный</em>?',
-    sub:'Скинули подозрительную ссылку? Вставь сюда. Roko скажет – безопасно или скам. Бесплатно. 3 секунды.',
+    sub:'Вставь ссылку, адрес кошелька или @telegram_name – проверим по базам мошенников, чёрным спискам и блокчейну. Бесплатно.',
     p2p_cta:'Встречаешься с менялой лично?',
     ph:'сайт, @telegram_name или кошелёк...',btn:'Проверить',try_label:'попробуй:',
     bl_onb:'Получил крипту?',bl_tut:'Крипта 101',bl_guide:'Правила безопасности',bl_quest:'Квест',bl_feat:'Как работает',bl_reg:'Правила и законы',bl_about:'О проекте',bl_safety:'Безопасность',bl_learn:'Обучение',
-    cta_bot_d:'Глубже – сканирует содержимое сайта, проверяет Telegram-профили',
+    cta_bot_d:'Полная проверка – сканирует содержимое сайта и Telegram-профили',
     cta_quest_d:'Распознаешь скам? 7 реальных сценариев – проверь себя',
-    copy:'Бесплатный open-source сервис от <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Питера</a> и <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Романа</a> – для друзей и для тебя.',
+    copy:'Бесплатный open-source проект <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Питера</a> и <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Романа</a> – для друзей и для тебя.',
     back:'← Назад',another:'Проверить ещё',bot:'Полная проверка в боте',
     ft_t:'Что находит Roko',
     f1t:'Фейковые сайты',f1d:'Сколько сайту лет? Не копирует ли он известный бренд?',
@@ -558,21 +567,29 @@ var T={
     f5t:'Скам при обмене на кэш',f5d:'Мутные менялы, фейковые обменники, пошаговая безопасность',
     f6t:'Мониторинг 24/7',f6d:'Следим и предупреждаем, если что-то изменится',
     guide_t:'Правила безопасности',
-    sc_hi:'Безопасно',sc_mid:'Осторожно',sc_lo:'Опасно',sc_sanc:'Заблокирован',
+    sc_hi:'Безопасно',sc_mid:'Есть вопросы',sc_lo:'Опасно',sc_sanc:'Заблокирован',
+    vd_hi:'Можно отправлять – но будь внимателен с крупными суммами',
+    vd_mid:'Сначала попробуй на маленькой сумме',
+    vd_lo:'Лучше не рисковать. Поищи другой вариант',
+    vd_sanc:'Не отправляй. Этот адрес в чёрных списках',
     g_hi:'Суммы >$1K лучше разбить на 2 перевода. Сохрани хеш.',
     g_mid:'Сначала отправь минимум. Сохрани скрины переписки.',
     g_lo:'Roko не рекомендует. Есть доказательства? → @RokoHelp',
     g_sanc:'ПОД САНКЦИЯМИ. Не отправляй.',
+    g_hi_online:'Суммы больше $1K лучше разбить на 2 перевода. Сохрани хеш транзакции',
+    g_mid_online:'Сначала отправь минимум. Сохрани хеш транзакции и скриншоты',
+    g_lo_online:'Лучше не отправляй. Есть доказательства мошенничества? → @roko_help',
     checking:'Roko роется...',
     tut_t:'Крипта 101',
     quest_t:'Квест: тебя пытаются обмануть',
-    disclaimer:'Roko предоставляет информацию для принятия решений, но не гарантирует безопасность сделки. Веб-проверка базовая – для полной используйте @RokoHelpBot.',
+    disclaimer:'Roko помогает оценить риски, но не гарантирует безопасность сделок.',
     report:'🚨 Сообщить о скаме',
-    web_basic:'Хочешь глубже? @RokoHelpBot читает содержимое сайта и проверяет Telegram-профили.',
+    web_basic:'Хочешь глубже? @RokoHelpBot дополнительно сканирует содержимое сайта и Telegram-профили.',
     handle_g1:'Встречайся в людном месте – кафе, ТЦ',handle_g2:'Сначала проверь на маленькой сумме',
     ck_low_act:'Очень низкая активность',ck_txs:'транзакций',ck_out_txs:'исходящих транзакций',ck_transactions:'транзакций',
-    ck_days_old:'дней',ck_new_acct:'Аккаунт очень новый',ck_not_found:'Адрес не найден – возможно не использовался',
-    ck_unavail:'Недоступно',ck_not_sanc:'Нет в чёрных списках',
+    ck_days_old:'дней с создания кошелька',ck_new_acct:'Аккаунт очень новый',ck_not_found:'Адрес не найден – возможно не использовался',
+    ck_unavail:'Недоступно',ck_not_sanc:'Нет в санкционных списках (OFAC, Tornado Cash)',
+    ck_aml_flagged:'AML: %d контрагентов найдены в санкционных списках',ck_aml_clean:'AML: проверено %d контрагентов – чисто',ck_aml_scan:'AML-скан: последние %d транзакций',
     ck_scam_pattern:'"manager/support" в имени – типичный скам',ck_impersonation:'Выдаёт себя за известную биржу?',
     ck_check_bot:'Проверь в боте',ck_sanctioned:'ПОД САНКЦИЯМИ / СКАМ',
     ck_dns_ok:'Домен активен',ck_dns_down:'Домен не найден',ck_domain:'Домен',ck_new:'новый',ck_very_new:'очень новый',
@@ -581,17 +598,17 @@ var T={
     ck_phishing:'ФИШИНГ: домен похож на %s – скорее всего подделка',
     ck_impersonation_d:'Содержит бренд "%s" – убедитесь, что это официальный сайт',
     feedback:'Что-то не так? <a href="mailto:welc@roko.help" style="color:var(--accent)">Напиши нам</a> · <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">GitHub</a>',
-    improve:'Знаешь, как сделать Roko лучше? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · Разработчик? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Присоединяйся на GitHub</a>',
+    improve:'Есть идеи? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · Разработчик? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Присоединяйся на GitHub</a>',
   },
   es:{
     title:'¿Es <em>seguro</em> ese <span class="rot-word" id="rotWord">exchanger</span>?',
-    sub:'¿Te enviaron un enlace sospechoso? Pégalo aquí. Roko te dice si es seguro o una estafa. Gratis. 3 segundos.',
+    sub:'Pega un enlace, dirección de wallet o @telegram_name – verificamos bases de estafadores, listas negras y blockchain. Gratis.',
     p2p_cta:'¿Vas a reunirte con un dealer?',
     ph:'sitio web, @telegram_name o wallet...',btn:'Verificar',try_label:'prueba:',
     bl_onb:'¿Te pagaron en crypto?',bl_tut:'Cripto 101',bl_guide:'Reglas de seguridad',bl_quest:'Quest',bl_feat:'Cómo funciona',bl_reg:'Reglas y leyes',bl_about:'Sobre nosotros',bl_safety:'Seguridad',bl_learn:'Aprende',
-    cta_bot_d:'Más profundo – escanea el contenido real del sitio, verifica perfiles de Telegram',
+    cta_bot_d:'Verificación completa – escanea contenido del sitio y perfiles de Telegram',
     cta_quest_d:'¿Puedes detectar una estafa? 7 escenarios reales – ponte a prueba',
-    copy:'Servicio gratuito y open-source de <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Peter</a> y <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Roman</a> – para amigos, y para ti.',
+    copy:'Proyecto gratuito y open-source de <a href="https://farbey.xyz/" style="color:rgba(255,255,255,.35)">Peter</a> y <a href="https://romanselivan.com/" style="color:rgba(255,255,255,.35)">Roman</a> – para amigos, y para ti.',
     back:'← Atrás',another:'Verificar otro',bot:'Verificación completa en bot',
     ft_t:'Qué encuentra Roko',
     f1t:'Sitios falsos',f1d:'¿Cuántos años tiene? ¿Está copiando una marca conocida?',
@@ -601,21 +618,29 @@ var T={
     f5t:'Estafas con efectivo',f5d:'Dealers turbios, exchanges falsos, guía paso a paso',
     f6t:'Monitoreo 24/7',f6d:'Alertas instantáneas si algo cambia',
     guide_t:'Reglas de seguridad',
-    sc_hi:'Seguro',sc_mid:'Con cuidado',sc_lo:'Peligroso',sc_sanc:'Bloqueado',
+    sc_hi:'Seguro',sc_mid:'Hay dudas',sc_lo:'Peligroso',sc_sanc:'Bloqueado',
+    vd_hi:'Puedes proceder – mantente atento con montos grandes',
+    vd_mid:'Prueba primero con un monto pequeño',
+    vd_lo:'Mejor no arriesgarse. Busca otra opción',
+    vd_sanc:'No envíes. Esta dirección está en listas negras',
     g_hi:'Divide montos >$1K en 2 envíos. Guarda el hash.',
     g_mid:'Primero envía el mínimo. Guarda capturas de todo.',
     g_lo:'Roko no recomienda. ¿Tienes pruebas? → @RokoHelp',
     g_sanc:'SANCIONADO. NO envíes fondos.',
+    g_hi_online:'Divide montos mayores a $1K en 2 envíos. Guarda el hash de la transacción',
+    g_mid_online:'Envía el mínimo primero. Guarda el hash y capturas de pantalla',
+    g_lo_online:'Mejor no envíes. ¿Tienes pruebas? → @roko_help',
     checking:'Roko está escarbando...',
     tut_t:'Cripto 101',
     quest_t:'Quest: intentan estafarte',
-    disclaimer:'Roko proporciona información para tomar decisiones, pero no garantiza la seguridad de ninguna transacción. Verificación web es básica – usa @RokoHelpBot para escaneo completo.',
+    disclaimer:'Roko ayuda a evaluar riesgos, pero no garantiza la seguridad de las transacciones.',
     report:'🚨 Reportar estafa',
-    web_basic:'¿Quieres ir más a fondo? @RokoHelpBot lee el contenido del sitio y verifica perfiles de Telegram.',
+    web_basic:'¿Quieres una verificación más profunda? @RokoHelpBot también escanea el contenido del sitio y perfiles de Telegram.',
     handle_g1:'Reúnete en un lugar público – café, centro comercial',handle_g2:'Prueba primero con un monto pequeño',
     ck_low_act:'Actividad muy baja',ck_txs:'transacciones',ck_out_txs:'transacciones salientes',ck_transactions:'transacciones',
-    ck_days_old:'días',ck_new_acct:'Cuenta muy nueva',ck_not_found:'Dirección no encontrada – puede no haberse usado',
-    ck_unavail:'No disponible',ck_not_sanc:'No en listas de sanciones',
+    ck_days_old:'días desde la creación del wallet',ck_new_acct:'Cuenta muy nueva',ck_not_found:'Dirección no encontrada – puede no haberse usado',
+    ck_unavail:'No disponible',ck_not_sanc:'No en listas de sanciones (OFAC, Tornado Cash)',
+    ck_aml_flagged:'AML: %d contrapartes en listas de sanciones',ck_aml_clean:'AML: %d contrapartes verificadas – limpio',ck_aml_scan:'AML scan: últimas %d transacciones',
     ck_scam_pattern:'"manager/support" en el nombre – estafa común',ck_impersonation:'¿Se hace pasar por un exchange conocido?',
     ck_check_bot:'Verifica en el bot',ck_sanctioned:'SANCIONADO / ESTAFA',
     ck_dns_ok:'Dominio activo',ck_dns_down:'Dominio no encontrado',ck_domain:'Dominio',ck_new:'nuevo',ck_very_new:'muy nuevo',
@@ -624,7 +649,7 @@ var T={
     ck_phishing:'PHISHING: este dominio parece %s – probablemente es falso',
     ck_impersonation_d:'Contiene marca "%s" – verifica que sea el sitio oficial',
     feedback:'¿Algo mal? <a href="mailto:welc@roko.help" style="color:var(--accent)">Escríbenos</a> · <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">GitHub</a>',
-    improve:'¿Sabes cómo mejorar Roko? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · ¿Dev? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Únete en GitHub</a>',
+    improve:'¿Tienes ideas? <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a> · ¿Dev? <a href="https://github.com/roko-help/roko" target="_blank" style="color:var(--accent)">Únete en GitHub</a>',
   }
 };
 
@@ -661,7 +686,7 @@ function setLang(l,save){
 // ============================================================
 // ROTATING HERO WORD
 // ============================================================
-const ROT_WORDS={en:['exchanger','contact','wallet','dealer','service'],ru:['обменник','контакт','кошелёк','продавец','сервис'],es:['exchanger','contacto','wallet','dealer','servicio']};
+const ROT_WORDS={en:['website','wallet','contact','exchanger','dealer'],ru:['сайт','кошелёк','контакт','обменник','продавец'],es:['sitio','wallet','contacto','exchanger','vendedor']};
 var rotIdx=0;
 // Init: lock width so transitions work from the start
 setTimeout(function(){var el=document.getElementById('rotWord');if(el)el.style.width=el.offsetWidth+'px'},50);
@@ -974,21 +999,21 @@ function renderFeatures(){
   const title=curLang==='ru'?'Что находит Roko':curLang==='es'?'Qué encuentra Roko':'What Roko digs up';
   const items=curLang==='ru'?[
     ['🎭','Фейковые сайты','Возраст домена, WHOIS, <dfn title="Замочек в браузере – сертификат сайта.">SSL</dfn>, совпадение бренда'],
-    ['🚨','Кошельки в чёрных списках','<dfn title="Орган Минфина США, который ведёт чёрный список криптоадресов.">OFAC</dfn>, Tornado Cash, арестованные адреса'],
+    ['🚨','Кошельки в чёрных списках','<dfn title="Орган Минфина США, который ведёт чёрный список криптоадресов.">OFAC</dfn>, Tornado Cash + AML-скан контрагентов (BTC, TRON)'],
     ['⚡','Слив через <dfn title="Разрешение сайту забирать деньги из кошелька. Мошенники просят безлимитный доступ.">approve</dfn>','Опасные разрешения на ETH и TRON'],
     ['👻','Свежие кошельки','Баланс, возраст, история операций'],
     ['💸','Мошенники при обмене','Подозрительные менялы, фейковые обменники, правила безопасности'],
     ['📡','Мониторинг 24/7','Следим и предупреждаем, если что-то изменится'],
   ]:curLang==='es'?[
     ['🎭','Sitios falsos','Antigüedad, WHOIS, <dfn title="Candado del sitio – certificado digital.">SSL</dfn>, marca'],
-    ['🚨','Wallets en listas negras','<dfn title="Oficina del Tesoro de EE.UU. que mantiene lista negra de cripto-direcciones.">OFAC</dfn>, Tornado Cash, direcciones incautadas'],
+    ['🚨','Wallets en listas negras','<dfn title="Oficina del Tesoro de EE.UU. que mantiene lista negra de cripto-direcciones.">OFAC</dfn>, Tornado Cash + AML scan de contrapartes (BTC, TRON)'],
     ['⚡','Drain por <dfn title="Permiso que das a un sitio para tomar tu dinero.">approvals</dfn>','Permisos peligrosos en ETH y TRON'],
     ['👻','Wallets nuevas','Balance, antigüedad, historial'],
     ['💸','Estafas con efectivo','Dealers sospechosos, exchanges falsos, guía de seguridad'],
     ['📡','Monitoreo 24/7','Alertas instantáneas si algo cambia'],
   ]:[
     ['🎭','Fake sites','Domain age, WHOIS, <dfn title="The lock icon in your browser – site certificate.">SSL</dfn>, brand mismatches'],
-    ['🚨','Blacklisted wallets','<dfn title="U.S. Treasury office that blacklists crypto addresses linked to crime.">OFAC</dfn>, Tornado Cash, seized addresses'],
+    ['🚨','Blacklisted wallets','<dfn title="U.S. Treasury office that blacklists crypto addresses linked to crime.">OFAC</dfn>, Tornado Cash + depth-1 AML scan (BTC, TRON)'],
     ['⚡','Token drain','Dangerous <dfn title="Permission you give a website to take money from your wallet.">approvals</dfn> on ETH and TRON'],
     ['👻','Fresh wallets','Balance, age, transaction history'],
     ['💸','Exchange scams','Suspicious dealers, fake exchanges, safety rules'],
@@ -1191,34 +1216,43 @@ function renderAbout(){
   const el=document.getElementById('aboutContent');
   const R=curLang==='ru'?{
     t:'О проекте',
-    p1:'Роман посоветовал Питеру обменник по сохранённой ссылке – думал, что знакомый уже пользовался им. Обменник выглядел нормально: сначала AML-проверка, потом обмен – всё логично. Но «AML-проверка» оказалась фишинговым сайтом. Питер подключил кошелёк – и потерял деньги.',
-    p2:'Мы оба в крипте и IT не первый год. Питер летел на крипто-конференцию и торопился. Одна ссылка, одна минута, одно «подключи кошелёк для проверки» – и всё.',
-    p3:'Мы сделали Roko, чтобы это можно было проверить за 3 секунды. Бесплатно. С открытым кодом. Для друзей – и для тебя.',
+    intro:'Это случилось с нами в марте 2026.',
+    m1:'Слушай, нужно обменять крипту – утром улетаю. У тебя был надёжный контакт?',
+    m2:'Мой не может, курс высокий. Подожди... у меня была ссылка от знакомого, он менял полгода назад. Вот – выглядит нормально.',
+    m3:'Ок 👍',
+    punch:'Обменник оказался фишинговым. Питер подключил кошелёк «для проверки» – и потерял деньги. Мы оба торопились. Оба не проверили ссылку. Оба не первый год в IT – и всё равно попались.',
+    conclusion:'Roko – чтобы такую проверку можно было сделать до отправки денег. Бесплатно, с открытым кодом – для друзей и для тебя.',
     cta:'Не знаешь, где и как безопасно обменять в твоём городе? Пиши на <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>, подскажем что знаем.',
   }:curLang==='es'?{
     t:'Sobre Roko',
-    p1:'Roman le recomendó a Peter un exchanger por un enlace guardado – pensó que un amigo ya lo había usado. Se veía legítimo: primero verificación AML, luego el cambio. Pero la "verificación AML" era phishing. Peter conectó su wallet y perdió su dinero.',
-    p2:'Los dos llevamos años en crypto e IT. Peter tenía prisa – volaba a una conferencia al día siguiente. Un enlace, un minuto, un "conecta tu wallet para verificar" – y eso fue todo.',
-    p3:'Creamos Roko para que puedas verificar en 3 segundos. Gratis. Código abierto. Para amigos – y para ti.',
+    intro:'Esto nos pasó en marzo de 2026.',
+    m1:'Oye, necesito cambiar crypto – vuelo mañana temprano. ¿Tenías un contacto confiable?',
+    m2:'El mío no puede, la tasa está alta. Espera... tenía un enlace de un conocido, lo usó hace seis meses. Toma – se ve bien.',
+    m3:'Ok 👍',
+    punch:'El exchanger era phishing. Peter conectó su wallet «para verificar» – y perdió su dinero. Los dos teníamos prisa. Los dos no verificamos el enlace. Los dos llevamos años en IT – y aun así caímos.',
+    conclusion:'Roko – para que puedas hacer esa verificación antes de enviar dinero. Gratis, código abierto – para amigos y para ti.',
     cta:'¿No sabes dónde ni cómo cambiar crypto de forma segura en tu ciudad? Escríbenos a <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>, te orientamos con lo que sabemos.',
   }:{
     t:'About Roko',
-    p1:'Roman recommended an exchanger to Peter from a saved link – he thought a friend had used it before. It looked legit: AML check first, then the exchange – made sense. But the "AML check" was a phishing site. Peter connected his wallet and lost his funds.',
-    p2:'We\'re both experienced in crypto and IT. Peter was in a rush – flying to a crypto conference the next day. One link, one minute, one "connect your wallet to verify" – and it was over.',
-    p3:'We built Roko so you can check in 3 seconds. Free. Open source. For friends – and for you.',
+    intro:'This happened to us in March 2026.',
+    m1:'Hey, I need to exchange crypto – flying out in the morning. You had a reliable contact, right?',
+    m2:'Mine can\'t do it, rate\'s too high. Hold on... I had a link from a friend, he used it six months ago. Here – looks legit.',
+    m3:'Ok 👍',
+    punch:'The exchanger was a phishing site. Peter connected his wallet "to verify" – and lost his funds. We were both in a rush. Both skipped the check. Both have years in IT – and still got scammed.',
+    conclusion:'Roko – so you can run that check before sending money. Free, open source – for friends and for you.',
     cta:'Not sure where or how to exchange crypto safely in your city? Drop us a line at <a href="mailto:welc@roko.help" style="color:var(--accent)">welc@roko.help</a>, we\'ll share what we know.',
   };
+  const ava=(src,alt)=>`<img src="${src}" alt="${alt}" style="width:32px;height:32px;border-radius:50%;object-fit:cover;filter:grayscale(1);flex-shrink:0">`;
   el.innerHTML=`<div class="modal-body"><div class="modal-head"><h2>${R.t}</h2><button class="close-modal" onclick="closeModals()" aria-label="Close">&times;</button></div>
-    <div style="display:flex;gap:1rem;justify-content:center;margin:1.5rem 0 1rem">
-      <a href="https://romanselivan.com/" style="text-align:center;text-decoration:none;color:var(--accent)"><img src="rs.jpg" alt="Roman" style="width:72px;height:72px;border-radius:50%;object-fit:cover;filter:grayscale(1);border:2px solid rgba(255,255,255,.12)"><div style="font-size:.8rem;margin-top:.4rem;font-weight:600">Roman</div></a>
-      <a href="https://farbey.xyz/" style="text-align:center;text-decoration:none;color:var(--accent)"><img src="peter.jpeg" alt="Peter" style="width:72px;height:72px;border-radius:50%;object-fit:cover;filter:grayscale(1);border:2px solid rgba(255,255,255,.12)"><div style="font-size:.8rem;margin-top:.4rem;font-weight:600">Peter</div></a>
-    </div>
-    <div style="max-width:400px;margin:0 auto;text-align:center">
-      <p class="tut-p" style="margin-bottom:.6rem">${R.p1}</p>
-      <p class="tut-p" style="margin-bottom:.6rem;color:rgba(255,255,255,.45)">${R.p2}</p>
-      <p class="tut-p" style="color:var(--accent);font-weight:500">${R.p3}</p>
-      <p class="tut-p" style="margin-top:1.2rem;font-size:.82rem;color:rgba(255,255,255,.35)">${R.cta}</p>
-      <p class="tut-p" style="margin-top:.6rem;font-size:.75rem;color:rgba(255,255,255,.2)">${tr('improve')}</p>
+    <div style="max-width:400px;margin:1rem auto 0">
+      <div style="text-align:center;color:rgba(255,255,255,.35);font-size:.78rem;margin-bottom:.8rem;font-style:italic">${R.intro}</div>
+      <div class="q-msg them" style="margin-bottom:.5rem">${ava('peter.jpeg','Peter')}<div class="bubble"><div style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:.2rem"><a href="https://farbey.xyz/" style="color:inherit;text-decoration:none">Peter</a></div>${R.m1}</div></div>
+      <div class="q-msg you" style="margin-bottom:.5rem">${ava('rs.jpg','Roman')}<div class="bubble"><div style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:.2rem"><a href="https://romanselivan.com/" style="color:inherit;text-decoration:none">Roman</a></div>${R.m2}</div></div>
+      <div class="q-msg them" style="margin-bottom:1.2rem">${ava('peter.jpeg','Peter')}<div class="bubble">${R.m3}</div></div>
+      <p class="tut-p" style="text-align:center;margin-bottom:.8rem;color:rgba(255,255,255,.55)">${R.punch}</p>
+      <p class="tut-p" style="text-align:center;color:var(--accent);font-weight:500">${R.conclusion}</p>
+      <p class="tut-p" style="text-align:center;margin-top:1.2rem;font-size:.82rem;color:rgba(255,255,255,.35)">${R.cta}</p>
+      <p class="tut-p" style="text-align:center;margin-top:.6rem;font-size:.75rem;color:rgba(255,255,255,.2)">${tr('improve')}</p>
     </div></div>`;
 }
 
@@ -1294,7 +1328,7 @@ const SCENARIOS={
     good:'Spot on! Real AML checks NEVER require you to connect your wallet to a random site. That\'s a token approval drain. Max\'s friends were either lucky or next in line. Roko would show the domain is days old.',
     bad:'This is a drain scam disguised as "AML compliance." You connect, approve a token transaction – and they empty your wallet. Nobody legitimate asks you to connect a wallet for AML. Even crypto-savvy friends miss this when they\'re in a rush.'},
     {chat:[
-      {from:'them',name:'@Carlos_P2P',text:'500 USDT for cash? Let\'s meet at Starbucks in Plaza Catalunya at 3pm'},
+      {from:'them',name:'@Carlos_P2P',text:'500 USDT for cash? Let\'s meet at Starbucks downtown at 3pm'},
       {from:'you',text:'Sounds good, see you there'},
       {from:'them',name:'@Carlos_P2P',text:'Hey, running a bit late. I\'m around the corner – can you come out? I\'m in my car, grey BMW. Too many people inside, don\'t want attention 🚗'},
     ],choices:[
@@ -1373,7 +1407,7 @@ const SCENARIOS={
     good:'Верно! Настоящая AML-проверка НИКОГДА не требует подключать кошелёк к левому сайту. Это дрейн через approve. Друзья Макса или повезло, или они следующие. Roko показал бы, что домену пара дней.',
     bad:'Это дрейн-скам под видом «AML-проверки». Подключаешь кошелёк, одобряешь транзакцию – и тебе сливают всё. Никто легитимный не просит подключать кошелёк для AML. Даже крипто-шарящие ребята ведутся, когда торопятся.'},
     {chat:[
-      {from:'them',name:'@Carlos_P2P',text:'500 USDT на наличные? Давай в Starbucks на Plaza Catalunya в 15:00'},
+      {from:'them',name:'@Carlos_P2P',text:'500 USDT на наличные? Давай в Starbucks в центре в 15:00'},
       {from:'you',text:'Отлично, буду'},
       {from:'them',name:'@Carlos_P2P',text:'Слушай, немного задерживаюсь. Я за углом – выйди? Я в машине, серый BMW. Внутри много народу, не хочу привлекать внимание 🚗'},
     ],choices:[
@@ -1478,6 +1512,8 @@ function detectAddr(a){a=a.trim();if(/^(bc1)[a-zA-HJ-NP-Z0-9]{25,62}$/.test(a))r
 function tryEx(v){document.getElementById('q').value=v;runCheck()}
 
 const SANC=new Set(['0x8589427373d6d84e98730d7795d8f6f8731fda16','0x722122df12d4e14e13ac3b6895a86e84145b6967','0xd90e2f925da726b50c4ed8d0fb90ad053324f31b','0x6f1ca141a28907f78ebaa64fb83a9088b02a8352']);
+const SANC_HEX=new Set();
+(async()=>{try{const r=await fetch('/ofac.json');if(r.ok){const d=await r.json();(d.addresses||[]).forEach(x=>SANC.add(x));(d.tronHex||[]).forEach(x=>SANC_HEX.add(x))}}catch{}})();
 const SCAM_D=new Set(['garantex.org','garantex.io','suex.io','chatex.com','bitzlato.com','tornado.cash','bestmixer.io','helix.light','cashout.cc','cryptonator.com','blender.io','sinbad.io','chipmixter.com','hydra.market']);
 const GOOD_D={'bestchange.com':{note:'Major rate aggregator since 2007',boost:15},'binance.com':{note:'Largest exchange, regulated',boost:10},'bybit.com':{note:'Major exchange, Dubai-regulated',boost:8},'kraken.com':{note:'US-regulated since 2011',boost:12},'coinbase.com':{note:'US public company, NASDAQ',boost:15},'okx.com':{note:'Major exchange',boost:5},'kucoin.com':{note:'Major exchange',boost:3},'htx.com':{note:'Formerly Huobi',boost:3},'gate.io':{note:'Major exchange since 2013',boost:5},'bitget.com':{note:'Major exchange, licensed',boost:5},'crypto.com':{note:'Singapore-licensed exchange',boost:8},'gemini.com':{note:'US-regulated (Winklevoss)',boost:10},'bitstamp.com':{note:'EU-regulated since 2011',boost:10},'whitebit.com':{note:'European exchange, licensed',boost:5},'exmo.com':{note:'European exchange, licensed',boost:5},'blockchain.com':{note:'Wallet & exchange since 2011',boost:8},'etherscan.io':{note:'Ethereum block explorer',boost:12},'tronscan.org':{note:'TRON block explorer',boost:10},'mempool.space':{note:'Bitcoin block explorer (open source)',boost:12},'revoke.cash':{note:'Token approval checker (open source)',boost:10}};
 const WARN_D={'localbitcoins.com':'Shut down February 2023','paxful.com':'Suspended 2023, partial restart 2024','ftx.com':'Collapsed November 2022','celsius.network':'Collapsed June 2022','blockfi.com':'Collapsed November 2022'};
@@ -1506,11 +1542,13 @@ window.addEventListener('popstate',e=>{if(!e.state||e.state.screen==='home')goHo
 (function(){const p=new URLSearchParams(location.search);const q=p.get('q');if(q){document.getElementById('q').value=q;setTimeout(runCheck,300)}})();
 
 async function checkChain(addr){
-  const ch=detectAddr(addr),res=[],cl={btc:'Bitcoin',eth:'Ethereum',tron:'TRON'}[ch];let sc=40;
+  const ch=detectAddr(addr),res=[],cl={btc:'Bitcoin',eth:'Ethereum',tron:curLang==='ru'?'TRON (сеть для переводов USDT)':curLang==='es'?'TRON (red para transferencias USDT)':'TRON (network for USDT transfers)'}[ch];let sc=40;
   if(SANC.has(addr.toLowerCase()))return{score:0,label:tr('sc_sanc'),color:'red',checks:[{t:'fail',i:'🔴',x:tr('g_sanc')}],guide:[tr('g_sanc')]};
   res.push({t:'info',i:'⛓',x:`${cl}`});
   try{
-    if(ch==='btc'){const r=await(await fetch(`https://mempool.space/api/address/${addr}`)).json(),s=r.chain_stats||{},b=((s.funded_txo_sum||0)-(s.spent_txo_sum||0))/1e8,txc=s.tx_count||0;res.push({t:'info',i:'💰',x:`${b.toFixed(8)} BTC (~$${(b*PRICES.bitcoin).toFixed(0)})`},{t:'info',i:'📊',x:`${txc} ${tr('ck_txs')}`});if(txc>100)sc+=15;else if(txc>10)sc+=5;else if(txc<5){res.push({t:'warn',i:'⚠️',x:tr('ck_low_act')});sc-=5}}
+    if(ch==='btc'){const r=await(await fetch(`https://mempool.space/api/address/${addr}`)).json(),s=r.chain_stats||{},b=((s.funded_txo_sum||0)-(s.spent_txo_sum||0))/1e8,txc=s.tx_count||0;res.push({t:'info',i:'💰',x:`${b.toFixed(8)} BTC (~$${(b*PRICES.bitcoin).toFixed(0)})`},{t:'info',i:'📊',x:`${txc} ${tr('ck_txs')}`});if(txc>100)sc+=15;else if(txc>10)sc+=5;else if(txc<5){res.push({t:'warn',i:'⚠️',x:tr('ck_low_act')});sc-=5}
+      // Depth-1 AML: scan counterparties
+      try{const txs=await(await fetch(`https://mempool.space/api/address/${addr}/txs`)).json();const cp=new Set();for(const tx of txs.slice(0,25)){for(const vi of(tx.vin||[]))if(vi.prevout?.scriptpubkey_address&&vi.prevout.scriptpubkey_address!==addr)cp.add(vi.prevout.scriptpubkey_address);for(const vo of(tx.vout||[]))if(vo.scriptpubkey_address&&vo.scriptpubkey_address!==addr)cp.add(vo.scriptpubkey_address)}let fl=0;for(const a of cp)if(SANC.has(a.toLowerCase()))fl++;if(fl>0){res.push({t:'fail',i:'🔴',x:tr('ck_aml_flagged').replace('%d',fl)});sc-=20}else if(cp.size>0){res.push({t:'ok',i:'🛡️',x:tr('ck_aml_clean').replace('%d',cp.size)});sc+=5}}catch{}}
     else if(ch==='eth'){const r=await(await fetch(`https://eth.llamarpc.com`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify([{jsonrpc:'2.0',method:'eth_getBalance',params:[addr,'latest'],id:1},{jsonrpc:'2.0',method:'eth_getTransactionCount',params:[addr,'latest'],id:2}])})).json();const bal=parseInt(r[0]?.result||'0',16)/1e18,txc=parseInt(r[1]?.result||'0',16);res.push({t:'info',i:'💰',x:`${bal.toFixed(4)} ETH (~$${(bal*PRICES.ethereum).toFixed(0)})`},{t:'info',i:'📊',x:`${txc} ${tr('ck_out_txs')}`});if(txc>100)sc+=15;else if(txc>10)sc+=5;else if(txc<5){res.push({t:'warn',i:'⚠️',x:tr('ck_low_act')});sc-=5}}
     else if(ch==='tron'){
       // Parallel: account info + tx list
@@ -1529,11 +1567,14 @@ async function checkChain(addr){
           if(typeof total==='number'){res.push({t:'info',i:'📊',x:`~${total} ${tr('ck_transactions')}`});if(total>500)sc+=10;else if(total>50)sc+=5;else if(total<5){res.push({t:'warn',i:'⚠️',x:tr('ck_low_act')});sc-=5}}
         }
         if(acc.create_time){const d=(Date.now()-acc.create_time)/864e5;res.push({t:'info',i:'📆',x:`${Math.floor(d)} ${tr('ck_days_old')}`});if(d>365)sc+=10;else if(d<30){res.push({t:'warn',i:'⚠️',x:tr('ck_new_acct')});sc-=5}}
+        // Depth-1 AML: scan TRON counterparties (hex comparison)
+        try{const txD=await(await fetch(`https://api.trongrid.io/v1/accounts/${addr}/transactions?limit=50&only_confirmed=true`)).json();const cp=new Set();for(const tx of(txD.data||[])){const v=tx.raw_data?.contract?.[0]?.parameter?.value||{};if(v.owner_address)cp.add(v.owner_address.toLowerCase());if(v.to_address)cp.add(v.to_address.toLowerCase())}cp.delete(acc.address?.toLowerCase());let fl=0;for(const h of cp)if(SANC_HEX.has(h))fl++;if(fl>0){res.push({t:'fail',i:'🔴',x:tr('ck_aml_flagged').replace('%d',fl)});sc-=20}else if(cp.size>0){res.push({t:'ok',i:'🛡️',x:tr('ck_aml_clean').replace('%d',cp.size)});sc+=5}}catch{}
       } else {res.push({t:'warn',i:'⚠️',x:tr('ck_not_found')});sc=20}
     }
   }catch{res.push({t:'info',i:'⚪',x:tr('ck_unavail')})}
-  res.push({t:'ok',i:'🛡️',x:tr('ck_not_sanc')});sc=Math.max(0,Math.min(100,sc));
-  return{score:sc,label:sc>=70?tr('sc_hi'):sc>=40?tr('sc_mid'):tr('sc_lo'),color:sc>=70?'green':sc>=40?'yellow':'red',checks:res,guide:[sc>=70?tr('g_hi'):sc>=40?tr('g_mid'):tr('g_lo')]};
+  if(!res.some(r=>r.x&&r.x.includes('AML')))res.push({t:'ok',i:'🛡️',x:tr('ck_not_sanc')});
+  sc=Math.max(0,Math.min(100,sc));
+  return{score:sc,label:sc>=70?tr('sc_hi'):sc>=40?tr('sc_mid'):tr('sc_lo'),color:sc>=70?'green':sc>=40?'yellow':'red',checks:res,guide:[sc>=70?tr('g_hi_online'):sc>=40?tr('g_mid_online'):tr('g_lo_online')]};
 }
 
 async function checkDomain(t){
@@ -1586,6 +1627,7 @@ function renderResult(target,d){
   const verdictHtml=d.score!==null?`<div style="text-align:center;padding:1.2rem;background:${scoreBg};border:1.5px solid ${scoreBorder};border-radius:18px;margin-bottom:1.2rem">
     <div style="font-size:2.5rem;line-height:1">${scoreIcon}</div>
     <div style="color:${scoreClr};font-size:1.3rem;font-weight:700;margin-top:.4rem">${d.label}</div>
+    <div style="color:rgba(255,255,255,.5);font-size:.85rem;margin-top:.3rem">${d.score>=70?tr('vd_hi'):d.score>=40?tr('vd_mid'):d.score>0?tr('vd_lo'):tr('vd_sanc')}</div>
     <div style="color:rgba(255,255,255,.35);font-size:.85rem;margin-top:.2rem">${esc(short)}</div>
   </div>`:`<div style="text-align:center;padding:1rem;margin-bottom:1rem"><div style="font-size:2rem">❓</div><div class="r-label" style="color:#7a8599">${d.label||''}</div><div style="color:rgba(255,255,255,.35);font-size:.85rem">${esc(short)}</div></div>`;
 
@@ -1607,26 +1649,6 @@ function renderResult(target,d){
 }
 </script>
 <script>
-// No Firebase dependency – likes use localStorage only
-var liked=false;
-try{liked=localStorage.getItem('roko_liked')==='1'}catch{}
-
-function renderLike(){
-  var btn=document.getElementById('likeBtn');
-  if(!btn)return;
-  btn.classList.toggle('liked',liked);
-  btn.querySelector('.like-heart').textContent=liked?'♥':'♡';
-}
-
-renderLike();
-
-function toggleLike(){
-  if(liked)return;
-  liked=true;
-  try{localStorage.setItem('roko_liked','1')}catch{}
-  renderLike();
-}
-
 // Check counter
 function updateCheckCounter(){
   try{
@@ -1640,6 +1662,44 @@ function updateCheckCounter(){
   }catch{}
 }
 updateCheckCounter();
+
+// Like button
+var liked=false,likeCount=0;
+try{liked=localStorage.getItem('roko_liked2')==='1'}catch{}
+
+function renderLike(){
+  var btn=document.getElementById('likeBtn');
+  if(!btn)return;
+  btn.classList.toggle('liked',liked);
+  btn.querySelector('.like-heart').textContent=liked?'♥':'♡';
+  var c=document.getElementById('likeCount');
+  if(c)c.textContent=String(likeCount);
+}
+renderLike();
+
+(async function(){
+  const urls=['/api/likes','https://europe-west1-roko-help.cloudfunctions.net/likes'];
+  for(const u of urls){try{const r=await fetch(u);if(r.ok){const d=await r.json();likeCount=d.count||0;renderLike();break}}catch{}}
+})();
+
+(async function(){
+  try{
+    const r=await fetch('https://api.github.com/repos/roko-help/roko',{headers:{Accept:'application/vnd.github+json'}});
+    if(r.ok){const d=await r.json();const c=document.getElementById('ghStarsCount');if(c)c.textContent='★ '+d.stargazers_count+' Stars';}
+  }catch{}
+})();
+
+function toggleLike(){
+  var btn=document.getElementById('likeBtn');
+  if(liked){
+    if(btn){btn.classList.add('pulse');setTimeout(()=>btn.classList.remove('pulse'),350)}
+    return;
+  }
+  liked=true;likeCount++;
+  try{localStorage.setItem('roko_liked2','1')}catch{}
+  renderLike();
+  fetch('/api/likes',{method:'POST'}).catch(()=>fetch('https://europe-west1-roko-help.cloudfunctions.net/likes',{method:'POST'}).catch(()=>{}));
+}
 </script>
 </body>
 </html>
