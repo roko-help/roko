@@ -2,8 +2,8 @@
   "_meta": {
     "source": "US Treasury OFAC SDN List",
     "url": "https://www.treasury.gov/ofac/downloads/",
-    "updated": "2026-04-20",
-    "count": 384
+    "updated": "2026-04-27",
+    "count": 386
   },
   "addresses": [
     "125W5ek3DT6Zqy5S2iPt4FHQdNMCbZA3FU",
@@ -361,6 +361,7 @@
     "TMGLqRQ4twjW8wJhVH1mQR7nUThpGHUsN3",
     "TMStbg5fgb4uTV7fK1gEYF9hKAzP3siPsG",
     "TMuCgBejD5RsNANZdjGtaM3YyKGNgDoy7N",
+    "TNiq9AXBp9EjUqhDhrwrfvAA8U3GUQZH81",
     "TNmRfnSUXZoWWzxcDDbf95eGQYXt1mJDt8",
     "TNrX2FwrHKoo4XACGkmSzqeK4pdnKYn6Z7",
     "TNTFhgFoKH4srBMiWbfrVFqP2AThSmdwf1",
@@ -375,6 +376,7 @@
     "TSxAAo67VTDgKT537EVXxdogkJtk9c6ojz",
     "TTAHMdqoom4f2VTWniroPWQHcTRZ4caoH4",
     "TTgcTTNbNuFdbrhvbjMZVrdU5KALyzDaPw",
+    "TTiDLWE6fZK8okMJv6ijg42yrH6W2pjSr9",
     "TTKnV2S1295UrPr7N67Tp9ykNL7xX2Z4Uj",
     "TTS9o5KkpGgH8cK9LofLmMAPYb5zfQvSNa",
     "TTUDyVhhpCC1xJoPmWzdjLAzeoPwbSABdr",
@@ -1813,6 +1815,10 @@
       "currency": "TRON"
     },
     {
+      "address": "TNiq9AXBp9EjUqhDhrwrfvAA8U3GUQZH81",
+      "currency": "TRON"
+    },
+    {
       "address": "TNmRfnSUXZoWWzxcDDbf95eGQYXt1mJDt8",
       "currency": "TRON"
     },
@@ -1866,6 +1872,10 @@
     },
     {
       "address": "TTgcTTNbNuFdbrhvbjMZVrdU5KALyzDaPw",
+      "currency": "TRON"
+    },
+    {
+      "address": "TTiDLWE6fZK8okMJv6ijg42yrH6W2pjSr9",
       "currency": "TRON"
     },
     {
