@@ -2,8 +2,8 @@
   "_meta": {
     "source": "US Treasury OFAC SDN List",
     "url": "https://www.treasury.gov/ofac/downloads/",
-    "updated": "2026-06-29",
-    "count": 394
+    "updated": "2026-07-06",
+    "count": 399
   },
   "addresses": [
     "125W5ek3DT6Zqy5S2iPt4FHQdNMCbZA3FU",
@@ -329,6 +329,7 @@
     "TAYhjpL8pPs8T84FSM329nffQpc6jD8GBM",
     "TBATDh41qMQ1yeVYecneEvhpfayYmkAQWS",
     "TBcLqqqyZjNj1ptuXFgj5H768NhNU5nDyn",
+    "TBtRqkiFzyuwe8nSAGQghxygAfwAF5eERq",
     "TBwghbQMsBC5xcUxE7ZpYXhfDMXZAfiFv6",
     "TBWRDpQsW1ZVPGGaBAwVLNb7iqmVBuM1nj",
     "TBXMiRqUp1XH1zLazWu8cWitMAScv4HsYq",
@@ -340,6 +341,7 @@
     "TCA7AfTSuDmgYk2VaezfPuZF4Z4X8wxwcQ",
     "TCA9vmjsYw9MtPKEwRBtGhKFRfr4CLxJAv",
     "TCFD8N3vM5b4Gr5f1kkajQsodRVNyyAq1d",
+    "TCqKhk7MpPnGH3UfygE1TRzUo92a5tuVy6",
     "TCu5onCzXuqxjvVzdB2tR4FLuF66d4yRqf",
     "TCzq6m2zxnQkrZrf8cqYcK6bbXQYAfWYKC",
     "TDdbRFoBTEmE3qiR69Y6rKRSG1hoF65QaE",
@@ -386,14 +388,17 @@
     "TTgcTTNbNuFdbrhvbjMZVrdU5KALyzDaPw",
     "TTiDLWE6fZK8okMJv6ijg42yrH6W2pjSr9",
     "TTKnV2S1295UrPr7N67Tp9ykNL7xX2Z4Uj",
+    "TTs7KRq39547ruAsxb9brAPuTLy7h3U6H1",
     "TTS9o5KkpGgH8cK9LofLmMAPYb5zfQvSNa",
     "TTUDyVhhpCC1xJoPmWzdjLAzeoPwbSABdr",
     "TU4tDFRvcKhAZ1jdihojmBWZqvJhQCnJ4F",
     "TUCsTq7TofTCJRRoHk6RvhMoS2mJLm5Yzq",
+    "TUoixKFaWVsHxGWgnYyMzpkrT22YqU7VvH",
     "TV5ZTpKDszLTF6XcMnPongS33pwBgF91by",
     "TVacWx7F5wgMgn49L5frDf9KLgdYy8nPHL",
     "TVn4q7L4fKEPbygi7UHq1CKfZxtbeuMV5q",
     "TVNyvx2astt2AB1Us67ENjfMZeEXZeiuu6",
+    "TVttWTHTCU9kULP51m9BaHpmCW8H1BJJNQ",
     "TWBAPzpPiZarfVsY2BLXeaLhNHurn4wkWG",
     "TX5GV4DyfxNB3rPkzZJhmqZ1efVmL4rEqG",
     "TXEaKf4rT3rMoD3Vuqnuhwr6vLq6BL5t33",
@@ -1695,6 +1700,10 @@
       "currency": "TRON"
     },
     {
+      "address": "TBtRqkiFzyuwe8nSAGQghxygAfwAF5eERq",
+      "currency": "TRON"
+    },
+    {
       "address": "TBwghbQMsBC5xcUxE7ZpYXhfDMXZAfiFv6",
       "currency": "TRON"
     },
@@ -1736,6 +1745,10 @@
     },
     {
       "address": "TCFD8N3vM5b4Gr5f1kkajQsodRVNyyAq1d",
+      "currency": "TRON"
+    },
+    {
+      "address": "TCqKhk7MpPnGH3UfygE1TRzUo92a5tuVy6",
       "currency": "TRON"
     },
     {
@@ -1923,6 +1936,10 @@
       "currency": "TRON"
     },
     {
+      "address": "TTs7KRq39547ruAsxb9brAPuTLy7h3U6H1",
+      "currency": "TRON"
+    },
+    {
       "address": "TTS9o5KkpGgH8cK9LofLmMAPYb5zfQvSNa",
       "currency": "TRON"
     },
@@ -1939,6 +1956,10 @@
       "currency": "TRON"
     },
     {
+      "address": "TUoixKFaWVsHxGWgnYyMzpkrT22YqU7VvH",
+      "currency": "TRON"
+    },
+    {
       "address": "TV5ZTpKDszLTF6XcMnPongS33pwBgF91by",
       "currency": "TRON"
     },
@@ -1952,6 +1973,10 @@
     },
     {
       "address": "TVNyvx2astt2AB1Us67ENjfMZeEXZeiuu6",
+      "currency": "TRON"
+    },
+    {
+      "address": "TVttWTHTCU9kULP51m9BaHpmCW8H1BJJNQ",
       "currency": "TRON"
     },
     {
