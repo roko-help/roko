@@ -47,7 +47,7 @@ async function loadData() {
 }
 
 // ─── Webhook ──────────────────────────────────────────────
-exports.webhook = onRequest({ region: 'europe-west1', timeoutSeconds: 120, invoker: 'public' }, async (req, res) => {
+exports.webhook = onRequest({ region: 'europe-west1', timeoutSeconds: 120, invoker: 'public', maxInstances: 5 }, async (req, res) => {
   const secret = process.env.WEBHOOK_SECRET || '';
   if (secret && req.headers['x-telegram-bot-api-secret-token'] !== secret) {
     return res.status(403).send('Forbidden');
@@ -67,19 +67,19 @@ exports.webhook = onRequest({ region: 'europe-west1', timeoutSeconds: 120, invok
 });
 
 // ─── Watchlist monitor: every 30 min ──────────────────────
-exports.monitor = onSchedule({ schedule: 'every 30 minutes', region: 'europe-west1', timeoutSeconds: 300 }, async () => {
+exports.monitor = onSchedule({ schedule: 'every 30 minutes', region: 'europe-west1', timeoutSeconds: 300, maxInstances: 5 }, async () => {
   await loadData();
   await bot.monitorLoop();
 });
 
 // ─── Weekly digest: Monday 10:00 UTC ──────────────────────
-exports.digest = onSchedule({ schedule: '0 10 * * 1', timeZone: 'UTC', region: 'europe-west1', timeoutSeconds: 60 }, async () => {
+exports.digest = onSchedule({ schedule: '0 10 * * 1', timeZone: 'UTC', region: 'europe-west1', timeoutSeconds: 60, maxInstances: 5 }, async () => {
   await loadData();
   await bot.postDigest();
 });
 
 // ─── Like counter ────────────────────────────────────────
-exports.likes = onRequest({ region: 'europe-west1', cors: true }, async (req, res) => {
+exports.likes = onRequest({ region: 'europe-west1', cors: true, maxInstances: 3 }, async (req, res) => {
   const doc = rokoCol.doc('likes');
   if (req.method === 'POST') {
     await doc.set({ count: admin.firestore.FieldValue.increment(1) }, { merge: true });
