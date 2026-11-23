@@ -2,8 +2,8 @@
   "_meta": {
     "source": "US Treasury OFAC SDN List",
     "url": "https://www.treasury.gov/ofac/downloads/",
-    "updated": "2026-11-16",
-    "count": 485
+    "updated": "2026-11-23",
+    "count": 486
   },
   "addresses": [
     "125W5ek3DT6Zqy5S2iPt4FHQdNMCbZA3FU",
@@ -474,6 +474,7 @@
     "TVn4q7L4fKEPbygi7UHq1CKfZxtbeuMV5q",
     "TVNyvx2astt2AB1Us67ENjfMZeEXZeiuu6",
     "TVttWTHTCU9kULP51m9BaHpmCW8H1BJJNQ",
+    "TVwLtgUXyDhmcSoQ9x2z9QSua41f8mDFvU",
     "TW5NEaaoPHXC1rt5PaYgG474gQ49oiZ2F5",
     "TW5tokvhEfrb77z98Rc8HqbkzQJ6sxYtGX",
     "TWBAPzpPiZarfVsY2BLXeaLhNHurn4wkWG",
@@ -2363,6 +2364,10 @@
     },
     {
       "address": "TVttWTHTCU9kULP51m9BaHpmCW8H1BJJNQ",
+      "currency": "TRON"
+    },
+    {
+      "address": "TVwLtgUXyDhmcSoQ9x2z9QSua41f8mDFvU",
       "currency": "TRON"
     },
     {
